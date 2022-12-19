@@ -6,7 +6,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="cetc_sat">
 
     <!-- ************ MODEL CONFIGURATION ************ -->
-    <xacro:arg name="config" default="$(find CETC_SAT_description)/cetc_sat_urdf/urdf/config/cetc_sat.urdf.xacro"/>
+    <xacro:arg name="config" default="$(find cetc_sat_urdf)/urdf/config/cetc_sat.urdf.xacro"/>
     <xacro:include filename="$(arg config)"/>
 
     <group name="base">

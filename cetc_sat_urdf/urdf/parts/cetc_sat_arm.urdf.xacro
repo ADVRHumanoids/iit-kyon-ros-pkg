@@ -45,7 +45,7 @@
 	<visual>
 		<origin xyz="${EndEffector_Ox / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<box size="${big_box_length} ${big_box_width} ${big_box_height}"/>
+			<box size="${small_box_length} ${small_box_width} ${small_box_height}"/>
 		</geometry>
 		<material name="dark_grey"/>
 	</visual>
@@ -53,7 +53,7 @@
 	<collision>
 		<origin xyz="${EndEffector_Ox / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<box size="${big_box_length} ${big_box_width} ${big_box_height}"/>
+			<box size="${small_box_length} ${small_box_width} ${small_box_height}"/>
 		</geometry>
 	</collision>
 </link>

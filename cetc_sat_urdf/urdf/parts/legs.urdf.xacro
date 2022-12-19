@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:include filename="$(find CETC_SAT_description)/cetc_sat_urdf/urdf/parts/cetc_sat_leg.urdf.xacro" />
+<xacro:include filename="$(find cetc_sat_urdf)/urdf/parts/cetc_sat_leg.urdf.xacro" />
 
 <xacro:cetc_sat_leg leg_num="1" origin_x="1" origin_y="-1" mirror="-1">
 </xacro:cetc_sat_leg>

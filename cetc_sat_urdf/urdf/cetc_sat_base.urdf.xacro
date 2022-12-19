@@ -7,10 +7,10 @@
   Author: Luca Rossini
 -->
 
-<xacro:include filename="$(find CETC_SAT_description)/cetc_sat_urdf/urdf/utils.urdf.xacro" />
-<xacro:include filename="$(find CETC_SAT_description)/cetc_sat_urdf/urdf/parts/kinematics_properties.urdf.xacro" />
+<xacro:include filename="$(find cetc_sat_urdf)/urdf/utils.urdf.xacro" />
+<xacro:include filename="$(find cetc_sat_urdf)/urdf/parts/kinematics_properties.urdf.xacro" />
 <!--xacro:include filename="$(find cetc_sat_urdf)/urdf/parts/inertial_properties.urdf.xacro" /-->
-<xacro:include filename="$(find CETC_SAT_description)/cetc_sat_urdf/urdf/parts/limits.urdf.xacro" />
+<xacro:include filename="$(find cetc_sat_urdf)/urdf/parts/limits.urdf.xacro" />
 
 
 <link name="base_link"/>
@@ -38,11 +38,11 @@
 
 
 <xacro:if value="${ADD_UPPER_BODY}">
-    <xacro:include filename="$(find CETC_SAT_description)/cetc_sat_urdf/urdf/parts/arms.urdf.xacro" />
+    <xacro:include filename="$(find cetc_sat_urdf)/urdf/parts/arms.urdf.xacro" />
 </xacro:if>
 
 <xacro:if value="${ADD_LEGS}">
-	<xacro:include filename="$(find CETC_SAT_description)/cetc_sat_urdf/urdf/parts/legs.urdf.xacro" />
+	<xacro:include filename="$(find cetc_sat_urdf)/urdf/parts/legs.urdf.xacro" />
 </xacro:if>
 
 </robot>
