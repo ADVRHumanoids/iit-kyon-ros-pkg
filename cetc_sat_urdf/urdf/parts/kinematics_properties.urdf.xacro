@@ -1,0 +1,81 @@
+<!--<?xml version="1.0"?>-->
+<robot  xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- link dimensions -->
+<xacro:property name="cylinder_radius" value="0.07"/>
+<xacro:property name="cylinder_length" value="0.1"/>
+<xacro:property name="big_box_length" value="0.4"/>
+<xacro:property name="big_box_width" value="0.1"/>
+<xacro:property name="big_box_height" value="0.1"/>
+<xacro:property name="small_box_length" value="0.4"/>
+<xacro:property name="small_box_width" value="0.05"/>
+<xacro:property name="small_box_height" value="0.05"/>
+<xacro:property name="ball_radius" value="0.05"/>
+
+<!--pelvis dimensions: length: 0.80-1.1m, width: 0.45-0.60m-->
+<xacro:property name="pelvis_length" value="0.80"/>
+<xacro:property name="pelvis_width" value="0.45"/>
+<xacro:property name="pelvis_height" value="0.20"/> <!-- random value to be defined -->
+
+<!-- Origin -->
+<xacro:property name="Leg_1_Ox" value="${pelvis_length / 2}"/>
+<xacro:property name="Leg_1_Oy" value="${-pelvis_width / 2}"/>
+<xacro:property name="Leg_1_Oz" value="${0.0 * mmTom}"/>
+<xacro:property name="Leg_1_roll" value="0.0"/>
+<xacro:property name="Leg_1_pitch" value="${PI_2}"/>
+<xacro:property name="Leg_1_yaw" value="0.0"/>
+
+<!-- Origin -->
+<xacro:property name="Leg_2_Ox" value="0.0"/>
+<xacro:property name="Leg_2_Oy" value="-${cylinder_radius / 2}"/>
+<xacro:property name="Leg_2_Oz" value="0.0"/>
+<xacro:property name="Leg_2_roll" value="0.0"/>
+<xacro:property name="Leg_2_pitch" value="0.0"/>
+<xacro:property name="Leg_2_yaw" value="0.0"/>
+
+<!-- Origin -->
+<xacro:property name="Leg_3_Ox" value="${big_box_length}"/>
+<xacro:property name="Leg_3_Oy" value="0.0"/>
+<xacro:property name="Leg_3_Oz" value="0.0"/>
+<xacro:property name="Leg_3_roll" value="0.0"/>
+<xacro:property name="Leg_3_pitch" value="0.0"/>
+<xacro:property name="Leg_3_yaw" value="0.0"/>
+
+<!-- Origin -->
+<xacro:property name="Ankle_Ox" value="${big_box_length}"/>
+<xacro:property name="Ankle_Oy" value="0.0"/>
+<xacro:property name="Ankle_Oz" value="0.0"/>
+<xacro:property name="Ankle_roll" value="0.0"/>
+<xacro:property name="Ankle_pitch" value="0.0"/>
+<xacro:property name="Ankle_yaw" value="0.0"/>
+
+<!-- Arms -->
+<xacro:property name="Shoulder_Ox" value="${pelvis_length / 2 - 0.1}"/>
+<xacro:property name="Shoulder_Oy" value="${pelvis_width / 2 - 0.05}"/>
+<xacro:property name="Shoulder_Oz" value="${pelvis_height / 2}"/>
+<xacro:property name="Shoulder_roll" value="0.0"/>
+<xacro:property name="Shoulder_pitch" value="0.0"/>
+<xacro:property name="Shoulder_yaw" value="0.0"/>
+
+<xacro:property name="Pitch_1_Ox" value="0.0"/>
+<xacro:property name="Pitch_1_Oy" value="0.0"/>
+<xacro:property name="Pitch_1_Oz" value="${cylinder_length / 2}"/>
+<xacro:property name="Pitch_1_roll" value="0.0"/>
+<xacro:property name="Pitch_1_pitch" value="${-PI_2}"/>
+<xacro:property name="Pitch_1_yaw" value="0.0"/>
+
+<xacro:property name="Pitch_2_Ox" value="${big_box_length}"/>
+<xacro:property name="Pitch_2_Oy" value="0.0"/>
+<xacro:property name="Pitch_2_Oz" value="0.0"/>
+<xacro:property name="Pitch_2_roll" value="0.0"/>
+<xacro:property name="Pitch_2_pitch" value="0.0"/>
+<xacro:property name="Pitch_2_yaw" value="0.0"/>
+
+<xacro:property name="EndEffector_Ox" value="${big_box_length}"/>
+<xacro:property name="EndEffector_Oy" value="0.0"/>
+<xacro:property name="EndEffector_Oz" value="0.0"/>
+<xacro:property name="EndEffector_roll" value="0.0"/>
+<xacro:property name="EndEffector_pitch" value="0.0"/>
+<xacro:property name="EndEffector_yaw" value="0.0"/>
+
+</robot>

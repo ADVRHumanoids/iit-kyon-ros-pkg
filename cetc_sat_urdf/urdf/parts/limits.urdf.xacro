@@ -1,0 +1,38 @@
+<!--<?xml version="1.0"?>-->
+<robot  xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- Legs -->
+<xacro:property name="hip_roll_lower" value="${[-2.030,-2.510, -2.510 ,-2.030]}"/>
+<xacro:property name="hip_roll_upper" value="${[ 2.510, 2.030,  2.030 , 2.510]}"/>
+<xacro:property name="hip_pitch_lower" value="${[-2.4056, -2.3266, -2.4696, -2.3426]}"/>
+<xacro:property name="hip_pitch_upper" value="${[2.4056, 2.3266, 2.4696, 2.3426]}"/>
+<xacro:property name="knee_pitch_lower" value="${[-2.4056, -2.3266, -2.4696, -2.3426]}"/>
+<xacro:property name="knee_pitch_upper" value="${[2.4056, 2.3266, 2.4696, 2.3426]}"/>
+
+<!-- Arms -->
+<xacro:property name="j_shoulder_yaw_lower" value="${[-3.312, -3.3458]}"/>
+<xacro:property name="j_shoulder_yaw_upper" value="${[3.312, 3.3458]}"/>
+<xacro:property name="j_pitch_1_lower" value="${[-2.4056, -2.3266, -2.4696, -2.3426]}"/>
+<xacro:property name="j_pitch_1_upper" value="${[2.4056, 2.3266, 2.4696, 2.3426]}"/>
+<xacro:property name="j_pitch_2_lower" value="${[-2.4056, -2.3266, -2.4696, -2.3426]}"/>
+<xacro:property name="j_pitch_2_upper" value="${[2.4056, 2.3266, 2.4696, 2.3426]}"/>
+
+<xacro:property name="j_shoulder_velocity" value="${[3.86, 3.86 ]}"/>
+<xacro:property name="j_pitch_1_velocity" value="${[3.86, 3.86 ]}"/>
+<xacro:property name="j_pitch_2_velocity" value="${[3.86, 3.86 ]}"/>
+
+<xacro:property name="j_shoulder_torque" value="${[147.00, 147.00 ]}"/>
+<xacro:property name="j_pitch_1_torque" value="${[147.00, 147.00 ]}"/>
+<xacro:property name="j_pitch_2_torque" value="${[147.00, 147.00 ]}"/>
+
+<!-- Motor velocities -->
+<xacro:property name="motor_A_velocity" value="8.8"/>
+<xacro:property name="motor_B_velocity" value="8.1"/>
+<xacro:property name="motor_C_velocity" value="20.0"/>
+
+<!-- Motor effort -->
+<xacro:property name="motor_A_effort" value="304"/>
+<xacro:property name="motor_B_effort" value="147"/>
+<xacro:property name="motor_C_effort" value="35"/>
+
+</robot>

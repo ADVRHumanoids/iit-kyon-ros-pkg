@@ -1,0 +1,17 @@
+<launch>
+	<!-- cetc_sat configuration parameters -->
+	<arg name="arms" default="true"/>
+	<arg name="legs" default="true"/>
+	<arg name="floating_base" default="true"/>
+         
+	<param name="robot_description"
+		 command="$(find xacro)/xacro $(find CETC_SAT_description)/cetc_sat_urdf/urdf/cetc_sat.urdf.xacro floating_joint:=$(arg floating_base) upper_body:=$(arg arms) legs:=$(arg legs)"/>
+		 
+    <param name="robot_description_semantic"
+		 command="$(find xacro)/xacro $(find CETC_SAT_description)/cetc_sat_srdf/srdf/cetc_sat.srdf.xacro floating_joint:=$(arg floating_base) upper_body:=$(arg arms) legs:=$(arg legs)"/>
+		 
+	<!--node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen"/>
+	<node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher" output="screen"/-->
+		 
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find CETC_SAT_description)/examples/rviz/test.rviz"/>
+</launch>

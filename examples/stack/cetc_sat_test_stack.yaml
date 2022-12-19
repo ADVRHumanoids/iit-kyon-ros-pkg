@@ -1,0 +1,26 @@
+solver_options:
+    regularization: 1e-2
+    back_end: "osqp"
+    
+stack:
+    - ["Ball1", "Ball2", "Ball3", "Ball4"]
+
+Ball1:
+    type: "Cartesian"	
+    distal_link: "ball_1"
+    base_link: "world"
+
+Ball2:
+    type: "Cartesian"	
+    distal_link: "ball_2"
+    base_link: "world"
+	
+Ball3:
+    type: "Cartesian"	
+    distal_link: "ball_3"
+    base_link: "world"
+	
+Ball4:
+    type: "Cartesian"	
+    distal_link: "ball_4"
+    base_link: "world"

@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- macro arms -->
+<xacro:macro name="cetc_sat_arm" params="arm_num rot parent">
+	
+<!-- LINKS -->
+<!-- shoulder yaw -->
+<link name="shoulder_${arm_num}">
+	<visual>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+		</geometry>
+		<material name="dark_grey"/>
+	</visual>
+	<collision>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+		</geometry>
+	</collision>
+</link>
+
+<!-- base arm-->
+<link name="arm${arm_num}_1">
+	<visual>
+		<origin xyz="${Pitch_2_Ox / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<box size="${big_box_length} ${big_box_width} ${big_box_height}"/>
+		</geometry>
+	</visual>
+
+	<collision>
+		<origin xyz="${Pitch_2_Ox / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<box size="${big_box_length} ${big_box_width} ${big_box_height}"/>
+		</geometry>
+	</collision>
+</link>
+<!-- shoulder roll-pitch-->
+	
+<!-- shoulder-elbow -->
+<link name="arm${arm_num}_2">
+	<visual>
+		<origin xyz="${EndEffector_Ox / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<box size="${big_box_length} ${big_box_width} ${big_box_height}"/>
+		</geometry>
+		<material name="dark_grey"/>
+	</visual>
+
+	<collision>
+		<origin xyz="${EndEffector_Ox / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<box size="${big_box_length} ${big_box_width} ${big_box_height}"/>
+		</geometry>
+	</collision>
+</link>
+<!-- /shoulder-elbow -->
+
+<link name="ball_arm_${arm_num}">
+	<visual>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<sphere radius="${ball_radius}"/>
+		</geometry>
+	</visual>
+	<collision>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<sphere radius="${ball_radius}"/>
+		</geometry>
+	</collision>
+</link>
+
+
+
+<!-- /LINKS -->
+
+<!-- JOINTS -->
+<!-- shoulder yaw -->
+<joint name="j_shoulder_yaw_${arm_num}" type="revolute">
+	<parent link="${parent}"/>
+	<child link="shoulder_${arm_num}"/>
+	<origin xyz="${Shoulder_Ox} ${rot*Shoulder_Oy} ${Shoulder_Oz}" rpy="${Shoulder_roll} ${Shoulder_pitch} ${Shoulder_roll}"/>
+	<axis xyz="0 0 1"/>
+	<limit lower="${j_shoulder_yaw_lower[arm_num-1]}" upper="${j_shoulder_yaw_upper[arm_num-1]}" effort="${j_shoulder_torque[arm_num-1]}" velocity="${j_shoulder_velocity[arm_num-1]}"/>
+</joint>
+	
+<!-- arm pitch 1 -->
+<joint name="j_pitch_1_${arm_num}" type="revolute">
+	<parent link="shoulder_${arm_num}"/>
+	<child link="arm${arm_num}_1"/>
+	<origin xyz="${Pitch_1_Ox} ${Pitch_1_Oy} ${Pitch_1_Oz}" rpy="${Pitch_1_roll} ${Pitch_1_pitch} ${Pitch_1_yaw}"/>
+	<axis xyz="0 1 0"/>
+	<limit lower="${j_pitch_1_lower[arm_num-1]}" upper="${j_pitch_1_upper[arm_num-1]}" effort="${j_pitch_1_torque[arm_num-1]}" velocity="${j_pitch_1_velocity[arm_num-1]}"/>
+</joint>
+
+<!-- arm pitch 2 -->
+<joint name="j_pitch_2_${arm_num}" type="revolute">
+	<parent link="arm${arm_num}_1"/>
+	<child link="arm${arm_num}_2"/>
+	<origin xyz="${Pitch_2_Ox} ${Pitch_2_Oy} ${Pitch_2_Oz}" rpy="${Pitch_2_roll} ${Pitch_2_pitch} ${Pitch_2_yaw}"/>
+	<axis xyz="0 1 0"/>
+	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${j_pitch_2_torque[arm_num-1]}" velocity="${j_pitch_2_velocity[arm_num-1]}"/>
+</joint>
+	
+<!-- end effector  -->
+<joint name="j_hand_${arm_num}" type="fixed">
+	<parent link="arm${arm_num}_2"/>
+	<child link="ball_arm_${arm_num}"/>
+	<origin xyz="${EndEffector_Ox} ${EndEffector_Oy} ${EndEffector_Oz}" rpy="${EndEffector_roll} ${EndEffector_pitch} ${EndEffector_yaw}"/>
+</joint>
+
+</xacro:macro>
+<!-- /macro arms -->
+
+</robot>

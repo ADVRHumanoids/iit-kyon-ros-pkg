@@ -1,0 +1,18 @@
+<!--<?xml version="1.0"?>-->
+<robot  xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- Center of Mass -->
+<xacro:property name="Pelvis_x" value="${0 * mmTom}"/>
+<xacro:property name="Pelvis_y" value="${0 * mmTom}"/>
+<xacro:property name="Pelvis_z" value="${0 * mmTom}"/>
+<!-- Inertia -->
+<xacro:property name="Pelvis_xx" value="${0 * mm2Tom2}"/>
+<xacro:property name="Pelvis_yy" value="${0 * mm2Tom2}"/>
+<xacro:property name="Pelvis_zz" value="${0 * mm2Tom2}"/>
+<xacro:property name="Pelvis_xy" value="${0 * mm2Tom2}"/>
+<xacro:property name="Pelvis_xz" value="${0 * mm2Tom2}"/>
+<xacro:property name="Pelvis_yz" value="${0  * mm2Tom2}"/>
+<!-- Mass -->
+<xacro:property name="Pelvis_mass" value="0"/>
+
+</robot>
