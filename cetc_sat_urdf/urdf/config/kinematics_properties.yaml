@@ -1,0 +1,73 @@
+PI_2: &pi_2 1.57079632679
+
+cylinder_radius: &cr 0.07
+cylinder_length: &cl 0.1
+big_box_length: &bbl 0.4
+big_box_width: &bbw 0.1
+big_box_height: &bbh 0.1
+small_box_length: 0.4
+small_box_width: 0.05
+small_box_height: 0.05
+ball_radius: 0.05
+pelvis_length: &pl 0.80
+pelvis_width: &pw 0.45
+pelvis_height: &ph 0.20
+
+
+# legs
+Leg_1_Ox: *pl
+Leg_1_Oy: *pw
+Leg_1_Oz: 0.0
+Leg_1_roll: 0.0
+Leg_1_pitch: *pi_2
+Leg_1_yaw: 0.0
+
+Leg_2_Ox: 0.0
+Leg_2_Oy: *cr
+Leg_2_Oz: 0.0
+Leg_2_roll: 0.0
+Leg_2_pitch: 0.0
+Leg_2_yaw: 0.0
+
+Leg_3_Ox: *bbl
+Leg_3_Oy: 0.0
+Leg_3_Oz: 0.0
+Leg_3_roll: 0.0
+Leg_3_pitch: 0.0
+Leg_3_yaw: 0.0
+
+Ankle_Ox: *bbl
+Ankle_Oy: 0.0
+Ankle_Oz: 0.0
+Ankle_roll: 0.0
+Ankle_pitch: 0.0
+Ankle_yaw: 0.0
+
+# arms
+Shoulder_Ox: *pl
+Shoulder_Oy: *pw
+Shoulder_Oz: *ph
+Shoulder_roll: 0.0
+Shoulder_pitch: 0.0
+Shoulder_yaw: 0.0
+
+Pitch_1_Ox: 0.0
+Pitch_1_Oy: 0.0
+Pitch_1_Oz: *cl
+Pitch_1_roll: 0.0
+Pitch_1_pitch: *pi_2
+Pitch_1_yaw: 0.0
+
+Pitch_2_Ox: *bbl
+Pitch_2_Oy: 0.0
+Pitch_2_Oz: 0.0
+Pitch_2_roll: 0.0
+Pitch_2_pitch: 0.0
+Pitch_2_yaw: 0.0
+
+EndEffector_Ox: *bbl
+EndEffector_Oy: 0.0
+EndEffector_Oz: 0.0
+EndEffector_roll: 0.0
+EndEffector_pitch: 0.0
+EndEffector_yaw: 0.0
