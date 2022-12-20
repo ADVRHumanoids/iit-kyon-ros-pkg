@@ -3,6 +3,8 @@
 	<arg name="arms" default="true"/>
 	<arg name="legs" default="true"/>
 	<arg name="floating_base" default="true"/>
+	
+	<param name="cartesian/problem_description" textfile="$(find cetc_sat_cartesio)/config/cetc_test_stack.yaml"/>
          
 	<param name="robot_description"
 		 command="$(find xacro)/xacro $(find cetc_sat_urdf)/urdf/cetc_sat.urdf.xacro floating_joint:=$(arg floating_base) upper_body:=$(arg arms) legs:=$(arg legs)"/>

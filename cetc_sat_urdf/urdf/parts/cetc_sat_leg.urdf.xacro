@@ -6,8 +6,33 @@
 
 <!-- links -->
 
-<link name="hip_${leg_num}">
-	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+<link name="hip_roll_motor_${leg_num}">
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>
+		<mass value="${props_inertial['motorA_mass']}"/>
+		<inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
+	</inertial>
+	<visual>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+	  	<geometry>
+	 		<cylinder radius="${props['cylinder_radius']}" length="${props['cylinder_length']}"/>
+	  	</geometry>
+  		<material name="dark_grey"/>
+	</visual>
+	<collision>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<cylinder radius="${props['cylinder_radius']}" length="${props['cylinder_length']}"/>
+		</geometry>
+	</collision>
+</link>
+
+<link name="hip_pitch_motor_${leg_num}">
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>
+		<mass value="${props_inertial['motorA_mass']}"/>
+		<inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
+	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
@@ -24,24 +49,55 @@
 </link>
 
 <link name="upper_leg_${leg_num}">
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>	
+		<mass value="${props_inertial['big_box_mass']}"/>
+		<inertia ixx="${BigBox_xx}" ixy="${BigBox_xy}" ixz="${BigBox_xz}" iyy="${BigBox_xx}" iyz="${BigBox_yz}" izz="${BigBox_zz}"/>
+	</inertial>
 	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 	<visual>
-		<origin xyz="${props['Leg_3_Ox'] / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${props['KneePitch_Ox'] / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
 	 		<box size="${props['big_box_length']} ${props['big_box_width']} ${props['big_box_height']}"/>
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
 	<collision>
-		<origin xyz="${props['Leg_3_Ox'] / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${props['KneePitch_Ox'] / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
 			<box size="${props['big_box_length']} ${props['big_box_width']} ${props['big_box_height']}"/>
 		</geometry>
 	</collision>
 </link>
 
+<link name="knee_pitch_motor_${leg_num}">
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>
+		<mass value="${props_inertial['motorA_mass']}"/>
+		<inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
+	</inertial>
+	<visual>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+	  	<geometry>
+	 		<cylinder radius="${props['cylinder_radius']}" length="${props['cylinder_length']}"/>
+	  	</geometry>
+  		<material name="dark_grey"/>
+	</visual>
+	<collision>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<cylinder radius="${props['cylinder_radius']}" length="${props['cylinder_length']}"/>
+		</geometry>
+	</collision>
+</link>
+
 <link name="lower_leg_${leg_num}">
-<visual>
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>	
+		<mass value="${props_inertial['small_box_mass']}"/>
+		<inertia ixx="${SmallBox_xx}" ixy="${SmallBox_xy}" ixz="${SmallBox_xz}" iyy="${SmallBox_xx}" iyz="${SmallBox_yz}" izz="${SmallBox_zz}"/>
+	</inertial>
+	<visual>
 		<origin xyz="${props['Ankle_Ox'] / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
 	 		<box size="${props['small_box_length']} ${props['small_box_width']} ${props['small_box_height']}"/>
@@ -57,6 +113,11 @@
 </link>
 
 <link name="ball_${leg_num}">
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>
+		<mass value="${props_inertial['ball_mass']}"/>
+		<inertia ixx="${Ball_xx}" ixy="${Ball_xy}" ixz="${Ball_xz}" iyy="${Ball_yy}" iyz="${Ball_yz}" izz="${Ball_zz}"/>
+	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		<geometry>
@@ -75,25 +136,37 @@
 
 <joint name="hip_roll_${leg_num}" type="revolute">
 	<parent link="pelvis"/>
-	<child link="hip_${leg_num}"/>
-	<origin xyz="${origin_x*props['Leg_1_Ox'] / 2} ${origin_y*(-props['Leg_1_Oy'] / 2)} ${props['Leg_1_Oz']}" rpy="${props['Leg_1_roll']} ${props['Leg_1_pitch']} ${props['Leg_1_yaw']}"/>
+	<child link="hip_roll_motor_${leg_num}"/>
+	<origin xyz="${origin_x*props['HipRoll_Ox'] / 2} ${origin_y*(-props['HipRoll_Oy'] / 2)} ${props['HipRoll_Oz']}" rpy="${props['HipRoll_roll']} ${props['HipRoll_pitch']} ${props['HipRoll_yaw']}"/>
 	<axis xyz="0 0 1"/>
-   <limit lower="${hip_roll_lower[leg_num-1]}" upper="${hip_roll_upper[leg_num-1]}" effort="${motor_A_effort}" velocity="${motor_A_velocity}"/> <!-- 200 Nm, 1 rad/s-->
+    <limit lower="${hip_roll_lower[leg_num-1]}" upper="${hip_roll_upper[leg_num-1]}" effort="${motor_A_effort}" velocity="${motor_A_velocity}"/> <!-- 200 Nm, 1 rad/s-->
 </joint>
 
+<joint name="hip_pitch_stator_${leg_num}" type="fixed">
+	<parent link="hip_roll_motor_${leg_num}"/>
+	<child link="hip_pitch_motor_${leg_num}"/>
+	<origin xyz="${props['HipPitch_Ox']} ${mirror * (-props['HipPitch_Oy'])} ${props['HipPitch_Oz']}" rpy="${-props['HipPitch_roll']} ${props['HipPitch_pitch']} ${props['HipPitch_yaw']}"/>
+</joint>
+	
 <joint name="hip_pitch_${leg_num}" type="revolute">
-	<parent link="hip_${leg_num}"/>
+	<parent link="hip_pitch_motor_${leg_num}"/>
 	<child link="upper_leg_${leg_num}"/>
-	<origin xyz="${props['Leg_2_Ox']} ${mirror*(-props['Leg_2_Oy']/2)} ${props['Leg_2_Oz']}" rpy="${props['Leg_2_roll']} ${props['Leg_2_pitch']} ${props['Leg_2_yaw']}"/>
-	<axis xyz="0 1 0"/>
+	<origin xyz="${props['UpperLeg_Ox']} ${mirror*(-props['UpperLeg_Oy']/2)} ${props['UpperLeg_Oz']}" rpy="${props['UpperLeg_roll']} ${props['UpperLeg_pitch']} ${props['UpperLeg_yaw']}"/>
+	<axis xyz="0 0 1"/>
    <limit lower="${hip_pitch_lower[leg_num-1]}" upper="${hip_pitch_upper[leg_num-1]}" effort="${motor_A_effort}" velocity="${motor_A_velocity}"/> <!-- 200 Nm, 1 rad/s-->
 </joint>
 
-<joint name="knee_pitch_${leg_num}" type="revolute">
+<joint name="knee_pitch_stator_${leg_num}" type="fixed">
 	<parent link="upper_leg_${leg_num}"/>
+	<child link="knee_pitch_motor_${leg_num}"/>
+	<origin xyz="${props['KneePitch_Ox']} ${props['KneePitch_Oy']} ${props['KneePitch_Oz']}" rpy="${props['KneePitch_roll']} ${props['KneePitch_pitch']} ${props['KneePitch_yaw']}"/>
+</joint>
+
+<joint name="knee_pitch_${leg_num}" type="revolute">
+	<parent link="knee_pitch_motor_${leg_num}"/>
 	<child link="lower_leg_${leg_num}"/>
-	<origin xyz="${props['Leg_3_Ox']} ${props['Leg_3_Oy']} ${props['Leg_3_Oz']}" rpy="${props['Leg_3_roll']} ${props['Leg_3_pitch']} ${props['Leg_3_yaw']}"/>
-	<axis xyz="0 1 0"/>
+	<origin xyz="${props['LowerLeg_Ox']} ${props['LowerLeg_Oy']} ${props['LowerLeg_Oz']}" rpy="${props['LowerLeg_roll']} ${props['LowerLeg_pitch']} ${props['LowerLeg_yaw']}"/>
+	<axis xyz="0 0 1"/>
    <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motor_A_effort}" velocity="${motor_A_velocity}"/> <!-- 200 Nm, 1 rad/s-->
 </joint>
 
