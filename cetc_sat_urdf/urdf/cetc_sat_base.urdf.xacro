@@ -47,6 +47,136 @@
     <origin xyz="0 0 0" rpy="0 0 0" />
 </joint>
 
+<xacro:if value="${ADD_SENSORS}">
+    <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro" />
+
+    <!-- LEFT D435 CAMERA -->
+    <xacro:sensor_d435i parent="pelvis"
+        name="D435_left"
+        topics_ns="D435_left"
+        enable_pointCloud="true"
+        align_depth="true"
+        unite_imu_method="false"
+        visualize="true"
+        accel_fps="300"
+        gyro_fps="300"
+        depth_width="1280"
+        depth_height="720"
+        depth_fps="90"
+        infra_width="1280"
+        infra_height="720"
+        infra_fps="90"
+        color_width="1280"
+        color_height="720"
+        color_fps="30">
+
+        <origin xyz="-0.1 0.22 0" rpy="0 0.25 1.57"/>
+
+    </xacro:sensor_d435i>
+
+    <!-- RIGHT D435 CAMERA -->
+    <xacro:sensor_d435i parent="pelvis"
+        name="D435_right"
+        topics_ns="D435_right"
+        enable_pointCloud="true"
+        align_depth="true"
+        unite_imu_method="false"
+        visualize="true"
+        accel_fps="300"
+        gyro_fps="300"
+        depth_width="1280"
+        depth_height="720"
+        depth_fps="90"
+        infra_width="1280"
+        infra_height="720"
+        infra_fps="90"
+        color_width="1280"
+        color_height="720"
+        color_fps="30">
+
+        <origin xyz="-0.1 -0.22 0" rpy="0 0.25 -1.57"/>
+
+    </xacro:sensor_d435i>
+
+    <!-- REAR D435 CAMERA -->
+    <xacro:sensor_d435i parent="pelvis"
+        name="D435_rear"
+        topics_ns="D435_rear"
+        enable_pointCloud="true"
+        align_depth="true"
+        unite_imu_method="false"
+        visualize="true"
+        accel_fps="300"
+        gyro_fps="300"
+        depth_width="1280"
+        depth_height="720"
+        depth_fps="90"
+        infra_width="1280"
+        infra_height="720"
+        infra_fps="90"
+        color_width="1280"
+        color_height="720"
+        color_fps="30">
+
+        <origin xyz="-0.39 0 0" rpy="0 0.25 3.14"/>
+
+    </xacro:sensor_d435i>
+
+    <!-- FRONT1 D435 CAMERA -->
+    <xacro:sensor_d435i parent="pelvis"
+        name="D435_front1"
+        topics_ns="D435_front1"
+        enable_pointCloud="true"
+        align_depth="true"
+        unite_imu_method="false"
+        visualize="true"
+        accel_fps="300"
+        gyro_fps="300"
+        depth_width="1280"
+        depth_height="720"
+        depth_fps="90"
+        infra_width="1280"
+        infra_height="720"
+        infra_fps="90"
+        color_width="1280"
+        color_height="720"
+        color_fps="30">
+
+        <origin xyz="0.40 -0.075 0" rpy="1.57 0 0.21"/>
+
+    </xacro:sensor_d435i>
+
+    <!-- FRONT2 D435 CAMERA -->
+    <xacro:sensor_d435i parent="pelvis"
+        name="D435_front2"
+        topics_ns="D435_front2"
+        enable_pointCloud="true"
+        align_depth="true"
+        unite_imu_method="false"
+        visualize="true"
+        accel_fps="300"
+        gyro_fps="300"
+        depth_width="1280"
+        depth_height="720"
+        depth_fps="90"
+        infra_width="1280"
+        infra_height="720"
+        infra_fps="90"
+        color_width="1280"
+        color_height="720"
+        color_fps="30">
+
+        <origin xyz="0.40 0.075 0" rpy="1.57 0 -0.21"/>
+
+    </xacro:sensor_d435i>
+
+    <!-- Velodyne -->
+    <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+    <xacro:VLP-16 parent="pelvis" name="velodyne" topic="/velodyne_points" hz="10" samples="440">
+        <origin xyz="0.36 0 0.11" rpy="0 0 0" />
+    </xacro:VLP-16>
+
+</xacro:if>
 
 <xacro:if value="${ADD_UPPER_BODY}">
     <xacro:include filename="$(find cetc_sat_urdf)/urdf/parts/arms.urdf.xacro" />

@@ -1,0 +1,8 @@
+prefix=/home/alessio/alessio_ws/src/CETC_SAT_description/build/devel
+
+Name: cetc_sat_srdf
+Description: Description of cetc_sat_srdf
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
