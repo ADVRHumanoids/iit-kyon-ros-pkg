@@ -19,20 +19,20 @@ install(DIRECTORY urdf
 
 # main urdf
 generate_urdf(
-  XACRO cetc_sat.urdf.xacro 
-  CONFIG config/cetc_sat.urdf.xacro 
+  XACRO ${ROBOT_NAME}.urdf.xacro
+  CONFIG config/${ROBOT_NAME}.urdf.xacro
   ADD_TO_ALL TRUE
 )
 
 # virtual frame urdf
-generate_urdf(
-  XACRO cetc_sat.urdf.xacro 
-  #CONFIG config/cetc_sat_virtual_frame.urdf.xacro 
-  ADD_TO_ALL TRUE
-)
+#generate_urdf(
+#  XACRO ${ROBOT_NAME}.urdf.xacro
+#  CONFIG config/${ROBOT_NAME}_virtual_frame.urdf.xacro
+#  ADD_TO_ALL TRUE
+#)
 
 # capsule model for main urdf
-generate_capsule_urdf(
-  CONFIG_NAME cetc_sat
-  ADD_TO_ALL TRUE
-)
+#generate_capsule_urdf(
+#  CONFIG_NAME ${ROBOT_NAME}
+#  ADD_TO_ALL TRUE
+#)

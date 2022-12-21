@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-set(cetc_sat cetc_sat)
+set(ROBOT_NAME cetc_sat)
 project(CETC_SAT_description VERSION 1.0.0)
 
 include(GenerateXrdf.cmake)

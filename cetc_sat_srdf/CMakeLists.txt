@@ -6,26 +6,26 @@ catkin_package()
 
 # main srdf, with acm
 generate_srdf(
-  XACRO cetc_sat.srdf.xacro 
-  CONFIG config/cetc_sat.urdf.xacro 
+  XACRO ${ROBOT_NAME}.srdf.xacro
+  CONFIG config/${ROBOT_NAME}.urdf.xacro
   ADD_TO_ALL TRUE
-  GEN_ACM TRUE
+#  GEN_ACM TRUE
 )
 
 # updated acm for capsule model
-generate_capsule_srdf_acm(
-  CONFIG_NAME cetc_sat
-  ADD_TO_ALL TRUE
-)
+#generate_capsule_srdf_acm(
+#  CONFIG_NAME ${ROBOT_NAME}
+#  ADD_TO_ALL TRUE
+#)
 
 # plain srdf for virtual frame model
 #generate_srdf(
-#  XACRO cetc_sat.srdf.xacro 
-#  CONFIG config/cetc_sat_virtual_frame.urdf.xacro 
+#  XACRO ${ROBOT_NAME}.srdf.xacro
+#  CONFIG config/${ROBOT_NAME}_virtual_frame.urdf.xacro
 #  ADD_TO_ALL TRUE
 #)
 
 # mark srdf for installation
-install(DIRECTORY srdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
+#install(DIRECTORY srdf
+#  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+#)
