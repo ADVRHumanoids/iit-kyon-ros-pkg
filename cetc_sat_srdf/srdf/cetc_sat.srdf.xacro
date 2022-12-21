@@ -67,26 +67,14 @@
             <joint name="hip_roll_4" value="0.0"/>
             <joint name="hip_pitch_4" value="0.7"/>
             <joint name="knee_pitch_4" value="-1.4"/>
-            <joint name="shoulder_yaw_1" value="0.0"/>
-            <joint name="shoulder_pitch_1" value="0.7"/>
-            <joint name="elbow_pitch_1" value="1.4"/>
-            <joint name="shoulder_yaw_2" value="0.0"/>
-            <joint name="shoulder_pitch_2" value="0.7"/>
-            <joint name="elbow_pitch_2" value="1.4"/>
         </xacro:if>
         <xacro:if value="${ADD_UPPER_BODY}">
-            <joint name="shoulder_yaw_1" value="0"/>
-            <joint name="shoulder_pitch_stator_1" value="0"/>
-            <joint name="shoulder_pitch_1" value="0"/>
-            <joint name="elbow_pitch_stator_1" value="0"/>
-            <joint name="elbow_pitch_1" value="0"/>
-            <joint name="hand_joint_1" value="0"/>
-            <joint name="shoulder_yaw_2" value="0"/>
-            <joint name="shoulder_pitch_stator_2" value="0"/>
-            <joint name="shoulder_pitch_2" value="0"/>
-            <joint name="elbow_pitch_stator_2" value="0"/>
-            <joint name="elbow_pitch_2" value="0"/>
-            <joint name="hand_joint_2" value="0"/>
+            <joint name="shoulder_yaw_1" value="-0.05"/>
+            <joint name="shoulder_pitch_1" value="0.50"/>
+            <joint name="elbow_pitch_1" value="1.25"/>
+            <joint name="shoulder_yaw_2" value="0.05"/>
+            <joint name="shoulder_pitch_2" value="0.50"/>
+            <joint name="elbow_pitch_2" value="1.25"/>
         </xacro:if>
     </group_state>
 </robot>	
