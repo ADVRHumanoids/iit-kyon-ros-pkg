@@ -1,8 +1,0 @@
-prefix=/usr/local
-
-Name: cetc_sat_urdf
-Description: Description of cetc_sat_urdf
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

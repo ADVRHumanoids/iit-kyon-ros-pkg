@@ -1,8 +1,0 @@
-prefix=/home/alessio/alessio_ws/src/CETC_SAT_description/build/devel
-
-Name: cetc_sat_gazebo
-Description: Description of cetc_sat_gazebo
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
