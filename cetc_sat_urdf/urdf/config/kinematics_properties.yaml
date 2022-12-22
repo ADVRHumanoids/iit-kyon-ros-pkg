@@ -14,77 +14,7 @@ pelvis_length: &pl 0.80
 pelvis_width: &pw 0.45
 pelvis_height: &ph 0.20
 
-# legs
-HipRoll_Ox: *pl
-HipRoll_Oy: *pw
-HipRoll_Oz: 0.0
-HipRoll_roll: 0.0
-HipRoll_pitch: *pi_2
-HipRoll_yaw: 0.0
-
-HipPitch_Ox: 0.0
-HipPitch_Oy: *cr
-HipPitch_Oz: 0.0
-HipPitch_roll: *pi_2
-HipPitch_pitch: 0.0
-HipPitch_yaw: 0.0
-
-UpperLeg_Ox: 0.0
-UpperLeg_Oy: 0.0
-UpperLeg_Oz: 0.0
-UpperLeg_roll: 0.0
-UpperLeg_pitch: 0.0
-UpperLeg_yaw: 0.0
-
-KneePitch_Ox: *bbl
-KneePitch_Oy: 0.0
-KneePitch_Oz: 0.0
-KneePitch_roll: 0.0
-KneePitch_pitch: 0.0
-KneePitch_yaw: 0.0
-
-LowerLeg_Ox: 0.0
-LowerLeg_Oy: 0.0
-LowerLeg_Oz: 0.0
-LowerLeg_roll: 0.0
-LowerLeg_pitch: 0.0
-LowerLeg_yaw: 0.0
-
-Ankle_Ox: *bbl
-Ankle_Oy: 0.0
-Ankle_Oz: 0.0
-Ankle_roll: 0.0
-Ankle_pitch: 0.0
-Ankle_yaw: 0.0
-
 # arms
-ShoulderYaw_Ox: *pl
-ShoulderYaw_Oy: *pw
-ShoulderYaw_Oz: *ph
-ShoulderYaw_roll: 0.0
-ShoulderYaw_pitch: 0.0
-ShoulderYaw_yaw: 0.0
-
-ShoulderPitch_Ox: 0.0
-ShoulderPitch_Oy: 0.0 
-ShoulderPitch_Oz: *cl
-ShoulderPitch_roll: *pi_2
-ShoulderPitch_pitch: 0.0 
-ShoulderPitch_yaw: 0.0
-
-LowerArm_Ox: 0.0
-LowerArm_Oy: 0.0
-LowerArm_Oz: 0.0
-LowerArm_roll: 0.0
-LowerArm_pitch: 0.0
-LowerArm_yaw: *pi_2
-
-ElbowPitch_Ox: *bbl
-ElbowPitch_Oy: 0.0 
-ElbowPitch_Oz: 0.0
-ElbowPitch_roll: 0.0
-ElbowPitch_pitch: 0.0 
-ElbowPitch_yaw: 0.0
 
 UpperArm_Ox: 0.0
 UpperArm_Oy: 0.0
