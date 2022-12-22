@@ -25,12 +25,14 @@
 		<origin xyz="0.0 0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
 	 		<box size="${pelvis_length} ${pelvis_width} ${pelvis_height}"/>
+	 		<!--mesh filename="package://cetc_sat_urdf/meshes/mesh_pelvis.stl" scale="0.001 0.001 0.001"/-->
 		</geometry>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
 	  		<box size="${pelvis_length} ${pelvis_width} ${pelvis_height}"/>
+	  		<!--mesh filename="package://cetc_sat_urdf/meshes/mesh_pelvis.stl" scale="0.001 0.001 0.001"/-->
 		</geometry>
 	</collision>
 </link>
