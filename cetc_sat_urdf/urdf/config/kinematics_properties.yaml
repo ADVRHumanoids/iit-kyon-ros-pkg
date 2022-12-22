@@ -13,19 +13,3 @@ ball_radius: 0.05
 pelvis_length: &pl 0.80
 pelvis_width: &pw 0.45
 pelvis_height: &ph 0.20
-
-# arms
-
-UpperArm_Ox: 0.0
-UpperArm_Oy: 0.0
-UpperArm_Oz: 0.0
-UpperArm_roll: 0.0
-UpperArm_pitch: 0.0
-UpperArm_yaw: 0.0
-
-EndEffector_Ox: *bbl
-EndEffector_Oy: 0.0
-EndEffector_Oz: 0.0
-EndEffector_roll: 0.0
-EndEffector_pitch: 0.0
-EndEffector_yaw: 0.0
