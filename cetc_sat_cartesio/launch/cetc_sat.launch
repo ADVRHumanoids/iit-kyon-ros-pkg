@@ -3,22 +3,18 @@
     <arg name="rate" default="100.0"/>
     <arg name="prefix" default=""/>
     <arg name="ik" default="$(find cetc_sat_cartesio)/config/cetc_sat_stack.yaml"/>
+    <arg name="arms" default="true"/>
+    <arg name="legs" default="true"/>
+    <arg name="sensors" default="false"/>
     
-    <param name="robot_description" 
-        textfile="$(find cetc_sat_urdf)/urdf/cetc_sat.urdf"/>
+    <param name="robot_description"
+         command="$(find xacro)/xacro $(find cetc_sat_urdf)/urdf/cetc_sat.urdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors)"/>
     
     <param name="robot_description_semantic"
-        textfile="$(find cetc_sat_srdf)/srdf/cetc_sat.srdf"/>
+        command="$(find xacro)/xacro $(find cetc_sat_srdf)/srdf/cetc_sat.srdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors)"/>
     
     <param name="cartesian/problem_description" 
         textfile="$(arg ik)"/>
-    
-    <!-- <param name="cartesian/joint_blacklist" type="yaml"
-        value="[velodyne_joint]"/> -->
-        
-    <!--
-    <param name="cartesian/velocity_whitelist" type="yaml" 
-        value="[j_wheel_1, j_wheel_2, j_wheel_3, j_wheel_4]"/> -->
     
 
     <include file="$(find cartesian_interface)/launch/cartesio.launch">
