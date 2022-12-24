@@ -12,6 +12,10 @@ generate_srdf(
 #  GEN_ACM TRUE
 )
 
+install(DIRECTORY srdf
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
 # updated acm for capsule model
 #generate_capsule_srdf_acm(
 #  CONFIG_NAME ${ROBOT_NAME}
