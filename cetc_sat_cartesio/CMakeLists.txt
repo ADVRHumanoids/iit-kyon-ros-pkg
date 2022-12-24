@@ -5,9 +5,13 @@ find_package(catkin REQUIRED)
 
 catkin_package()
 
+install(DIRECTORY launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
 install(
   FILES 
   config/cetc_sat_stack.yaml
   DESTINATION 
-  ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  ${CATKIN_PACKAGE_SHARE_DESTINATION}/config
 )
