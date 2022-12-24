@@ -7,7 +7,7 @@ catkin_package()
 
 install(
   FILES 
-  config/cetc_test_stack.yaml
+  config/cetc_sat_stack.yaml
   DESTINATION 
   ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
