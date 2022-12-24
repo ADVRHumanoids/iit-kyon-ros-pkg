@@ -7,10 +7,10 @@
 <xacro:include filename="$(find cetc_sat_urdf)/urdf/parts/limits.urdf.xacro" />
 
 <xacro:property name="yaml_file" value="$(find cetc_sat_urdf)/urdf/config/kinematics_properties.yaml" />
-<xacro:property name="props" value="${load_yaml(yaml_file)}"/>
+<xacro:property name="props" value="${xacro.load_yaml(yaml_file)}"/>
 
 <xacro:property name="yaml_file_inertial" value="$(find cetc_sat_urdf)/urdf/config/inertial_properties.yaml" />
-<xacro:property name="props_inertial" value="${load_yaml(yaml_file_inertial)}"/>
+<xacro:property name="props_inertial" value="${xacro.load_yaml(yaml_file_inertial)}"/>
 
 
 <link name="base_link"/>
