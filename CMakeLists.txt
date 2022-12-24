@@ -9,7 +9,7 @@ include(GenerateXrdf.cmake)
 add_subdirectory(cetc_sat_urdf)
 add_subdirectory(cetc_sat_srdf)
 add_subdirectory(cetc_sat_gazebo)
-#add_subdirectory(cetc_sat_config)
+add_subdirectory(cetc_sat_config)
 add_subdirectory(cetc_sat_cartesio)
 
 enable_testing()
