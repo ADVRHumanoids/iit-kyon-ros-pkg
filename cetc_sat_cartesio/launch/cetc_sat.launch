@@ -8,7 +8,7 @@
     <arg name="sensors" default="false"/>
     
     <param name="robot_description"
-         command="$(find xacro)/xacro $(find cetc_sat_urdf)/urdf/cetc_sat.urdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors)"/>
+        command="$(find xacro)/xacro $(find cetc_sat_urdf)/urdf/cetc_sat.urdf.xacro floating_joint:=false upper_body:=$(arg arms) legs:=$(arg legs) velodyne:=$(arg velodyne) front_d435:=$(arg front_d435) front_d455:=$(arg front_d455) front_zed:=$(arg front_zed) lateral_realsense:=$(arg lateral_realsense) lateral_zed:=$(arg lateral_zed)"/>
     
     <param name="robot_description_semantic"
         command="$(find xacro)/xacro $(find cetc_sat_srdf)/srdf/cetc_sat.srdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors)"/>

@@ -18,7 +18,14 @@
   <!-- cetc_sat configuration parameters -->
   <arg name="arms" default="true"/>
   <arg name="legs" default="true"/>
-  <arg name="sensors" default="true"/>
+  <!-- Sensors -->
+  <arg name="velodyne" default="false"/>
+  <arg name="realsenses" default="true"/>
+  <arg name="front_d435" default="false"/>
+  <arg name="front_d455" default="false"/>
+  <arg name="front_zed" default="true"/>
+  <arg name="lateral_realsense" default="false"/>
+  <arg name="lateral_zed" default="true"/>
 
 
   <!-- Internal arguments, rewrite human-readable gazebo arguments to it's internal arguments -->
@@ -40,7 +47,7 @@
   
   <!-- Load the URDF/SRDF into the ROS Parameter Server -->
   <param name="robot_description_gz"
-         command="$(find xacro)/xacro $(find cetc_sat_urdf)/urdf/cetc_sat_robot.urdf.xacro floating_joint:=false upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors)"/>
+         command="$(find xacro)/xacro $(find cetc_sat_urdf)/urdf/cetc_sat_robot.urdf.xacro floating_joint:=false upper_body:=$(arg arms) legs:=$(arg legs) velodyne:=$(arg velodyne) front_d435:=$(arg front_d435) front_d455:=$(arg front_d455) front_zed:=$(arg front_zed) lateral_realsense:=$(arg lateral_realsense) lateral_zed:=$(arg lateral_zed)"/>
          
   <!-- start gazebo server-->
   	<node name="gazebo" 
@@ -61,8 +68,8 @@
   
   <include if="$(arg cartesio)" file="$(find cetc_sat_cartesio)/launch/cetc_sat.launch">
   	<arg name="arms" value="$(arg arms)"/>
-  	<arg name="legs" value="$(arg legs)"/>
-  	<arg name="sensors" value="$(arg sensors)"/>
+        <arg name="legs" value="$(arg legs)"/>
+        <!-- sensors missing -->
   </include>
 
 </launch>

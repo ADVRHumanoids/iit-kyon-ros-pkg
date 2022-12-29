@@ -9,14 +9,26 @@
 <xacro:arg name="legs" default="true"/>
 <xacro:arg name="upper_body" default="true"/>
 <xacro:arg name="floating_joint" default="true"/>
-<xacro:arg name="sensors" default="true"/>
+<xacro:arg name="velodyne" default="false"/>
+<xacro:arg name="realsenses" default="true"/>
+<xacro:arg name="front_d435" default="false"/>
+<xacro:arg name="front_d455" default="false"/>
+<xacro:arg name="front_zed" default="true"/>
+<xacro:arg name="lateral_realsense" default="false"/>
+<xacro:arg name="lateral_zed" default="true"/>
 
 
 <!-- ************SELECT PARTS*************-->
 <!-- *************************************-->
 <xacro:property name="ADD_LEGS" value="$(arg legs)" />
 <xacro:property name="ADD_UPPER_BODY" value="$(arg upper_body)" />
-<xacro:property name="ADD_SENSORS" value="$(arg sensors)" />
+<xacro:property name="ADD_VELODYNE" value="$(arg velodyne)" />
+<xacro:property name="ADD_REALSENSES" value="$(arg realsenses)" />
+<xacro:property name="ADD_FRONT_D435" value="$(arg front_d435)" />
+<xacro:property name="ADD_FRONT_D455" value="$(arg front_d455)" />
+<xacro:property name="ADD_FRONT_ZED" value="$(arg front_zed)" />
+<xacro:property name="ADD_LATERAL_REALSENSE" value="$(arg lateral_realsense)" />
+<xacro:property name="ADD_LATERAL_ZED" value="$(arg lateral_zed)" />
 
 <xacro:property name="ADD_FLOATING_BASE" value="$(arg floating_joint)" />
 <xacro:property name="ADD_VIRTUAL_FRAME" value="false" />
