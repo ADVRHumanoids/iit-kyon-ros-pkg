@@ -245,7 +245,7 @@
         name="zedx_front1"
         parent="pelvis">
 
-            <origin xyz="0.40 0.065 0" rpy="-1.57 0 0.5"/>
+            <origin xyz="0.40 0.065 0" rpy="-1.57 0 -0.5"/>
 
         </xacro:zed_x>
         <xacro:zed_x_gazebo
@@ -256,7 +256,7 @@
         name="zedx_front2"
         parent="pelvis">
 
-            <origin xyz="0.40 -0.065 0" rpy="-1.57 0 -0.5"/>
+            <origin xyz="0.40 -0.065 0" rpy="-1.57 0 0.5"/>
 
         </xacro:zed_x>
         <xacro:zed_x_gazebo

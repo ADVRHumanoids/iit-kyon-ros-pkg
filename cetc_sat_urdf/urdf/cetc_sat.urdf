@@ -162,7 +162,7 @@
         <CxPrime>648.5</CxPrime>
         <Cx>648.5</Cx>
         <Cy>366.8340148925781</Cy>
-        <hackBaseline>0.0</hackBaseline>
+        <hackBaseline>0.05</hackBaseline>
       </plugin>
     </sensor>
     <sensor name="zedx_left_left_camera" type="depth">
@@ -178,7 +178,7 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.1</near>
+          <near>0.10</near>
           <far>10</far>
         </clip>
         <noise>
@@ -194,14 +194,14 @@
         <depthImageTopicName>depth/depth_registered</depthImageTopicName>
         <depthImageInfoTopicName>depth/camera_info</depthImageInfoTopicName>
         <pointCloudTopicName>point_cloud/cloud_registered</pointCloudTopicName>
-        <pointCloudCutoff>0.3</pointCloudCutoff>
-        <pointCloudCutoffMax>20.0</pointCloudCutoffMax>
+        <pointCloudCutoff>0.1</pointCloudCutoff>
+        <pointCloudCutoffMax>10.0</pointCloudCutoffMax>
         <frameName>zedx_left_left_camera_optical_frame</frameName>
         <baseline>0.05</baseline>
         <CxPrime>658.8206787109375</CxPrime>
         <Cx>658.8206787109375</Cx>
         <Cy>372.25787353515625</Cy>
-        <hackBaseline>0.0</hackBaseline>
+        <hackBaseline>0.05</hackBaseline>
       </plugin>
     </sensor>
   </gazebo>
@@ -220,7 +220,7 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.1</near>
+          <near>0.10</near>
           <far>10</far>
         </clip>
         <noise>
@@ -266,7 +266,7 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.1</near>
+          <near>0.10</near>
           <far>10</far>
         </clip>
         <noise>
@@ -426,7 +426,7 @@
         <CxPrime>648.5</CxPrime>
         <Cx>648.5</Cx>
         <Cy>366.8340148925781</Cy>
-        <hackBaseline>0.0</hackBaseline>
+        <hackBaseline>0.05</hackBaseline>
       </plugin>
     </sensor>
     <sensor name="zedx_right_left_camera" type="depth">
@@ -442,7 +442,7 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.1</near>
+          <near>0.10</near>
           <far>10</far>
         </clip>
         <noise>
@@ -458,14 +458,14 @@
         <depthImageTopicName>depth/depth_registered</depthImageTopicName>
         <depthImageInfoTopicName>depth/camera_info</depthImageInfoTopicName>
         <pointCloudTopicName>point_cloud/cloud_registered</pointCloudTopicName>
-        <pointCloudCutoff>0.3</pointCloudCutoff>
-        <pointCloudCutoffMax>20.0</pointCloudCutoffMax>
+        <pointCloudCutoff>0.1</pointCloudCutoff>
+        <pointCloudCutoffMax>10.0</pointCloudCutoffMax>
         <frameName>zedx_right_left_camera_optical_frame</frameName>
         <baseline>0.05</baseline>
         <CxPrime>658.8206787109375</CxPrime>
         <Cx>658.8206787109375</Cx>
         <Cy>372.25787353515625</Cy>
-        <hackBaseline>0.0</hackBaseline>
+        <hackBaseline>0.05</hackBaseline>
       </plugin>
     </sensor>
   </gazebo>
@@ -484,7 +484,7 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.1</near>
+          <near>0.10</near>
           <far>10</far>
         </clip>
         <noise>
@@ -530,7 +530,7 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.1</near>
+          <near>0.10</near>
           <far>10</far>
         </clip>
         <noise>
@@ -866,7 +866,7 @@
     </collision>
   </link>
   <joint name="zedx_front1_base_joint" type="fixed">
-    <origin rpy="-1.57 0 0.5" xyz="0.40 0.065 0"/>
+    <origin rpy="-1.57 0 -0.5" xyz="0.40 0.065 0"/>
     <parent link="pelvis"/>
     <child link="zedx_front1_camera_center"/>
   </joint>
@@ -968,7 +968,7 @@
         <CxPrime>648.5</CxPrime>
         <Cx>648.5</Cx>
         <Cy>366.8340148925781</Cy>
-        <hackBaseline>0.0</hackBaseline>
+        <hackBaseline>0.05</hackBaseline>
       </plugin>
     </sensor>
     <sensor name="zedx_front1_left_camera" type="depth">
@@ -984,7 +984,7 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.1</near>
+          <near>0.10</near>
           <far>10</far>
         </clip>
         <noise>
@@ -1000,14 +1000,14 @@
         <depthImageTopicName>depth/depth_registered</depthImageTopicName>
         <depthImageInfoTopicName>depth/camera_info</depthImageInfoTopicName>
         <pointCloudTopicName>point_cloud/cloud_registered</pointCloudTopicName>
-        <pointCloudCutoff>0.3</pointCloudCutoff>
-        <pointCloudCutoffMax>20.0</pointCloudCutoffMax>
+        <pointCloudCutoff>0.1</pointCloudCutoff>
+        <pointCloudCutoffMax>10.0</pointCloudCutoffMax>
         <frameName>zedx_front1_left_camera_optical_frame</frameName>
         <baseline>0.05</baseline>
         <CxPrime>658.8206787109375</CxPrime>
         <Cx>658.8206787109375</Cx>
         <Cy>372.25787353515625</Cy>
-        <hackBaseline>0.0</hackBaseline>
+        <hackBaseline>0.05</hackBaseline>
       </plugin>
     </sensor>
   </gazebo>
@@ -1026,7 +1026,7 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.1</near>
+          <near>0.10</near>
           <far>10</far>
         </clip>
         <noise>
@@ -1072,7 +1072,7 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.1</near>
+          <near>0.10</near>
           <far>10</far>
         </clip>
         <noise>
@@ -1130,7 +1130,7 @@
     </collision>
   </link>
   <joint name="zedx_front2_base_joint" type="fixed">
-    <origin rpy="-1.57 0 -0.5" xyz="0.40 -0.065 0"/>
+    <origin rpy="-1.57 0 0.5" xyz="0.40 -0.065 0"/>
     <parent link="pelvis"/>
     <child link="zedx_front2_camera_center"/>
   </joint>
@@ -1232,7 +1232,7 @@
         <CxPrime>648.5</CxPrime>
         <Cx>648.5</Cx>
         <Cy>366.8340148925781</Cy>
-        <hackBaseline>0.0</hackBaseline>
+        <hackBaseline>0.05</hackBaseline>
       </plugin>
     </sensor>
     <sensor name="zedx_front2_left_camera" type="depth">
@@ -1248,7 +1248,7 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.1</near>
+          <near>0.10</near>
           <far>10</far>
         </clip>
         <noise>
@@ -1264,14 +1264,14 @@
         <depthImageTopicName>depth/depth_registered</depthImageTopicName>
         <depthImageInfoTopicName>depth/camera_info</depthImageInfoTopicName>
         <pointCloudTopicName>point_cloud/cloud_registered</pointCloudTopicName>
-        <pointCloudCutoff>0.3</pointCloudCutoff>
-        <pointCloudCutoffMax>20.0</pointCloudCutoffMax>
+        <pointCloudCutoff>0.1</pointCloudCutoff>
+        <pointCloudCutoffMax>10.0</pointCloudCutoffMax>
         <frameName>zedx_front2_left_camera_optical_frame</frameName>
         <baseline>0.05</baseline>
         <CxPrime>658.8206787109375</CxPrime>
         <Cx>658.8206787109375</Cx>
         <Cy>372.25787353515625</Cy>
-        <hackBaseline>0.0</hackBaseline>
+        <hackBaseline>0.05</hackBaseline>
       </plugin>
     </sensor>
   </gazebo>
@@ -1290,7 +1290,7 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.1</near>
+          <near>0.10</near>
           <far>10</far>
         </clip>
         <noise>
@@ -1336,7 +1336,7 @@
           <format>R8G8B8</format>
         </image>
         <clip>
-          <near>0.1</near>
+          <near>0.10</near>
           <far>10</far>
         </clip>
         <noise>
