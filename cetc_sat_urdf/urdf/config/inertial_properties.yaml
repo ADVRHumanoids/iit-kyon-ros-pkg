@@ -1,7 +1,7 @@
 # links' mass
-pelvis_mass: 10
-big_box_mass: 5
-small_box_mass: 3
-ball_mass: 3
-motorA_mass: 5
-motorB_mass: 3
+pelvis_mass: 14
+big_box_mass: 2.0
+small_box_mass: 1.0
+ball_mass: 0.1
+motorA_mass: 1.8
+motorB_mass: 1.8

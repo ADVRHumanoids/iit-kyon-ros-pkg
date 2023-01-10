@@ -30,14 +30,14 @@
 <xacro:property name="UpperLeg_yaw" value="0.0"/>
 
 <!-- Origin -->
-<xacro:property name="KneePitch_Ox" value="${props['big_box_length']}"/>
+<xacro:property name="KneePitch_Ox" value="0.0"/>
 <xacro:property name="KneePitch_Oy" value="0.0"/>
 <xacro:property name="KneePitch_Oz" value="0.0"/>
 <xacro:property name="KneePitch_roll" value="0.0"/>
 <xacro:property name="KneePitch_pitch" value="0.0"/>
 <xacro:property name="KneePitch_yaw" value="0.0"/>
 
-<xacro:property name="LowerLeg_Ox" value="0.0"/>
+<xacro:property name="LowerLeg_Ox" value="${props['big_box_length']}"/>
 <xacro:property name="LowerLeg_Oy" value="0.0"/>
 <xacro:property name="LowerLeg_Oz" value="0.0"/>
 <xacro:property name="LowerLeg_roll" value="0.0"/>
