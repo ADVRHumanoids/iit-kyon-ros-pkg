@@ -1,50 +1,85 @@
-<!--<?xml version="1.0"?>-->
+<?xml version="1.0"?>
 <robot  xmlns:xacro="http://ros.org/wiki/xacro">
 
-<!-- Motor -->
-<xacro:property name="MotorA_xx" value="${1/12 * props_inertial['motorA_mass'] * (3 * props['cylinder_radius'] * props['cylinder_radius'] + props['cylinder_length'] * props['cylinder_length'])}"/>
-<xacro:property name="MotorA_xy" value="0.0"/>
-<xacro:property name="MotorA_xz" value="0.0"/>
-<xacro:property name="MotorA_yy" value="${1/12 * props_inertial['motorA_mass'] * (3 * props['cylinder_radius'] * props['cylinder_radius'] + props['cylinder_length'] * props['cylinder_length'])}"/>
-<xacro:property name="MotorA_yz" value="0.0"/>
-<xacro:property name="MotorA_zz" value="${1/2 * props_inertial['motorA_mass'] * props['cylinder_radius'] * props['cylinder_radius']}"/>
+    <xacro:if value="$(arg bilevel_codes)">
 
-<xacro:property name="MotorB_xx" value="${1/12 * props_inertial['motorB_mass'] * (3 * props['cylinder_radius'] * props['cylinder_radius'] + props['cylinder_length'] * props['cylinder_length'])}"/>
-<xacro:property name="MotorB_xy" value="0.0"/>
-<xacro:property name="MotorB_xz" value="0.0"/>
-<xacro:property name="MotorB_yy" value="${1/12 * props_inertial['motorB_mass'] * (3 * props['cylinder_radius'] * props['cylinder_radius'] + props['cylinder_length'] * props['cylinder_length'])}"/>
-<xacro:property name="MotorB_yz" value="0.0"/>
-<xacro:property name="MotorB_zz" value="${1/2 * props_inertial['motorB_mass'] * props['cylinder_radius'] * props['cylinder_radius']}"/>
+        <!-- no default, so that if bilevel_codes is true the user is forced to specify the paths-->
+        <xacro:arg name="inertial_props_path" default="$(find cetc_sat_urdf)/urdf/config/inertial_properties.yaml" />
+        
+        <xacro:property name="id" value="$(arg sample_idx)" />
 
-<!-- Pelvis -->
-<xacro:property name="Pelvis_xx" value="${1/12 * props_inertial['pelvis_mass'] * (props['pelvis_width'] * props['pelvis_width'] + props['pelvis_height'] * props['pelvis_height'])}"/>
-<xacro:property name="Pelvis_xy" value="0.0"/>
-<xacro:property name="Pelvis_xz" value="0.0"/>
-<xacro:property name="Pelvis_yy" value="${1/12 * props_inertial['pelvis_mass'] * (props['pelvis_length'] * props['pelvis_length'] + props['pelvis_height'] * props['pelvis_height'])}"/>
-<xacro:property name="Pelvis_yz" value="0.0"/>
-<xacro:property name="Pelvis_zz" value="${1/12 * props_inertial['pelvis_mass'] * (props['pelvis_width'] * props['pelvis_width'] + props['pelvis_length'] * props['pelvis_length'])}"/>
+        <xacro:property name="inertial_yaml_file" value="$(arg inertial_props_path)" />
+        <xacro:property name="inertial_props" value="${xacro.load_yaml(inertial_yaml_file)}"/>
 
-<!-- Upper Leg -->
-<xacro:property name="BigBox_xx" value="${1/3 * props_inertial['big_box_mass'] * (props['big_box_width'] * props['big_box_width'] + props['big_box_height'] * props['big_box_height'])}"/>
-<xacro:property name="BigBox_xy" value="0.0"/>
-<xacro:property name="BigBox_xz" value="0.0"/>
-<xacro:property name="BigBox_yy" value="${1/3 * props_inertial['big_box_mass'] * (props['big_box_length'] * props['big_box_length'] + props['big_box_height'] * props['big_box_height'])}"/>
-<xacro:property name="BigBox_yz" value="0.0"/>
-<xacro:property name="BigBox_zz" value="${1/3 * props_inertial['big_box_mass'] * (props['big_box_width'] * props['big_box_width'] + props['big_box_length'] * props['big_box_length'])}"/>
+        <xacro:property name="pelvis_mass" value="${inertial_props['pelvis_mass'][id]}"/>
+        <xacro:property name="big_box_mass" value="${inertial_props['big_box_mass'][id]}"/>
+        <xacro:property name="small_box_mass" value="${inertial_props['small_box_mass'][id]}"/>
+        <xacro:property name="ball_mass" value="${inertial_props['ball_mass'][id]}"/>
+        <xacro:property name="motorA_mass" value="${inertial_props['motorA_mass'][id]}"/>
+        <xacro:property name="motorB_mass" value="${inertial_props['motorB_mass'][id]}"/>
 
-<!-- Lower Leg -->
-<xacro:property name="SmallBox_xx" value="${1/3 * props_inertial['small_box_mass'] * (props['small_box_width'] * props['small_box_width'] + props['small_box_height'] * props['small_box_height'])}"/>
-<xacro:property name="SmallBox_xy" value="0.0"/>
-<xacro:property name="SmallBox_xz" value="0.0"/>
-<xacro:property name="SmallBox_yy" value="${1/3 * props_inertial['small_box_mass'] * (props['small_box_length'] * props['small_box_length'] + props['small_box_height'] * props['small_box_height'])}"/>
-<xacro:property name="SmallBox_yz" value="0.0"/>
-<xacro:property name="SmallBox_zz" value="${1/3 * props_inertial['small_box_mass'] * (props['small_box_width'] * props['small_box_width'] + props['small_box_length'] * props['small_box_length'])}"/>
+    </xacro:if>
+    <xacro:unless value="$(arg bilevel_codes)">
 
-<!-- Ball (hollow sphere) -->
-<xacro:property name="Ball_xx" value="${2/3 * props_inertial['ball_mass'] * props['ball_radius'] * props['ball_radius']}"/>
-<xacro:property name="Ball_xy" value="0.0"/>
-<xacro:property name="Ball_xz" value="0.0"/>
-<xacro:property name="Ball_yy" value="${2/3 * props_inertial['ball_mass'] * props['ball_radius'] * props['ball_radius']}"/>
-<xacro:property name="Ball_yz" value="0.0"/>
-<xacro:property name="Ball_zz" value="${2/3 * props_inertial['ball_mass'] * props['ball_radius'] * props['ball_radius']}"/>
+        <xacro:property name="inertial_yaml_file" value="$(find cetc_sat_urdf)/urdf/config/inertial_properties.yaml" />
+        <xacro:property name="inertial_props" value="${xacro.load_yaml(inertial_yaml_file)}"/>
+
+        <xacro:property name="pelvis_mass" value="${inertial_props['pelvis_mass']}"/>
+        <xacro:property name="big_box_mass" value="${inertial_props['big_box_mass']}"/>
+        <xacro:property name="small_box_mass" value="${inertial_props['small_box_mass']}"/>
+        <xacro:property name="ball_mass" value="${inertial_props['ball_mass']}"/>
+        <xacro:property name="motorA_mass" value="${inertial_props['motorA_mass']}"/>
+        <xacro:property name="motorB_mass" value="${inertial_props['motorB_mass']}"/>
+
+    </xacro:unless>
+
+    <!-- Compound properties (i.e. based on the props parsed from the yaml) -->
+
+    <!-- Motor -->
+    <xacro:property name="MotorA_xx" value="${1/12 * motorA_mass * (3 * cylinder_radius * cylinder_radius + cylinder_length * cylinder_length)}"/>
+    <xacro:property name="MotorA_xy" value="0.0"/>
+    <xacro:property name="MotorA_xz" value="0.0"/>
+    <xacro:property name="MotorA_yy" value="${1/12 * motorA_mass * (3 * cylinder_radius * cylinder_radius + cylinder_length * cylinder_length)}"/>
+    <xacro:property name="MotorA_yz" value="0.0"/>
+    <xacro:property name="MotorA_zz" value="${1/2 * motorA_mass * cylinder_radius * cylinder_radius}"/>
+
+    <xacro:property name="MotorB_xx" value="${1/12 * motorB_mass * (3 * cylinder_radius * cylinder_radius + cylinder_length * cylinder_length)}"/>
+    <xacro:property name="MotorB_xy" value="0.0"/>
+    <xacro:property name="MotorB_xz" value="0.0"/>
+    <xacro:property name="MotorB_yy" value="${1/12 * motorB_mass * (3 * cylinder_radius * cylinder_radius + cylinder_length * cylinder_length)}"/>
+    <xacro:property name="MotorB_yz" value="0.0"/>
+    <xacro:property name="MotorB_zz" value="${1/2 * motorB_mass * cylinder_radius * cylinder_radius}"/>
+
+    <!-- Pelvis -->
+    <xacro:property name="Pelvis_xx" value="${1/12 * pelvis_mass * (pelvis_width * pelvis_width + pelvis_height * pelvis_height)}"/>
+    <xacro:property name="Pelvis_xy" value="0.0"/>
+    <xacro:property name="Pelvis_xz" value="0.0"/>
+    <xacro:property name="Pelvis_yy" value="${1/12 * pelvis_mass * (pelvis_length * pelvis_length + pelvis_height * pelvis_height)}"/>
+    <xacro:property name="Pelvis_yz" value="0.0"/>
+    <xacro:property name="Pelvis_zz" value="${1/12 * pelvis_mass * (pelvis_width * pelvis_width + pelvis_length * pelvis_length)}"/>
+
+    <!-- Upper Leg -->
+    <xacro:property name="BigBox_xx" value="${1/3 * big_box_mass * (big_box_width * big_box_width + big_box_height * big_box_height)}"/>
+    <xacro:property name="BigBox_xy" value="0.0"/>
+    <xacro:property name="BigBox_xz" value="0.0"/>
+    <xacro:property name="BigBox_yy" value="${1/3 * big_box_mass * (big_box_length * big_box_length + big_box_height * big_box_height)}"/>
+    <xacro:property name="BigBox_yz" value="0.0"/>
+    <xacro:property name="BigBox_zz" value="${1/3 * big_box_mass * (big_box_width * big_box_width + big_box_length * big_box_length)}"/>
+
+    <!-- Lower Leg -->
+    <xacro:property name="SmallBox_xx" value="${1/3 * small_box_mass * (small_box_width * small_box_width + small_box_height * small_box_height)}"/>
+    <xacro:property name="SmallBox_xy" value="0.0"/>
+    <xacro:property name="SmallBox_xz" value="0.0"/>
+    <xacro:property name="SmallBox_yy" value="${1/3 * small_box_mass * (small_box_length * small_box_length + small_box_height * small_box_height)}"/>
+    <xacro:property name="SmallBox_yz" value="0.0"/>
+    <xacro:property name="SmallBox_zz" value="${1/3 * small_box_mass * (small_box_width * small_box_width + small_box_length * small_box_length)}"/>
+
+    <!-- Ball (hollow sphere) -->
+    <xacro:property name="Ball_xx" value="${2/3 * ball_mass * ball_radius * ball_radius}"/>
+    <xacro:property name="Ball_xy" value="0.0"/>
+    <xacro:property name="Ball_xz" value="0.0"/>
+    <xacro:property name="Ball_yy" value="${2/3 * ball_mass * ball_radius * ball_radius}"/>
+    <xacro:property name="Ball_yz" value="0.0"/>
+    <xacro:property name="Ball_zz" value="${2/3 * ball_mass * ball_radius * ball_radius}"/>
+
 </robot>

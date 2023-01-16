@@ -9,20 +9,20 @@
 <link name="shoulder_yaw_motor_${arm_num}">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${props_inertial['motorA_mass']}"/>
+		<mass value="${motorA_mass}"/>
 		<inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<cylinder radius="${props['cylinder_radius']}" length="${props['cylinder_length']}"/>
+			<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
 		</geometry>
 		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<cylinder radius="${props['cylinder_radius']}" length="${props['cylinder_length']}"/>
+			<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
 		</geometry>
 	</collision>
 </link>
@@ -30,20 +30,20 @@
 <link name="shoulder_pitch_motor_${arm_num}">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${props_inertial['motorA_mass']}"/>
+		<mass value="${motorA_mass}"/>
 		<inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<cylinder radius="${props['cylinder_radius']}" length="${props['cylinder_length']}"/>
+	 		<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<cylinder radius="${props['cylinder_radius']}" length="${props['cylinder_length']}"/>
+			<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
 		</geometry>
 	</collision>
 </link>
@@ -51,20 +51,20 @@
 <link name="lower_arm_${arm_num}">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>	
-		<mass value="${props_inertial['big_box_mass']}"/>
+		<mass value="${big_box_mass}"/>
 		<inertia ixx="${BigBox_xx}" ixy="${BigBox_xy}" ixz="${BigBox_xz}" iyy="${BigBox_xx}" iyz="${BigBox_yz}" izz="${BigBox_zz}"/>
 	</inertial>
 	<visual>
-		<origin xyz="${props['big_box_length'] / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${big_box_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<box size="${props['big_box_length']} ${props['big_box_width']} ${props['big_box_height']}"/>
+			<box size="${big_box_length} ${big_box_width} ${big_box_height}"/>
 		</geometry>
 	</visual>
 
 	<collision>
-		<origin xyz="${props['big_box_length'] / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${big_box_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<box size="${props['big_box_length']} ${props['big_box_width']} ${props['big_box_height']}"/>
+			<box size="${big_box_length} ${big_box_width} ${big_box_height}"/>
 		</geometry>
 	</collision>
 </link>
@@ -72,20 +72,20 @@
 <link name="elbow_pitch_motor_${arm_num}">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${props_inertial['motorA_mass']}"/>
+		<mass value="${motorA_mass}"/>
 		<inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<cylinder radius="${props['cylinder_radius']}" length="${props['cylinder_length']}"/>
+	 		<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<cylinder radius="${props['cylinder_radius']}" length="${props['cylinder_length']}"/>
+			<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
 		</geometry>
 	</collision>
 </link>
@@ -93,21 +93,21 @@
 <link name="upper_arm_${arm_num}">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>	
-		<mass value="${props_inertial['small_box_mass']}"/>
+		<mass value="${small_box_mass}"/>
 		<inertia ixx="${SmallBox_xx}" ixy="${SmallBox_xy}" ixz="${SmallBox_xz}" iyy="${SmallBox_xx}" iyz="${SmallBox_yz}" izz="${SmallBox_zz}"/>
 	</inertial>
 	<visual>
-		<origin xyz="${props['small_box_length'] / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${small_box_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<box size="${props['small_box_length']} ${props['small_box_width']} ${props['small_box_height']}"/>
+			<box size="${small_box_length} ${small_box_width} ${small_box_height}"/>
 		</geometry>
 		<material name="dark_grey"/>
 	</visual>
 
 	<collision>
-		<origin xyz="${props['small_box_length'] / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${small_box_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<box size="${props['small_box_length']} ${props['small_box_width']} ${props['small_box_height']}"/>
+			<box size="${small_box_length} ${small_box_width} ${small_box_height}"/>
 		</geometry>
 	</collision>
 </link>
@@ -116,19 +116,19 @@
 <link name="ball_arm_${arm_num}">
     <inertial>
 		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${props_inertial['ball_mass']}"/>
+		<mass value="${ball_mass}"/>
 		<inertia ixx="${Ball_xx}" ixy="${Ball_xy}" ixz="${Ball_xz}" iyy="${Ball_yy}" iyz="${Ball_yz}" izz="${Ball_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<sphere radius="${props['ball_radius']}"/>
+			<sphere radius="${ball_radius}"/>
 		</geometry>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<sphere radius="${props['ball_radius']}"/>
+			<sphere radius="${ball_radius}"/>
 		</geometry>
 	</collision>
 </link>

@@ -1,102 +1,144 @@
-<!--<?xml version="1.0"?>-->
+<?xml version="1.0"?>
 <robot  xmlns:xacro="http://ros.org/wiki/xacro">
 
-<!--pelvis dimensions: length: 0.80-1.1m, width: 0.45-0.60m-->
-<xacro:property name="pelvis_length" value="0.80"/>
-<xacro:property name="pelvis_width" value="0.45"/>
-<xacro:property name="pelvis_height" value="0.20"/> <!-- random value to be defined -->
+    <xacro:if value="$(arg bilevel_codes)">
 
-<!-- Origin -->
-<xacro:property name="HipRoll_Ox" value="${props['pelvis_length'] / 2}"/>
-<xacro:property name="HipRoll_Oy" value="${-props['pelvis_width'] / 2}"/>
-<xacro:property name="HipRoll_Oz" value="0.0"/>
-<xacro:property name="HipRoll_roll" value="0.0"/>
-<xacro:property name="HipRoll_pitch" value="${PI_2}"/>
-<xacro:property name="HipRoll_yaw" value="0.0"/>
+        <!-- no default, so that if bilevel_codes is true the user is forced to specify the paths-->
+        <xacro:arg name="kinematic_props_path" default="$(find cetc_sat_urdf)/urdf/config/kinematics_properties.yaml" />
 
-<!-- Origin -->
-<xacro:property name="HipPitch_Ox" value="0.0"/>
-<xacro:property name="HipPitch_Oy" value="${-props['cylinder_radius']}"/>
-<xacro:property name="HipPitch_Oz" value="0.0"/>
-<xacro:property name="HipPitch_roll" value="${-PI_2}"/>
-<xacro:property name="HipPitch_pitch" value="0.0"/>
-<xacro:property name="HipPitch_yaw" value="0.0"/>
+        <xacro:property name="id" value="$(arg sample_idx)" />
 
-<xacro:property name="UpperLeg_Ox" value="0.0"/>
-<xacro:property name="UpperLeg_Oy" value="0.0"/>
-<xacro:property name="UpperLeg_Oz" value="0.0"/>
-<xacro:property name="UpperLeg_roll" value="0.0"/>
-<xacro:property name="UpperLeg_pitch" value="0.0"/>
-<xacro:property name="UpperLeg_yaw" value="0.0"/>
+        <xacro:property name="kin_yaml_file" value="$(arg kinematic_props_path)" />
+        <xacro:property name="kin_props" value="${xacro.load_yaml(kin_yaml_file)}"/>
 
-<!-- Origin -->
-<xacro:property name="KneePitch_Ox" value="0.0"/>
-<xacro:property name="KneePitch_Oy" value="0.0"/>
-<xacro:property name="KneePitch_Oz" value="0.0"/>
-<xacro:property name="KneePitch_roll" value="0.0"/>
-<xacro:property name="KneePitch_pitch" value="0.0"/>
-<xacro:property name="KneePitch_yaw" value="0.0"/>
+        <xacro:property name="cylinder_radius" value="${kin_props['cylinder_radius'][id]}"/>
+        <xacro:property name="cylinder_length" value="${kin_props['cylinder_length'][id]}"/>
+        <xacro:property name="big_box_length" value="${kin_props['big_box_length'][id]}"/>
+        <xacro:property name="big_box_width" value="${kin_props['big_box_width'][id]}"/>
+        <xacro:property name="big_box_height" value="${kin_props['big_box_height'][id]}"/>
+        <xacro:property name="small_box_length" value="${kin_props['small_box_length'][id]}"/>
+        <xacro:property name="small_box_width" value="${kin_props['small_box_width'][id]}"/>
+        <xacro:property name="small_box_height" value="${kin_props['small_box_height'][id]}"/>
+        <xacro:property name="ball_radius" value="${kin_props['ball_radius'][id]}"/>
+        <xacro:property name="pelvis_length" value="${kin_props['pelvis_length'][id]}"/>
+        <xacro:property name="pelvis_width" value="${kin_props['pelvis_width'][id]}"/>
+        <xacro:property name="pelvis_height" value="${kin_props['pelvis_height'][id]}"/>
 
-<xacro:property name="LowerLeg_Ox" value="${props['big_box_length']}"/>
-<xacro:property name="LowerLeg_Oy" value="0.0"/>
-<xacro:property name="LowerLeg_Oz" value="0.0"/>
-<xacro:property name="LowerLeg_roll" value="0.0"/>
-<xacro:property name="LowerLeg_pitch" value="0.0"/>
-<xacro:property name="LowerLeg_yaw" value="0.0"/>
 
-<!-- Origin -->
-<xacro:property name="Ankle_Ox" value="${props['big_box_length']}"/>
-<xacro:property name="Ankle_Oy" value="0.0"/>
-<xacro:property name="Ankle_Oz" value="0.0"/>
-<xacro:property name="Ankle_roll" value="0.0"/>
-<xacro:property name="Ankle_pitch" value="0.0"/>
-<xacro:property name="Ankle_yaw" value="0.0"/>
+    </xacro:if>
+    <xacro:unless value="$(arg bilevel_codes)">
 
-<!-- Arms -->
-<xacro:property name="ShoulderYaw_Ox" value="${pelvis_length / 2}"/>
-<xacro:property name="ShoulderYaw_Oy" value="${pelvis_width / 2}"/>
-<xacro:property name="ShoulderYaw_Oz" value="${pelvis_height / 2}"/>
-<xacro:property name="ShoulderYaw_roll" value="0.0"/>
-<xacro:property name="ShoulderYaw_pitch" value="0.0"/>
-<xacro:property name="ShoulderYaw_yaw" value="0.0"/>
+        <xacro:property name="kin_yaml_file" value="$(find cetc_sat_urdf)/urdf/config/kinematics_properties.yaml" />
+        <xacro:property name="kin_props" value="${xacro.load_yaml(kin_yaml_file)}"/>
 
-<xacro:property name="ShoulderYaw_OffsetX" value="0.1"/>
-<xacro:property name="ShoulderYaw_OffsetY" value="0.05"/>
-<xacro:property name="ShoulderYaw_OffsetZ" value="0.0"/>
+        <xacro:property name="cylinder_radius" value="${kin_props['cylinder_radius']}"/>
+        <xacro:property name="cylinder_length" value="${kin_props['cylinder_length']}"/>
+        <xacro:property name="big_box_length" value="${kin_props['big_box_length']}"/>
+        <xacro:property name="big_box_width" value="${kin_props['big_box_width']}"/>
+        <xacro:property name="big_box_height" value="${kin_props['big_box_height']}"/>
+        <xacro:property name="small_box_length" value="${kin_props['small_box_length']}"/>
+        <xacro:property name="small_box_width" value="${kin_props['small_box_width']}"/>
+        <xacro:property name="small_box_height" value="${kin_props['small_box_height']}"/>
+        <xacro:property name="ball_radius" value="${kin_props['ball_radius']}"/>
+        <xacro:property name="pelvis_length" value="${kin_props['pelvis_length']}"/>
+        <xacro:property name="pelvis_width" value="${kin_props['pelvis_width']}"/>
+        <xacro:property name="pelvis_height" value="${kin_props['pelvis_height']}"/>
 
-<xacro:property name="ShoulderPitch_Ox" value="0.0"/>
-<xacro:property name="ShoulderPitch_Oy" value="0.0"/>
-<xacro:property name="ShoulderPitch_Oz" value="${props['cylinder_length'] / 2}"/>
-<xacro:property name="ShoulderPitch_roll" value="${-PI_2}"/>
-<xacro:property name="ShoulderPitch_pitch" value="0.0"/>
-<xacro:property name="ShoulderPitch_yaw" value="0.0"/>
+    </xacro:unless>
 
-<xacro:property name="LowerArm_Ox" value="0.0"/>
-<xacro:property name="LowerArm_Oy" value="0.0"/>
-<xacro:property name="LowerArm_Oz" value="0.0"/>
-<xacro:property name="LowerArm_roll" value="0.0"/>
-<xacro:property name="LowerArm_pitch" value="0.0"/>
-<xacro:property name="LowerArm_yaw" value="${-PI_2}"/>
+    <!-- Compound properties (i.e. based on the props parsed from the yaml) -->
 
-<xacro:property name="ElbowPitch_Ox" value="${props['big_box_length']}"/>
-<xacro:property name="ElbowPitch_Oy" value="0.0"/>
-<xacro:property name="ElbowPitch_Oz" value="0.0"/>
-<xacro:property name="ElbowPitch_roll" value="0.0"/>
-<xacro:property name="ElbowPitch_pitch" value="0.0"/>
-<xacro:property name="ElbowPitch_yaw" value="0.0"/>
+    <!-- Origin -->
+    <xacro:property name="HipRoll_Ox" value="${pelvis_length / 2}"/>
+    <xacro:property name="HipRoll_Oy" value="${-pelvis_width / 2}"/>
+    <xacro:property name="HipRoll_Oz" value="0.0"/>
+    <xacro:property name="HipRoll_roll" value="0.0"/>
+    <xacro:property name="HipRoll_pitch" value="${PI_2}"/>
+    <xacro:property name="HipRoll_yaw" value="0.0"/>
 
-<xacro:property name="UpperArm_Ox" value="0.0"/>
-<xacro:property name="UpperArm_Oy" value="0.0"/>
-<xacro:property name="UpperArm_Oz" value="0.0"/>
-<xacro:property name="UpperArm_roll" value="0.0"/>
-<xacro:property name="UpperArm_pitch" value="0.0"/>
-<xacro:property name="UpperArm_yaw" value="0.0"/>
+    <!-- Origin -->
+    <xacro:property name="HipPitch_Ox" value="0.0"/>
+    <xacro:property name="HipPitch_Oy" value="${-cylinder_radius}"/>
+    <xacro:property name="HipPitch_Oz" value="0.0"/>
+    <xacro:property name="HipPitch_roll" value="${-PI_2}"/>
+    <xacro:property name="HipPitch_pitch" value="0.0"/>
+    <xacro:property name="HipPitch_yaw" value="0.0"/>
 
-<xacro:property name="EndEffector_Ox" value="${props['big_box_length']}"/>
-<xacro:property name="EndEffector_Oy" value="0.0"/>
-<xacro:property name="EndEffector_Oz" value="0.0"/>
-<xacro:property name="EndEffector_roll" value="0.0"/>
-<xacro:property name="EndEffector_pitch" value="0.0"/>
-<xacro:property name="EndEffector_yaw" value="0.0"/>
+    <xacro:property name="UpperLeg_Ox" value="0.0"/>
+    <xacro:property name="UpperLeg_Oy" value="0.0"/>
+    <xacro:property name="UpperLeg_Oz" value="0.0"/>
+    <xacro:property name="UpperLeg_roll" value="0.0"/>
+    <xacro:property name="UpperLeg_pitch" value="0.0"/>
+    <xacro:property name="UpperLeg_yaw" value="0.0"/>
+
+    <!-- Origin -->
+    <xacro:property name="KneePitch_Ox" value="0.0"/>
+    <xacro:property name="KneePitch_Oy" value="0.0"/>
+    <xacro:property name="KneePitch_Oz" value="0.0"/>
+    <xacro:property name="KneePitch_roll" value="0.0"/>
+    <xacro:property name="KneePitch_pitch" value="0.0"/>
+    <xacro:property name="KneePitch_yaw" value="0.0"/>
+
+    <xacro:property name="LowerLeg_Ox" value="${big_box_length}"/>
+    <xacro:property name="LowerLeg_Oy" value="0.0"/>
+    <xacro:property name="LowerLeg_Oz" value="0.0"/>
+    <xacro:property name="LowerLeg_roll" value="0.0"/>
+    <xacro:property name="LowerLeg_pitch" value="0.0"/>
+    <xacro:property name="LowerLeg_yaw" value="0.0"/>
+
+    <!-- Origin -->
+    <xacro:property name="Ankle_Ox" value="${big_box_length}"/>
+    <xacro:property name="Ankle_Oy" value="0.0"/>
+    <xacro:property name="Ankle_Oz" value="0.0"/>
+    <xacro:property name="Ankle_roll" value="0.0"/>
+    <xacro:property name="Ankle_pitch" value="0.0"/>
+    <xacro:property name="Ankle_yaw" value="0.0"/>
+
+    <!-- Arms -->
+    <xacro:property name="ShoulderYaw_Ox" value="${pelvis_length / 2}"/>
+    <xacro:property name="ShoulderYaw_Oy" value="${pelvis_width / 2}"/>
+    <xacro:property name="ShoulderYaw_Oz" value="${pelvis_height / 2}"/>
+    <xacro:property name="ShoulderYaw_roll" value="0.0"/>
+    <xacro:property name="ShoulderYaw_pitch" value="0.0"/>
+    <xacro:property name="ShoulderYaw_yaw" value="0.0"/>
+
+    <xacro:property name="ShoulderYaw_OffsetX" value="0.1"/>
+    <xacro:property name="ShoulderYaw_OffsetY" value="0.05"/>
+    <xacro:property name="ShoulderYaw_OffsetZ" value="0.0"/>
+
+    <xacro:property name="ShoulderPitch_Ox" value="0.0"/>
+    <xacro:property name="ShoulderPitch_Oy" value="0.0"/>
+    <xacro:property name="ShoulderPitch_Oz" value="${cylinder_length / 2}"/>
+    <xacro:property name="ShoulderPitch_roll" value="${-PI_2}"/>
+    <xacro:property name="ShoulderPitch_pitch" value="0.0"/>
+    <xacro:property name="ShoulderPitch_yaw" value="0.0"/>
+
+    <xacro:property name="LowerArm_Ox" value="0.0"/>
+    <xacro:property name="LowerArm_Oy" value="0.0"/>
+    <xacro:property name="LowerArm_Oz" value="0.0"/>
+    <xacro:property name="LowerArm_roll" value="0.0"/>
+    <xacro:property name="LowerArm_pitch" value="0.0"/>
+    <xacro:property name="LowerArm_yaw" value="${-PI_2}"/>
+
+    <xacro:property name="ElbowPitch_Ox" value="${big_box_length}"/>
+    <xacro:property name="ElbowPitch_Oy" value="0.0"/>
+    <xacro:property name="ElbowPitch_Oz" value="0.0"/>
+    <xacro:property name="ElbowPitch_roll" value="0.0"/>
+    <xacro:property name="ElbowPitch_pitch" value="0.0"/>
+    <xacro:property name="ElbowPitch_yaw" value="0.0"/>
+
+    <xacro:property name="UpperArm_Ox" value="0.0"/>
+    <xacro:property name="UpperArm_Oy" value="0.0"/>
+    <xacro:property name="UpperArm_Oz" value="0.0"/>
+    <xacro:property name="UpperArm_roll" value="0.0"/>
+    <xacro:property name="UpperArm_pitch" value="0.0"/>
+    <xacro:property name="UpperArm_yaw" value="0.0"/>
+
+    <xacro:property name="EndEffector_Ox" value="${big_box_length}"/>
+    <xacro:property name="EndEffector_Oy" value="0.0"/>
+    <xacro:property name="EndEffector_Oz" value="0.0"/>
+    <xacro:property name="EndEffector_roll" value="0.0"/>
+    <xacro:property name="EndEffector_pitch" value="0.0"/>
+    <xacro:property name="EndEffector_yaw" value="0.0"/>
 
 </robot>

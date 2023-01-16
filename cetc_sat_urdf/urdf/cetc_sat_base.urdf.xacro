@@ -1,27 +1,22 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="cetc_sat">
 
+<xacro:arg name="bilevel_codes" default="false" /> <!-- if true, load codes vars from externally provided files-->
+<xacro:arg name="sample_idx" default = "0"/>
+
 <xacro:include filename="$(find cetc_sat_urdf)/urdf/utils.urdf.xacro" />
+
 <xacro:include filename="$(find cetc_sat_urdf)/urdf/parts/kinematics_properties.urdf.xacro" />
+<!-- NOTE: here we need to include "kinematics_properties" first because "inertial_properties" depends on it-->
 <xacro:include filename="$(find cetc_sat_urdf)/urdf/parts/inertial_properties.urdf.xacro" />
 <xacro:include filename="$(find cetc_sat_urdf)/urdf/parts/limits.urdf.xacro" />
-
-<xacro:arg name="bilevel_codes" default="false" /> <!-- if true, load codes vars from externally provided files-->
-<xacro:arg name="inertial_props_path" default="$(find cetc_sat_urdf)/urdf/config/kinematics_properties.yaml" /> 
-<xacro:arg name="kinematic_props_path" default="$(find cetc_sat_urdf)/urdf/config/inertial_properties.yaml" />
-
-<xacro:property name="yaml_file_inertial" value="$(arg inertial_props_path)" />
-<xacro:property name="yaml_file" value="$(arg kinematic_props_path)" />
-
-<xacro:property name="props_inertial" value="${xacro.load_yaml(yaml_file_inertial)}"/>
-<xacro:property name="props" value="${xacro.load_yaml(yaml_file)}"/>
 
 <link name="base_link"/>
 
 <link name="pelvis">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${props_inertial['pelvis_mass']}"/>
+		<mass value="${pelvis_mass}"/>
 		<inertia ixx="${Pelvis_xx}" ixy="${Pelvis_xy}" ixz="${Pelvis_xz}" iyy="${Pelvis_yy}" iyz="${Pelvis_yz}" izz="${Pelvis_zz}"/>
 	</inertial>
 	<visual>
