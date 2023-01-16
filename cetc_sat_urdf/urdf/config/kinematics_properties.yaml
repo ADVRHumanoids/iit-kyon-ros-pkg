@@ -1,15 +1,15 @@
-PI_2: &pi_2 1.57079632679
+PI_2: 1.57079632679
 
 # links' lenght
-cylinder_radius: &cr 0.07
-cylinder_length: &cl 0.1
-big_box_length: &bbl 0.4
-big_box_width: &bbw 0.1
-big_box_height: &bbh 0.1
+cylinder_radius: 0.07
+cylinder_length: 0.1
+big_box_length: 0.4
+big_box_width: 0.1
+big_box_height: 0.1
 small_box_length: 0.4
 small_box_width: 0.05
 small_box_height: 0.05
 ball_radius: 0.05
-pelvis_length: &pl 0.80
-pelvis_width: &pw 0.45
-pelvis_height: &ph 0.20
+pelvis_length: 0.80
+pelvis_width: 0.45
+pelvis_height: 0.20
