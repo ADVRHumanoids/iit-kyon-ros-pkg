@@ -3,7 +3,6 @@
 
     <xacro:if value="$(arg bilevel_codes)">
 
-        <!-- no default, so that if bilevel_codes is true the user is forced to specify the paths-->
         <xacro:arg name="inertial_props_path" default="$(find cetc_sat_urdf)/urdf/config/inertial_properties.yaml" />
         
         <xacro:property name="id" value="$(arg sample_idx)" />
