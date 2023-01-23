@@ -142,7 +142,7 @@
 	<child link="shoulder_yaw_motor_${arm_num}"/>
 	<origin xyz="${ShoulderYaw_Ox - ShoulderYaw_OffsetX} ${rot * ShoulderYaw_Oy - rot * ShoulderYaw_OffsetY} ${ShoulderYaw_Oz - ShoulderYaw_OffsetZ}" rpy="${ShoulderYaw_roll} ${ShoulderYaw_pitch} ${ShoulderYaw_yaw}"/>
 	<axis xyz="0 0 1"/>
-	<limit lower="${j_shoulder_yaw_lower[arm_num-1]}" upper="${j_shoulder_yaw_upper[arm_num-1]}" effort="${j_shoulder_torque[arm_num-1]}" velocity="${j_shoulder_velocity[arm_num-1]}"/>
+	<limit lower="${j_shoulder_yaw_lower[arm_num-1]}" upper="${j_shoulder_yaw_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
 </joint>
 
 <joint name="shoulder_pitch_stator_${arm_num}" type="fixed">
@@ -157,7 +157,7 @@
 	<child link="lower_arm_${arm_num}"/>
 	<origin xyz="${LowerArm_Ox} ${LowerArm_Oy} ${LowerArm_Oz}" rpy="${LowerArm_roll} ${LowerArm_pitch} ${LowerArm_yaw}"/>
 	<axis xyz="0 0 1"/>
-	<limit lower="${j_pitch_1_lower[arm_num-1]}" upper="${j_pitch_1_upper[arm_num-1]}" effort="${j_pitch_1_torque[arm_num-1]}" velocity="${j_pitch_1_velocity[arm_num-1]}"/>
+	<limit lower="${j_pitch_1_lower[arm_num-1]}" upper="${j_pitch_1_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
 </joint>
 
 <joint name="elbow_pitch_stator_${arm_num}" type="fixed">
@@ -172,7 +172,7 @@
 	<child link="upper_arm_${arm_num}"/>
 	<origin xyz="${UpperArm_Ox} ${UpperArm_Oy} ${UpperArm_Oz}" rpy="${UpperArm_roll} ${UpperArm_pitch} ${UpperArm_yaw}"/>
 	<axis xyz="0 0 1"/>
-	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${j_pitch_2_torque[arm_num-1]}" velocity="${j_pitch_2_velocity[arm_num-1]}"/>
+	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
 </joint>
 	
 <!-- end effector  -->

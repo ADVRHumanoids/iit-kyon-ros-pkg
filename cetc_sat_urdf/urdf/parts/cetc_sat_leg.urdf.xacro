@@ -139,7 +139,7 @@
 	<child link="hip_roll_motor_${leg_num}"/>
 	<origin xyz="${origin_x * HipRoll_Ox} ${origin_y * HipRoll_Oy} ${HipRoll_Oz}" rpy="${HipRoll_roll} ${HipRoll_pitch} ${HipRoll_yaw}"/>
 	<axis xyz="0 0 1"/>
-    <limit lower="${hip_roll_lower[leg_num-1]}" upper="${hip_roll_upper[leg_num-1]}" effort="${motor_A_effort}" velocity="${motor_A_velocity}"/> <!-- 200 Nm, 1 rad/s-->
+    <limit lower="${hip_roll_lower[leg_num-1]}" upper="${hip_roll_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> <!-- 200 Nm, 1 rad/s-->
 </joint>
 
 <joint name="hip_pitch_stator_${leg_num}" type="fixed">
@@ -159,7 +159,7 @@
 	<child link="upper_leg_${leg_num}"/>
 	<origin xyz="${UpperLeg_Ox} ${mirror*(UpperLeg_Oy)} ${UpperLeg_Oz}" rpy="${UpperLeg_roll} ${UpperLeg_pitch} ${UpperLeg_yaw}"/>
 	<axis xyz="0 0 1"/>
-   <limit lower="${hip_pitch_lower[leg_num-1]}" upper="${hip_pitch_upper[leg_num-1]}" effort="${motor_A_effort}" velocity="${motor_A_velocity}"/> <!-- 200 Nm, 1 rad/s-->
+   <limit lower="${hip_pitch_lower[leg_num-1]}" upper="${hip_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> <!-- 200 Nm, 1 rad/s-->
 </joint>
 
 <joint name="knee_pitch_${leg_num}" type="revolute">
@@ -167,7 +167,7 @@
 	<child link="lower_leg_${leg_num}"/>
 	<origin xyz="${LowerLeg_Ox} ${LowerLeg_Oy} ${LowerLeg_Oz}" rpy="${LowerLeg_roll} ${LowerLeg_pitch} ${LowerLeg_yaw}"/>
 	<axis xyz="0 0 1"/>
-   <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motor_A_effort}" velocity="${motor_A_velocity}"/> <!-- 200 Nm, 1 rad/s-->
+   <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> <!-- 200 Nm, 1 rad/s-->
 </joint>
 
 <joint name="ball_joint_${leg_num}" type="fixed">

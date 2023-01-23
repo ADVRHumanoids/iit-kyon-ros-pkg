@@ -26,13 +26,19 @@
 <xacro:property name="j_pitch_2_torque" value="${[147.00, 147.00 ]}"/>
 
 <!-- Motor velocities -->
-<xacro:property name="motor_A_velocity" value="8.8"/>
-<xacro:property name="motor_B_velocity" value="8.1"/>
-<xacro:property name="motor_C_velocity" value="20.0"/>
+<xacro:if value="${inertial_props['gear_ratio'] == 30}">
+	<xacro:property name="motor_velocity" value="15.5"/>
+</xacro:if>
+<xacro:if value="${inertial_props['gear_ratio'] == 50}">
+	<xacro:property name="motor_velocity" value="9.3"/>
+</xacro:if>
 
 <!-- Motor effort -->
-<xacro:property name="motor_A_effort" value="304"/>
-<xacro:property name="motor_B_effort" value="147"/>
-<xacro:property name="motor_C_effort" value="35"/>
+<xacro:if value="${inertial_props['gear_ratio'] == 30}">
+	<xacro:property name="motor_effort" value="132"/>
+</xacro:if>
+<xacro:if value="${inertial_props['gear_ratio'] == 50}">
+	<xacro:property name="motor_effort" value="220"/>
+</xacro:if>
 
 </robot>

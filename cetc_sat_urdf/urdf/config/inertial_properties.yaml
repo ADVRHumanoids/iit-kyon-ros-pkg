@@ -4,4 +4,5 @@ big_box_mass: 2.0
 small_box_mass: 1.0
 ball_mass: 0.1
 motorA_mass: 1.8
-motorB_mass: 1.8
+
+gear_ratio: 30
