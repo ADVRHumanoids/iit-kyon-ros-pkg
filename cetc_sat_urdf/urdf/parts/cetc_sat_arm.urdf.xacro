@@ -51,20 +51,20 @@
 <link name="lower_arm_${arm_num}">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>	
-		<mass value="${big_box_mass}"/>
-		<inertia ixx="${BigBox_xx}" ixy="${BigBox_xy}" ixz="${BigBox_xz}" iyy="${BigBox_xx}" iyz="${BigBox_yz}" izz="${BigBox_zz}"/>
+		<mass value="${upper_arm_mass}"/>
+		<inertia ixx="${LowerArm_xx}" ixy="${LowerArm_xy}" ixz="${LowerArm_xz}" iyy="${LowerArm_xx}" iyz="${LowerArm_yz}" izz="${LowerArm_zz}"/>
 	</inertial>
 	<visual>
-		<origin xyz="${big_box_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${lower_arm_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<box size="${big_box_length} ${big_box_width} ${big_box_height}"/>
+			<box size="${lower_arm_length} ${lower_arm_width} ${lower_arm_height}"/>
 		</geometry>
 	</visual>
 
 	<collision>
-		<origin xyz="${big_box_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${lower_arm_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<box size="${big_box_length} ${big_box_width} ${big_box_height}"/>
+			<box size="${lower_arm_length} ${lower_arm_width} ${lower_arm_height}"/>
 		</geometry>
 	</collision>
 </link>
@@ -93,21 +93,21 @@
 <link name="upper_arm_${arm_num}">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>	
-		<mass value="${small_box_mass}"/>
-		<inertia ixx="${SmallBox_xx}" ixy="${SmallBox_xy}" ixz="${SmallBox_xz}" iyy="${SmallBox_xx}" iyz="${SmallBox_yz}" izz="${SmallBox_zz}"/>
+		<mass value="${lower_arm_mass}"/>
+		<inertia ixx="${UpperArm_xx}" ixy="${UpperArm_xy}" ixz="${UpperArm_xz}" iyy="${UpperArm_xx}" iyz="${UpperArm_yz}" izz="${UpperArm_zz}"/>
 	</inertial>
 	<visual>
-		<origin xyz="${small_box_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${upper_arm_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<box size="${small_box_length} ${small_box_width} ${small_box_height}"/>
+			<box size="${upper_arm_length} ${upper_arm_width} ${upper_arm_height}"/>
 		</geometry>
 		<material name="dark_grey"/>
 	</visual>
 
 	<collision>
-		<origin xyz="${small_box_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${lower_arm_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<box size="${small_box_length} ${small_box_width} ${small_box_height}"/>
+			<box size="${upper_arm_length} ${upper_arm_width} ${upper_arm_height}"/>
 		</geometry>
 	</collision>
 </link>

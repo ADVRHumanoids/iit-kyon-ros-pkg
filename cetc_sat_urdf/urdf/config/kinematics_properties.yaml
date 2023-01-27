@@ -1,15 +1,19 @@
-PI_2: 1.57079632679
-
 # links' lenght
 cylinder_radius: 0.07
 cylinder_length: 0.1
-big_box_length: 0.4
-big_box_width: 0.1
-big_box_height: 0.1
-small_box_length: 0.4
-small_box_width: 0.05
-small_box_height: 0.05
+upper_leg_length: 0.35
+upper_leg_width: 0.1
+upper_leg_height: 0.1
+lower_leg_length: 0.3
+lower_leg_width: 0.05
+lower_leg_height: 0.05
+upper_arm_length: 0.3
+upper_arm_width: 0.05
+upper_arm_height: 0.05
+lower_arm_length: 0.3
+lower_arm_width: 0.1
+lower_arm_height: 0.1
 ball_radius: 0.05
-pelvis_length: 0.80
+pelvis_length: 0.8
 pelvis_width: 0.45
 pelvis_height: 0.20

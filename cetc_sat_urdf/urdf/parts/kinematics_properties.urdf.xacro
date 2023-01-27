@@ -12,12 +12,18 @@
 
         <xacro:property name="cylinder_radius" value="${kin_props['cylinder_radius'][id]}"/>
         <xacro:property name="cylinder_length" value="${kin_props['cylinder_length'][id]}"/>
-        <xacro:property name="big_box_length" value="${kin_props['big_box_length'][id]}"/>
-        <xacro:property name="big_box_width" value="${kin_props['big_box_width'][id]}"/>
-        <xacro:property name="big_box_height" value="${kin_props['big_box_height'][id]}"/>
-        <xacro:property name="small_box_length" value="${kin_props['small_box_length'][id]}"/>
-        <xacro:property name="small_box_width" value="${kin_props['small_box_width'][id]}"/>
-        <xacro:property name="small_box_height" value="${kin_props['small_box_height'][id]}"/>
+        <xacro:property name="upper_leg_length" value="${kin_props['upper_leg_length'][id]}"/>
+        <xacro:property name="upper_leg_width" value="${kin_props['upper_leg_width'][id]}"/>
+        <xacro:property name="upper_leg_height" value="${kin_props['upper_leg_height'][id]}"/>
+        <xacro:property name="lower_upper_leg_length" value="${kin_props['lower_leg_length'][id]}"/>
+        <xacro:property name="lower_upper_leg_width" value="${kin_props['lower_leg_width'][id]}"/>
+        <xacro:property name="lower_upper_leg_height" value="${kin_props['lower_leg_height'][id]}"/>
+        <xacro:property name="upper_arm_length" value="${kin_props['upper_arm_length'][id]}"/>
+        <xacro:property name="upper_arm_width" value="${kin_props['upper_arm_width'][id]}"/>
+        <xacro:property name="upper_arm_height" value="${kin_props['upper_arm_height'][id]}"/>
+        <xacro:property name="lower_arm_length" value="${kin_props['lower_arm_length'][id]}"/>
+        <xacro:property name="lower_arm_width" value="${kin_props['lower_arm_width'][id]}"/>
+        <xacro:property name="lower_arm_height" value="${kin_props['lower_arm_height'][id]}"/>
         <xacro:property name="ball_radius" value="${kin_props['ball_radius'][id]}"/>
         <xacro:property name="pelvis_length" value="${kin_props['pelvis_length'][id]}"/>
         <xacro:property name="pelvis_width" value="${kin_props['pelvis_width'][id]}"/>
@@ -32,12 +38,18 @@
 
         <xacro:property name="cylinder_radius" value="${kin_props['cylinder_radius']}"/>
         <xacro:property name="cylinder_length" value="${kin_props['cylinder_length']}"/>
-        <xacro:property name="big_box_length" value="${kin_props['big_box_length']}"/>
-        <xacro:property name="big_box_width" value="${kin_props['big_box_width']}"/>
-        <xacro:property name="big_box_height" value="${kin_props['big_box_height']}"/>
-        <xacro:property name="small_box_length" value="${kin_props['small_box_length']}"/>
-        <xacro:property name="small_box_width" value="${kin_props['small_box_width']}"/>
-        <xacro:property name="small_box_height" value="${kin_props['small_box_height']}"/>
+        <xacro:property name="upper_leg_length" value="${kin_props['upper_leg_length']}"/>
+        <xacro:property name="upper_leg_width" value="${kin_props['upper_leg_width']}"/>
+        <xacro:property name="upper_leg_height" value="${kin_props['upper_leg_height']}"/>
+        <xacro:property name="lower_leg_length" value="${kin_props['lower_leg_length']}"/>
+        <xacro:property name="lower_leg_width" value="${kin_props['lower_leg_width']}"/>
+        <xacro:property name="lower_leg_height" value="${kin_props['lower_leg_height']}"/>
+        <xacro:property name="upper_arm_length" value="${kin_props['upper_arm_length']}"/>
+        <xacro:property name="upper_arm_width" value="${kin_props['upper_arm_width']}"/>
+        <xacro:property name="upper_arm_height" value="${kin_props['upper_arm_height']}"/>
+        <xacro:property name="lower_arm_length" value="${kin_props['lower_arm_length']}"/>
+        <xacro:property name="lower_arm_width" value="${kin_props['lower_arm_width']}"/>
+        <xacro:property name="lower_arm_height" value="${kin_props['lower_arm_height']}"/>
         <xacro:property name="ball_radius" value="${kin_props['ball_radius']}"/>
         <xacro:property name="pelvis_length" value="${kin_props['pelvis_length']}"/>
         <xacro:property name="pelvis_width" value="${kin_props['pelvis_width']}"/>
@@ -78,7 +90,7 @@
     <xacro:property name="KneePitch_pitch" value="0.0"/>
     <xacro:property name="KneePitch_yaw" value="0.0"/>
 
-    <xacro:property name="LowerLeg_Ox" value="${big_box_length}"/>
+    <xacro:property name="LowerLeg_Ox" value="${upper_leg_length}"/>
     <xacro:property name="LowerLeg_Oy" value="0.0"/>
     <xacro:property name="LowerLeg_Oz" value="0.0"/>
     <xacro:property name="LowerLeg_roll" value="0.0"/>
@@ -86,7 +98,7 @@
     <xacro:property name="LowerLeg_yaw" value="0.0"/>
 
     <!-- Origin -->
-    <xacro:property name="Ankle_Ox" value="${big_box_length}"/>
+    <xacro:property name="Ankle_Ox" value="${lower_leg_length}"/>
     <xacro:property name="Ankle_Oy" value="0.0"/>
     <xacro:property name="Ankle_Oz" value="0.0"/>
     <xacro:property name="Ankle_roll" value="0.0"/>
@@ -119,7 +131,7 @@
     <xacro:property name="LowerArm_pitch" value="0.0"/>
     <xacro:property name="LowerArm_yaw" value="${-PI_2}"/>
 
-    <xacro:property name="ElbowPitch_Ox" value="${big_box_length}"/>
+    <xacro:property name="ElbowPitch_Ox" value="${lower_arm_length}"/>
     <xacro:property name="ElbowPitch_Oy" value="0.0"/>
     <xacro:property name="ElbowPitch_Oz" value="0.0"/>
     <xacro:property name="ElbowPitch_roll" value="0.0"/>
@@ -133,7 +145,7 @@
     <xacro:property name="UpperArm_pitch" value="0.0"/>
     <xacro:property name="UpperArm_yaw" value="0.0"/>
 
-    <xacro:property name="EndEffector_Ox" value="${big_box_length}"/>
+    <xacro:property name="EndEffector_Ox" value="${upper_arm_length}"/>
     <xacro:property name="EndEffector_Oy" value="0.0"/>
     <xacro:property name="EndEffector_Oz" value="0.0"/>
     <xacro:property name="EndEffector_roll" value="0.0"/>

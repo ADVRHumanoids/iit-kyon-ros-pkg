@@ -72,21 +72,21 @@
 <link name="upper_leg_${leg_num}">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>	
-		<mass value="${big_box_mass}"/>
-		<inertia ixx="${BigBox_xx}" ixy="${BigBox_xy}" ixz="${BigBox_xz}" iyy="${BigBox_xx}" iyz="${BigBox_yz}" izz="${BigBox_zz}"/>
+		<mass value="${upper_leg_mass}"/>
+		<inertia ixx="${UpperLeg_xx}" ixy="${UpperLeg_xy}" ixz="${UpperLeg_xz}" iyy="${UpperLeg_xx}" iyz="${UpperLeg_yz}" izz="${UpperLeg_zz}"/>
 	</inertial>
 	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 	<visual>
-		<origin xyz="${big_box_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${upper_leg_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<box size="${big_box_length} ${big_box_width} ${big_box_height}"/>
+	 		<box size="${upper_leg_length} ${upper_leg_width} ${upper_leg_height}"/>
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
 	<collision>
-		<origin xyz="${big_box_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${upper_leg_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<box size="${big_box_length} ${big_box_width} ${big_box_height}"/>
+			<box size="${upper_leg_length} ${upper_leg_width} ${upper_leg_height}"/>
 		</geometry>
 	</collision>
 </link>
@@ -94,20 +94,20 @@
 <link name="lower_leg_${leg_num}">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>	
-		<mass value="${small_box_mass}"/>
-		<inertia ixx="${SmallBox_xx}" ixy="${SmallBox_xy}" ixz="${SmallBox_xz}" iyy="${SmallBox_xx}" iyz="${SmallBox_yz}" izz="${SmallBox_zz}"/>
+		<mass value="${lower_leg_mass}"/>
+		<inertia ixx="${LowerLeg_xx}" ixy="${LowerLeg_xy}" ixz="${LowerLeg_xz}" iyy="${LowerLeg_xx}" iyz="${LowerLeg_yz}" izz="${LowerLeg_zz}"/>
 	</inertial>
 	<visual>
-		<origin xyz="${small_box_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${lower_leg_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<box size="${small_box_length} ${small_box_width} ${small_box_height}"/>
+	 		<box size="${lower_leg_length} ${lower_leg_width} ${lower_leg_height}"/>
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
 	<collision>
-		<origin xyz="${small_box_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="${lower_leg_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-	 		<box size="${small_box_length} ${small_box_width} ${small_box_height}"/>
+	 		<box size="${lower_leg_length} ${lower_leg_width} ${lower_leg_height}"/>
 		</geometry>
 	</collision>
 </link>

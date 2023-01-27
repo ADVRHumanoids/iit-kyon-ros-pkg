@@ -4,8 +4,8 @@ solver_options:
     
 stack:
     - ["Ball1", "Ball2", "Ball3", "Ball4"]
-    - ["Com"]
-    - ["LeftArm", "RightArm"]
+    # - ["Com"]
+    - ["LeftArm"]
     
 Ball1:
     type: "Cartesian"
@@ -35,11 +35,13 @@ LeftArm:
     type: "Cartesian"
     distal_link: "ball_arm_1"
     base_link: "world" 
+    indices: [0, 1, 2]
     
 RightArm:
     type: "Cartesian"
     distal_link: "ball_arm_2"
     base_link: "world"
+    indices: [0, 1, 2]
     
 Com:
     type: "Com"
