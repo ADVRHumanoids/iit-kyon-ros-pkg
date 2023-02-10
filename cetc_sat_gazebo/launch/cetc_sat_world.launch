@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="gazebo" default="true"/>
+  <arg name="gazebo" default="false"/>
   <arg name="cartesio" default="false"/>
   <param if="$(arg gazebo)" name="use_sim_time" type="bool" value="true"/>
   <param if="$(arg cartesio)" name="use_sim_time" type="bool" value="false"/>  
@@ -19,6 +19,7 @@
   <arg name="arms" default="true"/>
   <arg name="legs" default="true"/>
   <arg name="sensors" default="true"/>
+  <arg name="payload" default="false"/>
 
 
   <!-- Internal arguments, rewrite human-readable gazebo arguments to it's internal arguments -->
@@ -40,7 +41,7 @@
   
   <!-- Load the URDF/SRDF into the ROS Parameter Server -->
   <param name="robot_description_gz"
-         command="$(find xacro)/xacro $(find cetc_sat_urdf)/urdf/cetc_sat_robot.urdf.xacro floating_joint:=false upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors)"/>
+         command="$(find xacro)/xacro $(find cetc_sat_urdf)/urdf/cetc_sat_robot.urdf.xacro floating_joint:=false upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload)"/>
          
   <!-- start gazebo server-->
   	<node name="gazebo" 
@@ -63,6 +64,7 @@
   	<arg name="arms" value="$(arg arms)"/>
   	<arg name="legs" value="$(arg legs)"/>
   	<arg name="sensors" value="$(arg sensors)"/>
+  	<arg name="payload" value="$(arg payload)"/>
   </include>
 
 </launch>

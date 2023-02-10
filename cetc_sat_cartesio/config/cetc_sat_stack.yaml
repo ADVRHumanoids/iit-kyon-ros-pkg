@@ -5,7 +5,8 @@ solver_options:
 stack:
     - ["Ball1", "Ball2", "Ball3", "Ball4"]
     # - ["Com"]
-    - ["LeftArm"]
+    - ["RightArm", "LeftArm"]
+    - ["Postural"]
     
 Ball1:
     type: "Cartesian"
@@ -33,16 +34,24 @@ Ball4:
     
 LeftArm:
     type: "Cartesian"
-    distal_link: "ball_arm_1"
+    distal_link: "dagana_1_bottom_link"
     base_link: "world" 
-    indices: [0, 1, 2]
+    indices: [0, 1, 2] #, 3, 4, 5]
     
 RightArm:
     type: "Cartesian"
-    distal_link: "ball_arm_2"
+    distal_link: "dagana_2_bottom_link"
     base_link: "world"
-    indices: [0, 1, 2]
+    indices: [0, 1, 2, 3, 4, 5]
     
 Com:
     type: "Com"
     indices: [0, 1, 2]
+    
+Postural:
+    type: "Postural"
+    lambda: 0.1
+    
+Pelvis:
+    type: "Cartesian"
+    distal_link: "pelvis"
