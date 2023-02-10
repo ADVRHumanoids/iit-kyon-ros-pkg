@@ -109,8 +109,10 @@
     <xacro:property name="ShoulderYaw_Ox" value="${pelvis_length / 2}"/>
     <xacro:property name="ShoulderYaw_Oy" value="${pelvis_width / 2}"/>
     <xacro:property name="ShoulderYaw_Oz" value="${pelvis_height / 2}"/>
-    <xacro:property name="ShoulderYaw_roll" value="0.0"/>
-    <xacro:property name="ShoulderYaw_pitch" value="0.0"/>
+    <xacro:property name="ShoulderYaw_roll" value="0.5"/>
+    <xacro:property name="ShoulderYaw_pitch" value="0.4"/>
+    <!--xacro:property name="ShoulderYaw_roll" value="0.0"/>
+    <xacro:property name="ShoulderYaw_pitch" value="0.0"/-->
     <xacro:property name="ShoulderYaw_yaw" value="0.0"/>
 
     <xacro:property name="ShoulderYaw_OffsetX" value="0.1"/>
@@ -148,8 +150,8 @@
     <xacro:property name="EndEffector_Ox" value="${upper_arm_length}"/>
     <xacro:property name="EndEffector_Oy" value="0.0"/>
     <xacro:property name="EndEffector_Oz" value="0.0"/>
-    <xacro:property name="EndEffector_roll" value="0.0"/>
-    <xacro:property name="EndEffector_pitch" value="0.0"/>
+    <xacro:property name="EndEffector_roll" value="0.0	"/>
+    <xacro:property name="EndEffector_pitch" value="${PI_2}"/>
     <xacro:property name="EndEffector_yaw" value="0.0"/>
 
 </robot>
