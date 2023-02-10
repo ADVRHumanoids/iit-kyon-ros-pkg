@@ -30,10 +30,10 @@
 
     <xacro:if value="${ADD_UPPER_BODY}">
     	<group name="left_arm">
-    		<chain base_link="pelvis" tip_link="ball_arm_1"/>
+    		<chain base_link="pelvis" tip_link="dagana_1_bottom_link"/>
     	</group>
     	<group name="right_arm">
-    		<chain base_link="pelvis" tip_link="ball_arm_2"/>
+    		<chain base_link="pelvis" tip_link="dagana_2_bottom_link"/>
     	</group>
     </xacro:if>
 
