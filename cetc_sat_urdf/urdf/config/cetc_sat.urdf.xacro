@@ -10,6 +10,7 @@
 <xacro:arg name="upper_body" default="true"/>
 <xacro:arg name="floating_joint" default="true"/>
 <xacro:arg name="sensors" default="true"/>
+<xacro:arg name="payload" default="false"/>
 
 
 <!-- ************SELECT PARTS*************-->
@@ -20,5 +21,6 @@
 
 <xacro:property name="ADD_FLOATING_BASE" value="$(arg floating_joint)" />
 <xacro:property name="ADD_VIRTUAL_FRAME" value="false" />
+<xacro:property name="PAYLOAD" value="$(arg payload)"/>
 
 </robot>
