@@ -5,7 +5,7 @@ solver_options:
 stack:
     - ["Ball1", "Ball2", "Ball3", "Ball4"]
     # - ["Com"]
-    - ["RightArm", "Ball1_Yaw", "Ball2_Yaw", "Ball3_Yaw", "Ball4_Yaw"] #, "LeftArm"]
+    - ["RightArm"] #, "Ball1_Yaw", "Ball2_Yaw", "Ball3_Yaw", "Ball4_Yaw"] #, "LeftArm"]
     - ["Pelvis", "Postural"]
     
 Ball1:
