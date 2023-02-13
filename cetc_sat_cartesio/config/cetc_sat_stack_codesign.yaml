@@ -1,0 +1,58 @@
+solver_options:
+    regularization: 1e-2
+    back_end: "osqp"
+    
+stack:
+    - ["Ball1", "Ball2", "Ball3", "Ball4"]
+    - ["Pelvis"]
+    # - ["Com"]
+    #- ["RightArm", "LeftArm"]
+    - ["Postural"]
+    
+Ball1:
+    type: "Cartesian"
+    distal_link: "ball_1"
+    base_link: "world"
+    indices: [0, 1, 2]
+    
+Ball2:
+    type: "Cartesian"
+    distal_link: "ball_2"
+    base_link: "world"
+    indices: [0, 1, 2]
+    
+Ball3:
+    type: "Cartesian"
+    distal_link: "ball_3"
+    base_link: "world"
+    indices: [0, 1, 2]
+    
+Ball4:
+    type: "Cartesian"
+    distal_link: "ball_4"
+    base_link: "world"
+    indices: [0, 1, 2]
+    
+LeftArm:
+    type: "Cartesian"
+    distal_link: "dagana_1_bottom_link"
+    base_link: "world" 
+    indices: [0, 1, 2] #, 3, 4, 5]
+    
+RightArm:
+    type: "Cartesian"
+    distal_link: "dagana_2_bottom_link"
+    base_link: "world"
+    indices: [0, 1, 2, 3, 4, 5]
+    
+Com:
+    type: "Com"
+    indices: [0, 1, 2]
+    
+Postural:
+    type: "Postural"
+    lambda: 0.1
+    
+Pelvis:
+    type: "Cartesian"
+    distal_link: "pelvis"
