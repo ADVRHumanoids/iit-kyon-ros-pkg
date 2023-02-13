@@ -1,11 +1,9 @@
 solver_options:
-    regularization: 1e-2
+    regularization: 1e-3
     back_end: "osqp"
     
 stack:
-    - ["Ball1", "Ball2", "Ball3", "Ball4"]
-    # - ["Com"]
-    - ["RightArm", "LeftArm"]
+    - ["Ball1", "Ball2", "Ball3", "Ball4", "RightArm", "LeftArm"]
     - ["Postural"]
     
 Ball1:
