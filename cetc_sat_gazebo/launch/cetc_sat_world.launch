@@ -14,6 +14,7 @@
   <arg name="physics" default="ode"/>
   <arg name="verbose" default="false"/>
   <arg name="extra_gazebo_args" default=""/>
+  <arg name="codesign" default="false"/>
   
   <!-- cetc_sat configuration parameters -->
   <arg name="arms" default="true"/>
@@ -65,6 +66,9 @@
   	<arg name="legs" value="$(arg legs)"/>
   	<arg name="sensors" value="$(arg sensors)"/>
   	<arg name="payload" value="$(arg payload)"/>
+  	<group if="$(arg codesign)">
+  		<arg name="ik" value="$(find cetc_sat_cartesio)/config/cetc_sat_stack_codesign.yaml"/>
+  	</group>
   </include>
 
 </launch>
