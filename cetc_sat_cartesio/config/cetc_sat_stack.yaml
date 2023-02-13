@@ -1,10 +1,12 @@
 solver_options:
-    regularization: 1e-3
+    regularization: 1e-2
     back_end: "osqp"
     
 stack:
-    - ["Ball1", "Ball2", "Ball3", "Ball4", "RightArm", "LeftArm"]
-    - ["Postural"]
+    - ["Ball1", "Ball2", "Ball3", "Ball4"]
+    # - ["Com"]
+    - ["RightArm", "Ball1_Yaw", "Ball2_Yaw", "Ball3_Yaw", "Ball4_Yaw"] #, "LeftArm"]
+    - ["Pelvis", "Postural"]
     
 Ball1:
     type: "Cartesian"
@@ -30,6 +32,26 @@ Ball4:
     base_link: "world"
     indices: [0, 1, 2]
     
+Ball1_Yaw:
+    type: "Subtask"
+    task: "Ball1"
+    indices: [3, 4]
+	
+Ball2_Yaw:
+    type: "Subtask"
+    task: "Ball2"
+    indices: [3, 4]
+	
+Ball3_Yaw:
+    type: "Subtask"
+    task: "Ball3"
+    indices: [3, 4]
+	
+Ball4_Yaw:
+    type: "Subtask"
+    task: "Ball4"
+    indices: [3, 4]
+	
 LeftArm:
     type: "Cartesian"
     distal_link: "dagana_1_bottom_link"
@@ -53,3 +75,4 @@ Postural:
 Pelvis:
     type: "Cartesian"
     distal_link: "pelvis"
+    weight: 100

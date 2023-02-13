@@ -66,9 +66,7 @@
   	<arg name="legs" value="$(arg legs)"/>
   	<arg name="sensors" value="$(arg sensors)"/>
   	<arg name="payload" value="$(arg payload)"/>
-  	<group if="$(arg codesign)">
-  		<arg name="ik" value="$(find cetc_sat_cartesio)/config/cetc_sat_stack_codesign.yaml"/>
-  	</group>
+	<arg if="$(arg codesign)" name="ik" value="$(find cetc_sat_cartesio)/config/cetc_sat_stack_codesign.yaml"/>
   </include>
 
 </launch>
