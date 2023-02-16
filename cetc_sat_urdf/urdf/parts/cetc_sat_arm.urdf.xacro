@@ -136,27 +136,30 @@
 </link>
 <!-- /shoulder-elbow -->
 
-<!--link name="ball_arm_${arm_num}">
+<link name="wrist_${arm_num}">
     <inertial>
 		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${ball_mass}"/>
-		<inertia ixx="${Ball_xx}" ixy="${Ball_xy}" ixz="${Ball_xz}" iyy="${Ball_yy}" iyz="${Ball_yz}" izz="${Ball_zz}"/>
+		<mass value="${motorA_mass}"/>
+		<inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
 	</inertial>
 	<visual>
-		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-		<geometry>
-			<sphere radius="${ball_radius}"/>
-		</geometry>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+	  	<geometry>
+	 		<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+	  	</geometry>
+  		<material name="dark_grey"/>
 	</visual>
 	<collision>
-		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-		<geometry>
-			<sphere radius="${ball_radius}"/>
-		</geometry>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+	  	<geometry>
+	 		<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+	  	</geometry>
+  		<material name="dark_grey"/>
 	</collision>
-</link-->
-<xacro:dagana_gripper name="dagana_${arm_num}" parent_link="upper_arm_${arm_num}" joint_type="fixed">
-	<origin xyz="${EndEffector_Ox} ${EndEffector_Oy} ${EndEffector_Oz}" rpy="${EndEffector_roll} ${EndEffector_pitch} ${EndEffector_yaw}"/>
+</link>
+
+<xacro:dagana_gripper name="dagana_${arm_num}" parent_link="wrist_${arm_num}" joint_type="fixed">
+	<origin xyz="0 0 0" rpy="0 0 0"/>
 </xacro:dagana_gripper>
 
 <!-- /LINKS -->
@@ -210,11 +213,13 @@
 </joint>
 	
 <!-- end effector  -->
-<!--joint name="hand_joint_${arm_num}" type="fixed">
+<joint name="wrist_joint_${arm_num}" type="revolute">
 	<parent link="upper_arm_${arm_num}"/>
-	<child link="ball_arm_${arm_num}"/>
+	<child link="wrist_${arm_num}"/>
 	<origin xyz="${EndEffector_Ox} ${EndEffector_Oy} ${EndEffector_Oz}" rpy="${EndEffector_roll} ${EndEffector_pitch} ${EndEffector_yaw}"/>
-</joint-->
+	<axis xyz="0 0 1"/>
+	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
+</joint>
 
 <xacro:if value="${PAYLOAD}">
 	<link name="payload_${arm_num}">
