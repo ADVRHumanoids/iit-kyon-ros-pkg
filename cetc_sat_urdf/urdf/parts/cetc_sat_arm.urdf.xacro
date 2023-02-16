@@ -102,7 +102,6 @@
 		<geometry>
 			<box size="${upper_arm1_length} ${upper_arm1_width} ${upper_arm1_height}"/>
 		</geometry>
-		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="${lower_arm_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -144,7 +143,6 @@
 		<geometry>
 			<box size="${upper_arm2_length} ${upper_arm2_width} ${upper_arm2_height}"/>
 		</geometry>
-		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="${upper_arm1_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
