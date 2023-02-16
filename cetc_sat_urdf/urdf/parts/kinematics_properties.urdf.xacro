@@ -21,9 +21,12 @@
         <xacro:property name="upper_arm_length" value="${kin_props['upper_arm_length'][id]}"/>
         <xacro:property name="upper_arm_width" value="${kin_props['upper_arm_width'][id]}"/>
         <xacro:property name="upper_arm_height" value="${kin_props['upper_arm_height'][id]}"/>
-        <xacro:property name="lower_arm_length" value="${kin_props['lower_arm_length'][id]}"/>
-        <xacro:property name="lower_arm_width" value="${kin_props['lower_arm_width'][id]}"/>
-        <xacro:property name="lower_arm_height" value="${kin_props['lower_arm_height'][id]}"/>
+        <xacro:property name="lower_arm1_length" value="${kin_props['lower_arm1_length'][id]}"/>
+        <xacro:property name="lower_arm1_width" value="${kin_props['lower_arm1_width'][id]}"/>
+        <xacro:property name="lower_arm1_height" value="${kin_props['lower_arm1_height'][id]}"/>
+        <xacro:property name="lower_arm2_length" value="${kin_props['lower_arm2_length'][id]}"/>
+        <xacro:property name="lower_arm2_width" value="${kin_props['lower_arm2_width'][id]}"/>
+        <xacro:property name="lower_arm2_height" value="${kin_props['lower_arm2_height'][id]}"/>
         <xacro:property name="ball_radius" value="${kin_props['ball_radius'][id]}"/>
         <xacro:property name="pelvis_length" value="${kin_props['pelvis_length'][id]}"/>
         <xacro:property name="pelvis_width" value="${kin_props['pelvis_width'][id]}"/>
@@ -47,9 +50,12 @@
         <xacro:property name="upper_arm_length" value="${kin_props['upper_arm_length']}"/>
         <xacro:property name="upper_arm_width" value="${kin_props['upper_arm_width']}"/>
         <xacro:property name="upper_arm_height" value="${kin_props['upper_arm_height']}"/>
-        <xacro:property name="lower_arm_length" value="${kin_props['lower_arm_length']}"/>
-        <xacro:property name="lower_arm_width" value="${kin_props['lower_arm_width']}"/>
-        <xacro:property name="lower_arm_height" value="${kin_props['lower_arm_height']}"/>
+        <xacro:property name="lower_arm1_length" value="${kin_props['lower_arm1_length']}"/>
+        <xacro:property name="lower_arm1_width" value="${kin_props['lower_arm1_width']}"/>
+        <xacro:property name="lower_arm1_height" value="${kin_props['lower_arm1_height']}"/>
+        <xacro:property name="lower_arm2_length" value="${kin_props['lower_arm2_length']}"/>
+        <xacro:property name="lower_arm2_width" value="${kin_props['lower_arm2_width']}"/>
+        <xacro:property name="lower_arm2_height" value="${kin_props['lower_arm2_height']}"/>
         <xacro:property name="ball_radius" value="${kin_props['ball_radius']}"/>
         <xacro:property name="pelvis_length" value="${kin_props['pelvis_length']}"/>
         <xacro:property name="pelvis_width" value="${kin_props['pelvis_width']}"/>
@@ -126,14 +132,21 @@
     <xacro:property name="ShoulderPitch_pitch" value="0.0"/>
     <xacro:property name="ShoulderPitch_yaw" value="0.0"/>
 
-    <xacro:property name="LowerArm_Ox" value="0.0"/>
-    <xacro:property name="LowerArm_Oy" value="0.0"/>
-    <xacro:property name="LowerArm_Oz" value="0.0"/>
-    <xacro:property name="LowerArm_roll" value="0.0"/>
-    <xacro:property name="LowerArm_pitch" value="0.0"/>
-    <xacro:property name="LowerArm_yaw" value="${-PI_2}"/>
+    <xacro:property name="LowerArm1_Ox" value="0.0"/>
+    <xacro:property name="LowerArm1_Oy" value="0.0"/>
+    <xacro:property name="LowerArm1_Oz" value="0.0"/>
+    <xacro:property name="LowerArm1_roll" value="0.0"/>
+    <xacro:property name="LowerArm1_pitch" value="0.0"/>
+    <xacro:property name="LowerArm1_yaw" value="${-PI_2}"/>
+    
+    <xacro:property name="LowerArm2_Ox" value="${lower_arm1_length}"/>
+    <xacro:property name="LowerArm2_Oy" value="0.0"/>
+    <xacro:property name="LowerArm2_Oz" value="0.0"/>
+    <xacro:property name="LowerArm2_roll" value="0.0"/>
+    <xacro:property name="LowerArm2_pitch" value="0.0"/>
+    <xacro:property name="LowerArm2_yaw" value="0.0"/>
 
-    <xacro:property name="ElbowPitch_Ox" value="${lower_arm_length}"/>
+    <xacro:property name="ElbowPitch_Ox" value="${lower_arm2_length}"/>
     <xacro:property name="ElbowPitch_Oy" value="0.0"/>
     <xacro:property name="ElbowPitch_Oz" value="0.0"/>
     <xacro:property name="ElbowPitch_roll" value="0.0"/>
