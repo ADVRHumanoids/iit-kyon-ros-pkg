@@ -4,9 +4,8 @@ solver_options:
     
 stack:
     - ["Ball1", "Ball2", "Ball3", "Ball4"]
-    # - ["Com"]
     - ["RightArm"] #, "Ball1_Yaw", "Ball2_Yaw", "Ball3_Yaw", "Ball4_Yaw"] #, "LeftArm"]
-    - ["Pelvis", "Postural"]
+    - ["Postural", "Pelvis"]
     
 Ball1:
     type: "Cartesian"
@@ -67,6 +66,7 @@ RightArm:
 Com:
     type: "Com"
     indices: [0, 1, 2]
+    weigth: 10
     
 Postural:
     type: "Postural"
@@ -75,4 +75,5 @@ Postural:
 Pelvis:
     type: "Cartesian"
     distal_link: "pelvis"
-    weight: 100
+    weight: 1000
+    indices: [0, 1, 2]
