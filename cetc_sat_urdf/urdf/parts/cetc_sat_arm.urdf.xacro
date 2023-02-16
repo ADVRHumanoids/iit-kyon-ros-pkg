@@ -232,7 +232,7 @@
 	<parent link="wrist_pitch_motor_${arm_num}"/>
 	<child link="upper_arm2_${arm_num}"/>
 	<origin xyz="${UpperArm2_Ox} ${UpperArm2_Oy} ${UpperArm2_Oz}" rpy="${UpperArm2_roll} ${UpperArm2_pitch} ${UpperArm2_yaw}"/>
-	<axis xyz="0 0 1"/>
+	<axis xyz="0 1 0"/>
 	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
 </joint>
 	
