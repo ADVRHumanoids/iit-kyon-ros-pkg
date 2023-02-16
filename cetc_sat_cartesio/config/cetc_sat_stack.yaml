@@ -75,4 +75,5 @@ Postural:
 Pelvis:
     type: "Cartesian"
     distal_link: "pelvis"
-    weight: 100
+    weight: 1000
+    indices: [0, 1, 2]
