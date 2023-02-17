@@ -52,9 +52,9 @@
 
 <link name="lower_arm_${arm_num}">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>	
+		<origin xyz="${lower_arm_length / 2} 0.0 0.0"/>	
 		<mass value="${lower_arm_mass}"/>
-		<inertia ixx="${LowerArm_xx}" ixy="${LowerArm_xy}" ixz="${LowerArm_xz}" iyy="${LowerArm_xx}" iyz="${LowerArm_yz}" izz="${LowerArm_zz}"/>
+		<inertia ixx="${LowerArm_xx}" ixy="${LowerArm_xy}" ixz="${LowerArm_xz}" iyy="${LowerArm_yy}" iyz="${LowerArm_yz}" izz="${LowerArm_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="${lower_arm_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -93,9 +93,9 @@
 
 <link name="upper_arm1_${arm_num}">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>	
+		<origin xyz="${upper_arm1_length / 2} 0.0 0.0"/>	
 		<mass value="${upper_arm1_mass}"/>
-		<inertia ixx="${UpperArm1_xx}" ixy="${UpperArm1_xy}" ixz="${UpperArm1_xz}" iyy="${UpperArm1_xx}" iyz="${UpperArm1_yz}" izz="${UpperArm1_zz}"/>
+		<inertia ixx="${UpperArm1_xx}" ixy="${UpperArm1_xy}" ixz="${UpperArm1_xz}" iyy="${UpperArm1_yy}" iyz="${UpperArm1_yz}" izz="${UpperArm1_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="${upper_arm1_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -134,9 +134,9 @@
 
 <link name="upper_arm2_${arm_num}">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>	
+		<origin xyz="${upper_arm2_length / 2} 0.0 0.0"/>	
 		<mass value="${upper_arm2_mass}"/>
-		<inertia ixx="${UpperArm2_xx}" ixy="${UpperArm2_xy}" ixz="${UpperArm2_xz}" iyy="${UpperArm2_xx}" iyz="${UpperArm2_yz}" izz="${UpperArm2_zz}"/>
+		<inertia ixx="${UpperArm2_xx}" ixy="${UpperArm2_xy}" ixz="${UpperArm2_xz}" iyy="${UpperArm2_yy}" iyz="${UpperArm2_yz}" izz="${UpperArm2_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="${upper_arm2_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -150,7 +150,7 @@
 			<box size="${upper_arm2_length} ${upper_arm2_width} ${upper_arm2_height}"/>
 		</geometry>
 	</collision>
-</link>
+</link>>
 <!-- /shoulder-elbow -->
 
 <link name="wrist_${arm_num}">
@@ -173,6 +173,27 @@
 		</geometry>
 	</collision>
 </link>
+
+<!--link name="ball_arm_${arm_num}">
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>
+		<mass value="${ball_mass}"/>
+		<inertia ixx="${Ball_xx}" ixy="${Ball_xy}" ixz="${Ball_xz}" iyy="${Ball_yy}" iyz="${Ball_yz}" izz="${Ball_zz}"/>
+	</inertial>
+	<visual>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<sphere radius="${ball_radius}"/>
+		</geometry>
+	</visual>
+	<collision>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<sphere radius="${ball_radius}"/>
+		</geometry>
+	</collision>
+</link-->
+
 
 <xacro:dagana_gripper name="dagana_${arm_num}" parent_link="wrist_${arm_num}" joint_type="fixed">
 	<origin xyz="0 0 0" rpy="0 0 0"/>
@@ -220,13 +241,13 @@
 	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
 </joint>
 
-<joint name="wrist_pitch_motor_${arm_num}" type="fixed">
+<joint name="wrist_pitch_stator_${arm_num}" type="fixed">
 	<parent link="upper_arm1_${arm_num}"/>
 	<child link="wrist_pitch_motor_${arm_num}"/>
 	<origin xyz="${WristPitch_Ox} ${WristPitch_Oy} ${WristPitch_Oz}" rpy="${WristPitch_roll} ${WristPitch_pitch} ${WristPitch_yaw}"/>
 </joint>
 
-<joint name="wrist_pitch_joint_${arm_num}" type="revolute">
+<joint name="wrist_pitch_${arm_num}" type="revolute">
 	<parent link="wrist_pitch_motor_${arm_num}"/>
 	<child link="upper_arm2_${arm_num}"/>
 	<origin xyz="${UpperArm2_Ox} ${UpperArm2_Oy} ${UpperArm2_Oz}" rpy="${UpperArm2_roll} ${UpperArm2_pitch} ${UpperArm2_yaw}"/>
@@ -235,7 +256,7 @@
 </joint>
 	
 <!-- end effector  -->
-<joint name="wrist_yaw_joint_${arm_num}" type="revolute">
+<joint name="wrist_yaw_${arm_num}" type="revolute">
 	<parent link="upper_arm2_${arm_num}"/>
 	<child link="wrist_${arm_num}"/>
 	<origin xyz="${EndEffector_Ox} ${EndEffector_Oy} ${EndEffector_Oz}" rpy="${EndEffector_roll} ${EndEffector_pitch} ${EndEffector_yaw}"/>
@@ -243,7 +264,13 @@
 	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
 </joint>
 
-<xacro:if value="${PAYLOAD}">
+<!--joint name="hand_joint_${arm_num}" type="fixed">
+	<parent link="wrist_${arm_num}"/>
+	<child link="ball_arm_${arm_num}"/>
+	<origin xyz="0 0 ${ball_radius}" rpy="0 0 0"/>
+</joint-->
+
+<!--xacro:if value="${PAYLOAD}">
 	<link name="payload_${arm_num}">
 		<inertial>
 		    <origin xyz="0.0 0.0 0.0"/>
@@ -262,7 +289,7 @@
 		<parent link="ball_arm_${arm_num}"/>
 		<child link="payload_${arm_num}"/>
 	</joint>
-</xacro:if>
+</xacro:if-->
 
 </xacro:macro>
 <!-- /macro arms -->

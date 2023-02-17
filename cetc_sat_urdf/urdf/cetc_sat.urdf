@@ -17,8 +17,8 @@
   <link name="pelvis">
     <inertial>
       <origin xyz="0.0 0.0 0.0"/>
-      <mass value="34"/>
-      <inertia ixx="0.6870833333333333" ixy="0.0" ixz="0.0" iyy="1.926666666666667" iyz="0.0" izz="2.3870833333333334"/>
+      <mass value="14"/>
+      <inertia ixx="0.28291666666666665" ixy="0.0" ixz="0.0" iyy="0.7933333333333334" iyz="0.0" izz="0.9829166666666667"/>
     </inertial>
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0 0.0"/>
@@ -86,7 +86,7 @@
   <link name="lower_arm_1">
     <inertial>
       <origin xyz="0.0 0.0 0.0"/>
-      <mass value="1.0"/>
+      <mass value="2.0"/>
       <inertia ixx="0.013333333333333336" ixy="0.0" ixz="0.0" iyy="0.013333333333333336" iyz="0.0" izz="0.06666666666666667"/>
     </inertial>
     <visual>
@@ -122,44 +122,144 @@
       </geometry>
     </collision>
   </link>
-  <link name="upper_arm_1">
+  <link name="upper_arm1_1">
     <inertial>
       <origin xyz="0.0 0.0 0.0"/>
-      <mass value="2.0"/>
-      <inertia ixx="0.001666666666666667" ixy="0.0" ixz="0.0" iyy="0.001666666666666667" iyz="0.0" izz="0.03083333333333333"/>
+      <mass value="0.7"/>
+      <inertia ixx="0.0011666666666666668" ixy="0.0" ixz="0.0" iyy="0.0011666666666666668" iyz="0.0" izz="0.009916666666666667"/>
     </inertial>
     <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.1 0.0 0.0"/>
+      <geometry>
+        <box size="0.2 0.05 0.05"/>
+      </geometry>
+    </visual>
+    <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0.15 0.0 0.0"/>
       <geometry>
-        <box size="0.3 0.05 0.05"/>
+        <box size="0.2 0.05 0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="wrist_pitch_motor_1">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0"/>
+      <mass value="1.8"/>
+      <inertia ixx="0.003705000000000001" ixy="0.0" ixz="0.0" iyy="0.003705000000000001" iyz="0.0" izz="0.004410000000000002"/>
+    </inertial>
+    <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.035"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.15 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.3 0.05 0.05"/>
+        <cylinder length="0.1" radius="0.07"/>
       </geometry>
     </collision>
   </link>
-  <!-- /shoulder-elbow -->
-  <link name="ball_arm_1">
+  <link name="upper_arm2_1">
     <inertial>
       <origin xyz="0.0 0.0 0.0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.0001666666666666667" ixy="0.0" ixz="0.0" iyy="0.0001666666666666667" iyz="0.0" izz="0.0001666666666666667"/>
+      <mass value="0.3"/>
+      <inertia ixx="0.0005" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0012500000000000002"/>
+    </inertial>
+    <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.05 0.0 0.0"/>
+      <geometry>
+        <box size="0.1 0.05 0.05"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.1 0.0 0.0"/>
+      <geometry>
+        <box size="0.1 0.05 0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  &gt;
+
+  <!-- /shoulder-elbow -->
+  <link name="wrist_1">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0"/>
+      <mass value="1.8"/>
+      <inertia ixx="0.003705000000000001" ixy="0.0" ixz="0.0" iyy="0.003705000000000001" iyz="0.0" izz="0.004410000000000002"/>
     </inertial>
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <sphere radius="0.05"/>
+        <cylinder length="0.016666666666666666" radius="0.07"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <sphere radius="0.05"/>
+        <cylinder length="0.05" radius="0.035"/>
       </geometry>
+    </collision>
+  </link>
+  <joint name="dagana_1_mount_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="wrist_1"/>
+    <child link="dagana_1_top_link"/>
+  </joint>
+  <link name="dagana_1_top_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0063562154 -0.0060265532000000005  0.060068288000000004"/>
+      <mass value="1.7432400"/>
+      <inertia ixx="0.0050510328" ixy="-0.00025264216" ixz="-0.00012103013" iyy="0.0047944612" iyz="-0.00073917704" izz="0.0031156997"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0001-simplified.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0001-ch.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </collision>
+  </link>
+  <link name="dagana_1_palm_frame"/>
+  <joint name="dagana_1_pal_joint" type="fixed">
+    <origin rpy="1.57079632679 0 3.14159265359" xyz="0. 0. 0."/>
+    <parent link="dagana_1_top_link"/>
+    <child link="dagana_1_palm_frame"/>
+  </joint>
+  <joint name="dagana_1_claw_joint" type="fixed">
+    <origin rpy="1.57079632679 0 3.14159265359" xyz="0.0 -0.028 0.05025"/>
+    <parent link="dagana_1_top_link"/>
+    <child link="dagana_1_bottom_link"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="dagana_1_bottom_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.069644767 0.0026548329 -0.041960263"/>
+      <mass value="4.6117745e-01"/>
+      <inertia ixx="0.0009385556899999999" ixy="-0.000264452" ixz="7.134683e-05" iyy="0.0019472731" iyz="2.529065e-06" izz="0.0014726990999999999"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0002.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0002-ch.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
     </collision>
   </link>
   <!-- /LINKS -->
@@ -168,7 +268,7 @@
   <joint name="shoulder_yaw_1" type="revolute">
     <parent link="pelvis"/>
     <child link="shoulder_yaw_motor_1"/>
-    <origin rpy="0.0 0.0 0.0" xyz="0.30000000000000004 0.175 0.1"/>
+    <origin rpy="-0.0 0.0 0.0" xyz="0.30000000000000004 0.175 0.1"/>
     <axis xyz="0 0 1"/>
     <limit effort="132" lower="-3.312" upper="3.312" velocity="15.5"/>
   </joint>
@@ -193,35 +293,51 @@
   <!-- arm pitch 2 -->
   <joint name="elbow_pitch_1" type="revolute">
     <parent link="elbow_pitch_motor_1"/>
-    <child link="upper_arm_1"/>
+    <child link="upper_arm1_1"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="132" lower="-2.4056" upper="2.4056" velocity="15.5"/>
+  </joint>
+  <joint name="wrist_pitch_stator_1" type="fixed">
+    <parent link="upper_arm1_1"/>
+    <child link="wrist_pitch_motor_1"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.2 0.0 0.0"/>
+  </joint>
+  <joint name="wrist_pitch_1" type="revolute">
+    <parent link="wrist_pitch_motor_1"/>
+    <child link="upper_arm2_1"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="132" lower="-2.4056" upper="2.4056" velocity="15.5"/>
   </joint>
   <!-- end effector  -->
-  <joint name="hand_joint_1" type="fixed">
-    <parent link="upper_arm_1"/>
-    <child link="ball_arm_1"/>
-    <origin rpy="0.0 0.0 0.0" xyz="0.3 0.0 0.0"/>
+  <joint name="wrist_yaw_1" type="revolute">
+    <parent link="upper_arm2_1"/>
+    <child link="wrist_1"/>
+    <origin rpy="0.0 1.57079632679 0.0" xyz="0.1 0.0 0.0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="132" lower="-2.4056" upper="2.4056" velocity="15.5"/>
   </joint>
-  <link name="payload_1">
-    <inertial>
-      <origin xyz="0.0 0.0 0.0"/>
-      <mass value="4"/>
-      <inertia ixx="0.0267" ixy="0" ixz="0" iyy="0.0267" iyz="0" izz="0.0267"/>
-    </inertial>
-    <visual>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-      <geometry>
-        <box size="0.2 0.2 0.2"/>
-      </geometry>
-      <material name="dark_grey"/>
-    </visual>
-  </link>
-  <joint name="hand_to_payload_1" type="fixed">
-    <parent link="ball_arm_1"/>
-    <child link="payload_1"/>
-  </joint>
+  <!--xacro:if value="${PAYLOAD}">
+	<link name="payload_${arm_num}">
+		<inertial>
+		    <origin xyz="0.0 0.0 0.0"/>
+			<mass value="4"/>
+			<inertia ixx="0.0267" iyy="0.0267" izz="0.0267" ixy="0" ixz="0" iyz="0"/>
+		</inertial>
+		<visual>
+			<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+			<geometry>
+				<box size="0.2 0.2 0.2"/>
+			</geometry>
+			<material name="dark_grey"/>
+		</visual>
+	</link>
+	<joint name="hand_to_payload_${arm_num}" type="fixed">
+		<parent link="ball_arm_${arm_num}"/>
+		<child link="payload_${arm_num}"/>
+	</joint>
+</xacro:if-->
   <!-- LINKS -->
   <!-- shoulder yaw -->
   <link name="shoulder_yaw_motor_2">
@@ -267,7 +383,7 @@
   <link name="lower_arm_2">
     <inertial>
       <origin xyz="0.0 0.0 0.0"/>
-      <mass value="1.0"/>
+      <mass value="2.0"/>
       <inertia ixx="0.013333333333333336" ixy="0.0" ixz="0.0" iyy="0.013333333333333336" iyz="0.0" izz="0.06666666666666667"/>
     </inertial>
     <visual>
@@ -303,44 +419,144 @@
       </geometry>
     </collision>
   </link>
-  <link name="upper_arm_2">
+  <link name="upper_arm1_2">
     <inertial>
       <origin xyz="0.0 0.0 0.0"/>
-      <mass value="2.0"/>
-      <inertia ixx="0.001666666666666667" ixy="0.0" ixz="0.0" iyy="0.001666666666666667" iyz="0.0" izz="0.03083333333333333"/>
+      <mass value="0.7"/>
+      <inertia ixx="0.0011666666666666668" ixy="0.0" ixz="0.0" iyy="0.0011666666666666668" iyz="0.0" izz="0.009916666666666667"/>
     </inertial>
     <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.1 0.0 0.0"/>
+      <geometry>
+        <box size="0.2 0.05 0.05"/>
+      </geometry>
+    </visual>
+    <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0.15 0.0 0.0"/>
       <geometry>
-        <box size="0.3 0.05 0.05"/>
+        <box size="0.2 0.05 0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="wrist_pitch_motor_2">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0"/>
+      <mass value="1.8"/>
+      <inertia ixx="0.003705000000000001" ixy="0.0" ixz="0.0" iyy="0.003705000000000001" iyz="0.0" izz="0.004410000000000002"/>
+    </inertial>
+    <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.035"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.15 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.3 0.05 0.05"/>
+        <cylinder length="0.1" radius="0.07"/>
       </geometry>
     </collision>
   </link>
-  <!-- /shoulder-elbow -->
-  <link name="ball_arm_2">
+  <link name="upper_arm2_2">
     <inertial>
       <origin xyz="0.0 0.0 0.0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.0001666666666666667" ixy="0.0" ixz="0.0" iyy="0.0001666666666666667" iyz="0.0" izz="0.0001666666666666667"/>
+      <mass value="0.3"/>
+      <inertia ixx="0.0005" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0012500000000000002"/>
+    </inertial>
+    <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.05 0.0 0.0"/>
+      <geometry>
+        <box size="0.1 0.05 0.05"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.1 0.0 0.0"/>
+      <geometry>
+        <box size="0.1 0.05 0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  &gt;
+
+  <!-- /shoulder-elbow -->
+  <link name="wrist_2">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0"/>
+      <mass value="1.8"/>
+      <inertia ixx="0.003705000000000001" ixy="0.0" ixz="0.0" iyy="0.003705000000000001" iyz="0.0" izz="0.004410000000000002"/>
     </inertial>
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <sphere radius="0.05"/>
+        <cylinder length="0.016666666666666666" radius="0.07"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <sphere radius="0.05"/>
+        <cylinder length="0.05" radius="0.035"/>
       </geometry>
+    </collision>
+  </link>
+  <joint name="dagana_2_mount_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="wrist_2"/>
+    <child link="dagana_2_top_link"/>
+  </joint>
+  <link name="dagana_2_top_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0063562154 -0.0060265532000000005  0.060068288000000004"/>
+      <mass value="1.7432400"/>
+      <inertia ixx="0.0050510328" ixy="-0.00025264216" ixz="-0.00012103013" iyy="0.0047944612" iyz="-0.00073917704" izz="0.0031156997"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0001-simplified.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0001-ch.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </collision>
+  </link>
+  <link name="dagana_2_palm_frame"/>
+  <joint name="dagana_2_pal_joint" type="fixed">
+    <origin rpy="1.57079632679 0 3.14159265359" xyz="0. 0. 0."/>
+    <parent link="dagana_2_top_link"/>
+    <child link="dagana_2_palm_frame"/>
+  </joint>
+  <joint name="dagana_2_claw_joint" type="fixed">
+    <origin rpy="1.57079632679 0 3.14159265359" xyz="0.0 -0.028 0.05025"/>
+    <parent link="dagana_2_top_link"/>
+    <child link="dagana_2_bottom_link"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="dagana_2_bottom_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.069644767 0.0026548329 -0.041960263"/>
+      <mass value="4.6117745e-01"/>
+      <inertia ixx="0.0009385556899999999" ixy="-0.000264452" ixz="7.134683e-05" iyy="0.0019472731" iyz="2.529065e-06" izz="0.0014726990999999999"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0002.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0002-ch.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
     </collision>
   </link>
   <!-- /LINKS -->
@@ -374,35 +590,51 @@
   <!-- arm pitch 2 -->
   <joint name="elbow_pitch_2" type="revolute">
     <parent link="elbow_pitch_motor_2"/>
-    <child link="upper_arm_2"/>
+    <child link="upper_arm1_2"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="132" lower="-2.3266" upper="2.3266" velocity="15.5"/>
+  </joint>
+  <joint name="wrist_pitch_stator_2" type="fixed">
+    <parent link="upper_arm1_2"/>
+    <child link="wrist_pitch_motor_2"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.2 0.0 0.0"/>
+  </joint>
+  <joint name="wrist_pitch_2" type="revolute">
+    <parent link="wrist_pitch_motor_2"/>
+    <child link="upper_arm2_2"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="132" lower="-2.3266" upper="2.3266" velocity="15.5"/>
   </joint>
   <!-- end effector  -->
-  <joint name="hand_joint_2" type="fixed">
-    <parent link="upper_arm_2"/>
-    <child link="ball_arm_2"/>
-    <origin rpy="0.0 0.0 0.0" xyz="0.3 0.0 0.0"/>
+  <joint name="wrist_yaw_2" type="revolute">
+    <parent link="upper_arm2_2"/>
+    <child link="wrist_2"/>
+    <origin rpy="0.0 1.57079632679 0.0" xyz="0.1 0.0 0.0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="132" lower="-2.3266" upper="2.3266" velocity="15.5"/>
   </joint>
-  <link name="payload_2">
-    <inertial>
-      <origin xyz="0.0 0.0 0.0"/>
-      <mass value="4"/>
-      <inertia ixx="0.0267" ixy="0" ixz="0" iyy="0.0267" iyz="0" izz="0.0267"/>
-    </inertial>
-    <visual>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-      <geometry>
-        <box size="0.2 0.2 0.2"/>
-      </geometry>
-      <material name="dark_grey"/>
-    </visual>
-  </link>
-  <joint name="hand_to_payload_2" type="fixed">
-    <parent link="ball_arm_2"/>
-    <child link="payload_2"/>
-  </joint>
+  <!--xacro:if value="${PAYLOAD}">
+	<link name="payload_${arm_num}">
+		<inertial>
+		    <origin xyz="0.0 0.0 0.0"/>
+			<mass value="4"/>
+			<inertia ixx="0.0267" iyy="0.0267" izz="0.0267" ixy="0" ixz="0" iyz="0"/>
+		</inertial>
+		<visual>
+			<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+			<geometry>
+				<box size="0.2 0.2 0.2"/>
+			</geometry>
+			<material name="dark_grey"/>
+		</visual>
+	</link>
+	<joint name="hand_to_payload_${arm_num}" type="fixed">
+		<parent link="ball_arm_${arm_num}"/>
+		<child link="payload_${arm_num}"/>
+	</joint>
+</xacro:if-->
   <!-- /macro legs -->
   <!-- links -->
   <link name="hip_roll_motor_1">
@@ -1047,25 +1279,6 @@
     <parent link="lower_leg_4"/>
     <child link="ball_4"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.3 0.0 0.0"/>
-  </joint>
-  <link name="payload_pelvis">
-    <inertial>
-      <origin xyz="0.0 0.0 0.0"/>
-      <mass value="4"/>
-      <inertia ixx="0.0267" ixy="0" ixz="0" iyy="0.0267" iyz="0" izz="0.0267"/>
-    </inertial>
-    <visual>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-      <geometry>
-        <box size="0.2 0.2 0.2"/>
-      </geometry>
-      <material name="dark_grey"/>
-    </visual>
-  </link>
-  <joint name="pelvis_to_payload" type="fixed">
-    <origin xyz="-0.3 0.0 0.225"/>
-    <parent link="pelvis"/>
-    <child link="payload_pelvis"/>
   </joint>
   <!-- ************ Control frames ************ -->
   <!--xacro:include filename="$(find pholus_urdf)/urdf/control_frames.urdf.xacro"/-->
