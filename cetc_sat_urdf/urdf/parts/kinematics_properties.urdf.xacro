@@ -24,6 +24,9 @@
         <xacro:property name="upper_arm2_length" value="${kin_props['upper_arm2_length'][id]}"/>
         <xacro:property name="upper_arm2_width" value="${kin_props['upper_arm2_width'][id]}"/>
         <xacro:property name="upper_arm2_height" value="${kin_props['upper_arm2_height'][id]}"/>
+        <xacro:property name="upper_arm3_length" value="${kin_props['upper_arm3_length'][id]}"/>
+        <xacro:property name="upper_arm3_width" value="${kin_props['upper_arm3_width'][id]}"/>
+        <xacro:property name="upper_arm3_height" value="${kin_props['upper_arm3_height'][id]}"/>
         <xacro:property name="lower_arm_length" value="${kin_props['lower_arm_length'][id]}"/>
         <xacro:property name="lower_arm_width" value="${kin_props['lower_arm_width'][id]}"/>
         <xacro:property name="lower_arm_height" value="${kin_props['lower_arm_height'][id]}"/>
@@ -53,6 +56,9 @@
         <xacro:property name="upper_arm2_length" value="${kin_props['upper_arm2_length']}"/>
         <xacro:property name="upper_arm2_width" value="${kin_props['upper_arm2_width']}"/>
         <xacro:property name="upper_arm2_height" value="${kin_props['upper_arm2_height']}"/>
+        <xacro:property name="upper_arm3_length" value="${kin_props['upper_arm3_length']}"/>
+        <xacro:property name="upper_arm3_width" value="${kin_props['upper_arm3_width']}"/>
+        <xacro:property name="upper_arm3_height" value="${kin_props['upper_arm3_height']}"/>
         <xacro:property name="lower_arm_length" value="${kin_props['lower_arm_length']}"/>
         <xacro:property name="lower_arm_width" value="${kin_props['lower_arm_width']}"/>
         <xacro:property name="lower_arm_height" value="${kin_props['lower_arm_height']}"/>
@@ -115,8 +121,6 @@
     <xacro:property name="ShoulderYaw_Ox" value="${pelvis_length / 2}"/>
     <xacro:property name="ShoulderYaw_Oy" value="${pelvis_width / 2}"/>
     <xacro:property name="ShoulderYaw_Oz" value="${pelvis_height / 2}"/>
-    <!--xacro:property name="ShoulderYaw_roll" value="0.5"/>
-    <xacro:property name="ShoulderYaw_pitch" value="0.4"/-->
     <xacro:property name="ShoulderYaw_roll" value="0.0"/>
     <xacro:property name="ShoulderYaw_pitch" value="0.0"/>
     <xacro:property name="ShoulderYaw_yaw" value="0.0"/>
@@ -153,24 +157,38 @@
     <xacro:property name="UpperArm1_pitch" value="0.0"/>
     <xacro:property name="UpperArm1_yaw" value="0.0"/>
     
-    <xacro:property name="WristPitch_Ox" value="${upper_arm1_length}"/>
-	<xacro:property name="WristPitch_Oy" value="0.0"/>
-	<xacro:property name="WristPitch_Oz" value="0.0"/>
-	<xacro:property name="WristPitch_roll" value="0.0"/>
-	<xacro:property name="WristPitch_pitch" value="0.0"/>
-	<xacro:property name="WristPitch_yaw" value="0.0"/>
+    <xacro:property name="WristYaw_Ox" value="${upper_arm1_length}"/>
+	<xacro:property name="WristYaw_Oy" value="0.0"/>
+	<xacro:property name="WristYaw_Oz" value="0.0"/>
+	<xacro:property name="WristYaw_roll" value="0.0"/>
+	<xacro:property name="WristYaw_pitch" value="${PI_2}"/>
+	<xacro:property name="WristYaw_yaw" value="0.0"/>
 	
 	<xacro:property name="UpperArm2_Ox" value="0.0"/>
     <xacro:property name="UpperArm2_Oy" value="0.0"/>
     <xacro:property name="UpperArm2_Oz" value="0.0"/>
     <xacro:property name="UpperArm2_roll" value="0.0"/>
-    <xacro:property name="UpperArm2_pitch" value="0.0"/>
+    <xacro:property name="UpperArm2_pitch" value="${-PI_2}"/>
     <xacro:property name="UpperArm2_yaw" value="0.0"/>
-
-    <xacro:property name="EndEffector_Ox" value="${upper_arm2_length}"/>
+	
+	<xacro:property name="WristPitch_Ox" value="${upper_arm2_length}"/>
+    <xacro:property name="WristPitch_Oy" value="0.0"/>
+    <xacro:property name="WristPitch_Oz" value="0.0"/>
+    <xacro:property name="WristPitch_roll" value="0.0"/>
+    <xacro:property name="WristPitch_pitch" value="0.0"/>
+    <xacro:property name="WristPitch_yaw" value="0.0"/>
+    
+    <xacro:property name="UpperArm3_Ox" value="0.0"/>
+    <xacro:property name="UpperArm3_Oy" value="0.0"/>
+    <xacro:property name="UpperArm3_Oz" value="0.0"/>
+    <xacro:property name="UpperArm3_roll" value="0.0"/>
+    <xacro:property name="UpperArm3_pitch" value="0.0"/>
+    <xacro:property name="UpperArm3_yaw" value="0.0"/>
+    
+    <xacro:property name="EndEffector_Ox" value="${upper_arm3_length}"/>
     <xacro:property name="EndEffector_Oy" value="0.0"/>
     <xacro:property name="EndEffector_Oz" value="0.0"/>
-    <xacro:property name="EndEffector_roll" value="0.0	"/>
+    <xacro:property name="EndEffector_roll" value="0.0"/>
     <xacro:property name="EndEffector_pitch" value="${PI_2}"/>
     <xacro:property name="EndEffector_yaw" value="0.0"/>
 

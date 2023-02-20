@@ -3,8 +3,9 @@ pelvis_mass: 14
 upper_leg_mass: 2.0
 lower_leg_mass: 1.0
 lower_arm_mass: 2.0
-upper_arm1_mass: 0.7
-upper_arm2_mass: 0.3
+upper_arm1_mass: 0.2
+upper_arm2_mass: 0.5
+upper_arm3_mass: 0.2
 ball_mass: 0.1
 motorA_mass: 1.8
 

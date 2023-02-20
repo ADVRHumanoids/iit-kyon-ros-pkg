@@ -52,7 +52,7 @@
 
 <link name="lower_arm_${arm_num}">
 	<inertial>
-		<origin xyz="${lower_arm_length / 2} 0.0 0.0"/>	
+		<origin xyz="0.0 0.0 0.0"/>	
 		<mass value="${lower_arm_mass}"/>
 		<inertia ixx="${LowerArm_xx}" ixy="${LowerArm_xy}" ixz="${LowerArm_xz}" iyy="${LowerArm_yy}" iyz="${LowerArm_yz}" izz="${LowerArm_zz}"/>
 	</inertial>
@@ -93,7 +93,7 @@
 
 <link name="upper_arm1_${arm_num}">
 	<inertial>
-		<origin xyz="${upper_arm1_length / 2} 0.0 0.0"/>	
+		<origin xyz="0.0 0.0 0.0"/>	
 		<mass value="${upper_arm1_mass}"/>
 		<inertia ixx="${UpperArm1_xx}" ixy="${UpperArm1_xy}" ixz="${UpperArm1_xz}" iyy="${UpperArm1_yy}" iyz="${UpperArm1_yz}" izz="${UpperArm1_zz}"/>
 	</inertial>
@@ -134,7 +134,7 @@
 
 <link name="upper_arm2_${arm_num}">
 	<inertial>
-		<origin xyz="${upper_arm2_length / 2} 0.0 0.0"/>	
+		<origin xyz="0.0 0.0 0.0"/>	
 		<mass value="${upper_arm2_mass}"/>
 		<inertia ixx="${UpperArm2_xx}" ixy="${UpperArm2_xy}" ixz="${UpperArm2_xz}" iyy="${UpperArm2_yy}" iyz="${UpperArm2_yz}" izz="${UpperArm2_zz}"/>
 	</inertial>
@@ -153,7 +153,7 @@
 </link>>
 <!-- /shoulder-elbow -->
 
-<link name="wrist_${arm_num}">
+<link name="wrist_yaw_motor_${arm_num}">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>
 		<mass value="${motorA_mass}"/>
@@ -173,6 +173,26 @@
 		</geometry>
 	</collision>
 </link>
+
+<link name="upper_arm3_${arm_num}">
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>	
+		<mass value="${upper_arm3_mass}"/>
+		<inertia ixx="${UpperArm3_xx}" ixy="${UpperArm2_xy}" ixz="${UpperArm2_xz}" iyy="${UpperArm2_yy}" iyz="${UpperArm2_yz}" izz="${UpperArm2_zz}"/>
+	</inertial>
+	<visual>
+		<origin xyz="${upper_arm3_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<box size="${upper_arm3_length} ${upper_arm2_width} ${upper_arm2_height}"/>
+		</geometry>
+	</visual>
+	<collision>
+		<origin xyz="${upper_arm3_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<box size="${upper_arm3_length} ${upper_arm3_width} ${upper_arm3_height}"/>
+		</geometry>
+	</collision>
+</link>>
 
 <!--link name="ball_arm_${arm_num}">
 	<inertial>
@@ -195,8 +215,8 @@
 </link-->
 
 
-<xacro:dagana_gripper name="dagana_${arm_num}" parent_link="wrist_${arm_num}" joint_type="fixed">
-	<origin xyz="0 0 0" rpy="0 0 0"/>
+<xacro:dagana_gripper name="dagana_${arm_num}" parent_link="upper_arm3_${arm_num}" joint_type="fixed">
+	<origin xyz="${EndEffector_Ox} ${EndEffector_Oy} ${EndEffector_Oz}" rpy="${EndEffector_roll} ${EndEffector_pitch} ${EndEffector_yaw}"/>
 </xacro:dagana_gripper>
 
 <!-- /LINKS -->
@@ -232,7 +252,7 @@
 	<origin xyz="${ElbowPitch_Ox} ${ElbowPitch_Oy} ${ElbowPitch_Oz}" rpy="${ElbowPitch_roll} ${ElbowPitch_pitch} ${ElbowPitch_yaw}"/>
 </joint>
 
-<!-- arm pitch 2 -->
+<!-- upper arm -->
 <joint name="elbow_pitch_${arm_num}" type="revolute">
 	<parent link="elbow_pitch_motor_${arm_num}"/>
 	<child link="upper_arm1_${arm_num}"/>
@@ -241,25 +261,30 @@
 	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
 </joint>
 
-<joint name="wrist_pitch_stator_${arm_num}" type="fixed">
+<joint name="wrist_yaw_stator_${arm_num}" type="fixed">
 	<parent link="upper_arm1_${arm_num}"/>
-	<child link="wrist_pitch_motor_${arm_num}"/>
+	<child link="wrist_yaw_motor_${arm_num}"/>
+	<origin xyz="${WristYaw_Ox} ${WristYaw_Oy} ${WristYaw_Oz}" rpy="${WristYaw_roll} ${WristYaw_pitch} ${WristYaw_yaw}"/>
+</joint>
+
+<joint name="wrist_yaw_${arm_num}" type="revolute">
+	<parent link="wrist_yaw_motor_${arm_num}"/>
+	<child link="upper_arm2_${arm_num}"/>
+	<origin xyz="${UpperArm2_Ox} ${UpperArm2_Oy} ${UpperArm2_Oz}" rpy="${UpperArm2_roll} ${UpperArm2_pitch} ${UpperArm2_yaw}"/>
+	<axis xyz="1 0 0"/>
+	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
+</joint>
+
+<joint name="wrist_pitch_stator_${arm_num}" type="fixed">
 	<origin xyz="${WristPitch_Ox} ${WristPitch_Oy} ${WristPitch_Oz}" rpy="${WristPitch_roll} ${WristPitch_pitch} ${WristPitch_yaw}"/>
+	<parent link="upper_arm2_${arm_num}"/>
+	<child link="wrist_pitch_motor_${arm_num}"/>
 </joint>
 
 <joint name="wrist_pitch_${arm_num}" type="revolute">
 	<parent link="wrist_pitch_motor_${arm_num}"/>
-	<child link="upper_arm2_${arm_num}"/>
-	<origin xyz="${UpperArm2_Ox} ${UpperArm2_Oy} ${UpperArm2_Oz}" rpy="${UpperArm2_roll} ${UpperArm2_pitch} ${UpperArm2_yaw}"/>
-	<axis xyz="0 0 1"/>
-	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
-</joint>
-	
-<!-- end effector  -->
-<joint name="wrist_yaw_${arm_num}" type="revolute">
-	<parent link="upper_arm2_${arm_num}"/>
-	<child link="wrist_${arm_num}"/>
-	<origin xyz="${EndEffector_Ox} ${EndEffector_Oy} ${EndEffector_Oz}" rpy="${EndEffector_roll} ${EndEffector_pitch} ${EndEffector_yaw}"/>
+	<child link="upper_arm3_${arm_num}"/>
+	<origin xyz="${UpperArm3_Ox} ${UpperArm3_Oy} ${UpperArm3_Oz}" rpy="${UpperArm3_roll} ${UpperArm3_pitch} ${UpperArm3_yaw}"/>
 	<axis xyz="0 0 1"/>
 	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
 </joint>
