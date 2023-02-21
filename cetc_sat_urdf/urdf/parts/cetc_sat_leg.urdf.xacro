@@ -71,9 +71,9 @@
 
 <link name="upper_leg_${leg_num}">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>	
+		<origin xyz="${upper_leg_length / 2} 0.0 0.0"/>	
 		<mass value="${upper_leg_mass}"/>
-		<inertia ixx="${UpperLeg_xx}" ixy="${UpperLeg_xy}" ixz="${UpperLeg_xz}" iyy="${UpperLeg_xx}" iyz="${UpperLeg_yz}" izz="${UpperLeg_zz}"/>
+		<inertia ixx="${UpperLeg_xx}" ixy="${UpperLeg_xy}" ixz="${UpperLeg_xz}" iyy="${UpperLeg_yy}" iyz="${UpperLeg_yz}" izz="${UpperLeg_zz}"/>
 	</inertial>
 	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 	<visual>
@@ -93,9 +93,9 @@
 
 <link name="lower_leg_${leg_num}">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>	
+		<origin xyz="${lower_leg_length / 2} 0.0 0.0"/>	
 		<mass value="${lower_leg_mass}"/>
-		<inertia ixx="${LowerLeg_xx}" ixy="${LowerLeg_xy}" ixz="${LowerLeg_xz}" iyy="${LowerLeg_xx}" iyz="${LowerLeg_yz}" izz="${LowerLeg_zz}"/>
+		<inertia ixx="${LowerLeg_xx}" ixy="${LowerLeg_xy}" ixz="${LowerLeg_xz}" iyy="${LowerLeg_yy}" iyz="${LowerLeg_yz}" izz="${LowerLeg_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="${lower_leg_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>

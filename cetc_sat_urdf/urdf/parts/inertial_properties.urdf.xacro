@@ -64,43 +64,43 @@
     <xacro:property name="Pelvis_zz" value="${1/12 * pelvis_mass * (pelvis_width * pelvis_width + pelvis_length * pelvis_length)}"/>
 
     <!-- Upper Leg -->
-    <xacro:property name="UpperLeg_xx" value="${1/3 * upper_leg_mass * (upper_leg_width * upper_leg_width + upper_leg_height * upper_leg_height)}"/>
+    <xacro:property name="UpperLeg_xx" value="${1/12 * upper_leg_mass * (upper_leg_width * upper_leg_width + upper_leg_height * upper_leg_height)}"/>
     <xacro:property name="UpperLeg_xy" value="0.0"/>
     <xacro:property name="UpperLeg_xz" value="0.0"/>
-    <xacro:property name="UpperLeg_yy" value="${1/3 * upper_leg_mass * (upper_leg_length * upper_leg_length + upper_leg_height * upper_leg_height)}"/>
+    <xacro:property name="UpperLeg_yy" value="${1/12 * upper_leg_mass * (upper_leg_length * upper_leg_length + upper_leg_height * upper_leg_height)}"/>
     <xacro:property name="UpperLeg_yz" value="0.0"/>
-    <xacro:property name="UpperLeg_zz" value="${1/3 * upper_leg_mass * (upper_leg_width * upper_leg_width + upper_leg_length * upper_leg_length)}"/>
+    <xacro:property name="UpperLeg_zz" value="${1/12 * upper_leg_mass * (upper_leg_width * upper_leg_width + upper_leg_length * upper_leg_length)}"/>
 
     <!-- Lower Leg -->
-    <xacro:property name="LowerLeg_xx" value="${1/3 * lower_leg_mass * (lower_leg_width * lower_leg_width + lower_leg_height * lower_leg_height)}"/>
+    <xacro:property name="LowerLeg_xx" value="${1/12 * lower_leg_mass * (lower_leg_width * lower_leg_width + lower_leg_height * lower_leg_height)}"/>
     <xacro:property name="LowerLeg_xy" value="0.0"/>
     <xacro:property name="LowerLeg_xz" value="0.0"/>
-    <xacro:property name="LowerLeg_yy" value="${1/3 * lower_leg_mass * (lower_leg_length * lower_leg_length + lower_leg_height * lower_leg_height)}"/>
+    <xacro:property name="LowerLeg_yy" value="${1/12 * lower_leg_mass * (lower_leg_length * lower_leg_length + lower_leg_height * lower_leg_height)}"/>
     <xacro:property name="LowerLeg_yz" value="0.0"/>
-    <xacro:property name="LowerLeg_zz" value="${1/3 * lower_leg_mass * (lower_leg_width * lower_leg_width + lower_leg_length * lower_leg_length)}"/>
+    <xacro:property name="LowerLeg_zz" value="${1/12 * lower_leg_mass * (lower_leg_width * lower_leg_width + lower_leg_length * lower_leg_length)}"/>
     
     <!-- Upper Arm -->
-    <xacro:property name="UpperArm_xx" value="${1/3 * upper_arm_mass * (upper_arm_width * upper_arm_width + upper_arm_height * upper_arm_height)}"/>
+    <xacro:property name="UpperArm_xx" value="${1/12 * upper_arm_mass * (upper_arm_width * upper_arm_width + upper_arm_height * upper_arm_height)}"/>
     <xacro:property name="UpperArm_xy" value="0.0"/>
     <xacro:property name="UpperArm_xz" value="0.0"/>
-    <xacro:property name="UpperArm_yy" value="${1/3 * upper_arm_mass * (upper_arm_length * upper_arm_length + upper_arm_height * upper_arm_height)}"/>
+    <xacro:property name="UpperArm_yy" value="${1/12 * upper_arm_mass * (upper_arm_length * upper_arm_length + upper_arm_height * upper_arm_height)}"/>
     <xacro:property name="UpperArm_yz" value="0.0"/>
-    <xacro:property name="UpperArm_zz" value="${1/3 * upper_arm_mass * (upper_arm_width * upper_arm_width + upper_arm_length * upper_arm_length)}"/>
+    <xacro:property name="UpperArm_zz" value="${1/12 * upper_arm_mass * (upper_arm_width * upper_arm_width + upper_arm_length * upper_arm_length)}"/>
 
     <!-- Lower Arm -->
-    <xacro:property name="LowerArm1_xx" value="${1/3 * lower_arm1_mass * (lower_arm1_width * lower_arm1_width + lower_arm1_height * lower_arm1_height)}"/>
+    <xacro:property name="LowerArm1_xx" value="${1/12 * lower_arm1_mass * (lower_arm1_width * lower_arm1_width + lower_arm1_height * lower_arm1_height)}"/>
     <xacro:property name="LowerArm1_xy" value="0.0"/>
     <xacro:property name="LowerArm1_xz" value="0.0"/>
-    <xacro:property name="LowerArm1_yy" value="${1/3 * lower_arm1_mass * (lower_arm1_length * lower_arm1_length + lower_arm1_height * lower_arm1_height)}"/>
+    <xacro:property name="LowerArm1_yy" value="${1/12 * lower_arm1_mass * (lower_arm1_length * lower_arm1_length + lower_arm1_height * lower_arm1_height)}"/>
     <xacro:property name="LowerArm1_yz" value="0.0"/>
-    <xacro:property name="LowerArm1_zz" value="${1/3 * lower_arm1_mass * (lower_arm1_width * lower_arm1_width + lower_arm1_length * lower_arm1_length)}"/>
+    <xacro:property name="LowerArm1_zz" value="${1/12 * lower_arm1_mass * (lower_arm1_width * lower_arm1_width + lower_arm1_length * lower_arm1_length)}"/>
     
-    <xacro:property name="LowerArm2_xx" value="${1/3 * lower_arm2_mass * (lower_arm2_width * lower_arm2_width + lower_arm2_height * lower_arm2_height)}"/>
+    <xacro:property name="LowerArm2_xx" value="${1/12 * lower_arm2_mass * (lower_arm2_width * lower_arm2_width + lower_arm2_height * lower_arm2_height)}"/>
     <xacro:property name="LowerArm2_xy" value="0.0"/>
     <xacro:property name="LowerArm2_xz" value="0.0"/>
-    <xacro:property name="LowerArm2_yy" value="${1/3 * lower_arm2_mass * (lower_arm2_length * lower_arm2_length + lower_arm2_height * lower_arm2_height)}"/>
+    <xacro:property name="LowerArm2_yy" value="${1/12 * lower_arm2_mass * (lower_arm2_length * lower_arm2_length + lower_arm2_height * lower_arm2_height)}"/>
     <xacro:property name="LowerArm2_yz" value="0.0"/>
-    <xacro:property name="LowerArm2_zz" value="${1/3 * lower_arm2_mass * (lower_arm2_width * lower_arm2_width + lower_arm2_length * lower_arm2_length)}"/>
+    <xacro:property name="LowerArm2_zz" value="${1/12 * lower_arm2_mass * (lower_arm2_width * lower_arm2_width + lower_arm2_length * lower_arm2_length)}"/>
 
     <!-- Ball (hollow sphere) -->
     <xacro:property name="Ball_xx" value="${2/3 * ball_mass * ball_radius * ball_radius}"/>
