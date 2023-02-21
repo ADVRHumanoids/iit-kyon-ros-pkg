@@ -166,14 +166,14 @@
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+	 		<cylinder radius="${cylinder_radius}" length="${cylinder_length / 6}"/>
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+	 		<cylinder radius="${cylinder_radius}" length="${cylinder_length / 6}"/>
 	  	</geometry>
   		<material name="dark_grey"/>
 	</collision>
