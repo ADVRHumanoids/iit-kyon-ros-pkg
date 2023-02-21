@@ -52,9 +52,9 @@
 
 <link name="lower_arm_${arm_num}">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>	
+		<origin xyz="${lower_arm_length / 2} 0.0 0.0"/>	
 		<mass value="${lower_arm_mass}"/>
-		<inertia ixx="${LowerArm_xx}" ixy="${LowerArm_xy}" ixz="${LowerArm_xz}" iyy="${LowerArm_xx}" iyz="${LowerArm_yz}" izz="${LowerArm_zz}"/>
+		<inertia ixx="${LowerArm_xx}" ixy="${LowerArm_xy}" ixz="${LowerArm_xz}" iyy="${LowerArm_yy}" iyz="${LowerArm_yz}" izz="${LowerArm_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="${lower_arm_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -93,9 +93,9 @@
 
 <link name="upper_arm1_${arm_num}">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>	
+		<origin xyz="${upper_arm1_length / 2} 0.0 0.0"/>	
 		<mass value="${upper_arm1_mass}"/>
-		<inertia ixx="${UpperArm1_xx}" ixy="${UpperArm1_xy}" ixz="${UpperArm1_xz}" iyy="${UpperArm1_xx}" iyz="${UpperArm1_yz}" izz="${UpperArm1_zz}"/>
+		<inertia ixx="${UpperArm1_xx}" ixy="${UpperArm1_xy}" ixz="${UpperArm1_xz}" iyy="${UpperArm1_yy}" iyz="${UpperArm1_yz}" izz="${UpperArm1_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="${upper_arm1_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -134,9 +134,9 @@
 
 <link name="upper_arm2_${arm_num}">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>	
+		<origin xyz="${upper_arm2_length / 2} 0.0 0.0"/>	
 		<mass value="${upper_arm2_mass}"/>
-		<inertia ixx="${UpperArm2_xx}" ixy="${UpperArm2_xy}" ixz="${UpperArm2_xz}" iyy="${UpperArm2_xx}" iyz="${UpperArm2_yz}" izz="${UpperArm2_zz}"/>
+		<inertia ixx="${UpperArm2_xx}" ixy="${UpperArm2_xy}" ixz="${UpperArm2_xz}" iyy="${UpperArm2_yy}" iyz="${UpperArm2_yz}" izz="${UpperArm2_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="${upper_arm2_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
