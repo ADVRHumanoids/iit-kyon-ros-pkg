@@ -10,13 +10,13 @@ lower_leg_height: 0.05
 upper_arm1_length: 0.05
 upper_arm1_width: 0.05
 upper_arm1_height: 0.05
-upper_arm2_length: 0.15
+upper_arm2_length: 0.25
 upper_arm2_width: 0.05
 upper_arm2_height: 0.05
 upper_arm3_length: 0.05
 upper_arm3_width: 0.05
 upper_arm3_height: 0.05
-lower_arm_length: 0.3
+lower_arm_length: 0.4
 lower_arm_width: 0.1
 lower_arm_height: 0.1
 ball_radius: 0.05

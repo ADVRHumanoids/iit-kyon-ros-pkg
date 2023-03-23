@@ -244,7 +244,7 @@
 	<origin xyz="${LowerArm_Ox} ${LowerArm_Oy} ${LowerArm_Oz}" rpy="${LowerArm_roll} ${LowerArm_pitch} ${LowerArm_yaw}"/>
 	<axis xyz="0 0 1"/>
 	<limit lower="${j_pitch_1_lower[arm_num-1]}" upper="${j_pitch_1_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
-</joint>
+</joint> 
 
 <joint name="elbow_pitch_stator_${arm_num}" type="fixed">
 	<parent link="lower_arm_${arm_num}"/>
@@ -295,7 +295,7 @@
 	<origin xyz="0 0 ${ball_radius}" rpy="0 0 0"/>
 </joint-->
 
-<!--xacro:if value="${PAYLOAD}">
+<xacro:if value="${PAYLOAD}">
 	<link name="payload_${arm_num}">
 		<inertial>
 		    <origin xyz="0.0 0.0 0.0"/>
@@ -311,10 +311,10 @@
 		</visual>
 	</link>
 	<joint name="hand_to_payload_${arm_num}" type="fixed">
-		<parent link="ball_arm_${arm_num}"/>
+		<parent link="dagana_${arm_num}_palm_frame"/>
 		<child link="payload_${arm_num}"/>
 	</joint>
-</xacro:if-->
+</xacro:if>
 
 </xacro:macro>
 <!-- /macro arms -->
