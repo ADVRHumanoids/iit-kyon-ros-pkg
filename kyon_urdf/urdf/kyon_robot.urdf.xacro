@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon">
+
+  <xacro:include filename="$(find kyon_urdf)/urdf/kyon.urdf.xacro" />
+
+  <xacro:include filename="$(find kyon_urdf)/urdf/gazebo/kyon.gazebo.xacro" />
+   
+  <xacro:include filename="$(find kyon_urdf)/urdf/gazebo/xbot.gazebo.xacro" />
+
+  <xacro:include filename="$(find kyon_urdf)/urdf/gazebo/materials.gazebo.xacro" />
+  
+  <xacro:unless value="${ADD_LEGS}">
+
+    <link name="world"/>
+      <joint name="reference" type="fixed">
+      <parent link="world"/>
+      <child link="pelvis"/>
+    </joint>
+
+  </xacro:unless>
+
+  <origin xyz="0.0 0.0 1.2" rpy="0 0 0" />
+</robot>
+

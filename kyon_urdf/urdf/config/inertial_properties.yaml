@@ -1,0 +1,14 @@
+# links' mass
+pelvis_mass: 14
+upper_leg_mass: 2.0
+lower_leg_mass: 1.0
+lower_arm_mass: 1.0
+upper_arm1_mass: 0.77
+upper_arm2_mass: 2.0  # include also end effector weight
+ball_mass: 0.1
+motorA_mass: 1.8
+motor_arm1_mass: 0.92
+motor_arm2_mass: 0.8
+motor_arm3_mass: 0.63
+
+gear_ratio: 30

@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<robot  xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+    <xacro:property name="inertial_yaml_file" value="$(find kyon_urdf)/urdf/config/inertial_properties.yaml" />
+    <xacro:property name="inertial_props" value="${xacro.load_yaml(inertial_yaml_file)}"/>
+
+    <xacro:property name="pelvis_mass" value="${inertial_props['pelvis_mass']}"/>
+    <xacro:property name="upper_leg_mass" value="${inertial_props['upper_leg_mass']}"/>
+    <xacro:property name="lower_leg_mass" value="${inertial_props['lower_leg_mass']}"/>
+    <xacro:property name="upper_arm1_mass" value="${inertial_props['upper_arm1_mass']}"/>
+    <xacro:property name="upper_arm2_mass" value="${inertial_props['upper_arm2_mass']}"/>
+    <xacro:property name="lower_arm_mass" value="${inertial_props['lower_arm_mass']}"/>
+    <xacro:property name="ball_mass" value="${inertial_props['ball_mass']}"/>
+    <xacro:property name="motorA_mass" value="${inertial_props['motorA_mass']}"/>
+    <xacro:property name="motor_arm1_mass" value="${inertial_props['motor_arm1_mass']}"/>
+    <xacro:property name="motor_arm2_mass" value="${inertial_props['motor_arm2_mass']}"/>
+    <xacro:property name="motor_arm3_mass" value="${inertial_props['motor_arm3_mass']}"/>
+
+
+    <!-- Compound properties (i.e. based on the props parsed from the yaml) -->
+
+    <!-- Motor -->
+    <xacro:property name="MotorA_xx" value="${1/12 * motor_arm1_mass * (3 * cylinder_radius * cylinder_radius + cylinder_length * cylinder_length)}"/>
+    <xacro:property name="MotorA_xy" value="0.0"/>
+    <xacro:property name="MotorA_xz" value="0.0"/>
+    <xacro:property name="MotorA_yy" value="${1/12 * motor_arm1_mass * (3 * cylinder_radius * cylinder_radius + cylinder_length * cylinder_length)}"/>
+    <xacro:property name="MotorA_yz" value="0.0"/>
+    <xacro:property name="MotorA_zz" value="${1/2 * motor_arm1_mass * cylinder_radius * cylinder_radius}"/>
+
+    <xacro:property name="MotorArm1_xx" value="${1/12 * motor_arm1_mass * (3 * cylinder_radius * cylinder_radius + cylinder_length * cylinder_length)}"/>
+    <xacro:property name="MotorArm1_xy" value="0.0"/>
+    <xacro:property name="MotorArm1_xz" value="0.0"/>
+    <xacro:property name="MotorArm1_yy" value="${1/12 * motor_arm1_mass * (3 * cylinder_radius * cylinder_radius + cylinder_length * cylinder_length)}"/>
+    <xacro:property name="MotorArm1_yz" value="0.0"/>
+    <xacro:property name="MotorArm1_zz" value="${1/2 * motor_arm1_mass * cylinder_radius * cylinder_radius}"/>
+    
+    <xacro:property name="MotorArm2_xx" value="${1/12 * motor_arm2_mass * (3 * cylinder_radius * cylinder_radius + cylinder_length * cylinder_length)}"/>
+    <xacro:property name="MotorArm2_xy" value="0.0"/>
+    <xacro:property name="MotorArm2_xz" value="0.0"/>
+    <xacro:property name="MotorArm2_yy" value="${1/12 * motor_arm2_mass * (3 * cylinder_radius * cylinder_radius + cylinder_length * cylinder_length)}"/>
+    <xacro:property name="MotorArm2_yz" value="0.0"/>
+    <xacro:property name="MotorArm2_zz" value="${1/2 * motor_arm2_mass * cylinder_radius * cylinder_radius}"/>
+    
+    <xacro:property name="MotorArm3_xx" value="${1/12 * motor_arm3_mass * (3 * cylinder_radius * cylinder_radius + cylinder_length * cylinder_length)}"/>
+    <xacro:property name="MotorArm3_xy" value="0.0"/>
+    <xacro:property name="MotorArm3_xz" value="0.0"/>
+    <xacro:property name="MotorArm3_yy" value="${1/12 * motor_arm3_mass * (3 * cylinder_radius * cylinder_radius + cylinder_length * cylinder_length)}"/>
+    <xacro:property name="MotorArm3_yz" value="0.0"/>
+    <xacro:property name="MotorArm3_zz" value="${1/2 * motor_arm3_mass * cylinder_radius * cylinder_radius}"/>
+
+    <!-- Pelvis -->
+    <xacro:property name="Pelvis_xx" value="${1/12 * pelvis_mass * (pelvis_width * pelvis_width + pelvis_height * pelvis_height)}"/>
+    <xacro:property name="Pelvis_xy" value="0.0"/>
+    <xacro:property name="Pelvis_xz" value="0.0"/>
+    <xacro:property name="Pelvis_yy" value="${1/12 * pelvis_mass * (pelvis_length * pelvis_length + pelvis_height * pelvis_height)}"/>
+    <xacro:property name="Pelvis_yz" value="0.0"/>
+    <xacro:property name="Pelvis_zz" value="${1/12 * pelvis_mass * (pelvis_width * pelvis_width + pelvis_length * pelvis_length)}"/>
+
+    <!-- Upper Leg -->
+    <xacro:property name="UpperLeg_xx" value="${1/12 * upper_leg_mass * (upper_leg_width * upper_leg_width + upper_leg_height * upper_leg_height)}"/>
+    <xacro:property name="UpperLeg_xy" value="0.0"/>
+    <xacro:property name="UpperLeg_xz" value="0.0"/>
+    <xacro:property name="UpperLeg_yy" value="${1/12 * upper_leg_mass * (upper_leg_length * upper_leg_length + upper_leg_height * upper_leg_height)}"/>
+    <xacro:property name="UpperLeg_yz" value="0.0"/>
+    <xacro:property name="UpperLeg_zz" value="${1/12 * upper_leg_mass * (upper_leg_width * upper_leg_width + upper_leg_length * upper_leg_length)}"/>
+
+    <!-- Lower Leg -->
+    <xacro:property name="LowerLeg_xx" value="${1/12 * lower_leg_mass * (lower_leg_width * lower_leg_width + lower_leg_height * lower_leg_height)}"/>
+    <xacro:property name="LowerLeg_xy" value="0.0"/>
+    <xacro:property name="LowerLeg_xz" value="0.0"/>
+    <xacro:property name="LowerLeg_yy" value="${1/12 * lower_leg_mass * (lower_leg_length * lower_leg_length + lower_leg_height * lower_leg_height)}"/>
+    <xacro:property name="LowerLeg_yz" value="0.0"/>
+    <xacro:property name="LowerLeg_zz" value="${1/12 * lower_leg_mass * (lower_leg_width * lower_leg_width + lower_leg_length * lower_leg_length)}"/>
+    
+    <!-- Upper Arm -->
+    <xacro:property name="UpperArm1_xx" value="${1/12 * upper_arm1_mass * (upper_arm1_width * upper_arm1_width + upper_arm1_height * upper_arm1_height)}"/>
+    <xacro:property name="UpperArm1_xy" value="0.0"/>
+    <xacro:property name="UpperArm1_xz" value="0.0"/>
+    <xacro:property name="UpperArm1_yy" value="${1/12 * upper_arm1_mass * (upper_arm1_length * upper_arm1_length + upper_arm1_height * upper_arm1_height)}"/>
+    <xacro:property name="UpperArm1_yz" value="0.0"/>
+    <xacro:property name="UpperArm1_zz" value="${1/12 * upper_arm1_mass * (upper_arm1_width * upper_arm1_width + upper_arm1_length * upper_arm1_length)}"/>
+    
+    <xacro:property name="UpperArm2_xx" value="${1/12 * upper_arm2_mass * (upper_arm2_width * upper_arm2_width + upper_arm2_height * upper_arm2_height)}"/>
+    <xacro:property name="UpperArm2_xy" value="0.0"/>
+    <xacro:property name="UpperArm2_xz" value="0.0"/>
+    <xacro:property name="UpperArm2_yy" value="${1/12 * upper_arm2_mass * (upper_arm2_length * upper_arm2_length + upper_arm2_height * upper_arm2_height)}"/>
+    <xacro:property name="UpperArm2_yz" value="0.0"/>
+    <xacro:property name="UpperArm2_zz" value="${1/12 * upper_arm2_mass * (upper_arm2_width * upper_arm2_width + upper_arm2_length * upper_arm2_length)}"/>
+
+    <!-- Lower Arm -->
+    <xacro:property name="LowerArm_xx" value="${1/12 * lower_arm_mass * (lower_arm_width * lower_arm_width + lower_arm_height * lower_arm_height)}"/>
+    <xacro:property name="LowerArm_xy" value="0.0"/>
+    <xacro:property name="LowerArm_xz" value="0.0"/>
+    <xacro:property name="LowerArm_yy" value="${1/12 * lower_arm_mass * (lower_arm_length * lower_arm_length + lower_arm_height * lower_arm_height)}"/>
+    <xacro:property name="LowerArm_yz" value="0.0"/>
+    <xacro:property name="LowerArm_zz" value="${1/12 * lower_arm_mass * (lower_arm_width * lower_arm_width + lower_arm_length * lower_arm_length)}"/>
+
+    <!-- Ball (hollow sphere) -->
+    <xacro:property name="Ball_xx" value="${2/3 * ball_mass * ball_radius * ball_radius}"/>
+    <xacro:property name="Ball_xy" value="0.0"/>
+    <xacro:property name="Ball_xz" value="0.0"/>
+    <xacro:property name="Ball_yy" value="${2/3 * ball_mass * ball_radius * ball_radius}"/>
+    <xacro:property name="Ball_yz" value="0.0"/>
+    <xacro:property name="Ball_zz" value="${2/3 * ball_mass * ball_radius * ball_radius}"/>
+
+</robot>

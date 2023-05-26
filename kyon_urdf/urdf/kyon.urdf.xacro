@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon">
+
+<xacro:arg name="config" default="$(find kyon_urdf)/urdf/config/kyon.urdf.xacro"/>
+
+<!-- ************ MODEL CONFIGURATION ************ -->
+<xacro:include filename="$(arg config)"/>
+
+<!-- ************ CETC-SAT plain model ************ -->
+<xacro:include filename="$(find kyon_urdf)/urdf/kyon_base.urdf.xacro"/>
+
+<!-- ************ Control frames ************ -->
+<!--xacro:include filename="$(find pholus_urdf)/urdf/control_frames.urdf.xacro"/-->
+
+<xacro:if value="${ADD_FLOATING_BASE}">
+	<link name="world"/>
+	<joint name="reference" type="floating">
+		<parent link="world"/>
+		<child link="pelvis"/>
+	</joint>
+</xacro:if>
+
+</robot>
+

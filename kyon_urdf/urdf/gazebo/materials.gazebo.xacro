@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+<xacro:macro name="kyon_leg_materials" params="leg_num">
+
+<gazebo reference="hip_roll_${leg_num}">
+	<material>Gazebo/LightBlueLaser</material>
+</gazebo>
+<gazebo reference="hip_pitch_stator_${leg_num}">
+	<material>Gazebo/BlackTransparent</material>
+</gazebo>
+<gazebo reference="hip_pitch_${leg_num}">
+	<material>Gazebo/LightBlueLaser</material>
+</gazebo>
+<gazebo reference="knee_pitch_stator_${leg_num}">
+	<material>Gazebo/LightBlueLaser</material>
+</gazebo>
+<gazebo reference="knee_pitch_${leg_num}">
+	<material>Gazebo/LightBlueLaser</material>
+</gazebo>
+<gazebo reference="ball_joint_${leg_num}">
+	<material>Gazebo/BlackTransparent</material>
+</gazebo>
+
+</xacro:macro>
+
+<xacro:macro name="kyon_arm_materials" params="arm_num">
+
+<gazebo reference="shoulder_yaw_${arm_num}">
+	<material>Gazebo/BlackTransparent</material>
+</gazebo>
+<gazebo reference="shoulder_pitch_stator_${arm_num}">
+	<material>Gazebo/LightBlueLaser</material>
+</gazebo>
+<gazebo reference="shoulder_pitch_${arm_num}">
+	<material>Gazebo/LightBlueLaser</material>
+</gazebo>
+<gazebo reference="elbow_pitch_stator_${arm_num}">
+	<material>Gazebo/LightBlueLaser</material>
+</gazebo>
+<gazebo reference="elbow_pitch_${arm_num}">
+	<material>Gazebo/BlackTransparent</material>
+</gazebo>
+<gazebo reference="hand_joint_${arm_num}">
+	<material>Gazebo/LightBlueLaser</material>
+</gazebo>
+
+</xacro:macro>
+
+
+
+<gazebo reference="pelvis">
+	<material>Gazebo/LightBlueLaser</material>
+</gazebo>
+
+<xacro:if value="${ADD_LEGS}">
+
+<xacro:kyon_leg_materials leg_num="1"/>
+<xacro:kyon_leg_materials leg_num="2"/>
+<xacro:kyon_leg_materials leg_num="3"/>
+<xacro:kyon_leg_materials leg_num="4"/>
+
+	
+</xacro:if>
+
+<xacro:if value="${ADD_UPPER_BODY}">
+
+<xacro:kyon_arm_materials arm_num="1"/>
+<xacro:kyon_arm_materials arm_num="2"/>
+
+<gazebo reference="ball_arm_1">
+	<material>Gazebo/BlackTransparent</material>
+</gazebo>
+
+<gazebo reference="ball_arm_2">
+	<material>Gazebo/BlackTransparent</material>
+</gazebo>
+
+</xacro:if>
+
+
+
+</robot>

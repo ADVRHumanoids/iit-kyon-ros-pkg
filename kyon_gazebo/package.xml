@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>kyon_gazebo</name>
+  <version>0.0.0</version>
+  <description>The kyon gazebo package</description>
+
+  <maintainer email="luca.rossini@iit.it">Luca Rossini</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+  </export>
+</package>

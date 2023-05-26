@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:if value="${ADD_LEGS}">
+
+        <gazebo reference="hip_roll_1">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="hip_pitch_1">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="knee_pitch_1">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+
+        <gazebo reference="hip_roll_2">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="hip_pitch_2">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="knee_pitch_2">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+
+        <gazebo reference="hip_roll_3">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="hip_pitch_3">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="knee_pitch_3">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+
+        <gazebo reference="hip_roll_4">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="hip_pitch_4">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="knee_pitch_4">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        
+        <gazebo reference="ball_1">
+        	<collision>
+		        <surface>
+		            <friction>
+		                <!-- <torsional>
+		                    <coefficient> 1.0 </coefficient>
+		                    <use_patch_radius>true</use_patch_radius>
+		                    <patch_radius>0.2</patch_radius>
+		                </torsional> -->
+		                <ode>
+		                    <mu>1.0</mu>
+		                    <mu2>1.0</mu2>
+		                </ode>
+		                <bullet>
+		                    <friction>1.0</friction>
+		                    <friction2>1.0</friction2>
+		                </bullet>
+		            </friction>
+		            <contact>
+		                <ode>
+		                    <kp>2100000</kp>
+		                    <kd>1</kd>
+		                    <max_vel>100</max_vel>
+		                </ode>
+		                <bullet>
+		                    <soft_cfm>0.007</soft_cfm>
+		                    <soft_erp>0.25</soft_erp>
+		                    <kp>1000000</kp>
+		                    <kd>5</kd>
+		                </bullet>
+		            </contact>
+		        </surface>
+		    </collision>
+		</gazebo>
+		
+		<gazebo reference="ball_2">
+        	<collision>
+		        <surface>
+		            <friction>
+		                <!-- <torsional>
+		                    <coefficient> 1.0 </coefficient>
+		                    <use_patch_radius>true</use_patch_radius>
+		                    <patch_radius>0.2</patch_radius>
+		                </torsional> -->
+		                <ode>
+		                    <mu>1.0</mu>
+		                    <mu2>1.0</mu2>
+		                </ode>
+		                <bullet>
+		                    <friction>1.0</friction>
+		                    <friction2>1.0</friction2>
+		                </bullet>
+		            </friction>
+		            <contact>
+		                <ode>
+		                    <kp>2100000</kp>
+		                    <kd>1</kd>
+		                    <max_vel>100</max_vel>
+		                </ode>
+		                <bullet>
+		                    <soft_cfm>0.007</soft_cfm>
+		                    <soft_erp>0.25</soft_erp>
+		                    <kp>1000000</kp>
+		                    <kd>5</kd>
+		                </bullet>
+		            </contact>
+		        </surface>
+		    </collision>
+		</gazebo>
+		
+		<gazebo reference="ball_3">
+        	<collision>
+		        <surface>
+		            <friction>
+		                <!-- <torsional>
+		                    <coefficient> 1.0 </coefficient>
+		                    <use_patch_radius>true</use_patch_radius>
+		                    <patch_radius>0.2</patch_radius>
+		                </torsional> -->
+		                <ode>
+		                    <mu>1.0</mu>
+		                    <mu2>1.0</mu2>
+		                </ode>
+		                <bullet>
+		                    <friction>1.0</friction>
+		                    <friction2>1.0</friction2>
+		                </bullet>
+		            </friction>
+		            <contact>
+		                <ode>
+		                    <kp>2100000</kp>
+		                    <kd>1</kd>
+		                    <max_vel>100</max_vel>
+		                </ode>
+		                <bullet>
+		                    <soft_cfm>0.007</soft_cfm>
+		                    <soft_erp>0.25</soft_erp>
+		                    <kp>1000000</kp>
+		                    <kd>5</kd>
+		                </bullet>
+		            </contact>
+		        </surface>
+		    </collision>
+		</gazebo>
+		
+		<gazebo reference="ball_4">
+        	<collision>
+		        <surface>
+		            <friction>
+		                <!-- <torsional>
+		                    <coefficient> 1.0 </coefficient>
+		                    <use_patch_radius>true</use_patch_radius>
+		                    <patch_radius>0.2</patch_radius>
+		                </torsional> -->
+		                <ode>
+		                    <mu>1.0</mu>
+		                    <mu2>1.0</mu2>
+		                </ode>
+		                <bullet>
+		                    <friction>1.0</friction>
+		                    <friction2>1.0</friction2>
+		                </bullet>
+		            </friction>
+		            <contact>
+		                <ode>
+		                    <kp>2100000</kp>
+		                    <kd>1</kd>
+		                    <max_vel>100</max_vel>
+		                </ode>
+		                <bullet>
+		                    <soft_cfm>0.007</soft_cfm>
+		                    <soft_erp>0.25</soft_erp>
+		                    <kp>1000000</kp>
+		                    <kd>5</kd>
+		                </bullet>
+		            </contact>
+		        </surface>
+		    </collision>
+		</gazebo>
+
+    </xacro:if>
+
+    <xacro:if value="${ADD_UPPER_BODY}">
+        <gazebo reference="shoulder_yaw_1">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="shoulder_pitch_1">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="elbow_pitch_1">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+
+
+        <gazebo reference="shoulder_yaw_2">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="shoulder_pitch_2">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="elbow_pitch_2">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+
+    </xacro:if>
+
+</robot>

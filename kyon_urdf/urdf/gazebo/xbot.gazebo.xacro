@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<gazebo>
+
+    <plugin name="xbot2_link_state_sensor" filename="libxbot2_gz_link_state_sensor.so">
+        <links>
+            <link name="pelvis"/>
+        </links>
+    </plugin>
+    
+    <plugin name="xbot2_ft_driver" filename="libxbot2_gz_ft_server.so"/>
+    
+    <plugin name="xbot2_imu_driver" filename="libxbot2_gz_imu_server.so"/>
+    
+    <plugin name="xbot2_joint_driver" filename="libxbot2_gz_joint_server.so">
+        <pid>
+            <gain name="lowpwr_mot" p="50"  d="5"/>
+            <gain name="small_mot"  p="200"  d="10"/>
+            <gain name="medium_mot" p="500" d="20"/>
+            <gain name="big_mot"    p="1000" d="30"/>
+
+            <pid name="shoulder_yaw_1" profile="medium_mot"/>
+            <pid name="shoulder_pitch_1" profile="medium_mot"/>
+            <pid name="elbow_pitch_1" profile="small_mot"/>
+            
+            <pid name="shoulder_yaw_2" profile="medium_mot"/>
+            <pid name="shoulder_pitch_2" profile="medium_mot"/>
+            <pid name="elbow_pitch_2" profile="small_mot"/>
+            
+            <pid name="hip_roll_1"     profile="big_mot"/>
+            <pid name="hip_pitch_1"  profile="big_mot"/>
+            <pid name="knee_pitch_1"   profile="medium_mot"/>
+            
+            <pid name="hip_roll_2"     profile="big_mot"/>
+            <pid name="hip_pitch_2"  profile="big_mot"/>
+            <pid name="knee_pitch_2"   profile="medium_mot"/>
+            
+            <pid name="hip_roll_3"     profile="big_mot"/>
+            <pid name="hip_pitch_3"  profile="big_mot"/>
+            <pid name="knee_pitch_3"   profile="medium_mot"/>
+            
+            <pid name="hip_roll_4"     profile="big_mot"/>
+            <pid name="hip_pitch_4"  profile="big_mot"/>
+            <pid name="knee_pitch_4"   profile="medium_mot"/>
+        </pid>
+    </plugin>
+</gazebo>
+
+</robot>

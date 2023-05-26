@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- macro legs -->
+<xacro:macro name="kyon_leg" params="leg_num origin_x origin_y mirror">
+
+<!-- links -->
+
+<link name="hip_roll_motor_${leg_num}">
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>
+		<mass value="${motorA_mass}"/>
+		<inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
+	</inertial>
+	<visual>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+	  	<geometry>
+	 		<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+	  	</geometry>
+  		<material name="dark_grey"/>
+	</visual>
+	<collision>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+		</geometry>
+	</collision>
+</link>
+
+<link name="hip_pitch_motor_${leg_num}">
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>
+		<mass value="${motorA_mass}"/>
+		<inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
+	</inertial>
+	<visual>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+	  	<geometry>
+	 		<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+	  	</geometry>
+  		<material name="dark_grey"/>
+	</visual>
+	<collision>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+		</geometry>
+	</collision>
+</link>
+
+<link name="knee_pitch_motor_${leg_num}">
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>
+		<mass value="${motorA_mass}"/>
+		<inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
+	</inertial>
+	<visual>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+	  	<geometry>
+	 		<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+	  	</geometry>
+  		<material name="dark_grey"/>
+	</visual>
+	<collision>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<cylinder radius="${cylinder_radius}" length="${cylinder_length}"/>
+		</geometry>
+	</collision>
+</link>
+
+<link name="upper_leg_${leg_num}">
+	<inertial>
+		<origin xyz="${upper_leg_length / 2} 0.0 0.0"/>	
+		<mass value="${upper_leg_mass}"/>
+		<inertia ixx="${UpperLeg_xx}" ixy="${UpperLeg_xy}" ixz="${UpperLeg_xz}" iyy="${UpperLeg_yy}" iyz="${UpperLeg_yz}" izz="${UpperLeg_zz}"/>
+	</inertial>
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<visual>
+		<origin xyz="${upper_leg_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+	  	<geometry>
+	 		<box size="${upper_leg_length} ${upper_leg_width} ${upper_leg_height}"/>
+	  	</geometry>
+  		<material name="dark_grey"/>
+	</visual>
+	<collision>
+		<origin xyz="${upper_leg_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<box size="${upper_leg_length} ${upper_leg_width} ${upper_leg_height}"/>
+		</geometry>
+	</collision>
+</link>
+
+<link name="lower_leg_${leg_num}">
+	<inertial>
+		<origin xyz="${lower_leg_length / 2} 0.0 0.0"/>	
+		<mass value="${lower_leg_mass}"/>
+		<inertia ixx="${LowerLeg_xx}" ixy="${LowerLeg_xy}" ixz="${LowerLeg_xz}" iyy="${LowerLeg_yy}" iyz="${LowerLeg_yz}" izz="${LowerLeg_zz}"/>
+	</inertial>
+	<visual>
+		<origin xyz="${lower_leg_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+	  	<geometry>
+	 		<box size="${lower_leg_length} ${lower_leg_width} ${lower_leg_height}"/>
+	  	</geometry>
+  		<material name="dark_grey"/>
+	</visual>
+	<collision>
+		<origin xyz="${lower_leg_length / 2} 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<geometry>
+	 		<box size="${lower_leg_length} ${lower_leg_width} ${lower_leg_height}"/>
+		</geometry>
+	</collision>
+</link>
+
+<link name="ball_${leg_num}">
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>
+		<mass value="${ball_mass}"/>
+		<inertia ixx="${Ball_xx}" ixy="${Ball_xy}" ixz="${Ball_xz}" iyy="${Ball_yy}" iyz="${Ball_yz}" izz="${Ball_zz}"/>
+	</inertial>
+	<visual>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<sphere radius="${ball_radius}"/>
+		</geometry>
+	</visual>
+	<collision>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<sphere radius="${ball_radius}"/>
+		</geometry>
+	</collision>
+</link>
+
+<!-- joints -->
+
+<joint name="hip_roll_${leg_num}" type="revolute">
+	<parent link="pelvis"/>
+	<child link="hip_roll_motor_${leg_num}"/>
+	<origin xyz="${origin_x * HipRoll_Ox} ${origin_y * HipRoll_Oy} ${HipRoll_Oz}" rpy="${HipRoll_roll} ${HipRoll_pitch} ${HipRoll_yaw}"/>
+	<axis xyz="0 0 1"/>
+    <limit lower="${hip_roll_lower[leg_num-1]}" upper="${hip_roll_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> <!-- 200 Nm, 1 rad/s-->
+</joint>
+
+<joint name="hip_pitch_stator_${leg_num}" type="fixed">
+	<parent link="hip_roll_motor_${leg_num}"/>
+	<child link="hip_pitch_motor_${leg_num}"/>
+	<origin xyz="${HipPitch_Ox} ${mirror * (HipPitch_Oy)} ${HipPitch_Oz}" rpy="${HipPitch_roll} ${HipPitch_pitch} ${HipPitch_yaw}"/>
+</joint>
+
+<joint name="knee_pitch_stator_${leg_num}" type="fixed">
+	<parent link="hip_pitch_motor_${leg_num}"/>
+	<child link="knee_pitch_motor_${leg_num}"/>
+	<origin xyz="${KneePitch_Ox} ${KneePitch_Oy} ${KneePitch_Oz}" rpy="${KneePitch_roll} ${KneePitch_pitch} ${KneePitch_yaw}"/>
+</joint>
+	
+<joint name="hip_pitch_${leg_num}" type="revolute">
+	<parent link="hip_pitch_motor_${leg_num}"/>
+	<child link="upper_leg_${leg_num}"/>
+	<origin xyz="${UpperLeg_Ox} ${mirror*(UpperLeg_Oy)} ${UpperLeg_Oz}" rpy="${UpperLeg_roll} ${UpperLeg_pitch} ${UpperLeg_yaw}"/>
+	<axis xyz="0 0 1"/>
+   <limit lower="${hip_pitch_lower[leg_num-1]}" upper="${hip_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> <!-- 200 Nm, 1 rad/s-->
+</joint>
+
+<joint name="knee_pitch_${leg_num}" type="revolute">
+	<parent link="upper_leg_${leg_num}"/>
+	<child link="lower_leg_${leg_num}"/>
+	<origin xyz="${LowerLeg_Ox} ${LowerLeg_Oy} ${LowerLeg_Oz}" rpy="${LowerLeg_roll} ${LowerLeg_pitch} ${LowerLeg_yaw}"/>
+	<axis xyz="0 0 1"/>
+   <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> <!-- 200 Nm, 1 rad/s-->
+</joint>
+
+<joint name="ball_joint_${leg_num}" type="fixed">
+	<parent link="lower_leg_${leg_num}"/>
+	<child link="ball_${leg_num}"/>
+	<origin xyz="${Ankle_Ox} ${Ankle_Oy} ${Ankle_Oz}" rpy="${Ankle_roll} ${Ankle_pitch} ${Ankle_yaw}"/>
+</joint>
+
+</xacro:macro>
+
+<!-- /macro legs -->
+</robot>

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- macro ball end-effector -->
+<xacro:macro name="ball_ee" params="arm_num parent payload">
+
+	<link name="ball_arm_${arm_num}">
+	<inertial>
+		<origin xyz="0.0 0.0 0.0"/>
+		<mass value="${ball_mass}"/>
+		<inertia ixx="${Ball_xx}" ixy="${Ball_xy}" ixz="${Ball_xz}" iyy="${Ball_yy}" iyz="${Ball_yz}" izz="${Ball_zz}"/>
+	</inertial>
+	<visual>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<sphere radius="${ball_radius}"/>
+		</geometry>
+	</visual>
+	<collision>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		<geometry>
+			<sphere radius="${ball_radius}"/>
+		</geometry>
+	</collision>
+	</link>
+		
+	<joint name="hand_joint_${arm_num}" type="fixed">
+		<parent link="${parent}"/>
+		<child link="ball_arm_${arm_num}"/>
+		<origin xyz="0 0 ${ball_radius}" rpy="0 0 0"/>
+	</joint>
+
+	<xacro:if value="${payload}">
+		<link name="payload_${arm_num}">
+			<inertial>
+				<origin xyz="0.0 0.0 0.0"/>
+				<mass value="4"/>
+				<inertia ixx="0.0267" iyy="0.0267" izz="0.0267" ixy="0" ixz="0" iyz="0"/>
+			</inertial>
+			<visual>
+				<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+				<geometry>
+					<box size="0.2 0.2 0.2"/>
+				</geometry>
+				<material name="dark_grey"/>
+			</visual>
+		</link>
+		<joint name="hand_to_payload_${arm_num}" type="fixed">
+			<origin xyz="0 0.1 0.0" rpy="0 0 0"/>
+			<parent link="dagana_${arm_num}_palm_frame"/>
+			<child link="payload_${arm_num}"/>
+		</joint>
+	</xacro:if>
+</xacro:macro>
+
+</robot>
