@@ -9,6 +9,7 @@
 <xacro:arg name="legs" default="true"/>
 <xacro:arg name="upper_body" default="true"/>
 <xacro:arg name="dagana" default="false"/>
+<xacro:arg name="wheels" default="false"/>
 <xacro:arg name="floating_joint" default="true"/>
 <xacro:arg name="sensors" default="true"/>
 <xacro:arg name="payload" default="false"/>
@@ -20,6 +21,7 @@
 <xacro:property name="ADD_UPPER_BODY" value="$(arg upper_body)" />
 <xacro:property name="ADD_SENSORS" value="$(arg sensors)" />
 <xacro:property name="ADD_DAGANA" value="$(arg dagana)"/>
+<xacro:property name="ADD_WHEELS" value="$(arg wheels)"/>
 
 <xacro:property name="ADD_FLOATING_BASE" value="$(arg floating_joint)" />
 <xacro:property name="ADD_VIRTUAL_FRAME" value="false" />

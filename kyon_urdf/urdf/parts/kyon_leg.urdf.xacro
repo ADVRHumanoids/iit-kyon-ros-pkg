@@ -132,6 +132,44 @@
 	</collision>
 </link>
 
+<xacro:if value="${ADD_WHEELS}">
+	<joint name="wheel_joint_${leg_num}" type="continuous">
+            <parent link="ball_${leg_num}" />
+            <child link="wheel_${leg_num}" />
+            <origin xyz="${Wheel23_Ox} ${Wheel23_Oy} ${-mirror*Wheel23_Oz}" rpy="${Wheel23_roll} ${Wheel23_pitch} ${Wheel23_yaw}" />
+            <axis xyz="0 0 ${mirror}"/>
+            <limit effort="${motor_effort}" velocity="${motor_velocity}" />  <!-- 23 Nm, 1
+            rad/s-->
+        </joint>
+
+        <link name="wheel_${leg_num}">
+            <inertial>
+                <origin xyz="${Wheel23_x} ${Wheel23_y} ${mirror*Wheel23_z}" />
+                <mass value="${Wheel23_mass}" />
+                <inertia ixx="${Wheel23_xx}" ixy="${Wheel23_xy}" ixz="${mirror*Wheel23_xz}" iyy="${Wheel23_yy}" iyz="${mirror*Wheel23_yz}" izz="${Wheel23_zz}" />
+            </inertial>
+
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+                <geometry>
+                    <mesh filename="package://centauro_urdf/meshes/v2/mesh_wheel23.stl"
+                        scale="0.001 0.001 ${mirror*0.001}" />
+                </geometry>
+                <material name="black" />
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://centauro_urdf/meshes/v2/collision/mesh_wheel23.stl"
+                        scale="0.001 0.001 ${mirror*0.001}" />
+                </geometry>
+                <material name="black" />
+            </collision>
+        </link>
+		
+</xacro:if>
+
 <!-- joints -->
 
 <joint name="hip_roll_${leg_num}" type="revolute">

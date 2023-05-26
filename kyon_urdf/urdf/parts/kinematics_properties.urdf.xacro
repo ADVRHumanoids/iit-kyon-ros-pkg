@@ -134,5 +134,13 @@
     <xacro:property name="EndEffector_roll" value="0.0	"/>
     <xacro:property name="EndEffector_pitch" value="${PI_2}"/>
     <xacro:property name="EndEffector_yaw" value="0.0"/>
+    
+    <xacro:property name="Wheel23_Ox" value="0.0"/>
+    <xacro:property name="Wheel23_Oy" value="0.0"/>
+    <xacro:property name="Wheel23_Oz" value="${ball_radius}"/>
+    <xacro:property name="Wheel23_roll" value="0.0"/>
+    <xacro:property name="Wheel23_pitch" value="0.0"/>
+    <xacro:property name="Wheel23_yaw" value="0.0"/>
+    
 
 </robot>

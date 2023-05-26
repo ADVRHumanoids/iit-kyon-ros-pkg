@@ -22,6 +22,7 @@
   <arg name="sensors" default="true"/>
   <arg name="payload" default="false"/>
   <arg name="dagana" default="false"/>
+  <arg name="wheels" default="true"/>
 
 
   <!-- Internal arguments, rewrite human-readable gazebo arguments to it's internal arguments -->
@@ -43,7 +44,7 @@
   
   <!-- Load the URDF/SRDF into the ROS Parameter Server -->
   <param name="robot_description_gz"
-         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=false upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana)"/>
+         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=false upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels)"/>
          
   <!-- start gazebo server-->
   	<node name="gazebo" 
@@ -67,6 +68,8 @@
   	<arg name="legs" value="$(arg legs)"/>
   	<arg name="sensors" value="$(arg sensors)"/>
   	<arg name="payload" value="$(arg payload)"/>
+  	<arg name="dagana" value="$(arg dagana)"/>
+  	<arg name="wheels" value="$(arg wheels)"/>
 	<arg if="$(arg codesign)" name="ik" value="$(find kyon_cartesio)/config/kyon_stack_codesign.yaml"/>
   </include>
 

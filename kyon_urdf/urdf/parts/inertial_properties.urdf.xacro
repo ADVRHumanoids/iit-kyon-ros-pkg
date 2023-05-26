@@ -103,5 +103,18 @@
     <xacro:property name="Ball_yy" value="${2/3 * ball_mass * ball_radius * ball_radius}"/>
     <xacro:property name="Ball_yz" value="0.0"/>
     <xacro:property name="Ball_zz" value="${2/3 * ball_mass * ball_radius * ball_radius}"/>
+    
+    <xacro:property name="Wheel23_mass" value="1.8569388e+00"/>  
+    <!-- Center of Mass -->
+	<xacro:property name="Wheel23_x" value="${0.0 * mmTom}"/>
+	<xacro:property name="Wheel23_y" value="${0.0 * mmTom}"/>
+	<xacro:property name="Wheel23_z" value="${-1.5403767e-01 * mmTom}"/>
+	<!-- Inertia -->
+	<xacro:property name="Wheel23_xx" value="${8.6373591e+03 * mm2Tom2}"/>
+	<xacro:property name="Wheel23_yy" value="${8.6373644e+03 * mm2Tom2}"/>
+	<xacro:property name="Wheel23_zz" value="${1.6376551e+04 * mm2Tom2}"/>
+	<xacro:property name="Wheel23_xy" value="${0.0 * mm2Tom2}"/>
+	<xacro:property name="Wheel23_xz" value="${0.0 * mm2Tom2}"/>
+	<xacro:property name="Wheel23_yz" value="${0.0 * mm2Tom2}"/>
 
 </robot>

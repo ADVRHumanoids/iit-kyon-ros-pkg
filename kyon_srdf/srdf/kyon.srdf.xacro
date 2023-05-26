@@ -14,18 +14,34 @@
     </group>
 
     <xacro:if value="${ADD_LEGS}">
-        <group name="front_left_leg">
-            <chain base_link="pelvis" tip_link="ball_1" />
-        </group>
-        <group name="front_right_leg">
-            <chain base_link="pelvis" tip_link="ball_2" />
-        </group>
-        <group name="rear_right_leg">
-            <chain base_link="pelvis" tip_link="ball_4" />
-        </group>
-        <group name="rear_left_leg">
-            <chain base_link="pelvis" tip_link="ball_3" />
-        </group>
+    	<xacro:if value="${ADD_WHEELS}">
+			<group name="front_left_leg">
+		        <chain base_link="pelvis" tip_link="wheel_1" />
+		    </group>
+		    <group name="front_right_leg">
+		        <chain base_link="pelvis" tip_link="wheel_2" />
+		    </group>
+		    <group name="rear_right_leg">
+		        <chain base_link="pelvis" tip_link="wheel_4" />
+		    </group>
+		    <group name="rear_left_leg">
+		        <chain base_link="pelvis" tip_link="wheel_3" />
+		    </group>
+		</xacro:if>
+		<xacro:unless value="${ADD_WHEELS}">
+		    <group name="front_left_leg">
+		        <chain base_link="pelvis" tip_link="ball_1" />
+		    </group>
+		    <group name="front_right_leg">
+		        <chain base_link="pelvis" tip_link="ball_2" />
+		    </group>
+		    <group name="rear_right_leg">
+		        <chain base_link="pelvis" tip_link="ball_4" />
+		    </group>
+		    <group name="rear_left_leg">
+		        <chain base_link="pelvis" tip_link="ball_3" />
+		    </group>
+		</xacro:unless>
     </xacro:if>
 
     <xacro:if value="${ADD_UPPER_BODY}">

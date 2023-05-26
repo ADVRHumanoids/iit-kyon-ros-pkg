@@ -7,12 +7,14 @@
     <arg name="legs" default="true"/>
     <arg name="sensors" default="false"/>
     <arg name="payload" default="false"/>
+    <arg name="wheels" defaul="true"/>
+    <arg name="dagana" default="false"/>
     
     <param name="robot_description"
-         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload)"/>
+         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels)"/>
     
     <param name="robot_description_semantic"
-        command="$(find xacro)/xacro $(find kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors)"/>
+        command="$(find xacro)/xacro $(find kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) dagana:=$(arg dagana) wheels:=$(arg wheels)"/>
     
     <param name="cartesian/problem_description" 
         textfile="$(arg ik)"/>
