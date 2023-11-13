@@ -210,6 +210,16 @@
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
         </gazebo>
+        <gazebo reference="wrist_pitch_1">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="wrist_yaw_1">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+
+
 
 
         <gazebo reference="shoulder_yaw_2">
@@ -221,6 +231,14 @@
             <provideFeedback>true</provideFeedback>
         </gazebo>
         <gazebo reference="elbow_pitch_2">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="wrist_pitch_2">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <provideFeedback>true</provideFeedback>
+        </gazebo>
+        <gazebo reference="wrist_yaw_2">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
         </gazebo>

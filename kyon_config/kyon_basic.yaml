@@ -1,6 +1,6 @@
 XBotInterface:
-  urdf_path: $(rospack find kyon_urdf)/urdf/kyon.urdf
-  srdf_path: $(rospack find kyon_srdf)/srdf/kyon.srdf
+    urdf: rosparam get -p /robot_description
+    srdf: rosparam get -p /robot_description_semantic
 
 ModelInterface:
   model_type: "RBDL"

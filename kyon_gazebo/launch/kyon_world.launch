@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="gazebo" default="false"/>
+  <arg name="gazebo" default="true"/>
   <arg name="cartesio" default="false"/>
   <param if="$(arg gazebo)" name="use_sim_time" type="bool" value="true"/>
   <param if="$(arg cartesio)" name="use_sim_time" type="bool" value="false"/>  
@@ -45,6 +45,12 @@
   <!-- Load the URDF/SRDF into the ROS Parameter Server -->
   <param name="robot_description_gz"
          command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=false upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels)"/>
+         
+  <param name="robot_description"
+         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels)"/>
+         
+  <param name="robot_description_semantic"
+         command="$(find xacro)/xacro $(find kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels)"/>
          
   <!-- start gazebo server-->
   	<node name="gazebo" 

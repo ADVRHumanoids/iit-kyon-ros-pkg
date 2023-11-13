@@ -24,10 +24,14 @@
             <pid name="shoulder_yaw_1" profile="medium_mot"/>
             <pid name="shoulder_pitch_1" profile="medium_mot"/>
             <pid name="elbow_pitch_1" profile="small_mot"/>
+            <pid name="wrist_pitch_1" profile="small_mot"/>
+            <pid name="wrist_yaw_1" profile="small_mot"/>
             
             <pid name="shoulder_yaw_2" profile="medium_mot"/>
             <pid name="shoulder_pitch_2" profile="medium_mot"/>
             <pid name="elbow_pitch_2" profile="small_mot"/>
+            <pid name="wrist_pitch_2" profile="small_mot"/>
+            <pid name="wrist_yaw_2" profile="small_mot"/>
             
             <pid name="hip_roll_1"     profile="big_mot"/>
             <pid name="hip_pitch_1"  profile="big_mot"/>

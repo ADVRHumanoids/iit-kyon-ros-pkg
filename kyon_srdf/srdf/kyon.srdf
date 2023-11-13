@@ -12,30 +12,22 @@
     <link name="pelvis"/>
   </group>
   <group name="front_left_leg">
-    <chain base_link="pelvis" tip_link="ball_1"/>
+    <chain base_link="pelvis" tip_link="wheel_1"/>
   </group>
   <group name="front_right_leg">
-    <chain base_link="pelvis" tip_link="ball_2"/>
+    <chain base_link="pelvis" tip_link="wheel_2"/>
   </group>
   <group name="rear_right_leg">
-    <chain base_link="pelvis" tip_link="ball_4"/>
+    <chain base_link="pelvis" tip_link="wheel_4"/>
   </group>
   <group name="rear_left_leg">
-    <chain base_link="pelvis" tip_link="ball_3"/>
-  </group>
-  <group name="left_arm">
-    <chain base_link="pelvis" tip_link="dagana_1_bottom_link"/>
-  </group>
-  <group name="right_arm">
-    <chain base_link="pelvis" tip_link="dagana_2_bottom_link"/>
+    <chain base_link="pelvis" tip_link="wheel_3"/>
   </group>
   <group name="chains">
     <group name="front_left_leg"/>
     <group name="front_right_leg"/>
     <group name="rear_right_leg"/>
     <group name="rear_left_leg"/>
-    <group name="left_arm"/>
-    <group name="right_arm"/>
   </group>
   <!-- Homing posture -->
   <group_state group="chains" name="home">
@@ -51,15 +43,5 @@
     <joint name="hip_roll_4" value="0.0"/>
     <joint name="hip_pitch_4" value="0.7"/>
     <joint name="knee_pitch_4" value="-1.4"/>
-    <joint name="shoulder_yaw_1" value="-0.05"/>
-    <joint name="shoulder_pitch_1" value="0.50"/>
-    <joint name="elbow_pitch_1" value="1.25"/>
-    <joint name="wrist_pitch_1" value="0.0"/>
-    <joint name="wrist_yaw_1" value="0.0"/>
-    <joint name="shoulder_yaw_2" value="0.05"/>
-    <joint name="shoulder_pitch_2" value="0.50"/>
-    <joint name="elbow_pitch_2" value="1.25"/>
-    <joint name="wrist_pitch_2" value="0.0"/>
-    <joint name="wrist_yaw_2" value="0.0"/>
   </group_state>
 </robot>

@@ -138,8 +138,8 @@
             <child link="wheel_${leg_num}" />
             <origin xyz="${Wheel23_Ox} ${Wheel23_Oy} ${-mirror*Wheel23_Oz}" rpy="${Wheel23_roll} ${Wheel23_pitch} ${Wheel23_yaw}" />
             <axis xyz="0 0 ${mirror}"/>
-            <limit effort="${motor_effort}" velocity="${motor_velocity}" />  <!-- 23 Nm, 1
-            rad/s-->
+            <limit lower="-1e6" upper="1e6" effort="${motor_effort}" velocity="30." /> 
+            <!--limit effort="${motor_effort}" velocity="${motor_velocity}" /--> 
         </joint>
 
         <link name="wheel_${leg_num}">

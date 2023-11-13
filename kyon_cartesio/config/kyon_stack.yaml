@@ -4,32 +4,32 @@ solver_options:
     
 stack:
     - ["Ball1", "Ball2", "Ball3", "Ball4"]
-    - ["RightArm"] #, "Ball1_Yaw", "Ball2_Yaw", "Ball3_Yaw", "Ball4_Yaw"] #, "LeftArm"]
+    #- ["RightArm"] #, "Ball1_Yaw", "Ball2_Yaw", "Ball3_Yaw", "Ball4_Yaw"] #, "LeftArm"]
     - ["Postural", "Pelvis"]
     
 Ball1:
     type: "Cartesian"
     distal_link: "ball_1"
     base_link: "world"
-    indices: [0, 1, 2]
+    #indices: [0, 1, 2]
     
 Ball2:
     type: "Cartesian"
     distal_link: "ball_2"
     base_link: "world"
-    indices: [0, 1, 2]
+    #indices: [0, 1, 2]
     
 Ball3:
     type: "Cartesian"
     distal_link: "ball_3"
     base_link: "world"
-    indices: [0, 1, 2]
+    #indices: [0, 1, 2]
     
 Ball4:
     type: "Cartesian"
     distal_link: "ball_4"
     base_link: "world"
-    indices: [0, 1, 2]
+    #indices: [0, 1, 2]
     
 Ball1_Yaw:
     type: "Subtask"
