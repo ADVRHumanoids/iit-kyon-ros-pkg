@@ -47,7 +47,7 @@
 		</link>
 		<joint name="hand_to_payload_${arm_num}" type="fixed">
 			<origin xyz="0 0.1 0.0" rpy="0 0 0"/>
-			<parent link="dagana_${arm_num}_palm_frame"/>
+			<parent link="ball_arm_${arm_num}"/>
 			<child link="payload_${arm_num}"/>
 		</joint>
 	</xacro:if>
