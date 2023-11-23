@@ -4,12 +4,12 @@
 <xacro:arg name="bilevel_codes" default="false" /> <!-- if true, load codes vars from externally provided files-->
 <xacro:arg name="sample_idx" default = "0"/>
 
-<xacro:include filename="$(find kyon_urdf)/urdf/utils.urdf.xacro" />
+<xacro:include filename="${KYON_ROOT}/urdf/utils.urdf.xacro" />
 
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/kinematics_properties.urdf.xacro" />
+<xacro:include filename="${KYON_ROOT}/urdf/parts/kinematics_properties.urdf.xacro" />
 <!-- NOTE: here we need to include "kinematics_properties" first because "inertial_properties" depends on it-->
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/inertial_properties.urdf.xacro" />
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/limits.urdf.xacro" />
+<xacro:include filename="${KYON_ROOT}/urdf/parts/inertial_properties.urdf.xacro" />
+<xacro:include filename="${KYON_ROOT}/urdf/parts/limits.urdf.xacro" />
 
 <link name="base_link"/>
 
@@ -42,7 +42,7 @@
 </joint>
 
 <xacro:if value="${ADD_SENSORS}">
-    <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro" />
+    <xacro:include filename="${REALSENSE_GAZEBO_DESCRIPTION_ROOT}/urdf/_d435i.urdf.xacro" />
 
     <!-- LEFT D435 CAMERA -->
     <xacro:sensor_d435i parent="pelvis"
@@ -188,7 +188,7 @@
 
     </xacro:sensor_d435i>
     <!-- Velodyne -->
-    <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+    <xacro:include filename="${VELODYNE_DESCRIPTION_ROOT}/urdf/VLP-16.urdf.xacro"/>
     <xacro:VLP-16 parent="pelvis" name="velodyne" topic="/velodyne_points" hz="10" samples="440">
         <origin xyz="0.36 0 0.11" rpy="0 0 0" />
     </xacro:VLP-16>
@@ -196,11 +196,11 @@
 </xacro:if>
 
 <xacro:if value="${ADD_UPPER_BODY}">
-    <xacro:include filename="$(find kyon_urdf)/urdf/parts/arms.urdf.xacro" />
+    <xacro:include filename="${KYON_ROOT}/urdf/parts/arms.urdf.xacro" />
 </xacro:if>
 
 <xacro:if value="${ADD_LEGS}">
-	<xacro:include filename="$(find kyon_urdf)/urdf/parts/legs.urdf.xacro" />
+	<xacro:include filename="${KYON_ROOT}/urdf/parts/legs.urdf.xacro" />
 </xacro:if>
 
 <xacro:if value="${PAYLOAD}">
@@ -226,4 +226,3 @@
 </xacro:if>
 
 </robot>
-

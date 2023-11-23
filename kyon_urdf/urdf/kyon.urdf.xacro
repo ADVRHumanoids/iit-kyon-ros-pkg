@@ -1,13 +1,34 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon">
 
-<xacro:arg name="config" default="$(find kyon_urdf)/urdf/config/kyon.urdf.xacro"/>
+<!-- This argument and property should be in the top level xacro and
+will be propagated to all its downstream childs -->
+<xacro:arg name="kyon_root" default="$(find kyon_urdf)" />  
+<xacro:property name="KYON_ROOT" value="$(arg kyon_root)" />
 
+<xacro:arg name="config" default="${KYON_ROOT}/urdf/config/kyon.urdf.xacro"/>
 <!-- ************ MODEL CONFIGURATION ************ -->
 <xacro:include filename="$(arg config)"/>
 
+<!-- here the properties from the config are set -->
+<xacro:if value="${ADD_DAGANA}">
+	
+	<xacro:arg name="dagana_root" default="$(find dagana_urdf)" /> 
+	<xacro:property name="DAGANA_ROOT" value="$(arg dagana_root)" />
+
+</xacro:if>
+<xacro:if value="${ADD_SENSORS}">
+	
+	<xacro:arg name="realsense_gazebo_description_root" default="$(find realsense_gazebo_description)" /> 
+	<xacro:property name="REALSENSE_GAZEBO_DESCRIPTION_ROOT" value="$(arg realsense_gazebo_description_root)" />
+
+	<xacro:arg name="velodyne_description_root" default="$(find velodyne_description)" /> 
+	<xacro:property name="VELODYNE_DESCRIPTION_ROOT" value="$(arg velodyne_description_root)" />
+
+</xacro:if>
+
 <!-- ************ CETC-SAT plain model ************ -->
-<xacro:include filename="$(find kyon_urdf)/urdf/kyon_base.urdf.xacro"/>
+<xacro:include filename="${KYON_ROOT}/urdf/kyon_base.urdf.xacro"/>
 
 <!-- ************ Control frames ************ -->
 <!--xacro:include filename="$(find pholus_urdf)/urdf/control_frames.urdf.xacro"/-->
@@ -21,4 +42,3 @@
 </xacro:if>
 
 </robot>
-

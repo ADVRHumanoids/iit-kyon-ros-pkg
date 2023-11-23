@@ -6,7 +6,11 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon">
 
     <!-- ************ MODEL CONFIGURATION ************ -->
-    <xacro:arg name="config" default="$(find kyon_urdf)/urdf/config/kyon.urdf.xacro"/>
+
+    <xacro:arg name="kyon_root" default="$(find kyon_urdf)" />  
+    <xacro:property name="KYON_ROOT" value="$(arg kyon_root)" />
+
+    <xacro:arg name="config" default="${KYON_ROOT}/urdf/config/kyon.urdf.xacro"/>
     <xacro:include filename="$(arg config)"/>
 
     <group name="base">

@@ -4,7 +4,6 @@
 <xacro:property name="model_name" value="kyon" />
 <xacro:property name="model_version" value="0.1" />
 
-
 <!-- command line arguments -->
 <xacro:arg name="legs" default="true"/>
 <xacro:arg name="upper_body" default="true"/>
@@ -13,7 +12,6 @@
 <xacro:arg name="floating_joint" default="true"/>
 <xacro:arg name="sensors" default="true"/>
 <xacro:arg name="payload" default="false"/>
-
 
 <!-- ************SELECT PARTS*************-->
 <!-- *************************************-->
