@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon">
 
-  <!-- Define PACKAGE_ROOT as a xacro argument with a default value -->
-  <xacro:arg name="PACKAGE_ROOT" default="$(find kyon_urdf)" />
+  <!-- This argument and property should be in the top level xacro and
+  will be propagated to all its downstream childs -->
+  <xacro:arg name="kyon_root" default="$(find kyon_urdf)" />  
+  <xacro:property name="KYON_ROOT" value="$(arg kyon_root)" />
 
   <xacro:include filename="${KYON_ROOT}/urdf/kyon.urdf.xacro" />
 
