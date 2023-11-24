@@ -13,6 +13,12 @@
 
 <link name="base_link"/>
 
+<joint name="base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="pelvis"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+</joint>
+
 <link name="pelvis">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>
@@ -34,12 +40,6 @@
 		</geometry>
 	</collision>
 </link>
-
-<joint name="base_joint" type="fixed">
-    <parent link="pelvis"/>
-    <child link="base_link"/>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-</joint>
 
 <xacro:if value="${ADD_SENSORS}">
     <xacro:include filename="${REALSENSE_GAZEBO_DESCRIPTION_ROOT}/urdf/_d435i.urdf.xacro" />
