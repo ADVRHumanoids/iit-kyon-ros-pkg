@@ -19,7 +19,7 @@
     <link name="world"/>
       <joint name="reference" type="fixed">
       <parent link="world"/>
-      <child link="pelvis"/>
+      <child link="base_link"/>
     </joint>
 
   </xacro:unless>

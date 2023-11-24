@@ -37,7 +37,7 @@ will be propagated to all its downstream childs -->
 	<link name="world"/>
 	<joint name="reference" type="floating">
 		<parent link="world"/>
-		<child link="pelvis"/>
+		<child link="base_link"/>
 	</joint>
 </xacro:if>
 
