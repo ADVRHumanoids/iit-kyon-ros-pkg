@@ -13,6 +13,7 @@
 <xacro:arg name="floating_joint" default="true"/>
 <xacro:arg name="sensors" default="true"/>
 <xacro:arg name="payload" default="false"/>
+<xacro:arg name="ft_sensors" default="false"/>
 
 
 <!-- ************SELECT PARTS*************-->
@@ -22,6 +23,8 @@
 <xacro:property name="ADD_SENSORS" value="$(arg sensors)" />
 <xacro:property name="ADD_DAGANA" value="$(arg dagana)"/>
 <xacro:property name="ADD_WHEELS" value="$(arg wheels)"/>
+<xacro:property name="ADD_FT_SENSORS" value="$(arg ft_sensors)"/>
+
 
 <xacro:property name="ADD_FLOATING_BASE" value="$(arg floating_joint)" />
 <xacro:property name="ADD_VIRTUAL_FRAME" value="false" />
