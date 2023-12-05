@@ -52,7 +52,7 @@
             <pid name="hip_roll_4"     profile="big_mot"/>
             <pid name="hip_pitch_4"  profile="big_mot"/>
             <pid name="knee_pitch_4"   profile="big_mot"/>
-            <pid name="wheel_joint_1" profile="wheel"/>
+            <pid name="wheel_joint_4" profile="wheel"/>
         </pid>
     </plugin>
 </gazebo>

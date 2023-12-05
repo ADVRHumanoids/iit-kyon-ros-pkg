@@ -56,143 +56,39 @@
         </gazebo>
         
         <gazebo reference="ball_1">
-        	<collision>
-		        <surface>
-		            <friction>
-		                <!-- <torsional>
-		                    <coefficient> 1.0 </coefficient>
-		                    <use_patch_radius>true</use_patch_radius>
-		                    <patch_radius>0.2</patch_radius>
-		                </torsional> -->
-		                <ode>
-		                    <mu>1.0</mu>
-		                    <mu2>1.0</mu2>
-		                </ode>
-		                <bullet>
-		                    <friction>1.0</friction>
-		                    <friction2>1.0</friction2>
-		                </bullet>
-		            </friction>
-		            <contact>
-		                <ode>
-		                    <kp>2100000</kp>
-		                    <kd>1</kd>
-		                    <max_vel>100</max_vel>
-		                </ode>
-		                <bullet>
-		                    <soft_cfm>0.007</soft_cfm>
-		                    <soft_erp>0.25</soft_erp>
-		                    <kp>1000000</kp>
-		                    <kd>5</kd>
-		                </bullet>
-		            </contact>
-		        </surface>
-		    </collision>
+        	<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<mu1>1.0</mu1>
+			<mu2>1.0</mu2>
+			<maxVel>1.0</maxVel>
+			<maxContacts>1</maxContacts>
 		</gazebo>
 		
 		<gazebo reference="ball_2">
-        	<collision>
-		        <surface>
-		            <friction>
-		                <!-- <torsional>
-		                    <coefficient> 1.0 </coefficient>
-		                    <use_patch_radius>true</use_patch_radius>
-		                    <patch_radius>0.2</patch_radius>
-		                </torsional> -->
-		                <ode>
-		                    <mu>1.0</mu>
-		                    <mu2>1.0</mu2>
-		                </ode>
-		                <bullet>
-		                    <friction>1.0</friction>
-		                    <friction2>1.0</friction2>
-		                </bullet>
-		            </friction>
-		            <contact>
-		                <ode>
-		                    <kp>2100000</kp>
-		                    <kd>1</kd>
-		                    <max_vel>100</max_vel>
-		                </ode>
-		                <bullet>
-		                    <soft_cfm>0.007</soft_cfm>
-		                    <soft_erp>0.25</soft_erp>
-		                    <kp>1000000</kp>
-		                    <kd>5</kd>
-		                </bullet>
-		            </contact>
-		        </surface>
-		    </collision>
+        	<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<mu1>1.0</mu1>
+			<mu2>1.0</mu2>
+			<maxVel>1.0</maxVel>
+			<maxContacts>1</maxContacts>
 		</gazebo>
 		
 		<gazebo reference="ball_3">
-        	<collision>
-		        <surface>
-		            <friction>
-		                <!-- <torsional>
-		                    <coefficient> 1.0 </coefficient>
-		                    <use_patch_radius>true</use_patch_radius>
-		                    <patch_radius>0.2</patch_radius>
-		                </torsional> -->
-		                <ode>
-		                    <mu>1.0</mu>
-		                    <mu2>1.0</mu2>
-		                </ode>
-		                <bullet>
-		                    <friction>1.0</friction>
-		                    <friction2>1.0</friction2>
-		                </bullet>
-		            </friction>
-		            <contact>
-		                <ode>
-		                    <kp>2100000</kp>
-		                    <kd>1</kd>
-		                    <max_vel>100</max_vel>
-		                </ode>
-		                <bullet>
-		                    <soft_cfm>0.007</soft_cfm>
-		                    <soft_erp>0.25</soft_erp>
-		                    <kp>1000000</kp>
-		                    <kd>5</kd>
-		                </bullet>
-		            </contact>
-		        </surface>
-		    </collision>
+        	<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<mu1>1.0</mu1>
+			<mu2>1.0</mu2>
+			<maxVel>1.0</maxVel>
+			<maxContacts>1</maxContacts>
 		</gazebo>
 		
 		<gazebo reference="ball_4">
-        	<collision>
-		        <surface>
-		            <friction>
-		                <!-- <torsional>
-		                    <coefficient> 1.0 </coefficient>
-		                    <use_patch_radius>true</use_patch_radius>
-		                    <patch_radius>0.2</patch_radius>
-		                </torsional> -->
-		                <ode>
-		                    <mu>1.0</mu>
-		                    <mu2>1.0</mu2>
-		                </ode>
-		                <bullet>
-		                    <friction>1.0</friction>
-		                    <friction2>1.0</friction2>
-		                </bullet>
-		            </friction>
-		            <contact>
-		                <ode>
-		                    <kp>2100000</kp>
-		                    <kd>1</kd>
-		                    <max_vel>100</max_vel>
-		                </ode>
-		                <bullet>
-		                    <soft_cfm>0.007</soft_cfm>
-		                    <soft_erp>0.25</soft_erp>
-		                    <kp>1000000</kp>
-		                    <kd>5</kd>
-		                </bullet>
-		            </contact>
-		        </surface>
-		    </collision>
+        	<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<mu1>1.0</mu1>
+			<mu2>1.0</mu2>
+			<maxVel>1.0</maxVel>
+			<maxContacts>1</maxContacts>
 		</gazebo>
 
     </xacro:if>
@@ -244,6 +140,44 @@
         </gazebo>
 
     </xacro:if>
+    
+    <xacro:if value="${ADD_WHEELS}">
+        <gazebo reference="wheel_1">
+            <kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<mu1>1.0</mu1>
+			<mu2>1.0</mu2>
+			<maxVel>1.0</maxVel>
+			<maxContacts>1</maxContacts>
+	    </gazebo>
+	    
+	    <gazebo reference="wheel_2">
+            <kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<mu1>1.0</mu1>
+			<mu2>1.0</mu2>
+			<maxVel>1.0</maxVel>
+			<maxContacts>1</maxContacts>
+	    </gazebo>
+	    
+	    <gazebo reference="wheel_3">
+            <kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<mu1>1.0</mu1>
+			<mu2>1.0</mu2>
+			<maxVel>1.0</maxVel>
+			<maxContacts>1</maxContacts>
+	    </gazebo>
+	    
+	    <gazebo reference="wheel_4">
+            <kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<mu1>1.0</mu1>
+			<mu2>1.0</mu2>
+			<maxVel>1.0</maxVel>
+			<maxContacts>1</maxContacts>
+	    </gazebo>
+	</xacro:if>
 
 
 	<xacro:if value="${ADD_FT_SENSORS}">
