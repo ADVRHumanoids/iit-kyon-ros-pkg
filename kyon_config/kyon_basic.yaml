@@ -39,6 +39,7 @@ xbotcore_param:
     /jm/enable_safety: {value: false, type: bool}
     /xbot_internal/ros_io/call_timeout: {value: 1.0, type: chrono}
     /rt_main/memory_hooks: {value: true, type: bool}
+    /xbot/hal/enable_safety: {value: false, type: bool}
 
 
 
