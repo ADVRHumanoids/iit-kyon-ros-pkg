@@ -1,0 +1,10 @@
+motor_pd:
+  hip_roll_*: [1500, 20]
+  hip_pitch_*: [1500, 20]
+  knee_pitch_*: [1500, 20]
+  wheel_joint_*: [0, 10]
+  shoulder_yaw_*: [1000, 10]
+  shoulder_pitch_*: [1000, 10]
+  elbow_pitch_*: [500, 5]
+  wrist_pitch_*: [500, 5]
+  wrist_yaw_*: [500, 5]
