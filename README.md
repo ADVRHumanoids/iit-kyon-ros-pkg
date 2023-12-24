@@ -20,5 +20,6 @@ forest grow iit-dagana-ros-pkg
 You can now clone the `iit-kyon-ros-pkg` repository in a source folder:
 ```
 cd ~/forest_ws/ros_src
-git clone 
+git clone https://github.com/robot-21/iit-kyon-ros-pkg.git
+```
 
