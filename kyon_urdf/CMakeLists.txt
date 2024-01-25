@@ -1,38 +1,22 @@
+cmake_minimum_required(VERSION 3.20)
+
 project(kyon_urdf)
 
-find_package(catkin REQUIRED COMPONENTS)
+find_package(ament_cmake REQUIRED)
 
-catkin_package()
+cmake_policy(SET CMP0057 NEW)
 
 # mark urdf, meshes and launch files for installation
 install(DIRECTORY meshes
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  DESTINATION share/${PROJECT_NAME}
 )
 
 # install(DIRECTORY launch
-#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+#   DESTINATION share/${PROJECT_NAME}
 # )
 
 install(DIRECTORY urdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  DESTINATION share/${PROJECT_NAME}
 )
 
-# main urdf
-generate_urdf(
-  XACRO ${ROBOT_NAME}.urdf.xacro
-  CONFIG config/${ROBOT_NAME}.urdf.xacro
-  ADD_TO_ALL TRUE
-)
-
-# virtual frame urdf
-#generate_urdf(
-#  XACRO ${ROBOT_NAME}.urdf.xacro
-#  CONFIG config/${ROBOT_NAME}_virtual_frame.urdf.xacro
-#  ADD_TO_ALL TRUE
-#)
-
-# capsule model for main urdf
-#generate_capsule_urdf(
-#  CONFIG_NAME ${ROBOT_NAME}
-#  ADD_TO_ALL TRUE
-#)
+ament_package()
