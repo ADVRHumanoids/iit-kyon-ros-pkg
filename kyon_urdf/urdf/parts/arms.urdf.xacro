@@ -5,7 +5,6 @@
 <xacro:include filename="$(find kyon_urdf)/urdf/parts/kyon_ball_ee.xacro"/>
 <xacro:include filename="$(find dagana_urdf)/urdf/dagana_macro.urdf.xacro"/>
 
-
 <!-- arms -->
 <xacro:kyon_arm arm_num="1"  rot="1"  parent="pelvis">
 </xacro:kyon_arm>

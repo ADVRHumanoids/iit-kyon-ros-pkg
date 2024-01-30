@@ -185,7 +185,7 @@
   <joint name="shoulder_yaw_1" type="revolute">
     <parent link="pelvis"/>
     <child link="shoulder_yaw_1"/>
-    <origin rpy="-0.3490656 0.0 0.0" xyz="0.27 0.10299599999999999 0.18721700000000002"/>
+    <origin rpy="-0.3490656 0.4 0.0" xyz="0.27 0.10299599999999999 0.18721700000000002"/>
     <axis xyz="0 0 1"/>
     <limit effort="132" lower="-3.312" upper="3.312" velocity="15.5"/>
   </joint>
@@ -360,7 +360,7 @@
   <joint name="shoulder_yaw_2" type="revolute">
     <parent link="pelvis"/>
     <child link="shoulder_yaw_2"/>
-    <origin rpy="0.3490656 0.0 0.0" xyz="0.27 -0.10299599999999999 0.18721700000000002"/>
+    <origin rpy="0.3490656 0.4 0.0" xyz="0.27 -0.10299599999999999 0.18721700000000002"/>
     <axis xyz="0 0 1"/>
     <limit effort="132" lower="-3.3458" upper="3.3458" velocity="15.5"/>
   </joint>
@@ -399,54 +399,128 @@
     <axis xyz="0 0 1"/>
     <limit effort="132" lower="-2.3266" upper="2.3266" velocity="15.5"/>
   </joint>
-  <link name="ball_arm_1">
-    <inertial>
-      <origin xyz="0.0 0.0 0.0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.0001666666666666667" ixy="0.0" ixz="0.0" iyy="0.0001666666666666667" iyz="0.0" izz="0.0001666666666666667"/>
-    </inertial>
-    <visual>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-      <geometry>
-        <sphere radius="0.05"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-      <geometry>
-        <sphere radius="0.05"/>
-      </geometry>
-    </collision>
-  </link>
-  <joint name="hand_joint_1" type="fixed">
+  <joint name="dagana_1_mount_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="wrist_1"/>
-    <child link="ball_arm_1"/>
-    <origin rpy="0 0 0" xyz="0 0 0.05"/>
+    <child link="dagana_1_top_link"/>
   </joint>
-  <link name="ball_arm_2">
+  <link name="dagana_1_top_link">
     <inertial>
-      <origin xyz="0.0 0.0 0.0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.0001666666666666667" ixy="0.0" ixz="0.0" iyy="0.0001666666666666667" iyz="0.0" izz="0.0001666666666666667"/>
+      <origin rpy="0 0 0" xyz="-0.0063562154 -0.0060265532000000005  0.060068288000000004"/>
+      <mass value="1.7432400"/>
+      <inertia ixx="0.0050510328" ixy="-0.00025264216" ixz="-0.00012103013" iyy="0.0047944612" iyz="-0.00073917704" izz="0.0031156997"/>
     </inertial>
     <visual>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <sphere radius="0.05"/>
+        <mesh filename="package://dagana_urdf/meshes/dg0001-simplified.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <sphere radius="0.05"/>
+        <mesh filename="package://dagana_urdf/meshes/dg0001-ch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </collision>
   </link>
-  <joint name="hand_joint_2" type="fixed">
-    <parent link="wrist_2"/>
-    <child link="ball_arm_2"/>
-    <origin rpy="0 0 0" xyz="0 0 0.05"/>
+  <joint name="dagana_1_claw_joint" type="fixed">
+    <origin rpy="1.57079632679 0 3.14159265359" xyz="0.0 -0.028 0.05025"/>
+    <parent link="dagana_1_top_link"/>
+    <child link="dagana_1_bottom_link"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="1000" lower="0" upper="1" velocity="2.0"/>
   </joint>
+  <link name="dagana_1_bottom_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.069644767 0.0026548329 -0.041960263"/>
+      <mass value="4.6117745e-01"/>
+      <inertia ixx="0.0009385556899999999" ixy="-0.000264452" ixz="7.134683e-05" iyy="0.0019472731" iyz="2.529065e-06" izz="0.0014726990999999999"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0002.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0002-ch.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </collision>
+  </link>
+  <!-- Manually put to have a transform in a "good" grasping spot-->
+  <joint name="dagana_1_tcp_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 -0.05 0.15"/>
+    <parent link="dagana_1_top_link"/>
+    <child link="dagana_1_tcp"/>
+  </joint>
+  <link name="dagana_1_tcp"/>
+  <joint name="dagana_2_mount_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="wrist_2"/>
+    <child link="dagana_2_top_link"/>
+  </joint>
+  <link name="dagana_2_top_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0063562154 -0.0060265532000000005  0.060068288000000004"/>
+      <mass value="1.7432400"/>
+      <inertia ixx="0.0050510328" ixy="-0.00025264216" ixz="-0.00012103013" iyy="0.0047944612" iyz="-0.00073917704" izz="0.0031156997"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0001-simplified.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0001-ch.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </collision>
+  </link>
+  <joint name="dagana_2_claw_joint" type="fixed">
+    <origin rpy="1.57079632679 0 3.14159265359" xyz="0.0 -0.028 0.05025"/>
+    <parent link="dagana_2_top_link"/>
+    <child link="dagana_2_bottom_link"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="1000" lower="0" upper="1" velocity="2.0"/>
+  </joint>
+  <link name="dagana_2_bottom_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.069644767 0.0026548329 -0.041960263"/>
+      <mass value="4.6117745e-01"/>
+      <inertia ixx="0.0009385556899999999" ixy="-0.000264452" ixz="7.134683e-05" iyy="0.0019472731" iyz="2.529065e-06" izz="0.0014726990999999999"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0002.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dagana_urdf/meshes/dg0002-ch.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </collision>
+  </link>
+  <!-- Manually put to have a transform in a "good" grasping spot-->
+  <joint name="dagana_2_tcp_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 -0.05 0.15"/>
+    <parent link="dagana_2_top_link"/>
+    <child link="dagana_2_tcp"/>
+  </joint>
+  <link name="dagana_2_tcp"/>
   <!-- /macro legs -->
   <!-- links -->
   <link name="hip_roll_motor_1">
