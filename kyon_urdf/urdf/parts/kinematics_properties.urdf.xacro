@@ -71,9 +71,9 @@
     
 
     <!-- Arms -->
-    <xacro:property name="ShoulderYaw_Ox" value="${270.00 * mTomm}"/>
-    <xacro:property name="ShoulderYaw_Oy" value="${102.996 * mTomm}"/>
-    <xacro:property name="ShoulderYaw_Oz" value="${187.217 * mTomm}"/>
+    <xacro:property name="ShoulderYaw_Ox" value="${280.00 * mTomm}"/>
+    <xacro:property name="ShoulderYaw_Oy" value="${96.6072 * mTomm}"/>
+    <xacro:property name="ShoulderYaw_Oz" value="${203.559 * mTomm}"/>
     <xacro:property name="ShoulderYaw_roll" value="0.3490656"/>
     <xacro:property name="ShoulderYaw_pitch" value="0.0"/>
     <xacro:property name="ShoulderYaw_yaw" value="0.0"/>
