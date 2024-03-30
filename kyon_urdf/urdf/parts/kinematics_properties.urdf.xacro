@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot  xmlns:xacro="http://ros.org/wiki/xacro">
 
-    <xacro:property name="mTomm" value="0.001"/>
+    <xacro:property name="mmTom" value="0.001"/>
 
     <xacro:property name="kin_yaml_file" value="$(find kyon_urdf)/urdf/config/kinematics_properties.yaml" />
     <xacro:property name="kin_props" value="${xacro.load_yaml(kin_yaml_file)}"/>
@@ -31,8 +31,8 @@
     <!-- Compound properties (i.e. based on the props parsed from the yaml) -->
 
     <!-- Origin -->
-    <xacro:property name="HipRoll_Ox" value="${409.360 * mTomm}"/>
-    <xacro:property name="HipRoll_Oy" value="${77.500 * mTomm}"/>
+    <xacro:property name="HipRoll_Ox" value="${409.360 * mmTom}"/>
+    <xacro:property name="HipRoll_Oy" value="${77.500 * mmTom}"/>
     <xacro:property name="HipRoll_Oz" value="0.0"/>
     <xacro:property name="HipRoll_roll" value="0.0"/>
     <xacro:property name="HipRoll_pitch" value="${PI_2}"/>
@@ -63,55 +63,55 @@
 
     <!-- Origin -->
     <xacro:property name="Wheel_Ox" value="0.0"/>
-    <xacro:property name="Wheel_Oy" value="0.0"/>
-    <xacro:property name="Wheel_Oz" value="${-290.000 * mmTom}"/>
-    <xacro:property name="Wheel_roll" value="${PI_2}"/>
+    <xacro:property name="Wheel_Oy" value="${-300.000 * mmTom}"/>
+    <xacro:property name="Wheel_Oz" value="${54.000 * mmTom}"/>
+    <xacro:property name="Wheel_roll" value="0.0"/>
     <xacro:property name="Wheel_pitch" value="0.0"/>
     <xacro:property name="Wheel_yaw" value="0.0"/>
+
+    <xacro:property name="SteeringWheel_Ox" value="0.0"/>
+    <xacro:property name="SteeringWheel_Oy" value="0.0"/>
+    <xacro:property name="SteeringWheel_Oz" value="${-290.000 * mmTom}"/>
+    <xacro:property name="SteeringWheel_roll" value="${PI_2}"/>
+    <xacro:property name="SteeringWheel_pitch" value="0.0"/>
+    <xacro:property name="SteeringWheel_yaw" value="0.0"/>
     
 
     <!-- Arms -->
-    <xacro:property name="ShoulderYaw_Ox" value="${280.00 * mTomm}"/>
-    <xacro:property name="ShoulderYaw_Oy" value="${96.6072 * mTomm}"/>
-    <xacro:property name="ShoulderYaw_Oz" value="${203.559 * mTomm}"/>
+    <xacro:property name="ShoulderYaw_Ox" value="${280.00 * mmTom}"/>
+    <xacro:property name="ShoulderYaw_Oy" value="${96.6072 * mmTom}"/>
+    <xacro:property name="ShoulderYaw_Oz" value="${203.559 * mmTom}"/>
     <xacro:property name="ShoulderYaw_roll" value="0.3490656"/>
     <xacro:property name="ShoulderYaw_pitch" value="0.0"/>
     <xacro:property name="ShoulderYaw_yaw" value="0.0"/>
 
     <xacro:property name="ShoulderPitch_Ox" value="0.0"/>
     <xacro:property name="ShoulderPitch_Oy" value="0.0"/>
-    <xacro:property name="ShoulderPitch_Oz" value="${73.5 * mTomm}"/>
+    <xacro:property name="ShoulderPitch_Oz" value="${73.5 * mmTom}"/>
     <xacro:property name="ShoulderPitch_roll" value="0.0"/>
     <xacro:property name="ShoulderPitch_pitch" value="0.0"/>
     <xacro:property name="ShoulderPitch_yaw" value="${PI_2}"/>
 
     <xacro:property name="ElbowPitch_Ox" value="0.0"/>
     <xacro:property name="ElbowPitch_Oy" value="0.0"/>
-    <xacro:property name="ElbowPitch_Oz" value="${320.00 * mTomm}"/>
+    <xacro:property name="ElbowPitch_Oz" value="${320.00 * mmTom}"/>
     <xacro:property name="ElbowPitch_roll" value="${-PI_2}"/>
     <xacro:property name="ElbowPitch_pitch" value="0.0"/>
     <xacro:property name="ElbowPitch_yaw" value="0.0"/>
-
-    <xacro:property name="UpperArm1_Ox" value="0.0"/>
-    <xacro:property name="UpperArm1_Oy" value="0.0"/>
-    <xacro:property name="UpperArm1_Oz" value="0.0"/>
-    <xacro:property name="UpperArm1_roll" value="0.0"/>
-    <xacro:property name="UpperArm1_pitch" value="0.0"/>
-    <xacro:property name="UpperArm1_yaw" value="0.0"/>
     
     <xacro:property name="WristPitch_Ox" value="0.0"/>
-	<xacro:property name="WristPitch_Oy" value="${-250.00 * mTomm}"/>
-	<xacro:property name="WristPitch_Oz" value="0.0"/>
-	<xacro:property name="WristPitch_roll" value="0.0"/>
+	<xacro:property name="WristPitch_Oy" value="${-250.00 * mmTom}"/>
+	<xacro:property name="WristPitch_Oz" value="${-20.5025 * mmTom}"/>
+	<xacro:property name="WristPitch_roll" value="${-PI}"/>
 	<xacro:property name="WristPitch_pitch" value="0.0"/>
-	<xacro:property name="WristPitch_yaw" value="${-PI_2}"/>
+	<xacro:property name="WristPitch_yaw" value="0.0"/>
 	
-	<xacro:property name="UpperArm2_Ox" value="0.0"/>
-    <xacro:property name="UpperArm2_Oy" value="0.0"/>
-    <xacro:property name="UpperArm2_Oz" value="0.0"/>
-    <xacro:property name="UpperArm2_roll" value="0.0"/>
-    <xacro:property name="UpperArm2_pitch" value="0.0"/>
-    <xacro:property name="UpperArm2_yaw" value="0.0"/>
+    <xacro:property name="WristYaw_Ox" value="0.0"/>
+	<xacro:property name="WristYaw_Oy" value="${115.862 * mmTom}"/>
+	<xacro:property name="WristYaw_Oz" value="${-20.360 * mmTom}"/>
+	<xacro:property name="WristYaw_roll" value="${-PI_2}"/>
+	<xacro:property name="WristYaw_pitch" value="0.0"/>
+	<xacro:property name="WristYaw_yaw" value="0.0"/>
 
     <xacro:property name="EndEffector_Ox" value="${upper_arm2_length}"/>
     <xacro:property name="EndEffector_Oy" value="0.0"/>
@@ -119,13 +119,5 @@
     <xacro:property name="EndEffector_roll" value="0.0	"/>
     <xacro:property name="EndEffector_pitch" value="${PI_2}"/>
     <xacro:property name="EndEffector_yaw" value="0.0"/>
-    
-    <xacro:property name="Wheel23_Ox" value="0.0"/>
-    <xacro:property name="Wheel23_Oy" value="0.0"/>
-    <xacro:property name="Wheel23_Oz" value="${ball_radius}"/>
-    <xacro:property name="Wheel23_roll" value="0.0"/>
-    <xacro:property name="Wheel23_pitch" value="0.0"/>
-    <xacro:property name="Wheel23_yaw" value="0.0"/>
-    
 
 </robot>

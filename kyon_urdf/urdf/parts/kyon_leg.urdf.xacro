@@ -2,8 +2,9 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <!-- include end-effectors -->
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/foot_leg.urdf.xacro" />
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/steering_wheel.urdf.xacro" />
+<xacro:include filename="$(find kyon_urdf)/urdf/parts/foot_leg.urdf.xacro"/>
+<xacro:include filename="$(find kyon_urdf)/urdf/parts/steering_wheel.urdf.xacro"/>
+<xacro:include filename="$(find kyon_urdf)/urdf/parts/wheel_leg.urdf.xacro"/>
 
 <!-- macro legs -->
 <xacro:macro name="kyon_leg" params="leg_num origin_x origin_y mirror">
@@ -80,6 +81,9 @@
 	<xacro:steering_wheel leg_num="${leg_num}" parent="hip_pitch_${leg_num}" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
 </xacro:if>
 
+<xacro:if value="${ADD_WHEELS}">
+	<xacro:wheel_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
+</xacro:if>
 
 </xacro:macro>
 
