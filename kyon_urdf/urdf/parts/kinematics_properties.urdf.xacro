@@ -2,6 +2,7 @@
 <robot  xmlns:xacro="http://ros.org/wiki/xacro">
 
     <xacro:property name="mmTom" value="0.001"/>
+    <xacro:property name="degTorad" value="0.01744"/>
 
     <xacro:property name="kin_yaml_file" value="$(find kyon_urdf)/urdf/config/kinematics_properties.yaml" />
     <xacro:property name="kin_props" value="${xacro.load_yaml(kin_yaml_file)}"/>
@@ -113,11 +114,18 @@
 	<xacro:property name="WristYaw_pitch" value="0.0"/>
 	<xacro:property name="WristYaw_yaw" value="0.0"/>
 
-    <xacro:property name="EndEffector_Ox" value="${upper_arm2_length}"/>
-    <xacro:property name="EndEffector_Oy" value="0.0"/>
-    <xacro:property name="EndEffector_Oz" value="0.0"/>
-    <xacro:property name="EndEffector_roll" value="0.0	"/>
-    <xacro:property name="EndEffector_pitch" value="${PI_2}"/>
-    <xacro:property name="EndEffector_yaw" value="0.0"/>
+    <xacro:property name="DaganaBase_Ox" value="0.0"/>
+    <xacro:property name="DaganaBase_Oy" value="0.0"/>
+    <xacro:property name="DaganaBase_Oz" value="0.0"/>
+    <xacro:property name="DaganaBase_roll" value="0.0"/>
+    <xacro:property name="DaganaBase_pitch" value="0.0"/>
+    <xacro:property name="DaganaBase_yaw" value="0.0"/>
+
+    <xacro:property name="DaganaClamp_Ox" value="${36.1625 * mmTom}"/>
+    <xacro:property name="DaganaClamp_Oy" value="${16.000 * mmTom}"/>
+    <xacro:property name="DaganaClamp_Oz" value="${44.000 * mmTom}"/>
+    <xacro:property name="DaganaClamp_roll" value="0.0"/>
+    <xacro:property name="DaganaClamp_pitch" value="${PI_2}"/>
+    <xacro:property name="DaganaClamp_yaw" value="0.0"/>
 
 </robot>
