@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
+<xacro:include filename="$(find kyon_urdf)/urdf/parts/kyon_dagana.urdf.xacro"/>
+
 <!-- macro arms -->
 <xacro:macro name="kyon_arm" params="arm_num rot parent">
 	
@@ -106,9 +108,6 @@
 	</collision>
 </link>
 
-
-
-
 <!-- /LINKS -->
 
 <!-- JOINTS -->
@@ -153,6 +152,10 @@
 	<axis xyz="0 0 1"/>
 	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
 </joint>
+
+<xacro:if value="${ADD_DAGANA}">
+	<xacro:kyon_dagana arm_num="${arm_num}" parent="wrist_yaw_${arm_num}"/>
+</xacro:if>
 
 </xacro:macro>
 <!-- /macro arms -->

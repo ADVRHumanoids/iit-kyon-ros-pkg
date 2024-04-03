@@ -25,6 +25,10 @@
 <xacro:property name="j_pitch_1_torque" value="${[147.00, 147.00 ]}"/>
 <xacro:property name="j_pitch_2_torque" value="${[147.00, 147.00 ]}"/>
 
+<!-- Dagana -->
+<xacro:property name="dagana_lower" value="${[-3.4056, -3.3266]}"/>
+<xacro:property name="dagana_upper" value="${[3.4056, 3.3266]}"/>
+
 <!-- Motor velocities -->
 <xacro:if value="${inertial_props['gear_ratio'] == 30}">
 	<xacro:property name="motor_velocity" value="15.5"/>
