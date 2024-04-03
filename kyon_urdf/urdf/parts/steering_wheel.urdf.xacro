@@ -4,7 +4,7 @@
 <!-- macro legs -->
 <xacro:macro name="steering_wheel" params="leg_num parent origin_x origin_y mirror">
 
-<link name="knee_pitch_${leg_num}">
+<link name="knee_pitch_${leg_num}_link">
     <inertial>
 		<origin xyz="0.0 0.0 0.0"/>
 		<mass value="${motorA_mass}"/>
@@ -27,7 +27,7 @@
 	</collision>
 </link>
 
-<link name="ankle_yaw_${leg_num}">
+<link name="ankle_yaw_${leg_num}_link">
     <inertial>
 		<origin xyz="0.0 0.0 0.0"/>
 		<mass value="${motorA_mass}"/>
@@ -50,7 +50,7 @@
 	</collision>
 </link>
 
-<link name="wheel_${leg_num}">
+<link name="wheel_${leg_num}_link">
     <inertial>
 		<origin xyz="0.0 0.0 0.0"/>
 		<mass value="${motorA_mass}"/>
@@ -75,23 +75,23 @@
 
 <joint name="knee_pitch_${leg_num}" type="revolute">
     <parent link="${parent}"/>
-    <child link="knee_pitch_${leg_num}"/>
+    <child link="knee_pitch_${leg_num}_link"/>
     <origin xyz="${KneePitch_Ox} ${KneePitch_Oy} ${KneePitch_Oz}" rpy="${KneePitch_roll} ${KneePitch_pitch} ${KneePitch_yaw}"/>
     <axis xyz="0 0 1"/>
     <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 
 </joint>
 
 <joint name="ankle_yaw_${leg_num}" type="revolute">
-    <parent link="knee_pitch_${leg_num}"/>
-    <child link="ankle_yaw_${leg_num}"/>
+    <parent link="knee_pitch_${leg_num}_link"/>
+    <child link="ankle_yaw_${leg_num}_link"/>
     <origin xyz="${AnkleYaw_Ox} ${AnkleYaw_Oy} ${AnkleYaw_Oz}" rpy="${AnkleYaw_roll} ${AnkleYaw_pitch} ${AnkleYaw_yaw}"/>
     <axis xyz="0 0 1"/>
     <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 
 </joint>
 
 <joint name="wheel_joint_${leg_num}" type="revolute">
-    <parent link="ankle_yaw_${leg_num}"/>
-    <child link="wheel_${leg_num}"/>
+    <parent link="ankle_yaw_${leg_num}_link"/>
+    <child link="wheel_${leg_num}_link"/>
     <origin xyz="${SteeringWheel_Ox} ${SteeringWheel_Oy} ${SteeringWheel_Oz}" rpy="${SteeringWheel_roll} ${SteeringWheel_pitch} ${SteeringWheel_yaw}"/>
     <axis xyz="0 0 1"/>
     <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 

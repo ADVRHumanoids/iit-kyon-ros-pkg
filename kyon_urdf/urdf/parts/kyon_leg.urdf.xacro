@@ -11,7 +11,7 @@
 
 <!-- links -->
 
-<link name="hip_roll_${leg_num}">
+<link name="hip_roll_${leg_num}_link">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>
 		<mass value="${motorA_mass}"/>
@@ -34,7 +34,7 @@
 	</collision>
 </link>
 
-<link name="hip_pitch_${leg_num}">
+<link name="hip_pitch_${leg_num}_link">
 	<inertial>
 		<origin xyz="0.0 0.0 0.0"/>
 		<mass value="${motorA_mass}"/>
@@ -59,30 +59,30 @@
 
 <joint name="hip_roll_${leg_num}" type="revolute">
 	<parent link="pelvis"/>
-	<child link="hip_roll_${leg_num}"/>
+	<child link="hip_roll_${leg_num}_link"/>
 	<origin xyz="${origin_x * HipRoll_Ox} ${origin_y * HipRoll_Oy} ${HipRoll_Oz}" rpy="${HipRoll_roll} ${origin_x*HipRoll_pitch} ${HipRoll_yaw}"/>
 	<axis xyz="0 0 1"/>
     <limit lower="${hip_roll_lower[leg_num-1]}" upper="${hip_roll_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 
 </joint>
 
 <joint name="hip_pitch_${leg_num}" type="revolute">
-	<parent link="hip_roll_${leg_num}"/>
-	<child link="hip_pitch_${leg_num}"/>
+	<parent link="hip_roll_${leg_num}_link"/>
+	<child link="hip_pitch_${leg_num}_link"/>
 	<origin xyz="${origin_x * HipPitch_Ox} ${origin_y * HipPitch_Oy} ${HipPitch_Oz}" rpy="${origin_y*HipPitch_roll} ${origin_x*origin_y*HipPitch_pitch} ${HipPitch_yaw}"/>
 	<axis xyz="0 0 1"/>
 	<limit lower="${hip_pitch_lower[leg_num-1]}" upper="${hip_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 
 </joint>
 
 <xacro:if value="${ADD_FEET}">
-	<xacro:foot_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
+	<xacro:foot_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
 </xacro:if>
 
 <xacro:if value="${ADD_STEERING_WHEELS}">
-	<xacro:steering_wheel leg_num="${leg_num}" parent="hip_pitch_${leg_num}" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
+	<xacro:steering_wheel leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
 </xacro:if>
 
 <xacro:if value="${ADD_WHEELS}">
-	<xacro:wheel_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
+	<xacro:wheel_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
 </xacro:if>
 
 </xacro:macro>

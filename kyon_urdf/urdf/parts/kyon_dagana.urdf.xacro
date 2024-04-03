@@ -4,7 +4,7 @@
 <!-- macro legs -->
 <xacro:macro name="kyon_dagana" params="arm_num parent">
 
-<link name="dagana${arm_num}_base">
+<link name="dagana_${arm_num}_base">
     <inertial>
         <origin xyz="0.0 0.0 0.0"/>
         <mass value="${motorA_mass}"/>
@@ -25,7 +25,7 @@
     </collision>
 </link>
 
-<link name="dagana${arm_num}_clamp">
+<link name="dagana_${arm_num}_clamp">
     <inertial>
         <origin xyz="0.0 0.0 0.0"/>
         <mass value="${motorA_mass}"/>
@@ -46,15 +46,15 @@
     </collision>
 </link>
 
-<joint name="dagana${arm_num}_base_joint" type="fixed">
+<joint name="dagana_${arm_num}_base_joint" type="fixed">
     <parent link="${parent}"/>
-    <child link="dagana${arm_num}_base"/>
+    <child link="dagana_${arm_num}_base"/>
     <origin xyz="${DaganaBase_Ox} ${DaganaBase_Oy} ${DaganaBase_Oz}" rpy="${DaganaBase_roll} ${DaganaBase_pitch} ${DaganaBase_yaw}"/>
 </joint>
 
-<joint name="dagana${arm_num}_clamp_joint" type="revolute">
-    <parent link="dagana${arm_num}_base"/>
-    <child link="dagana${arm_num}_clamp"/>
+<joint name="dagana_${arm_num}_clamp_joint" type="revolute">
+    <parent link="dagana_${arm_num}_base"/>
+    <child link="dagana_${arm_num}_clamp"/>
     <origin xyz="${DaganaClamp_Ox} ${DaganaClamp_Oy} ${DaganaClamp_Oz}" rpy="${DaganaClamp_roll} ${DaganaClamp_pitch} ${DaganaClamp_yaw}"/>
     <axis xyz="0 0 1"/>
     <limit lower="${dagana_lower[arm_num-1]}" upper="${dagana_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 
