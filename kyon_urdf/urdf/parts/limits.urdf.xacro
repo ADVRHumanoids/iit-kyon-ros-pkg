@@ -6,14 +6,14 @@
 <xacro:property name="hip_roll_upper" value="${[ 2.510, 2.030,  2.030 , 2.510]}"/>
 <xacro:property name="hip_pitch_lower" value="${[-2.4056, -2.3266, -2.4696, -2.3426]}"/>
 <xacro:property name="hip_pitch_upper" value="${[2.4056, 2.3266, 2.4696, 2.3426]}"/>
-<xacro:property name="knee_pitch_lower" value="${[-2.4056, -2.3266, -2.4696, -2.3426]}"/>
-<xacro:property name="knee_pitch_upper" value="${[2.4056, 2.3266, 2.4696, 2.3426]}"/>
+<xacro:property name="knee_pitch_lower" value="${[-3.4056, -3.3266, -3.4696, -3.3426]}"/>
+<xacro:property name="knee_pitch_upper" value="${[3.4056, 3.3266, 3.4696, 3.3426]}"/>
 
 <!-- Arms -->
 <xacro:property name="j_shoulder_yaw_lower" value="${[-3.312, -3.3458]}"/>
 <xacro:property name="j_shoulder_yaw_upper" value="${[3.312, 3.3458]}"/>
-<xacro:property name="j_pitch_1_lower" value="${[-2.4056, -2.3266, -2.4696, -2.3426]}"/>
-<xacro:property name="j_pitch_1_upper" value="${[2.4056, 2.3266, 2.4696, 2.3426]}"/>
+<xacro:property name="j_pitch_1_lower" value="${[-3, -3]}"/>
+<xacro:property name="j_pitch_1_upper" value="${[3, 3]}"/>
 <xacro:property name="j_pitch_2_lower" value="${[-2.4056, -2.3266, -2.4696, -2.3426]}"/>
 <xacro:property name="j_pitch_2_upper" value="${[2.4056, 2.3266, 2.4696, 2.3426]}"/>
 
@@ -24,6 +24,10 @@
 <xacro:property name="j_shoulder_torque" value="${[147.00, 147.00 ]}"/>
 <xacro:property name="j_pitch_1_torque" value="${[147.00, 147.00 ]}"/>
 <xacro:property name="j_pitch_2_torque" value="${[147.00, 147.00 ]}"/>
+
+<!-- Dagana -->
+<xacro:property name="dagana_lower" value="${[-3.4056, -3.3266]}"/>
+<xacro:property name="dagana_upper" value="${[3.4056, 3.3266]}"/>
 
 <!-- Motor velocities -->
 <xacro:if value="${inertial_props['gear_ratio'] == 30}">

@@ -2,9 +2,6 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <xacro:include filename="$(find kyon_urdf)/urdf/parts/kyon_arm.urdf.xacro"/>
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/kyon_ball_ee.xacro"/>
-<xacro:include filename="$(find dagana_urdf)/urdf/dagana_macro.urdf.xacro"/>
-
 
 <!-- arms -->
 <xacro:kyon_arm arm_num="1"  rot="1"  parent="pelvis">
@@ -12,61 +9,47 @@
 
 <xacro:kyon_arm arm_num="2" rot="-1"  parent="pelvis">
 </xacro:kyon_arm>
-
-<xacro:if value="${ADD_DAGANA}">
-	<xacro:dagana_gripper name="dagana_1" parent_link="wrist_1" joint_type="fixed">
-		<origin xyz="0 0 0" rpy="0 0 0"/>
-	</xacro:dagana_gripper>
-	<xacro:dagana_gripper name="dagana_2" parent_link="wrist_2" joint_type="fixed">
-		<origin xyz="0 0 0" rpy="0 0 0"/>
-	</xacro:dagana_gripper>
 	
-	<xacro:if value="${PAYLOAD}">
-		<link name="payload_1">
-			<inertial>
-				<origin xyz="0.0 0.0 0.0"/>
-				<mass value="4"/>
-				<inertia ixx="0.0267" iyy="0.0267" izz="0.0267" ixy="0" ixz="0" iyz="0"/>
-			</inertial>
-			<visual>
-				<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
-				<geometry>
-					<box size="0.2 0.2 0.2"/>
-				</geometry>
-				<material name="dark_grey"/>
-			</visual>
-		</link>
-		<joint name="hand_to_payload_1" type="fixed">
-			<origin xyz="0 0.1 0.0" rpy="0 0 0"/>
-			<parent link="dagana_1_bottom_link"/>
-			<child link="payload_1"/>
-		</joint>
-		
-		<link name="payload_2">
-			<inertial>
-				<origin xyz="0.0 0.0 0.0"/>
-				<mass value="4"/>
-				<inertia ixx="0.0267" iyy="0.0267" izz="0.0267" ixy="0" ixz="0" iyz="0"/>
-			</inertial>
-			<visual>
-				<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
-				<geometry>
-					<box size="0.2 0.2 0.2"/>
-				</geometry>
-				<material name="dark_grey"/>
-			</visual>
-		</link>
-		<joint name="hand_to_payload_2" type="fixed">
-			<origin xyz="0 0.1 0.0" rpy="0 0 0"/>
-			<parent link="dagana_2_bottom_link"/>
-			<child link="payload_2"/>
-		</joint>
-	</xacro:if>
+<xacro:if value="${PAYLOAD}">
+	<link name="payload_1">
+		<inertial>
+			<origin xyz="0.0 0.0 0.0"/>
+			<mass value="4"/>
+			<inertia ixx="0.0267" iyy="0.0267" izz="0.0267" ixy="0" ixz="0" iyz="0"/>
+		</inertial>
+		<visual>
+			<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+			<geometry>
+				<box size="0.2 0.2 0.2"/>
+			</geometry>
+			<material name="dark_grey"/>
+		</visual>
+	</link>
+	<joint name="hand_to_payload_1" type="fixed">
+		<origin xyz="0 0.1 0.0" rpy="0 0 0"/>
+		<parent link="dagana_1_bottom_link"/>
+		<child link="payload_1"/>
+	</joint>
+	
+	<link name="payload_2">
+		<inertial>
+			<origin xyz="0.0 0.0 0.0"/>
+			<mass value="4"/>
+			<inertia ixx="0.0267" iyy="0.0267" izz="0.0267" ixy="0" ixz="0" iyz="0"/>
+		</inertial>
+		<visual>
+			<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+			<geometry>
+				<box size="0.2 0.2 0.2"/>
+			</geometry>
+			<material name="dark_grey"/>
+		</visual>
+	</link>
+	<joint name="hand_to_payload_2" type="fixed">
+		<origin xyz="0 0.1 0.0" rpy="0 0 0"/>
+		<parent link="dagana_2_bottom_link"/>
+		<child link="payload_2"/>
+	</joint>
 </xacro:if>
-
-<xacro:unless value="${ADD_DAGANA}">
-	<xacro:ball_ee arm_num="1" parent="wrist_1" payload="${PAYLOAD}"/>
-	<xacro:ball_ee arm_num="2" parent="wrist_2" payload="${PAYLOAD}"/>
-</xacro:unless>
 
 </robot>

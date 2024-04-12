@@ -1,79 +1,61 @@
 solver_options:
     regularization: 1e-2
-    back_end: "osqp"
+    back_end: osqp
     
 stack:
-    - ["Ball1", "Ball2", "Ball3", "Ball4"]
-    #- ["RightArm"] #, "Ball1_Yaw", "Ball2_Yaw", "Ball3_Yaw", "Ball4_Yaw"] #, "LeftArm"]
-    - ["Postural", "Pelvis"]
+    - [contact_1, contact_2, contact_3, contact_4, l_arm, r_arm]
+    - [Postural, Com, PelvisRot]
     
-Ball1:
-    type: "Cartesian"
-    distal_link: "ball_1"
-    base_link: "world"
-    #indices: [0, 1, 2]
+contact_1:
+    type: Cartesian
+    distal_link: contact_1
+    base_link: world
+    indices: [0, 1, 2]
     
-Ball2:
-    type: "Cartesian"
-    distal_link: "ball_2"
-    base_link: "world"
-    #indices: [0, 1, 2]
+contact_2:
+    type: Cartesian
+    distal_link: contact_2
+    base_link: world
+    indices: [0, 1, 2]
     
-Ball3:
-    type: "Cartesian"
-    distal_link: "ball_3"
-    base_link: "world"
-    #indices: [0, 1, 2]
+contact_3:
+    type: Cartesian
+    distal_link: contact_3
+    base_link: world
+    indices: [0, 1, 2]
     
-Ball4:
-    type: "Cartesian"
-    distal_link: "ball_4"
-    base_link: "world"
-    #indices: [0, 1, 2]
+contact_4:
+    type: Cartesian
+    distal_link: contact_4
+    base_link: world
+    indices: [0, 1, 2]
     
-Ball1_Yaw:
-    type: "Subtask"
-    task: "Ball1"
-    indices: [3, 4]
-	
-Ball2_Yaw:
-    type: "Subtask"
-    task: "Ball2"
-    indices: [3, 4]
-	
-Ball3_Yaw:
-    type: "Subtask"
-    task: "Ball3"
-    indices: [3, 4]
-	
-Ball4_Yaw:
-    type: "Subtask"
-    task: "Ball4"
-    indices: [3, 4]
-	
-LeftArm:
-    type: "Cartesian"
-    distal_link: "dagana_1_bottom_link"
-    base_link: "world" 
-    indices: [0, 1, 2] #, 3, 4, 5]
-    
-RightArm:
-    type: "Cartesian"
-    distal_link: "ball_arm_2"
-    base_link: "world"
+
+l_arm:
+    type: Cartesian
+    distal_link: dagana_1_base
+    base_link: world 
     indices: [0, 1, 2, 3, 4, 5]
     
+
+r_arm:
+    type: Cartesian
+    distal_link: dagana_2_base
+    base_link: world 
+    indices: [0, 1, 2, 3, 4, 5]
+    
+    
 Com:
-    type: "Com"
-    indices: [0, 1, 2]
-    weigth: 10
+    type: Com
+    indices: [0, 1]
+    weight: 10
     
 Postural:
-    type: "Postural"
+    type: Postural
     lambda: 0.1
     
-Pelvis:
-    type: "Cartesian"
-    distal_link: "pelvis"
-    weight: 1000
-    indices: [0, 1, 2]
+PelvisRot:
+    type: Cartesian
+    distal_link: pelvis
+    weight: 10
+    indices: [4, 5]
