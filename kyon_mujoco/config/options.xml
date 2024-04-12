@@ -2,12 +2,20 @@
     <compiler angle="radian" />
     <option timestep="0.0002"/>
     <size njmax="1000" nconmax="200"/>
-    <!-- <contact>
-        <exclude name="hip_1_exclude" body1="pelvis" body2="hip2_1"/>
-        <exclude name="hip_2_exclude" body1="pelvis" body2="hip2_2"/>
-        <exclude name="hip_3_exclude" body1="pelvis" body2="hip2_3"/>
-        <exclude name="hip_4_exclude" body1="pelvis" body2="hip2_4"/>
-    </contact> -->
+    <contact>
+        <exclude name="upper_leg_1_exclude" body1="pelvis" body2="upper_leg_1"/>
+        <exclude name="upper_leg_2_exclude" body1="pelvis" body2="upper_leg_2"/>
+        <exclude name="upper_leg_3_exclude" body1="pelvis" body2="upper_leg_3"/>
+        <exclude name="upper_leg_4_exclude" body1="pelvis" body2="upper_leg_4"/>
+        <exclude name="hip_roll_1_exclude" body1="pelvis" body2="hip_roll_motor_1"/>
+        <exclude name="hip_roll_2_exclude" body1="pelvis" body2="hip_roll_motor_2"/>
+        <exclude name="hip_roll_3_exclude" body1="pelvis" body2="hip_roll_motor_3"/>
+        <exclude name="hip_roll_4_exclude" body1="pelvis" body2="hip_roll_motor_4"/>
+        <exclude name="hip_pitch_1_exclude" body1="pelvis" body2="hip_pitch_motor_1"/>
+        <exclude name="hip_pitch_2_exclude" body1="pelvis" body2="hip_pitch_motor_2"/>
+        <exclude name="hip_pitch_3_exclude" body1="pelvis" body2="hip_pitch_motor_3"/>
+        <exclude name="hip_pitch_4_exclude" body1="pelvis" body2="hip_pitch_motor_4"/>
+    </contact>
     <sensor>
         <accelerometer name="imu_link_acc" site="imu_link"/>
         <gyro name="imu_link_gyro" site="imu_link"/>

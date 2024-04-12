@@ -10,6 +10,7 @@ ModelInterface:
 # hal
 xbotcore_device_configs:
     sim: $(rospack find kyon_config)/hal/kyon_gz.yaml
+    mj: $(rospack find kyon_config)/hal/kyon_mj.yaml
     dummy: $(rospack find kyon_config)/hal/kyon_dummy.yaml
 
 
