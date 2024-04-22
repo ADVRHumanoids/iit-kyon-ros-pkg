@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon">
+
+    <xacro:include filename="$(find kyon_urdf)/urdf/config/kyon.urdf.xacro" />
+
+    <xacro:include filename="$(find kyon_urdf)/urdf/parts/kyon_leg.urdf.xacro" />
+
+    <xacro:include filename="$(find kyon_urdf)/urdf/utils.urdf.xacro" />
+    
+    <!-- NOTE: here we need to include "kinematics_properties" first because "inertial_properties" depends on it-->
+    <xacro:include filename="$(find kyon_urdf)/urdf/parts/kinematics_properties.urdf.xacro" />
+    <xacro:include filename="$(find kyon_urdf)/urdf/parts/inertial_properties.urdf.xacro" />
+
+    <xacro:include filename="$(find kyon_urdf)/urdf/parts/limits.urdf.xacro" />
+
+
+    <link name="world"/>
+
+    <joint name="base_joint" type="fixed">
+        <parent link="world"/>
+        <child link="pelvis"/>
+    </joint>
+
+    <link name="pelvis"/>
+
+    <xacro:kyon_leg leg_num="2" origin_x="1" origin_y="1" mirror="1">
+    </xacro:kyon_leg>
+
+</robot>
