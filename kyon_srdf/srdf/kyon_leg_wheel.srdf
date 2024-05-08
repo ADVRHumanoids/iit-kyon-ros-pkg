@@ -14,7 +14,7 @@
   </group>
 
   <group name="front_right_leg">
-    <chain base_link="pelvis" tip_link="wheel_2_link"/>
+    <chain base_link="pelvis" tip_link="contact_2"/>
   </group>
 
   <group name="chains">
