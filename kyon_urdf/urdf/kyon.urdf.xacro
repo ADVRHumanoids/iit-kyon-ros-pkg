@@ -19,7 +19,7 @@ abolute paths for mesh paths-->
 	<xacro:if value="${USE_LOCAL_FILESYS_FOR_MESHES}">
 	<xacro:property name="MESH_PATH" value="file://${KYON_ROOT}/meshes" />
 	</xacro:if>
-	<xacro:unless value="${USE_ABS_MESH_PATHS}">
+	<xacro:unless value="${USE_LOCAL_FILESYS_FOR_MESHES}">
 	<xacro:property name="MESH_PATH" value="${KYON_ROOT}/meshes" />
 	</xacro:unless>
 	</xacro:if>
