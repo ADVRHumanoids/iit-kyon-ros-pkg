@@ -32,8 +32,8 @@
     <!-- Compound properties (i.e. based on the props parsed from the yaml) -->
 
     <!-- Origin -->
-    <xacro:property name="HipRoll_Ox" value="${409.360 * mmTom}"/>
-    <xacro:property name="HipRoll_Oy" value="${77.500 * mmTom}"/>
+    <xacro:property name="HipRoll_Ox" value="${411.000 * mmTom}"/>
+    <xacro:property name="HipRoll_Oy" value="${-77.500 * mmTom}"/>
     <xacro:property name="HipRoll_Oz" value="0.0"/>
     <xacro:property name="HipRoll_roll" value="0.0"/>
     <xacro:property name="HipRoll_pitch" value="${PI_2}"/>
@@ -41,23 +41,23 @@
 
     <!-- Origin -->
     <xacro:property name="HipPitch_Ox" value="0.0"/>
-    <xacro:property name="HipPitch_Oy" value="${50.860 * mmTom}"/>
+    <xacro:property name="HipPitch_Oy" value="${47.460 * mmTom}"/>
     <xacro:property name="HipPitch_Oz" value="0.0"/>
-    <xacro:property name="HipPitch_roll" value="${-PI_2}"/>
-    <xacro:property name="HipPitch_pitch" value="${PI_2}"/>
-    <xacro:property name="HipPitch_yaw" value="0.0"/>
+    <xacro:property name="HipPitch_roll" value="0.0"/>
+    <xacro:property name="HipPitch_pitch" value="${-PI_2}"/>
+    <xacro:property name="HipPitch_yaw" value="${PI_2}"/>
 
     <!-- Origin -->
     <xacro:property name="KneePitch_Ox" value="0.0"/>
     <xacro:property name="KneePitch_Oy" value="${-346.000 * mmTom}"/>
-    <xacro:property name="KneePitch_Oz" value="${166.710 * mmTom}"/>
+    <xacro:property name="KneePitch_Oz" value="${246.060 * mmTom}"/>
     <xacro:property name="KneePitch_roll" value="0.0"/>
     <xacro:property name="KneePitch_pitch" value="0.0"/>
     <xacro:property name="KneePitch_yaw" value="0.0"/>
 
     <xacro:property name="AnkleYaw_Ox" value="0.0"/>
-    <xacro:property name="AnkleYaw_Oy" value="${-10.000 * mmTom}"/>
-    <xacro:property name="AnkleYaw_Oz" value="${67.000 * mmTom}"/>
+    <xacro:property name="AnkleYaw_Oy" value="${-73.500 * mmTom}"/>
+    <xacro:property name="AnkleYaw_Oz" value="${59.000 * mmTom}"/>
     <xacro:property name="AnkleYaw_roll" value="-${PI_2}"/>
     <xacro:property name="AnkleYaw_pitch" value="0.0"/>
     <xacro:property name="AnkleYaw_yaw" value="0.0"/>
@@ -72,8 +72,8 @@
 
     <xacro:property name="SteeringWheel_Ox" value="0.0"/>
     <xacro:property name="SteeringWheel_Oy" value="0.0"/>
-    <xacro:property name="SteeringWheel_Oz" value="${-290.000 * mmTom}"/>
-    <xacro:property name="SteeringWheel_roll" value="${PI_2}"/>
+    <xacro:property name="SteeringWheel_Oz" value="${-226.500 * mmTom}"/>
+    <xacro:property name="SteeringWheel_roll" value="-${PI_2}"/>
     <xacro:property name="SteeringWheel_pitch" value="0.0"/>
     <xacro:property name="SteeringWheel_yaw" value="0.0"/>
     

@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot  xmlns:xacro="http://ros.org/wiki/xacro">
-
+    
+    <xacro:property name="mm2Tom2" value="${0.001*0.001}"/>
 
     <xacro:property name="inertial_yaml_file" value="$(find kyon_urdf)/urdf/config/inertial_properties.yaml" />
     <xacro:property name="inertial_props" value="${xacro.load_yaml(inertial_yaml_file)}"/>
@@ -50,28 +51,102 @@
     <xacro:property name="MotorArm3_zz" value="${1/2 * motor_arm3_mass * cylinder_radius * cylinder_radius}"/>
 
     <!-- Pelvis -->
-    <xacro:property name="Pelvis_xx" value="${1/12 * pelvis_mass * (pelvis_width * pelvis_width + pelvis_height * pelvis_height)}"/>
-    <xacro:property name="Pelvis_xy" value="0.0"/>
-    <xacro:property name="Pelvis_xz" value="0.0"/>
-    <xacro:property name="Pelvis_yy" value="${1/12 * pelvis_mass * (pelvis_length * pelvis_length + pelvis_height * pelvis_height)}"/>
-    <xacro:property name="Pelvis_yz" value="0.0"/>
-    <xacro:property name="Pelvis_zz" value="${1/12 * pelvis_mass * (pelvis_width * pelvis_width + pelvis_length * pelvis_length)}"/>
+    <xacro:property name="Pelvis_mass" value="32.642743"/>
 
-    <!-- Upper Leg -->
-    <xacro:property name="UpperLeg_xx" value="${1/12 * upper_leg_mass * (upper_leg_width * upper_leg_width + upper_leg_height * upper_leg_height)}"/>
-    <xacro:property name="UpperLeg_xy" value="0.0"/>
-    <xacro:property name="UpperLeg_xz" value="0.0"/>
-    <xacro:property name="UpperLeg_yy" value="${1/12 * upper_leg_mass * (upper_leg_length * upper_leg_length + upper_leg_height * upper_leg_height)}"/>
-    <xacro:property name="UpperLeg_yz" value="0.0"/>
-    <xacro:property name="UpperLeg_zz" value="${1/12 * upper_leg_mass * (upper_leg_width * upper_leg_width + upper_leg_length * upper_leg_length)}"/>
+    <xacro:property name="Pelvis_x" value="${3.5990152e+01 * mmTom}"/>
+    <xacro:property name="Pelvis_y" value="${-3.0735925e+01 * mmTom}"/> 
+    <xacro:property name="Pelvis_z" value="${3.7859444e+01 * mmTom}"/>
+ 
+    <xacro:property name="Pelvis_xx" value="${3.5499677e+05 * mm2Tom2}"/>
+    <xacro:property name="Pelvis_xy" value="${-3.9512772e+04 * mm2Tom2}"/>
+    <xacro:property name="Pelvis_xz" value="${-9.9657679e+04 * mm2Tom2}"/>
+    <xacro:property name="Pelvis_yy" value="${1.2528724e+06 * mm2Tom2}"/>
+    <xacro:property name="Pelvis_yz" value="${-5.5537486e+04 * mm2Tom2}"/>
+    <xacro:property name="Pelvis_zz" value="${1.2807784e+06 * mm2Tom2}"/>
 
-    <!-- Lower Leg -->
-    <xacro:property name="LowerLeg_xx" value="${1/12 * lower_leg_mass * (lower_leg_width * lower_leg_width + lower_leg_height * lower_leg_height)}"/>
-    <xacro:property name="LowerLeg_xy" value="0.0"/>
-    <xacro:property name="LowerLeg_xz" value="0.0"/>
-    <xacro:property name="LowerLeg_yy" value="${1/12 * lower_leg_mass * (lower_leg_length * lower_leg_length + lower_leg_height * lower_leg_height)}"/>
-    <xacro:property name="LowerLeg_yz" value="0.0"/>
-    <xacro:property name="LowerLeg_zz" value="${1/12 * lower_leg_mass * (lower_leg_width * lower_leg_width + lower_leg_length * lower_leg_length)}"/>
+    <!-- Hip Roll -->
+    <xacro:property name="HipRoll_mass" value="2.7479472"/>
+
+    <xacro:property name="HipRoll_x" value="${-4.8748556e-01 * mmTom}"/>
+    <xacro:property name="HipRoll_y" value="${6.3409270e+00 * mmTom}"/>
+    <xacro:property name="HipRoll_z" value="${-1.1484611e+02 * mmTom}"/>
+
+    <xacro:property name="HipRoll_xx" value="${1.4719608e+04 * mm2Tom2}"/>
+    <xacro:property name="HipRoll_xy" value="${-1.1262382e+01 * mm2Tom2}"/>
+    <xacro:property name="HipRoll_xz" value="${3.2414002e+01 * mm2Tom2}"/>
+    <xacro:property name="HipRoll_yy" value="${1.4797973e+04 * mm2Tom2}"/>
+    <xacro:property name="HipRoll_yz" value="${-1.7237369e+03 * mm2Tom2}"/>
+    <xacro:property name="HipRoll_zz" value="${4.9076886e+03 * mm2Tom2}"/>
+
+    <!-- Hip Pitch -->
+    <xacro:property name="HipPitch_mass" value="6.6449096"/>
+
+    <xacro:property name="HipPitch_x" value="${6.4486994e-02 * mmTom}"/>
+    <xacro:property name="HipPitch_y" value="${-7.8127559e+01 * mmTom}"/>
+    <xacro:property name="HipPitch_z" value="${1.4684759e+02 * mmTom}"/>
+
+    <xacro:property name="HipPitch_xx" value="${1.2473067e+05 * mm2Tom2}"/>
+    <xacro:property name="HipPitch_xy" value="${-6.7511845e+02 * mm2Tom2}"/>
+    <xacro:property name="HipPitch_xz" value="${-5.3841528e+01 * mm2Tom2}"/>
+    <xacro:property name="HipPitch_yy" value="${3.4322669e+04 * mm2Tom2}"/>
+    <xacro:property name="HipPitch_yz" value="${2.8582838e+04 * mm2Tom2}"/>
+    <xacro:property name="HipPitch_zz" value="${1.0356313e+05 * mm2Tom2}"/>
+
+    <!-- Stick Leg -->
+    <xacro:property name="StickLeg_mass" value="0.70900216"/>
+
+    <xacro:property name="StickLeg_x" value="${5.1193011e-03 * mmTom}"/>
+    <xacro:property name="StickLeg_y" value="${-1.0291595e+02 * mmTom}"/>
+    <xacro:property name="StickLeg_z" value="${-1.2895495e+00 * mmTom}"/>
+
+    <xacro:property name="StickLeg_xx" value="${1.2517512e+04 * mm2Tom2}"/>
+    <xacro:property name="StickLeg_xy" value="${-5.4385779e-01 * mm2Tom2}"/>
+    <xacro:property name="StickLeg_xz" value="${1.4538899e-01 * mm2Tom2}"/>
+    <xacro:property name="StickLeg_yy" value="${8.0474409e+02 * mm2Tom2}"/>
+    <xacro:property name="StickLeg_yz" value="${1.7446290e+03 * mm2Tom2}"/>
+    <xacro:property name="StickLeg_zz" value="${1.2307020e+04 * mm2Tom2}"/>
+
+    <!-- Knee Pitch -->
+    <xacro:property name="KneePitch_mass" value="1.4555296"/>
+
+    <xacro:property name="KneePitch_x" value="${-5.1135441e-01 * mmTom}"/>
+    <xacro:property name="KneePitch_y" value="${-1.7451804e+01 * mmTom}"/>
+    <xacro:property name="KneePitch_z" value="${3.7226616e+01 * mmTom}"/>
+
+    <xacro:property name="KneePitch_xx" value="${3.8934930e+03 * mm2Tom2}"/>
+    <xacro:property name="KneePitch_xy" value="${2.4351251e+01 * mm2Tom2}"/>
+    <xacro:property name="KneePitch_xz" value="${2.2649175e+01 * mm2Tom2}"/>
+    <xacro:property name="KneePitch_yy" value="${3.2260304e+03 * mm2Tom2}"/>
+    <xacro:property name="KneePitch_yz" value="${5.5514749e+02 * mm2Tom2}"/>
+    <xacro:property name="KneePitch_zz" value="${2.0709191e+03 * mm2Tom2}"/>
+
+    <!-- Ankle Yaw -->
+    <xacro:property name="AnkleYaw_mass" value="1.4941965"/>
+
+    <xacro:property name="AnkleYaw_x" value="${1.6741030e-01 * mmTom}"/>
+    <xacro:property name="AnkleYaw_y" value="${-9.4968142e+00 * mmTom}"/>
+    <xacro:property name="AnkleYaw_z" value="${-1.7017490e+02 * mmTom}"/>
+
+    <xacro:property name="AnkleYaw_xx" value="${1.2013025e+04 * mm2Tom2}"/>
+    <xacro:property name="AnkleYaw_xy" value="${-1.9404017e+03 * mm2Tom2}"/>
+    <xacro:property name="AnkleYaw_xz" value="${3.9733307e+02 * mm2Tom2}"/>
+    <xacro:property name="AnkleYaw_yy" value="${1.1965900e+04 * mm2Tom2}"/>
+    <xacro:property name="AnkleYaw_yz" value="${-2.9154923e+02 * mm2Tom2}"/>
+    <xacro:property name="AnkleYaw_zz" value="${-2.0271262e+03 * mm2Tom2}"/>
+
+    <!-- Steering Wheel-->
+    <xacro:property name="SteeringWheel_mass" value="1.2638390"/>  
+
+	<xacro:property name="SteeringWheel_x" value="${0.0 * mmTom}"/>
+	<xacro:property name="SteeringWheel_y" value="${0.0 * mmTom}"/>
+	<xacro:property name="SteeringWheel_z" value="${1.4437817e+00 * mmTom}"/>
+
+	<xacro:property name="SteeringWheel_xx" value="${4.1796417e+03 * mm2Tom2}"/>
+	<xacro:property name="SteeringWheel_xy" value="${4.4497596e-03 * mm2Tom2}"/>
+	<xacro:property name="SteeringWheel_xz" value="${0.0000000e+00 * mm2Tom2}"/>
+	<xacro:property name="SteeringWheel_yy" value="${4.1796381e+03 * mm2Tom2}"/>
+	<xacro:property name="SteeringWheel_yz" value="${0.0 * mm2Tom2}"/>
+	<xacro:property name="SteeringWheel_zz" value="${7.9333497e+03 * mm2Tom2}"/>
     
     <!-- Upper Arm -->
     <xacro:property name="UpperArm1_xx" value="${1/12 * upper_arm1_mass * (upper_arm1_width * upper_arm1_width + upper_arm1_height * upper_arm1_height)}"/>
@@ -104,17 +179,6 @@
     <xacro:property name="Ball_yz" value="0.0"/>
     <xacro:property name="Ball_zz" value="${2/3 * ball_mass * ball_radius * ball_radius}"/>
     
-    <xacro:property name="Wheel23_mass" value="1.8569388e+00"/>  
-    <!-- Center of Mass -->
-	<xacro:property name="Wheel23_x" value="${0.0 * mmTom}"/>
-	<xacro:property name="Wheel23_y" value="${0.0 * mmTom}"/>
-	<xacro:property name="Wheel23_z" value="${-1.5403767e-01 * mmTom}"/>
-	<!-- Inertia -->
-	<xacro:property name="Wheel23_xx" value="${8.6373591e+03 * mm2Tom2}"/>
-	<xacro:property name="Wheel23_yy" value="${8.6373644e+03 * mm2Tom2}"/>
-	<xacro:property name="Wheel23_zz" value="${1.6376551e+04 * mm2Tom2}"/>
-	<xacro:property name="Wheel23_xy" value="${0.0 * mm2Tom2}"/>
-	<xacro:property name="Wheel23_xz" value="${0.0 * mm2Tom2}"/>
-	<xacro:property name="Wheel23_yz" value="${0.0 * mm2Tom2}"/>
+
 
 </robot>

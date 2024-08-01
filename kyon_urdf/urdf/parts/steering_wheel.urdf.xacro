@@ -6,9 +6,9 @@
 
 <link name="knee_pitch_${leg_num}_link">
     <inertial>
-		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${motorA_mass}"/>
-		<inertia ixx="${MotorA_xx}" ixy="${mirror*MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${mirror*MotorA_yz}" izz="${MotorA_zz}"/>
+		<origin xyz="${KneePitch_x} ${KneePitch_y} ${KneePitch_z}"/>
+		<mass value="${KneePitch_mass}"/>
+		<inertia ixx="${KneePitch_xx}" ixy="${KneePitch_xy}" ixz="${KneePitch_xz}" iyy="${KneePitch_yy}" iyz="${KneePitch_yz}" izz="${KneePitch_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -29,9 +29,9 @@
 
 <link name="ankle_yaw_${leg_num}_link">
     <inertial>
-		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${motorA_mass}"/>
-		<inertia ixx="${MotorA_xx}" ixy="${mirror*MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${mirror*MotorA_yz}" izz="${MotorA_zz}"/>
+		<origin xyz="${AnkleYaw_x} ${AnkleYaw_y} ${AnkleYaw_z}"/>
+		<mass value="${AnkleYaw_mass}"/>
+		<inertia ixx="${AnkleYaw_xx}" ixy="${AnkleYaw_xy}" ixz="${AnkleYaw_xz}" iyy="${AnkleYaw_yy}" iyz="${AnkleYaw_yz}" izz="${AnkleYaw_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -52,9 +52,9 @@
 
 <link name="wheel_${leg_num}_link">
     <inertial>
-		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${motorA_mass}"/>
-		<inertia ixx="${MotorA_xx}" ixy="${mirror*MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${mirror*MotorA_yz}" izz="${MotorA_zz}"/>
+		<origin xyz="${SteeringWheel_x} ${SteeringWheel_y} ${SteeringWheel_z}"/>
+		<mass value="${SteeringWheel_mass}"/>
+		<inertia ixx="${SteeringWheel_xx}" ixy="${SteeringWheel_xy}" ixz="${SteeringWheel_xz}" iyy="${SteeringWheel_yy}" iyz="${SteeringWheel_yz}" izz="${SteeringWheel_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
