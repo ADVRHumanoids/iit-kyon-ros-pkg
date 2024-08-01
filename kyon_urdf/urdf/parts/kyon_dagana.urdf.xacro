@@ -6,9 +6,9 @@
 
 <link name="dagana_${arm_num}_base">
     <inertial>
-        <origin xyz="0.0 0.0 0.0"/>
-        <mass value="${motorA_mass}"/>
-        <inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
+        <origin xyz="${Dagana_x} ${Dagana_y} ${Dagana_z}"/>
+        <mass value="${Dagana_mass}"/>
+        <inertia ixx="${Dagana_xx}" ixy="${Dagana_xy}" ixz="${Dagana_xz}" iyy="${Dagana_yy}" iyz="${Dagana_yz}" izz="${Dagana_zz}"/>
     </inertial>
     <visual>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -25,11 +25,11 @@
     </collision>
 </link>
 
-<link name="dagana_${arm_num}_clamp">
+<link name="dagana_${arm_num}_claw">
     <inertial>
-        <origin xyz="0.0 0.0 0.0"/>
-        <mass value="${motorA_mass}"/>
-        <inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
+        <origin xyz="${DaganaClaw_x} ${DaganaClaw_y} ${DaganaClaw_z}"/>
+        <mass value="${DaganaClaw_mass}"/>
+        <inertia ixx="${DaganaClaw_xx}" ixy="${DaganaClaw_xy}" ixz="${DaganaClaw_xz}" iyy="${DaganaClaw_yy}" iyz="${DaganaClaw_yz}" izz="${DaganaClaw_zz}"/>
     </inertial>
     <visual>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -54,7 +54,7 @@
 
 <joint name="dagana_${arm_num}_clamp_joint" type="revolute">
     <parent link="dagana_${arm_num}_base"/>
-    <child link="dagana_${arm_num}_clamp"/>
+    <child link="dagana_${arm_num}_claw"/>
     <origin xyz="${DaganaClamp_Ox} ${DaganaClamp_Oy} ${DaganaClamp_Oz}" rpy="${DaganaClamp_roll} ${DaganaClamp_pitch} ${DaganaClamp_yaw}"/>
     <axis xyz="0 0 1"/>
     <limit lower="${dagana_lower[arm_num-1]}" upper="${dagana_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 
