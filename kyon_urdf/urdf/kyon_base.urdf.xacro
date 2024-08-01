@@ -15,21 +15,19 @@
 
 <link name="pelvis">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${pelvis_mass}"/>
+		<origin xyz="${Pelvis_x} ${Pelvis_y} ${Pelvis_z}"/>
+		<mass value="${Pelvis_mass}"/>
 		<inertia ixx="${Pelvis_xx}" ixy="${Pelvis_xy}" ixz="${Pelvis_xz}" iyy="${Pelvis_yy}" iyz="${Pelvis_yz}" izz="${Pelvis_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-	 		<!--box size="${pelvis_length} ${pelvis_width} ${pelvis_height}"/-->
 	 		<mesh filename="package://kyon_urdf/meshes/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-	  		<!--box size="${pelvis_length} ${pelvis_width} ${pelvis_height}"/-->
 	  		<mesh filename="package://kyon_urdf/meshes/collision/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>

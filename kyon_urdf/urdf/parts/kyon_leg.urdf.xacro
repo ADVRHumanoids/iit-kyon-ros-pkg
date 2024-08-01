@@ -13,9 +13,9 @@
 
 <link name="hip_roll_${leg_num}_link">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${motorA_mass}"/>
-		<inertia ixx="${MotorA_xx}" ixy="${mirror*MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${mirror*MotorA_yz}" izz="${MotorA_zz}"/>
+		<origin xyz="${HipRoll_x} ${HipRoll_y} ${HipRoll_z}"/>
+		<mass value="${HipRoll_mass}"/>
+		<inertia ixx="${HipRoll_xx}" ixy="${mirror*HipRoll_xy}" ixz="${HipRoll_xz}" iyy="${HipRoll_yy}" iyz="${mirror*HipRoll_yz}" izz="${HipRoll_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -36,9 +36,9 @@
 
 <link name="hip_pitch_${leg_num}_link">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${motorA_mass}"/>
-		<inertia ixx="${MotorA_xx}" ixy="${MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
+		<origin xyz="${HipPitch_x} ${HipPitch_y} ${HipPitch_z}"/>
+		<mass value="${HipPitch_mass}"/>
+		<inertia ixx="${HipPitch_xx}" ixy="${HipPitch_xy}" ixz="${HipPitch_xz}" iyy="${HipPitch_yy}" iyz="${HipPitch_yz}" izz="${HipPitch_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -68,7 +68,7 @@
 <joint name="hip_pitch_${leg_num}" type="revolute">
 	<parent link="hip_roll_${leg_num}_link"/>
 	<child link="hip_pitch_${leg_num}_link"/>
-	<origin xyz="${origin_x * HipPitch_Ox} ${origin_y * HipPitch_Oy} ${HipPitch_Oz}" rpy="${origin_y*HipPitch_roll} ${origin_x*origin_y*HipPitch_pitch} ${HipPitch_yaw}"/>
+	<origin xyz="${HipPitch_Ox} ${origin_y * HipPitch_Oy} ${HipPitch_Oz}" rpy="${HipPitch_roll} ${origin_x * origin_y * HipPitch_pitch} ${origin_x * HipPitch_yaw}"/>
 	<axis xyz="0 0 1"/>
 	<limit lower="${hip_pitch_lower[leg_num-1]}" upper="${hip_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 
 </joint>
