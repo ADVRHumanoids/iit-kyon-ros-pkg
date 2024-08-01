@@ -10,9 +10,9 @@
 <!-- shoulder yaw -->
 <link name="shoulder_yaw_${arm_num}_link">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${motor_arm1_mass + 0.68}"/>   
-		<inertia ixx="${MotorArm1_xx}" ixy="${MotorArm1_xy}" ixz="${MotorArm1_xz}" iyy="${MotorArm1_yy}" iyz="${MotorArm1_yz}" izz="${MotorArm1_zz}"/>
+		<origin xyz="${ShoulderYaw_x} ${ShoulderYaw_y} ${ShoulderYaw_z}"/>
+		<mass value="${ShoulderYaw_mass}"/>   
+		<inertia ixx="${ShoulderYaw_xx}" ixy="${ShoulderYaw_xy}" ixz="${ShoulderYaw_xz}" iyy="${ShoulderYaw_yy}" iyz="${ShoulderYaw_yz}" izz="${ShoulderYaw_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -31,9 +31,9 @@
 
 <link name="shoulder_pitch_${arm_num}_link">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${lower_arm_mass + motor_arm2_mass}"/>
-		<inertia ixx="${LowerArm_xx}" ixy="${LowerArm_xy}" ixz="${LowerArm_xz}" iyy="${LowerArm_yy}" iyz="${LowerArm_yz}" izz="${LowerArm_zz}"/>
+		<origin xyz="${ShoulderPitch_x} ${ShoulderPitch_y} ${ShoulderPitch_z}"/>
+		<mass value="${ShoulderPitch_mass}"/>
+		<inertia ixx="${ShoulderPitch_xx}" ixy="${ShoulderPitch_xy}" ixz="${ShoulderPitch_xz}" iyy="${ShoulderPitch_yy}" iyz="${ShoulderPitch_yz}" izz="${ShoulderPitch_zz}"/>
 	</inertial>
 	<visual>
 	  	<geometry>
@@ -50,9 +50,9 @@
 
 <link name="elbow_pitch_${arm_num}_link">
 	<inertial>
-		<origin xyz="${upper_arm1_length / 2} 0.0 0.0"/>	
-		<mass value="${upper_arm1_mass}"/>
-		<inertia ixx="${UpperArm1_xx}" ixy="${UpperArm1_xy}" ixz="${UpperArm1_xz}" iyy="${UpperArm1_yy}" iyz="${UpperArm1_yz}" izz="${UpperArm1_zz}"/>
+		<origin xyz="${ElbowPitch_x} ${ElbowPitch_y} ${ElbowPitch_z}"/>	
+		<mass value="${ElbowPitch_mass}"/>
+		<inertia ixx="${ElbowPitch_xx}" ixy="${ElbowPitch_xy}" ixz="${ElbowPitch_xz}" iyy="${ElbowPitch_yy}" iyz="${ElbowPitch_yz}" izz="${ElbowPitch_zz}"/>
 	</inertial>
 	<visual>
 		<geometry>
@@ -68,9 +68,9 @@
 
 <link name="wrist_pitch_${arm_num}_link">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${motor_arm3_mass}"/>
-		<inertia ixx="${MotorArm3_xx}" ixy="${MotorArm3_xy}" ixz="${MotorArm3_xz}" iyy="${MotorArm3_yy}" iyz="${MotorArm3_yz}" izz="${MotorArm3_zz}"/>
+		<origin xyz="${WristPitch_x} ${WristPitch_y} ${WristPitch_z}"/>
+		<mass value="${WristPitch_mass}"/>
+		<inertia ixx="${WristPitch_xx}" ixy="${WristPitch_xy}" ixz="${WristPitch_xz}" iyy="${WristPitch_yy}" iyz="${WristPitch_yz}" izz="${WristPitch_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -89,9 +89,9 @@
 
 <link name="wrist_yaw_${arm_num}_link">
 	<inertial>
-		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${motor_arm3_mass}"/>
-		<inertia ixx="${MotorArm3_xx}" ixy="${MotorArm3_xy}" ixz="${MotorArm3_xz}" iyy="${MotorArm3_yy}" iyz="${MotorArm3_yz}" izz="${MotorArm3_zz}"/>
+		<origin xyz="${WristYaw_x} ${WristYaw_y} ${WristYaw_z}"/>
+		<mass value="${WristYaw_mass}"/>
+		<inertia ixx="${WristYaw_xx}" ixy="${WristYaw_xy}" ixz="${WristYaw_xz}" iyy="${WristYaw_yy}" iyz="${WristYaw_yz}" izz="${WristYaw_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -115,7 +115,7 @@
 <joint name="shoulder_yaw_${arm_num}" type="revolute">
 	<parent link="${parent}"/>
 	<child link="shoulder_yaw_${arm_num}_link"/>
-	<origin xyz="${ShoulderYaw_Ox} ${rot * ShoulderYaw_Oy} ${ShoulderYaw_Oz}" rpy="${-rot * ShoulderYaw_roll} ${ShoulderYaw_pitch} ${ShoulderYaw_yaw}"/>
+	<origin xyz="${ShoulderYaw_Ox} ${rot * ShoulderYaw_Oy} ${ShoulderYaw_Oz}" rpy="${rot * ShoulderYaw_roll} ${ShoulderYaw_pitch} ${ShoulderYaw_yaw}"/>
 	<axis xyz="0 0 1"/>
 	<limit lower="${j_shoulder_yaw_lower[arm_num-1]}" upper="${j_shoulder_yaw_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
 </joint>
@@ -124,7 +124,7 @@
 <joint name="shoulder_pitch_${arm_num}" type="revolute">
 	<parent link="shoulder_yaw_${arm_num}_link"/>
 	<child link="shoulder_pitch_${arm_num}_link"/>
-	<origin xyz="${ShoulderPitch_Ox} ${ShoulderPitch_Oy} ${ShoulderPitch_Oz}" rpy="${ShoulderPitch_roll} ${ShoulderPitch_pitch} ${ShoulderPitch_yaw  + rot * PI_2}"/>
+	<origin xyz="${ShoulderPitch_Ox} ${ShoulderPitch_Oy} ${ShoulderPitch_Oz}" rpy="${ShoulderPitch_roll} ${ShoulderPitch_pitch} ${ShoulderPitch_yaw + rot * PI_2}"/>
 	<axis xyz="0 1 0"/>
 	<limit lower="${j_pitch_1_lower[arm_num-1]}" upper="${j_pitch_1_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
 </joint>

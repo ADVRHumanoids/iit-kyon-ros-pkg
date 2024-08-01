@@ -34,7 +34,6 @@
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
 			<mesh filename="package://kyon_urdf/meshes/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
 		</geometry> 
   		<material name="dark_grey"/>
@@ -42,7 +41,6 @@
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
 			<mesh filename="package://kyon_urdf/meshes/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
 		</geometry> 
 	</collision>

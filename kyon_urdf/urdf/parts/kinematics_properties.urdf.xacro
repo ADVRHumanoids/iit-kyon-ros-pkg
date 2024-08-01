@@ -80,8 +80,8 @@
 
     <!-- Arms -->
     <xacro:property name="ShoulderYaw_Ox" value="${280.00 * mmTom}"/>
-    <xacro:property name="ShoulderYaw_Oy" value="${96.6072 * mmTom}"/>
-    <xacro:property name="ShoulderYaw_Oz" value="${203.559 * mmTom}"/>
+    <xacro:property name="ShoulderYaw_Oy" value="${-99.8258 * mmTom}"/>
+    <xacro:property name="ShoulderYaw_Oz" value="${203.238 * mmTom}"/>
     <xacro:property name="ShoulderYaw_roll" value="0.3490656"/>
     <xacro:property name="ShoulderYaw_pitch" value="0.0"/>
     <xacro:property name="ShoulderYaw_yaw" value="0.0"/>
@@ -89,28 +89,28 @@
     <xacro:property name="ShoulderPitch_Ox" value="0.0"/>
     <xacro:property name="ShoulderPitch_Oy" value="0.0"/>
     <xacro:property name="ShoulderPitch_Oz" value="${73.5 * mmTom}"/>
-    <xacro:property name="ShoulderPitch_roll" value="0.0"/>
+    <xacro:property name="ShoulderPitch_roll" value="-${PI_2}"/>
     <xacro:property name="ShoulderPitch_pitch" value="0.0"/>
-    <xacro:property name="ShoulderPitch_yaw" value="${PI_2}"/>
+    <xacro:property name="ShoulderPitch_yaw" value="${-PI_2}"/>
 
     <xacro:property name="ElbowPitch_Ox" value="0.0"/>
-    <xacro:property name="ElbowPitch_Oy" value="0.0"/>
-    <xacro:property name="ElbowPitch_Oz" value="${320.00 * mmTom}"/>
-    <xacro:property name="ElbowPitch_roll" value="${-PI_2}"/>
+    <xacro:property name="ElbowPitch_Oy" value="${-320.00 * mmTom}"/>
+    <xacro:property name="ElbowPitch_Oz" value="0.0"/>
+    <xacro:property name="ElbowPitch_roll" value="0.0"/>
     <xacro:property name="ElbowPitch_pitch" value="0.0"/>
     <xacro:property name="ElbowPitch_yaw" value="0.0"/>
     
     <xacro:property name="WristPitch_Ox" value="0.0"/>
 	<xacro:property name="WristPitch_Oy" value="${-250.00 * mmTom}"/>
-	<xacro:property name="WristPitch_Oz" value="${-20.5025 * mmTom}"/>
-	<xacro:property name="WristPitch_roll" value="${-PI}"/>
+	<xacro:property name="WristPitch_Oz" value="0.0"/>
+	<xacro:property name="WristPitch_roll" value="0.0"/>
 	<xacro:property name="WristPitch_pitch" value="0.0"/>
 	<xacro:property name="WristPitch_yaw" value="0.0"/>
 	
     <xacro:property name="WristYaw_Ox" value="0.0"/>
-	<xacro:property name="WristYaw_Oy" value="${115.862 * mmTom}"/>
-	<xacro:property name="WristYaw_Oz" value="${-20.360 * mmTom}"/>
-	<xacro:property name="WristYaw_roll" value="${-PI_2}"/>
+	<xacro:property name="WristYaw_Oy" value="${-134.862 * mmTom}"/>
+	<xacro:property name="WristYaw_Oz" value="0.0"/>
+	<xacro:property name="WristYaw_roll" value="${PI_2}"/>
 	<xacro:property name="WristYaw_pitch" value="0.0"/>
 	<xacro:property name="WristYaw_yaw" value="0.0"/>
 
