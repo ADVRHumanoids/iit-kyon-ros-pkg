@@ -147,6 +147,20 @@
 	<xacro:property name="SteeringWheel_yy" value="${4.1796381e+03 * mm2Tom2}"/>
 	<xacro:property name="SteeringWheel_yz" value="${0.0 * mm2Tom2}"/>
 	<xacro:property name="SteeringWheel_zz" value="${7.9333497e+03 * mm2Tom2}"/>
+
+    <!-- Wheel-->
+    <xacro:property name="Wheel_mass" value="1.2638390"/>  
+
+	<xacro:property name="Wheel_x" value="${0.0 * mmTom}"/>
+	<xacro:property name="Wheel_y" value="${0.0 * mmTom}"/>
+	<xacro:property name="Wheel_z" value="${1.4437817e+00 * mmTom}"/>
+
+	<xacro:property name="Wheel_xx" value="${4.1796417e+03 * mm2Tom2}"/>
+	<xacro:property name="Wheel_xy" value="${4.4497596e-03 * mm2Tom2}"/>
+	<xacro:property name="Wheel_xz" value="${0.0000000e+00 * mm2Tom2}"/>
+	<xacro:property name="Wheel_yy" value="${4.1796381e+03 * mm2Tom2}"/>
+	<xacro:property name="Wheel_yz" value="${0.0 * mm2Tom2}"/>
+	<xacro:property name="Wheel_zz" value="${7.9333497e+03 * mm2Tom2}"/>
     
     <!-- Shoulder Yaw -->
     <xacro:property name="ShoulderYaw_mass" value="0.67826074"/>
@@ -218,6 +232,33 @@
     <xacro:property name="WristYaw_yz" value="${-2.5372645e-02 * mm2Tom2}"/>
     <xacro:property name="WristYaw_zz" value="${1.1802904e+02 * mm2Tom2}"/>
 
+    <!-- Dagana -->
+    <xacro:property name="Dagana_mass" value="0.96534359"/>
+
+    <xacro:property name="Dagana_x" value="${-4.2244666e+00 * mmTom}"/>
+    <xacro:property name="Dagana_y" value="${-2.7238215e+00 * mmTom}"/>
+    <xacro:property name="Dagana_z" value="${5.3670845e+01 * mmTom}"/>
+
+    <xacro:property name="Dagana_xx" value="${2.0957096e+03 * mm2Tom2}"/>
+    <xacro:property name="Dagana_xy" value="${-6.4554109e+01 * mm2Tom2}"/>
+    <xacro:property name="Dagana_xz" value="${4.4955881e+01 * mm2Tom2}"/>
+    <xacro:property name="Dagana_yy" value="${2.1216529e+03 * mm2Tom2}"/>
+    <xacro:property name="Dagana_yz" value="${3.7094613e+02 * mm2Tom2}"/>
+    <xacro:property name="Dagana_zz" value="${1.1572224e+03 * mm2Tom2}"/>
+
+    <!-- Dagana Claw -->
+    <xacro:property name="DaganaClaw_mass" value="0.25739835"/>
+
+    <xacro:property name="DaganaClaw_x" value="${-5.1620300e+01 * mmTom}"/>
+    <xacro:property name="DaganaClaw_y" value="${8.0601187e+00 * mmTom}"/>
+    <xacro:property name="DaganaClaw_z" value="${-3.7212096e+01 * mmTom}"/>
+
+    <xacro:property name="DaganaClaw_xx" value="${2.9169897e+02 * mm2Tom2}"/>
+    <xacro:property name="DaganaClaw_xy" value="${8.3015178e+00 * mm2Tom2}"/>
+    <xacro:property name="DaganaClaw_xz" value="${1.3355847e+01 * mm2Tom2}"/>
+    <xacro:property name="DaganaClaw_yy" value="${7.3268589e+02 * mm2Tom2}"/>
+    <xacro:property name="DaganaClaw_yz" value="${-2.1083033e+00 * mm2Tom2}"/>
+    <xacro:property name="DaganaClaw_zz" value="${5.1112938e+02 * mm2Tom2}"/>
 
 
 </robot>
