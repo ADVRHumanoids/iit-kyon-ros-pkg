@@ -125,7 +125,7 @@
 	<parent link="shoulder_yaw_${arm_num}_link"/>
 	<child link="shoulder_pitch_${arm_num}_link"/>
 	<origin xyz="${ShoulderPitch_Ox} ${ShoulderPitch_Oy} ${ShoulderPitch_Oz}" rpy="${ShoulderPitch_roll} ${ShoulderPitch_pitch} ${ShoulderPitch_yaw + rot * PI_2}"/>
-	<axis xyz="0 1 0"/>
+	<axis xyz="0 0 1"/>
 	<limit lower="${j_pitch_1_lower[arm_num-1]}" upper="${j_pitch_1_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
 </joint>
 

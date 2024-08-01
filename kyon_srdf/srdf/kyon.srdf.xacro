@@ -47,10 +47,10 @@
     <xacro:if value="${ADD_UPPER_BODY}">
     	<xacro:if value="${ADD_DAGANA}">
 			<group name="left_arm">
-				<chain base_link="pelvis" tip_link="dagana_1_clamp"/>
+				<chain base_link="pelvis" tip_link="dagana_1_claw"/>
 			</group>
 			<group name="right_arm">
-				<chain base_link="pelvis" tip_link="dagana_2_clamp"/>
+				<chain base_link="pelvis" tip_link="dagana_2_claw"/>
 			</group>
             <!-- <group name="left_hand">
 				<chain base_link="dagana_1_base" tip_link="dagana_1_clamp"/>

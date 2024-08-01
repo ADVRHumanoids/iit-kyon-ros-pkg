@@ -27,9 +27,9 @@
 
 <link name="wheel_${leg_num}_link">
     <inertial>
-		<origin xyz="0.0 0.0 0.0"/>
-		<mass value="${motorA_mass}"/>
-		<inertia ixx="${MotorA_xx}" ixy="${mirror*MotorA_xy}" ixz="${MotorA_xz}" iyy="${MotorA_yy}" iyz="${mirror*MotorA_yz}" izz="${MotorA_zz}"/>
+		<origin xyz="${Wheel_x} ${Wheel_y} ${Wheel_z}"/>
+		<mass value="${Wheel_mass}"/>
+		<inertia ixx="${Wheel_xx}" ixy="${Wheel_xy}" ixz="${Wheel_xz}" iyy="${Wheel_yy}" iyz="${Wheel_yz}" izz="${Wheel_zz}"/>
 	</inertial>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
