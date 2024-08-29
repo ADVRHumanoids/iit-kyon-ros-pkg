@@ -41,7 +41,7 @@
 
 <link name="imu_link"/>
 
-<joint name="imu_link" type="fixed">
+<joint name="imu_joint" type="fixed">
     <parent link="pelvis"/>
     <child link="imu_link"/>
 </joint>
@@ -231,4 +231,3 @@
 </xacro:if>
 
 </robot>
-
