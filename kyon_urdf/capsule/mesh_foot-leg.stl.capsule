@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<robot name="/home/alaurenzi/code/next_ws/ros_src/iit-kyon-ros-pkg/kyon_urdf/meshes/collision/mesh_foot-leg.stl" version="1.0">
+  <link name="-0.00100_0.00100_0.00100">
+    <collision>
+      <origin xyz="-1.557224e-05 -0.158173015 0.016939799999999998" rpy="1.5339543771153108 0.00011824965830571265 0.00011397143546565671"/>
+      <geometry>
+        <cylinder radius="0.0400971" length="0.3150057312682306"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="0.00100_0.00100_0.00100">
+    <collision>
+      <origin xyz="1.557224e-05 -0.158173015 0.016939799999999998" rpy="-1.6076382764744825 0.00011824965830571265 -0.00012268847568865435"/>
+      <geometry>
+        <cylinder radius="0.0400971" length="0.3150057312682306"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

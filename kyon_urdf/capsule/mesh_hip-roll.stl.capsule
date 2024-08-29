@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<robot name="/home/alaurenzi/code/next_ws/ros_src/iit-kyon-ros-pkg/kyon_urdf/meshes/collision/mesh_hip-roll.stl" version="1.0">
+  <link name="0.00100_-0.00100_0.00100">
+    <collision>
+      <origin xyz="-1.1489703999999999e-05 -0.010964129999999999 -0.05126425" rpy="0.1852451666739783 -0.00015503217023414293 -1.4400684591584318e-05"/>
+      <geometry>
+        <cylinder radius="0.0763481" length="0.14024696973705567"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="0.00100_0.00100_0.00100">
+    <collision>
+      <origin xyz="-1.1489706499999999e-05 0.010964129999999999 -0.05126425" rpy="2.9563474869158153 0.00015503213458274907 0.001669015291881617"/>
+      <geometry>
+        <cylinder radius="0.0763481" length="0.1402469697370549"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<robot name="/home/alaurenzi/code/next_ws/ros_src/iit-kyon-ros-pkg/kyon_urdf/meshes/mesh_elbow.stl" version="1.0">
+  <link name="0.00100_0.00100_0.00100">
+    <collision>
+      <origin xyz="-2.68263705e-05 -0.1179632115 0.0225949" rpy="-1.5990064958055321 0.00022367745177041834 -0.0002300781371266965"/>
+      <geometry>
+        <cylinder radius="0.0581584" length="0.23685382242349062"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>
