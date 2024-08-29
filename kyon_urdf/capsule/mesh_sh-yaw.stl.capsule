@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<robot name="/home/alaurenzi/code/next_ws/ros_src/iit-kyon-ros-pkg/kyon_urdf/meshes/collision/mesh_sh-yaw.stl" version="1.0">
+  <link name="0.00100_0.00100_0.00100">
+    <collision>
+      <origin xyz="-5.492399499999999e-07 4.861649999999999e-07 0.04019508" rpy="-4.947440300471886e-05 -1.7225007626453456e-05 4.260984722894379e-10"/>
+      <geometry>
+        <cylinder radius="0.0700029" length="0.06680404009166907"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>
