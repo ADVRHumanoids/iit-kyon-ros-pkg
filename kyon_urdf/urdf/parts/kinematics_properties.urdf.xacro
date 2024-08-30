@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot  xmlns:xacro="http://ros.org/wiki/xacro">
 
-    <xacro:property name="kin_yaml_file" value="${KYON_ROOT}/urdf/config/kinematics_properties.yaml" />
+    <xacro:property name="kin_yaml_file" value="${ROOT}/urdf/config/kinematics_properties.yaml" />
     <xacro:property name="kin_props" value="${xacro.load_yaml(kin_yaml_file)}"/>
 
     <xacro:property name="cylinder_radius" value="${kin_props['cylinder_radius']}"/>
