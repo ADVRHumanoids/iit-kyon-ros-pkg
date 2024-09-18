@@ -22,7 +22,9 @@
   <arg name="sensors" default="false"/>
   <arg name="payload" default="false"/>
   <arg name="dagana" default="false"/>
+  <arg name="feet" default="true"/>
   <arg name="wheels" default="false"/>
+  <arg name="steering_wheels" default="false"/>
   <arg name="ft_sensors" default="false"/>
 
 
@@ -45,13 +47,13 @@
   
   <!-- Load the URDF/SRDF into the ROS Parameter Server -->
   <param name="robot_description_gz"
-         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=false upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)"/>
+         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=false upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) feet:=$(arg feet) wheels:=$(arg wheels) steering_wheels:=$(arg steering_wheels) ft_sensors:=$(arg ft_sensors)"/>
          
   <param name="robot_description"
-         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)"/>
+         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) feet:=$(arg feet) wheels:=$(arg wheels) steering_wheels:=$(arg steering_wheels) ft_sensors:=$(arg ft_sensors)"/>
          
   <param name="robot_description_semantic"
-         command="$(find xacro)/xacro $(find kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)"/>
+         command="$(find xacro)/xacro $(find kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) feet:=$(arg feet) wheels:=$(arg wheels) steering_wheels:=$(arg steering_wheels) ft_sensors:=$(arg ft_sensors)"/>
          
   <!-- start gazebo server-->
   	<node name="gazebo" 

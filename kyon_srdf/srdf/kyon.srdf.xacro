@@ -16,19 +16,19 @@
     <xacro:if value="${ADD_LEGS}">
     	<xacro:if value="${ADD_WHEELS}">
 			<group name="front_left_leg">
-		        <chain base_link="pelvis" tip_link="wheel_1" />
+		        <chain base_link="pelvis" tip_link="wheel_1_link" />
 		    </group>
 		    <group name="front_right_leg">
-		        <chain base_link="pelvis" tip_link="wheel_2" />
+		        <chain base_link="pelvis" tip_link="wheel_2_link" />
 		    </group>
 		    <group name="rear_right_leg">
-		        <chain base_link="pelvis" tip_link="wheel_4" />
+		        <chain base_link="pelvis" tip_link="wheel_4_link" />
 		    </group>
 		    <group name="rear_left_leg">
-		        <chain base_link="pelvis" tip_link="wheel_3" />
+		        <chain base_link="pelvis" tip_link="wheel_3_link" />
 		    </group>
 		</xacro:if>
-		<xacro:unless value="${ADD_WHEELS}">
+		<xacro:if value="${ADD_FEET}">
 		    <group name="front_left_leg">
 		        <chain base_link="pelvis" tip_link="contact_1" />
 		    </group>
@@ -41,32 +41,30 @@
 		    <group name="rear_left_leg">
 		        <chain base_link="pelvis" tip_link="contact_3" />
 		    </group>
-		</xacro:unless>
+		</xacro:if>
+        <xacro:if value="${ADD_STEERING_WHEELS}">
+            <group name="front_left_leg">
+                <chain base_link="pelvis" tip_link="wheel_1_link"/>
+            </group>
+            <group name="front_right_leg">
+		        <chain base_link="pelvis" tip_link="wheel_2_link" />
+		    </group>
+		    <group name="rear_right_leg">
+		        <chain base_link="pelvis" tip_link="wheel_4_link" />
+		    </group>
+		    <group name="rear_left_leg">
+		        <chain base_link="pelvis" tip_link="wheel_3_link" />
+		    </group>
+        </xacro:if>
     </xacro:if>
 
     <xacro:if value="${ADD_UPPER_BODY}">
-    	<xacro:if value="${ADD_DAGANA}">
-			<group name="left_arm">
-				<chain base_link="pelvis" tip_link="dagana_1_claw"/>
-			</group>
-			<group name="right_arm">
-				<chain base_link="pelvis" tip_link="dagana_2_claw"/>
-			</group>
-            <!-- <group name="left_hand">
-				<chain base_link="dagana_1_base" tip_link="dagana_1_clamp"/>
-			</group>
-            <group name="right_hand">
-				<chain base_link="dagana_1_base" tip_link="dagana_2_clamp"/>
-			</group> -->
-		</xacro:if>
-		<xacro:unless value="${ADD_DAGANA}">
-			<group name="left_arm">
-				<chain base_link="pelvis" tip_link="ball_arm_1"/>
-			</group>
-			<group name="right_arm">
-				<chain base_link="pelvis" tip_link="ball_arm_2"/>
-			</group>
-		</xacro:unless>
+		<group name="left_arm">
+			<chain base_link="pelvis" tip_link="dagana_1_claw"/>
+		</group>
+		<group name="right_arm">
+			<chain base_link="pelvis" tip_link="dagana_2_claw"/>
+		</group>
     </xacro:if>
 
     <group name="chains">        <!--THIS HAS TO BE THE LAST GROUP IN THE FILE -->
@@ -81,12 +79,6 @@
             <group name="left_arm"/>
             <group name="right_arm"/>
         </xacro:if>
-
-        <!-- <xacro:if value="${ADD_DAGANA}">
-            <group name="left_hand"/>
-            <group name="right_hand"/>
-        </xacro:if> -->
-
     </group>
 
     <!-- Homing posture -->

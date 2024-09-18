@@ -55,7 +55,7 @@
 </joint>
 
 <joint name="wheel_joint_${leg_num}" type="revolute">
-    <parent link="knee_pitch_${leg_num}"/>
+    <parent link="knee_pitch_${leg_num}_link"/>
     <child link="wheel_${leg_num}_link"/>
     <origin xyz="${Wheel_Ox} ${Wheel_Oy} ${Wheel_Oz}" rpy="${Wheel_roll} ${Wheel_pitch} ${Wheel_yaw}"/>
     <axis xyz="0 0 1"/>
