@@ -4,31 +4,6 @@
     <xacro:property name="mmTom" value="0.001"/>
     <xacro:property name="degTorad" value="0.01744"/>
 
-    <xacro:property name="kin_yaml_file" value="$(find kyon_urdf)/urdf/config/kinematics_properties.yaml" />
-    <xacro:property name="kin_props" value="${xacro.load_yaml(kin_yaml_file)}"/>
-
-    <xacro:property name="cylinder_radius" value="${kin_props['cylinder_radius']}"/>
-    <xacro:property name="cylinder_length" value="${kin_props['cylinder_length']}"/>
-    <xacro:property name="upper_leg_length" value="${kin_props['upper_leg_length']}"/>
-    <xacro:property name="upper_leg_width" value="${kin_props['upper_leg_width']}"/>
-    <xacro:property name="upper_leg_height" value="${kin_props['upper_leg_height']}"/>
-    <xacro:property name="lower_leg_length" value="${kin_props['lower_leg_length']}"/>
-    <xacro:property name="lower_leg_width" value="${kin_props['lower_leg_width']}"/>
-    <xacro:property name="lower_leg_height" value="${kin_props['lower_leg_height']}"/>
-    <xacro:property name="upper_arm1_length" value="${kin_props['upper_arm1_length']}"/>
-    <xacro:property name="upper_arm1_width" value="${kin_props['upper_arm1_width']}"/>
-    <xacro:property name="upper_arm1_height" value="${kin_props['upper_arm1_height']}"/>
-    <xacro:property name="upper_arm2_length" value="${kin_props['upper_arm2_length']}"/>
-    <xacro:property name="upper_arm2_width" value="${kin_props['upper_arm2_width']}"/>
-    <xacro:property name="upper_arm2_height" value="${kin_props['upper_arm2_height']}"/>
-    <xacro:property name="lower_arm_length" value="${kin_props['lower_arm_length']}"/>
-    <xacro:property name="lower_arm_width" value="${kin_props['lower_arm_width']}"/>
-    <xacro:property name="lower_arm_height" value="${kin_props['lower_arm_height']}"/>
-    <xacro:property name="ball_radius" value="${kin_props['ball_radius']}"/>
-    <xacro:property name="pelvis_length" value="${kin_props['pelvis_length']}"/>
-    <xacro:property name="pelvis_width" value="${kin_props['pelvis_width']}"/>
-    <xacro:property name="pelvis_height" value="${kin_props['pelvis_height']}"/>
-
     <!-- Compound properties (i.e. based on the props parsed from the yaml) -->
 
     <!-- Origin -->

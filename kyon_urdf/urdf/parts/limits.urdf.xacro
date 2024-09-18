@@ -30,19 +30,9 @@
 <xacro:property name="dagana_upper" value="${[3.4056, 3.3266]}"/>
 
 <!-- Motor velocities -->
-<xacro:if value="${inertial_props['gear_ratio'] == 30}">
-	<xacro:property name="motor_velocity" value="15.5"/>
-</xacro:if>
-<xacro:if value="${inertial_props['gear_ratio'] == 50}">
-	<xacro:property name="motor_velocity" value="9.3"/>
-</xacro:if>
+<xacro:property name="motor_velocity" value="15.5"/>
 
 <!-- Motor effort -->
-<xacro:if value="${inertial_props['gear_ratio'] == 30}">
-	<xacro:property name="motor_effort" value="132"/>
-</xacro:if>
-<xacro:if value="${inertial_props['gear_ratio'] == 50}">
-	<xacro:property name="motor_effort" value="220"/>
-</xacro:if>
+<xacro:property name="motor_effort" value="132"/>
 
 </robot>

@@ -6,9 +6,9 @@
 
 <link name="knee_pitch_${leg_num}_link">
     <inertial>
-        <origin xyz="${StickLeg_x} ${StickLeg_y} ${StickLeg_z}"/>
-        <mass value="${StickLeg_mass}"/>
-        <inertia ixx="${StickLeg_xx}" ixy="${mirror*StickLeg_xy}" ixz="${mirror*StickLeg_xz}" iyy="${StickLeg_yy}" iyz="${StickLeg_yz}" izz="${StickLeg_zz}"/>
+        <origin xyz="${KneePitch_x} ${KneePitch_y} ${KneePitch_z}"/>
+        <mass value="${KneePitch_mass}"/>
+        <inertia ixx="${KneePitch_xx}" ixy="${mirror*KneePitch_xy}" ixz="${mirror*KneePitch_xz}" iyy="${KneePitch_yy}" iyz="${KneePitch_yz}" izz="${KneePitch_zz}"/>
     </inertial>
     <visual>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>

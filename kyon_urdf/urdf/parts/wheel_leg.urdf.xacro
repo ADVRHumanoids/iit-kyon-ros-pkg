@@ -7,8 +7,8 @@
 <link name="knee_pitch_${leg_num}_link">
     <inertial>
         <origin xyz="0.0 0.0 0.0"/>
-        <mass value="${motorA_mass}"/>
-        <inertia ixx="${MotorA_xx}" ixy="${mirror*MotorA_xy}" ixz="${mirror*MotorA_xz}" iyy="${MotorA_yy}" iyz="${MotorA_yz}" izz="${MotorA_zz}"/>
+        <mass value="${KneePitchWheel_mass}"/>
+        <inertia ixx="${KneePitchWheel_xx}" ixy="${mirror*KneePitchWheel_xy}" ixz="${mirror*KneePitchWheel_xz}" iyy="${KneePitchWheel_yy}" iyz="${KneePitchWheel_yz}" izz="${KneePitchWheel_zz}"/>
     </inertial>
     <visual>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
