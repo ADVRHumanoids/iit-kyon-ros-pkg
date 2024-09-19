@@ -74,18 +74,18 @@
     <xacro:property name="KneePitchSteeringWheel_zz" value="${2.0709191e+03 * mm2Tom2}"/>
 
 
-    <xacro:property name="KneePitchWheel_mass" value="0.70900216"/>
+    <xacro:property name="KneePitchWheel_mass" value="1.5016388"/>
 
-    <xacro:property name="KneePitchWheel_xx" value="${5.1193011e-03 * mmTom}"/>
-    <xacro:property name="KneePitchWheel_y" value="${-1.0291595e+02 * mmTom}"/>
-    <xacro:property name="KneePitchWheel_z" value="${-1.2895495e+00 * mmTom}"/>
+    <xacro:property name="KneePitchWheel_x" value="${-1.7834738e-01 * mmTom}"/>
+    <xacro:property name="KneePitchWheel_y" value="${-2.5371445e+02 * mmTom}"/>
+    <xacro:property name="KneePitchWheel_z" value="${4.1781751e+01 * mmTom}"/>
 
-    <xacro:property name="KneePitchWheel_xx" value="${1.2517512e+04 * mm2Tom2}"/>
-    <xacro:property name="KneePitchWheel_xy" value="${-5.4385779e-01 * mm2Tom2}"/>
-    <xacro:property name="KneePitchWheel_xz" value="${1.4538899e-01 * mm2Tom2}"/>
-    <xacro:property name="KneePitchWheel_yy" value="${8.0474409e+02 * mm2Tom2}"/>
-    <xacro:property name="KneePitchWheel_yz" value="${1.7446290e+03 * mm2Tom2}"/>
-    <xacro:property name="KneePitchWheel_zz" value="${1.2307020e+04 * mm2Tom2}"/>
+    <xacro:property name="KneePitchWheel_xx" value="${1.1851050e+04 * mm2Tom2}"/>
+    <xacro:property name="KneePitchWheel_xy" value="${5.3594921e+02 * mm2Tom2}"/>
+    <xacro:property name="KneePitchWheel_xz" value="${-1.9109120e+03 * mm2Tom2}"/>
+    <xacro:property name="KneePitchWheel_yy" value="${-2.2822244e+03 * mm2Tom2}"/>
+    <xacro:property name="KneePitchWheel_yz" value="${1.4122439e+03 * mm2Tom2}"/>
+    <xacro:property name="KneePitchWheel_zz" value="${1.2166274e+04 * mm2Tom2}"/>
 
     <!-- Ankle Yaw -->
     <xacro:property name="AnkleYaw_mass" value="1.4941965"/>
