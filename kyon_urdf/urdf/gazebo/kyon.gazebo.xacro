@@ -180,7 +180,7 @@
 	</xacro:if>
 
 
-	<xacro:if value="${ADD_FT_SENSORS}">
+	<!-- <xacro:if value="${ADD_FT_SENSORS}">
 
 		<xacro:include filename="$(find kyon_urdf)/urdf/gazebo/ft_sensors.gazebo.xacro" />
 
@@ -189,6 +189,6 @@
 		<xacro:kyon_ft_sensor frame_id="knee_pitch_3"/>
 		<xacro:kyon_ft_sensor frame_id="knee_pitch_4"/>
 
-	</xacro:if>
+	</xacro:if> -->
 
 </robot>
