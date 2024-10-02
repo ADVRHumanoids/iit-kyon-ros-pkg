@@ -30,9 +30,15 @@
 <xacro:property name="dagana_upper" value="${[3.4056, 3.3266]}"/>
 
 <!-- Motor velocities -->
-<xacro:property name="motor_velocity" value="15.5"/>
+<xacro:property name="motorA_velocity" value="7.6"/>
+<xacro:property name="motorB_velocity" value="3.8"/>
+<xacro:property name="motorC_velocity" value="4.6"/>
+<xacro:property name="motorD_velocity" value="14"/>
 
 <!-- Motor effort -->
-<xacro:property name="motor_effort" value="132"/>
+<xacro:property name="motorA_effort" value="185"/>
+<xacro:property name="motorA_effort" value="146"/>
+<xacro:property name="motorA_effort" value="122"/>
+<xacro:property name="motorA_effort" value="25"/>
 
 </robot>
