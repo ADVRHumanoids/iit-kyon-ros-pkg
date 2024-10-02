@@ -117,7 +117,7 @@
 	<child link="shoulder_yaw_${arm_num}_link"/>
 	<origin xyz="${ShoulderYaw_Ox} ${rot * ShoulderYaw_Oy} ${ShoulderYaw_Oz}" rpy="${rot * ShoulderYaw_roll} ${ShoulderYaw_pitch} ${ShoulderYaw_yaw}"/>
 	<axis xyz="0 0 1"/>
-	<limit lower="${j_shoulder_yaw_lower[arm_num-1]}" upper="${j_shoulder_yaw_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
+	<limit lower="${j_shoulder_yaw_lower[arm_num-1]}" upper="${j_shoulder_yaw_upper[arm_num-1]}" effort="${motorB_effort}" velocity="${motorB_velocity}"/>
 </joint>
 
 <!-- arm pitch 1 -->
@@ -126,7 +126,7 @@
 	<child link="shoulder_pitch_${arm_num}_link"/>
 	<origin xyz="${ShoulderPitch_Ox} ${ShoulderPitch_Oy} ${ShoulderPitch_Oz}" rpy="${ShoulderPitch_roll} ${ShoulderPitch_pitch} ${ShoulderPitch_yaw + rot * PI_2}"/>
 	<axis xyz="0 0 1"/>
-	<limit lower="${j_pitch_1_lower[arm_num-1]}" upper="${j_pitch_1_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
+	<limit lower="${j_pitch_1_lower[arm_num-1]}" upper="${j_pitch_1_upper[arm_num-1]}" effort="${motorC_effort}" velocity="${motorC_velocity}"/>
 </joint>
 
 <joint name="elbow_pitch_${arm_num}" type="revolute">
@@ -134,7 +134,7 @@
 	<child link="elbow_pitch_${arm_num}_link"/>
 	<origin xyz="${ElbowPitch_Ox} ${ElbowPitch_Oy} ${ElbowPitch_Oz}" rpy="${ElbowPitch_roll} ${ElbowPitch_pitch} ${ElbowPitch_yaw}"/>
 	<axis xyz="0 0 1"/>
-	<limit lower="${j_pitch_1_lower[arm_num-1]}" upper="${j_pitch_1_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
+	<limit lower="${j_pitch_1_lower[arm_num-1]}" upper="${j_pitch_1_upper[arm_num-1]}" effort="${motorC_effort}" velocity="${motorC_velocity}"/>
 </joint>
 
 <joint name="wrist_pitch_${arm_num}" type="revolute">
@@ -142,7 +142,7 @@
 	<child link="wrist_pitch_${arm_num}_link"/>
 	<origin xyz="${WristPitch_Ox} ${WristPitch_Oy} ${WristPitch_Oz}" rpy="${WristPitch_roll} ${WristPitch_pitch} ${WristPitch_yaw}"/>
 	<axis xyz="0 0 1"/>
-	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
+	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motorD_effort}" velocity="${motorD_velocity}"/>
 </joint>
 	
 <joint name="wrist_yaw_${arm_num}" type="revolute">
@@ -150,7 +150,7 @@
 	<child link="wrist_yaw_${arm_num}_link"/>
 	<origin xyz="${WristYaw_Ox} ${WristYaw_Oy} ${WristYaw_Oz}" rpy="${WristYaw_roll} ${WristYaw_pitch} ${WristYaw_yaw}"/>
 	<axis xyz="0 0 1"/>
-	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/>
+	<limit lower="${j_pitch_2_lower[arm_num-1]}" upper="${j_pitch_2_upper[arm_num-1]}" effort="${motorD_effort}" velocity="${motorD_velocity}"/>
 </joint>
 
 <xacro:kyon_dagana arm_num="${arm_num}" parent="wrist_yaw_${arm_num}_link"/>

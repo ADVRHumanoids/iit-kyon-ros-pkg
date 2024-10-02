@@ -34,11 +34,14 @@
 <xacro:property name="motorB_velocity" value="3.8"/>
 <xacro:property name="motorC_velocity" value="4.6"/>
 <xacro:property name="motorD_velocity" value="14"/>
+<xacro:property name="motorWheel_velocity" value="20"/>
+
 
 <!-- Motor effort -->
 <xacro:property name="motorA_effort" value="185"/>
-<xacro:property name="motorA_effort" value="146"/>
-<xacro:property name="motorA_effort" value="122"/>
-<xacro:property name="motorA_effort" value="25"/>
+<xacro:property name="motorB_effort" value="146"/>
+<xacro:property name="motorC_effort" value="122"/>
+<xacro:property name="motorD_effort" value="25"/>
+<xacro:property name="motorWheel_effort" value="100"/>
 
 </robot>

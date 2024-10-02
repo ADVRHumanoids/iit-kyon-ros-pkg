@@ -62,7 +62,7 @@
 	<child link="hip_roll_${leg_num}_link"/>
 	<origin xyz="${origin_x * HipRoll_Ox} ${origin_y * HipRoll_Oy} ${HipRoll_Oz}" rpy="${HipRoll_roll} ${origin_x*HipRoll_pitch} ${HipRoll_yaw}"/>
 	<axis xyz="0 0 1"/>
-    <limit lower="${hip_roll_lower[leg_num-1]}" upper="${hip_roll_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 
+    <limit lower="${hip_roll_lower[leg_num-1]}" upper="${hip_roll_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
 </joint>
 
 <joint name="hip_pitch_${leg_num}" type="revolute">
@@ -70,7 +70,7 @@
 	<child link="hip_pitch_${leg_num}_link"/>
 	<origin xyz="${HipPitch_Ox} ${origin_y * HipPitch_Oy} ${HipPitch_Oz}" rpy="${HipPitch_roll} ${origin_x * origin_y * HipPitch_pitch} ${origin_x * HipPitch_yaw}"/>
 	<axis xyz="0 0 1"/>
-	<limit lower="${hip_pitch_lower[leg_num-1]}" upper="${hip_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 
+	<limit lower="${hip_pitch_lower[leg_num-1]}" upper="${hip_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
 </joint>
 
 <xacro:if value="${ADD_FEET}">

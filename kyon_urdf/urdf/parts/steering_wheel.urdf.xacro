@@ -78,7 +78,7 @@
     <child link="knee_pitch_${leg_num}_link"/>
     <origin xyz="${KneePitch_Ox} ${KneePitch_Oy} ${KneePitch_Oz}" rpy="${KneePitch_roll} ${KneePitch_pitch} ${KneePitch_yaw}"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 
+    <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
 </joint>
 
 <joint name="ankle_yaw_${leg_num}" type="revolute">
@@ -86,7 +86,7 @@
     <child link="ankle_yaw_${leg_num}_link"/>
     <origin xyz="${AnkleYaw_Ox} ${AnkleYaw_Oy} ${AnkleYaw_Oz}" rpy="${AnkleYaw_roll} ${AnkleYaw_pitch} ${AnkleYaw_yaw}"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 
+    <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
 </joint>
 
 <joint name="wheel_joint_${leg_num}" type="revolute">
@@ -94,7 +94,7 @@
     <child link="wheel_${leg_num}_link"/>
     <origin xyz="${SteeringWheel_Ox} ${SteeringWheel_Oy} ${SteeringWheel_Oz}" rpy="${SteeringWheel_roll} ${SteeringWheel_pitch} ${SteeringWheel_yaw}"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motor_effort}" velocity="${motor_velocity}"/> 
+    <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorWheel_effort}" velocity="${motorWheel_velocity}"/> 
 </joint>
 
 </xacro:macro>
