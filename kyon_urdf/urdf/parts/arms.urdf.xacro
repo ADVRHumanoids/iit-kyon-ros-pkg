@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:include filename="${KYON_ROOT}/urdf/parts/kyon_arm.urdf.xacro"/>
-<xacro:include filename="${KYON_ROOT}/urdf/parts/kyon_ball_ee.xacro"/>
+<xacro:include filename="${ROOT}/urdf/parts/kyon_arm.urdf.xacro"/>
+<xacro:include filename="${ROOT}/urdf/parts/kyon_ball_ee.xacro"/>
 <xacro:include filename="${DAGANA_ROOT}/urdf/dagana_macro.urdf.xacro"/>
 
 <!-- arms -->

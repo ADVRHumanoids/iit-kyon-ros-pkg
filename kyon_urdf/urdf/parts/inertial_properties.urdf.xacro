@@ -2,7 +2,7 @@
 <robot  xmlns:xacro="http://ros.org/wiki/xacro">
 
 
-    <xacro:property name="inertial_yaml_file" value="${KYON_ROOT}/urdf/config/inertial_properties.yaml" />
+    <xacro:property name="inertial_yaml_file" value="${ROOT}/urdf/config/inertial_properties.yaml" />
     <xacro:property name="inertial_props" value="${xacro.load_yaml(inertial_yaml_file)}"/>
 
     <xacro:property name="pelvis_mass" value="${inertial_props['pelvis_mass']}"/>

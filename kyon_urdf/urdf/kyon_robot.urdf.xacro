@@ -3,8 +3,8 @@
 
   <!-- This argument and property should be in the top level xacro and
   will be propagated to all its downstream childs -->
-  <xacro:arg name="kyon_root" default="$(find kyon_urdf)" />  
-  <xacro:property name="KYON_ROOT" value="$(arg kyon_root)" />
+  <xacro:arg name="root" default="$(find kyon_urdf)" />  
+  <xacro:property name="ROOT" value="$(arg root)" />
   
   <!-- setting use_abs_mesh_paths should be kept to false
   for use with tools like RViz, which does not accept plain
@@ -14,19 +14,19 @@
   <xacro:property name="USE_ABS_MESH_PATHS" value="$(arg use_abs_mesh_paths)" />
 
   <xacro:if value="${USE_ABS_MESH_PATHS}">
-    <xacro:property name="MESH_PATH" value="${KYON_ROOT}/meshes" />
+    <xacro:property name="MESH_PATH" value="${ROOT}/meshes" />
   </xacro:if>
   <xacro:unless value="${USE_ABS_MESH_PATHS}">
     <xacro:property name="MESH_PATH" value="package://kyon_urdf/meshes" />
   </xacro:unless>
 
-  <xacro:include filename="${KYON_ROOT}/urdf/kyon.urdf.xacro" />
+  <xacro:include filename="${ROOT}/urdf/kyon.urdf.xacro" />
 
-  <xacro:include filename="${KYON_ROOT}/urdf/gazebo/kyon.gazebo.xacro" />
+  <xacro:include filename="${ROOT}/urdf/gazebo/kyon.gazebo.xacro" />
    
-  <xacro:include filename="${KYON_ROOT}/urdf/gazebo/xbot.gazebo.xacro" />
+  <xacro:include filename="${ROOT}/urdf/gazebo/xbot.gazebo.xacro" />
 
-  <xacro:include filename="${KYON_ROOT}/urdf/gazebo/materials.gazebo.xacro" />
+  <xacro:include filename="${ROOT}/urdf/gazebo/materials.gazebo.xacro" />
   
   <xacro:unless value="${ADD_LEGS}">
 
