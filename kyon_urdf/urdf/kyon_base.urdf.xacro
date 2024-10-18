@@ -61,13 +61,13 @@
         gyro_fps="300"
         depth_width="1280"
         depth_height="720"
-        depth_fps="90"
+        depth_fps="10"
         infra_width="1280"
         infra_height="720"
-        infra_fps="90"
+        infra_fps="10"
         color_width="1280"
         color_height="720"
-        color_fps="30">
+        color_fps="1">
 
         <origin xyz="0 0.150100 0.109486" rpy="0 0.3490656 1.5707963"/>
 
@@ -85,13 +85,13 @@
         gyro_fps="300"
         depth_width="1280"
         depth_height="720"
-        depth_fps="90"
+        depth_fps="10"
         infra_width="1280"
         infra_height="720"
-        infra_fps="90"
+        infra_fps="10"
         color_width="1280"
         color_height="720"
-        color_fps="30">
+        color_fps="1">
 
         <origin xyz="0 -0.150100 0.109486" rpy="0 0.3490656 -1.5707963"/>
 

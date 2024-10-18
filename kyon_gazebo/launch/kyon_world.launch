@@ -25,7 +25,7 @@
   <arg name="feet" default="true"/>
   <arg name="wheels" default="false"/>
   <arg name="steering_wheels" default="false"/>
-  <arg name="ft_sensors" default="false"/>
+  <arg name="ft_sensors" default="true"/>
 
 
   <!-- Internal arguments, rewrite human-readable gazebo arguments to it's internal arguments -->

@@ -67,12 +67,25 @@
 		</group>
     </xacro:if>
 
+    <!-- <xacro:if value="${ADD_FT_SENSORS}">
+        <group name="ft_sensors">
+            <joint name="knee_pitch_1"/>
+            <joint name="knee_pitch_2"/>
+            <joint name="knee_pitch_3"/>
+            <joint name="knee_pitch_4"/>
+        </group>
+    </xacro:if> -->
+
     <group name="chains">        <!--THIS HAS TO BE THE LAST GROUP IN THE FILE -->
         <xacro:if value="${ADD_LEGS}">
             <group name="front_left_leg" />
             <group name="front_right_leg" />
             <group name="rear_right_leg" />
             <group name="rear_left_leg" />
+
+            <!-- <xacro:if value="${ADD_FT_SENSORS}">
+                <group name="ft_sensors"/>
+            </xacro:if> -->
         </xacro:if>
 
         <xacro:if value="${ADD_UPPER_BODY}">
