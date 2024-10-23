@@ -19,13 +19,14 @@ abolute paths for mesh paths-->
 	<xacro:if value="${USE_LOCAL_FILESYS_FOR_MESHES}">
 	<xacro:property name="MESH_PATH" value="file://${ROOT}/meshes" />
 	</xacro:if>
-	<xacro:unless value="${USE_ABS_MESH_PATHS}">
+	<xacro:unless value="${USE_LOCAL_FILESYS_FOR_MESHES}">
 	<xacro:property name="MESH_PATH" value="${ROOT}/meshes" />
 	</xacro:unless>
 	</xacro:if>
 <xacro:unless value="${USE_ABS_MESH_PATHS}">
 <xacro:property name="MESH_PATH" value="package://kyon_urdf/meshes" />
 </xacro:unless>
+
 
 <xacro:arg name="config" default="${ROOT}/urdf/config/kyon.urdf.xacro"/>
 <!-- ************ MODEL CONFIGURATION ************ -->
