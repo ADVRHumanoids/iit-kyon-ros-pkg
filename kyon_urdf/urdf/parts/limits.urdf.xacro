@@ -33,6 +33,8 @@
 	<xacro:property name="motor_velocity" value="9.3"/>
 </xacro:if>
 
+<xacro:property name="wheel_motor_velocity" value="60.0"/>
+
 <!-- Motor effort -->
 <xacro:if value="${inertial_props['gear_ratio'] == 30}">
 	<xacro:property name="motor_effort" value="132"/>
