@@ -25,7 +25,9 @@
     <xacro:property name="pelvis_length" value="${kin_props['pelvis_length']}"/>
     <xacro:property name="pelvis_width" value="${kin_props['pelvis_width']}"/>
     <xacro:property name="pelvis_height" value="${kin_props['pelvis_height']}"/>
-
+    <xacro:property name="wheel_radius" value="${kin_props['wheel_radius']}"/>
+    <xacro:property name="wheel_depth" value="${kin_props['wheel_depth']}"/>
+    
     <!-- Compound properties (i.e. based on the props parsed from the yaml) -->
 
     <!-- Origin -->
