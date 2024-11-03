@@ -20,3 +20,6 @@ ball_radius: 0.05
 pelvis_length: 0.8
 pelvis_width: 0.45
 pelvis_height: 0.20
+wheel_radius: 0.124
+wheel_depth: 0.03
+
