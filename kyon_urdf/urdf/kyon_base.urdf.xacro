@@ -41,6 +41,13 @@
 	</collision>
 </link>
 
+<link name="imu_link" />
+<joint name="imu_joint" type="fixed">
+    <parent link="pelvis" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    <child link="imu_link" />
+</joint>
+
 <xacro:if value="${ADD_SENSORS}">
     <xacro:include filename="${REALSENSE_GAZEBO_DESCRIPTION_ROOT}/urdf/_d435i.urdf.xacro" />
 
