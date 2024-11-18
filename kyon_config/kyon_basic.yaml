@@ -1,17 +1,16 @@
 XBotInterface:
-    urdf: rosparam get -p /robot_description
-    srdf: rosparam get -p /robot_description_semantic
+    urdf_path: $(ros2 pkg prefix --share kyon_urdf)/urdf/kyon.urdf
+    srdf_path: $(ros2 pkg prefix --share kyon_srdf)/srdf/kyon.srdf
 
 ModelInterface:
-  model_type: "RBDL"
-  is_model_floating_base: "true"
+  model_type: pin
 
 
 # hal
 xbotcore_device_configs:
-    sim: $(rospack find kyon_config)/hal/kyon_gz.yaml
-    mj: $(rospack find kyon_config)/hal/kyon_mj.yaml
-    dummy: $(rospack find kyon_config)/hal/kyon_dummy.yaml
+    sim: $(ros2 pkg prefix --share kyon_config)/hal/kyon_gz.yaml
+    mj: $(ros2 pkg prefix --share kyon_config)/hal/kyon_mj.yaml
+    dummy: $(ros2 pkg prefix --share kyon_config)/hal/kyon_dummy.yaml
 
 
 # threads
@@ -27,9 +26,9 @@ xbotcore_plugins:
         thread: rt_main
         type: homing
 
-    ros_io: {thread: nrt_main, type: ros_io}
+    ros_io: {thread: nrt_main, type: ros2_io}
 
-    ros_control: {thread: nrt_main, type: ros_control, params: {autostart: {type: bool, value: true}}}
+    ros_control: {thread: nrt_main, type: ros2_control, params: {autostart: {type: bool, value: true}}}
     
 
 

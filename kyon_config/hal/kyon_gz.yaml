@@ -4,15 +4,15 @@ xbotcore_devices:
         names: []
         thread: rt_main
 
-    joint_master:
-        master: true  # this is a master device for 'joint'
-        thread: rt_main
+    # joint_master:
+    #     master: true  # this is a master device for 'joint'
+    #     thread: rt_main
 
-    imu_gz:
-        names: []
-        thread: rt_main
+    # imu_gz:
+    #     names: []
+    #     thread: rt_main
 
-    link_state_sensor:
-        names: []
-        thread: rt_main
-        type: link_state_sensor
+    # link_state_sensor:
+    #     names: []
+    #     thread: rt_main
+    #     type: link_state_sensor
