@@ -16,7 +16,14 @@
 <xacro:arg name="payload" default="false"/>
 <xacro:arg name="steering_wheels" default="false"/>
 <xacro:arg name="ft_sensors" default="true"/>
+<xacro:arg name="velodyne" default="false"/>
 
+<xacro:if value="$(arg feet)">
+    <xacro:if value="$(arg wheels)">
+        <xacro:property name="error_flag" value="${xacro.error('Arguments feet and wheels are both true. \n If you meant to use wheels, please set feet:=false.\n')}"/>
+        ${error_flag}
+    </xacro:if> 
+</xacro:if>
 
 <!-- ************SELECT PARTS*************-->
 <!-- *************************************-->
@@ -28,6 +35,7 @@
 <xacro:property name="ADD_WHEELS" value="$(arg wheels)"/>
 <xacro:property name="ADD_STEERING_WHEELS" value="$(arg steering_wheels)"/>
 <xacro:property name="ADD_FT_SENSORS" value="$(arg ft_sensors)"/>
+<xacro:property name="ADD_VELODYNE" value="$(arg velodyne)"/>
 
 <xacro:property name="ADD_FLOATING_BASE" value="$(arg floating_joint)" />
 <xacro:property name="ADD_VIRTUAL_FRAME" value="false" />

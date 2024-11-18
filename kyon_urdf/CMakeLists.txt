@@ -1,28 +1,26 @@
+cmake_minimum_required(VERSION 3.8)
 project(kyon_urdf)
 
-find_package(catkin REQUIRED COMPONENTS)
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
-catkin_package()
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclpy REQUIRED)
+find_package(xacro REQUIRED)
 
-# mark urdf, meshes and launch files for installation
-install(DIRECTORY meshes
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
-
-# install(DIRECTORY launch
-#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-# )
-
-install(DIRECTORY urdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+# mark urdf, launch and config files for installation
+install(DIRECTORY meshes urdf launch config
+  DESTINATION share/${PROJECT_NAME}
 )
 
 # main urdf
-generate_urdf(
-  XACRO ${ROBOT_NAME}.urdf.xacro
-  CONFIG config/${ROBOT_NAME}.urdf.xacro
-  ADD_TO_ALL TRUE
-)
+# generate_urdf(
+#   XACRO ${ROBOT_NAME}.urdf.xacro
+#   CONFIG config/${ROBOT_NAME}.urdf.xacro
+#   ADD_TO_ALL TRUE
+# )
 
 # virtual frame urdf
 #generate_urdf(
@@ -36,3 +34,17 @@ generate_urdf(
 #  CONFIG_NAME ${ROBOT_NAME}
 #  ADD_TO_ALL TRUE
 #)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_package()

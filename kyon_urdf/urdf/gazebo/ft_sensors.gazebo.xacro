@@ -7,17 +7,20 @@
         Link on the Joint specified in the child Link frame.
         Note that this sign convention is opposite of the reaction forces
         of the Joint on the Links" -->
-        <gazebo>
-            <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
-                <updateRate>0.0</updateRate> <!-- 0.0 is as fast as possible -->
-                <topicName>ft_sensors/${frame_id}</topicName>
-                <jointName>${frame_id}</jointName>
-            </plugin>
-        </gazebo>
+        <!-- <gazebo> -->
+            <!-- <plugin filename="gz-sim-forcetorque-system" name="gz::sim::systems::ForceTorque"> -->
+                <!-- <updateRate>0.0</updateRate> 0.0 is as fast as possible -->
+                <!-- <topicName>ft_sensors/${frame_id}</topicName> -->
+                <!-- <jointName>${frame_id}</jointName> -->
+            <!-- </plugin> -->
+        <!-- </gazebo> -->
 
         <gazebo reference="${frame_id}">
             <provideFeedback>true</provideFeedback>
             <sensor type="force_torque" name="${frame_id}_fts">
+                <updateRate>0.0</updateRate> <!-- 0.0 is as fast as possible -->
+                <topicName>ft_sensors/${frame_id}</topicName>
+                <jointName>${frame_id}</jointName>
                 <force_torque>
                     <frame>sensor</frame>
                     <measure_direction>child_to_parent</measure_direction>
