@@ -16,16 +16,16 @@
     <xacro:if value="${ADD_LEGS}">
     	<xacro:if value="${ADD_WHEELS}">
 			<group name="front_left_leg">
-		        <chain base_link="pelvis" tip_link="wheel_1_link" />
+		        <chain base_link="pelvis" tip_link="wheel_1" />
 		    </group>
 		    <group name="front_right_leg">
-		        <chain base_link="pelvis" tip_link="wheel_2_link" />
+		        <chain base_link="pelvis" tip_link="wheel_2" />
 		    </group>
 		    <group name="rear_right_leg">
-		        <chain base_link="pelvis" tip_link="wheel_4_link" />
+		        <chain base_link="pelvis" tip_link="wheel_4" />
 		    </group>
 		    <group name="rear_left_leg">
-		        <chain base_link="pelvis" tip_link="wheel_3_link" />
+		        <chain base_link="pelvis" tip_link="wheel_3" />
 		    </group>
 		</xacro:if>
 		<xacro:if value="${ADD_FEET}">
@@ -44,16 +44,16 @@
 		</xacro:if>
         <xacro:if value="${ADD_STEERING_WHEELS}">
             <group name="front_left_leg">
-                <chain base_link="pelvis" tip_link="wheel_1_link"/>
+                <chain base_link="pelvis" tip_link="wheel_1"/>
             </group>
             <group name="front_right_leg">
-		        <chain base_link="pelvis" tip_link="wheel_2_link" />
+		        <chain base_link="pelvis" tip_link="wheel_2" />
 		    </group>
 		    <group name="rear_right_leg">
-		        <chain base_link="pelvis" tip_link="wheel_4_link" />
+		        <chain base_link="pelvis" tip_link="wheel_4" />
 		    </group>
 		    <group name="rear_left_leg">
-		        <chain base_link="pelvis" tip_link="wheel_3_link" />
+		        <chain base_link="pelvis" tip_link="wheel_3" />
 		    </group>
         </xacro:if>
     </xacro:if>

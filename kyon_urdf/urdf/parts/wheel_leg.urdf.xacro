@@ -25,7 +25,7 @@
     </collision>
 </link>
 
-<link name="wheel_${leg_num}_link">
+<link name="wheel_${leg_num}">
     <inertial>
 		<origin xyz="${Wheel_x} ${Wheel_y} ${Wheel_z}"/>
 		<mass value="${Wheel_mass}"/>
@@ -56,7 +56,7 @@
 
 <joint name="wheel_joint_${leg_num}" type="revolute">
     <parent link="knee_pitch_${leg_num}_link"/>
-    <child link="wheel_${leg_num}_link"/>
+    <child link="wheel_${leg_num}"/>
     <origin xyz="${Wheel_Ox} ${Wheel_Oy} ${Wheel_Oz}" rpy="${Wheel_roll} ${Wheel_pitch} ${Wheel_yaw}"/>
     <axis xyz="0 0 1"/>
     <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorWheel_effort}" velocity="${motorWheel_velocity}"/> 
