@@ -3,7 +3,7 @@ solver_options:
     back_end: osqp
     
 stack:
-    - [contact_1, contact_2, contact_3, contact_4] #, l_arm, r_arm]
+    - [contact_1, contact_2, contact_3, contact_4, l_arm, r_arm]
     - [Postural, Com, PelvisRot]
     
 contact_1:

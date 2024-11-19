@@ -8,7 +8,6 @@
 <!-- command line arguments -->
 <xacro:arg name="legs" default="true"/>
 <xacro:arg name="upper_body" default="true"/>
-<xacro:arg name="dagana" default="true"/>
 <xacro:arg name="feet" default="true"/>
 <xacro:arg name="wheels" default="false"/>
 <xacro:arg name="floating_joint" default="true"/>
@@ -23,7 +22,6 @@
 <xacro:property name="ADD_LEGS" value="$(arg legs)" />
 <xacro:property name="ADD_UPPER_BODY" value="$(arg upper_body)" />
 <xacro:property name="ADD_SENSORS" value="$(arg sensors)" />
-<xacro:property name="ADD_DAGANA" value="$(arg dagana)"/>
 <xacro:property name="ADD_FEET" value="$(arg feet)"/>
 <xacro:property name="ADD_WHEELS" value="$(arg wheels)"/>
 <xacro:property name="ADD_STEERING_WHEELS" value="$(arg steering_wheels)"/>
