@@ -1,6 +1,8 @@
 XBotInterface:
-    urdf_path: $(ros2 pkg prefix --share kyon_urdf)/urdf/kyon.urdf
-    srdf_path: $(ros2 pkg prefix --share kyon_srdf)/srdf/kyon.srdf
+    urdf: "ros2 topic echo /robot_description --once --field data | grep -v '^---$'"
+    srdf: "ros2 topic echo /robot_description_semantic --once --field data | grep -v '^---$'"
+    # urdf_path: $(ros2 pkg prefix --share kyon_urdf)/urdf/kyon.urdf
+    # srdf_path: $(ros2 pkg prefix --share kyon_srdf)/srdf/kyon.srdf
 
 ModelInterface:
   model_type: pin

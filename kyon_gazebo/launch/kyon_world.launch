@@ -3,14 +3,6 @@
     <arg name="gazebo" default="true"/>
     <arg name="cartesio" default="false"/>
 
-    <arg name="xbot2" default="false"/>
-    <arg name="xbot2_gui" default="false"/>
-
-    <!-- Xbot2 configuration -->
-    <arg name="xbot2_config" default="$(find-pkg-share kyon_config)/kyon_basic.yaml"/>	
-
-    <!-- run rviz ? -->
-    <arg name="rviz" default="false"/>
     <!-- <param if="$(arg gazebo)" name="use_sim_time" type="bool" value="true"/>
     <param if="$(arg cartesio)" name="use_sim_time" type="bool" value="false"/>   -->
     
@@ -60,14 +52,8 @@
        
        <!-- Load the URDF/SRDF into the ROS Parameter Server -->
        <let name="robot_description_gz"
-            value="$(command 'xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=false upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) feet:=$(var feet) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)')"/>
-              
-       <let name="robot_description"
-            value="$(command 'xacro $(find-pkg-share kyon_urdf)/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) feet:=$(var feet) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)')"/>
-              
-       <let name="robot_description_semantic"
-            value="$(command 'xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) feet:=$(var feet) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)')"/>
-               
+            value="$(command 'xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=false upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)')"/>
+ 
        <!-- Start gazebo-->
        <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
               <arg name="gz_args" value="$(var world_name) $(var arg_verbose) $(var arg_gui) $(var arg_paused)"/>
@@ -81,38 +67,11 @@
 
        <!-- ROS-gazebo topics bridge-->
        <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge" 
-       args="/VLP16_lidar_front/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
+            args="/VLP16_lidar_front/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
              /VLP16_lidar_front@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan
              /clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock"/>
 	   
     </group>
-
-    <!-- rviz nodes -->
-     <group if="$(var rviz)">
-        <let name="robot_description"
-        value="$(command 'xacro $(find-pkg-share kyon_urdf)/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors)')"/>
-          
-        <node pkg="robot_state_publisher" exec="robot_state_publisher" name="rsp">
-            <param name="robot_description" value="$(command 'xacro $(find-pkg-share kyon_urdf)/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)')" />
-        </node>
-
-        <node pkg="joint_state_publisher"  exec="joint_state_publisher" name="jsp"/>
-
-        <node pkg="rviz2" exec="rviz2" name="rviz" output="screen"
-            args="-d $(find-pkg-share kyon_urdf)/config/kyon.rviz">
-        </node>
-    </group>
-
-	<!-- run xbot2 -->
-	<executable if="$(var xbot2)" output="screen"
-		        cmd="xbot2-core -V --hw sim --simtime --config $(var xbot2_config) --"/>
-
-	<!-- run xbot2_gui_server and client -->
-	<executable if="$(var xbot2_gui)" output="log"
-		        cmd="xbot2_gui_server"/>
-
-	<executable if="$(var xbot2_gui)" output="log"
-		        cmd="xbot2_gui"/>
 
   <!-- <include if="$(arg cartesio)" file="$(find kyon_cartesio)/launch/kyon.launch">
   	<arg name="arms" value="$(arg arms)"/>
