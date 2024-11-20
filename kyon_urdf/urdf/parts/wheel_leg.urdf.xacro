@@ -59,7 +59,7 @@
     <child link="wheel_${leg_num}"/>
     <origin xyz="${Wheel_Ox} ${Wheel_Oy} ${Wheel_Oz}" rpy="${Wheel_roll} ${Wheel_pitch} ${Wheel_yaw}"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorWheel_effort}" velocity="${motorWheel_velocity}"/> 
+    <limit lower="-10000000" upper="10000000" effort="${motorWheel_effort}" velocity="${motorWheel_velocity}"/>
 </joint>
 
 </xacro:macro>
