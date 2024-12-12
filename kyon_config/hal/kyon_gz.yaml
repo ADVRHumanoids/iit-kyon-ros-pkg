@@ -12,7 +12,7 @@ xbotcore_devices:
     #     names: []
     #     thread: rt_main
 
-    # link_state_sensor:
-    #     names: []
-    #     thread: rt_main
-    #     type: link_state_sensor
+    link_state_sensor:
+        names: []
+        thread: rt_main
+        type: link_state_sensor
