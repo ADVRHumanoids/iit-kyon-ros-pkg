@@ -149,6 +149,7 @@
     <origin rpy="-0.3490656 0.0 0.0" xyz="0.28 0.0998258 0.203238"/>
     <axis xyz="0 0 1"/>
     <limit effort="146" lower="-3.312" upper="3.312" velocity="3.8"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <!-- arm pitch 1 -->
   <joint name="shoulder_pitch_1" type="revolute">
@@ -157,6 +158,7 @@
     <origin rpy="-1.57079632679 0.0 -3.14159265358" xyz="0.0 0.0 0.0735"/>
     <axis xyz="0 0 1"/>
     <limit effort="122" lower="-3" upper="3" velocity="4.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <joint name="elbow_pitch_1" type="revolute">
     <parent link="shoulder_pitch_1_link"/>
@@ -164,6 +166,7 @@
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.32 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="122" lower="-3" upper="3" velocity="4.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <joint name="wrist_pitch_1" type="revolute">
     <parent link="elbow_pitch_1_link"/>
@@ -171,6 +174,7 @@
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.25 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="25" lower="-2.4056" upper="2.4056" velocity="14"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <joint name="wrist_yaw_1" type="revolute">
     <parent link="wrist_pitch_1_link"/>
@@ -178,6 +182,7 @@
     <origin rpy="1.57079632679 0.0 0.0" xyz="0.0 -0.134862 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="25" lower="-2.4056" upper="2.4056" velocity="14"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <link name="dagana_1_base">
     <inertial>
@@ -230,6 +235,7 @@
     <origin rpy="0.0 1.57079632679 0.0" xyz="0.0361625 0.016 0.044"/>
     <axis xyz="0 0 1"/>
     <limit effort="25" lower="-3.4056" upper="3.4056" velocity="14"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <!-- LINKS -->
   <!-- shoulder yaw -->
@@ -337,6 +343,7 @@
     <origin rpy="0.3490656 0.0 0.0" xyz="0.28 -0.0998258 0.203238"/>
     <axis xyz="0 0 1"/>
     <limit effort="146" lower="-3.3458" upper="3.3458" velocity="3.8"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <!-- arm pitch 1 -->
   <joint name="shoulder_pitch_2" type="revolute">
@@ -345,6 +352,7 @@
     <origin rpy="-1.57079632679 0.0 0.0" xyz="0.0 0.0 0.0735"/>
     <axis xyz="0 0 1"/>
     <limit effort="122" lower="-3" upper="3" velocity="4.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <joint name="elbow_pitch_2" type="revolute">
     <parent link="shoulder_pitch_2_link"/>
@@ -352,6 +360,7 @@
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.32 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="122" lower="-3" upper="3" velocity="4.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <joint name="wrist_pitch_2" type="revolute">
     <parent link="elbow_pitch_2_link"/>
@@ -359,6 +368,7 @@
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.25 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="25" lower="-2.3266" upper="2.3266" velocity="14"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <joint name="wrist_yaw_2" type="revolute">
     <parent link="wrist_pitch_2_link"/>
@@ -366,6 +376,7 @@
     <origin rpy="1.57079632679 0.0 0.0" xyz="0.0 -0.134862 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="25" lower="-2.3266" upper="2.3266" velocity="14"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <link name="dagana_2_base">
     <inertial>
@@ -418,6 +429,7 @@
     <origin rpy="0.0 1.57079632679 0.0" xyz="0.0361625 0.016 0.044"/>
     <axis xyz="0 0 1"/>
     <limit effort="25" lower="-3.3266" upper="3.3266" velocity="14"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <!-- /macro legs -->
   <!-- links -->
@@ -470,6 +482,7 @@
     <origin rpy="0.0 1.57079632679 0.0" xyz="0.41100000000000003 0.0775 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="185" lower="-2.03" upper="2.51" velocity="7.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <joint name="hip_pitch_1" type="revolute">
     <parent link="hip_roll_1_link"/>
@@ -477,6 +490,7 @@
     <origin rpy="0.0 1.57079632679 1.57079632679" xyz="0.0 -0.04746 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="185" lower="-2.4056" upper="2.4056" velocity="7.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <link name="knee_pitch_1_link">
     <inertial>
@@ -504,12 +518,14 @@
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.34600000000000003 0.24606"/>
     <axis xyz="0 0 1"/>
     <limit effort="185" lower="-3.4056" upper="3.4056" velocity="7.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <link name="contact_1"/>
   <joint name="contact_1_joint" type="fixed">
     <parent link="knee_pitch_1_link"/>
     <child link="contact_1"/>
     <origin rpy="-1.57 0 0.785" xyz="0.03 -0.35 0.03"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <!-- links -->
   <link name="hip_roll_2_link">
@@ -561,6 +577,7 @@
     <origin rpy="0.0 1.57079632679 0.0" xyz="0.41100000000000003 -0.0775 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="185" lower="-2.51" upper="2.03" velocity="7.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <joint name="hip_pitch_2" type="revolute">
     <parent link="hip_roll_2_link"/>
@@ -568,6 +585,7 @@
     <origin rpy="0.0 -1.57079632679 1.57079632679" xyz="0.0 0.04746 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="185" lower="-2.3266" upper="2.3266" velocity="7.6"/>
+    <dynamics damping="0.0" friction="0.0"/> 
   </joint>
   <link name="knee_pitch_2_link">
     <inertial>
@@ -595,12 +613,14 @@
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.34600000000000003 0.24606"/>
     <axis xyz="0 0 1"/>
     <limit effort="185" lower="-3.3266" upper="3.3266" velocity="7.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <link name="contact_2"/>
   <joint name="contact_2_joint" type="fixed">
     <parent link="knee_pitch_2_link"/>
     <child link="contact_2"/>
     <origin rpy="1.57 0 2.356" xyz="-0.03 -0.35 0.03"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <!-- links -->
   <link name="hip_roll_3_link">
@@ -652,6 +672,7 @@
     <origin rpy="0.0 -1.57079632679 0.0" xyz="-0.41100000000000003 0.0775 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="185" lower="-2.51" upper="2.03" velocity="7.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <joint name="hip_pitch_3" type="revolute">
     <parent link="hip_roll_3_link"/>
@@ -659,6 +680,7 @@
     <origin rpy="0.0 -1.57079632679 -1.57079632679" xyz="0.0 -0.04746 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="185" lower="-2.4696" upper="2.4696" velocity="7.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <link name="knee_pitch_3_link">
     <inertial>
@@ -686,6 +708,7 @@
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.34600000000000003 0.24606"/>
     <axis xyz="0 0 1"/>
     <limit effort="185" lower="-3.4696" upper="3.4696" velocity="7.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <link name="contact_3"/>
   <joint name="contact_3_joint" type="fixed">
@@ -743,6 +766,7 @@
     <origin rpy="0.0 -1.57079632679 0.0" xyz="-0.41100000000000003 -0.0775 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="185" lower="-2.03" upper="2.51" velocity="7.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <joint name="hip_pitch_4" type="revolute">
     <parent link="hip_roll_4_link"/>
@@ -750,6 +774,7 @@
     <origin rpy="0.0 1.57079632679 -1.57079632679" xyz="0.0 0.04746 0.0"/>
     <axis xyz="0 0 1"/>
     <limit effort="185" lower="-2.3426" upper="2.3426" velocity="7.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <link name="knee_pitch_4_link">
     <inertial>
@@ -777,6 +802,7 @@
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.34600000000000003 0.24606"/>
     <axis xyz="0 0 1"/>
     <limit effort="185" lower="-3.3426" upper="3.3426" velocity="7.6"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <link name="contact_4"/>
   <joint name="contact_4_joint" type="fixed">
@@ -786,9 +812,9 @@
   </joint>
   <!-- ************ Control frames ************ -->
   <!--xacro:include filename="$(find pholus_urdf)/urdf/control_frames.urdf.xacro"/-->
-  <link name="world"/>
+  <!-- <link name="world"/>
   <joint name="reference" type="floating">
     <parent link="world"/>
     <child link="pelvis"/>
-  </joint>
+  </joint> -->
 </robot>
