@@ -69,8 +69,11 @@
        <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge" if="$(var velodyne)"
             args="/VLP16_lidar_front/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
              /VLP16_lidar_front@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan
-             /clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock"/>
-	   
+             /clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"/> 
+            
+       <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge" unless="$(var velodyne)"
+             args="/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"/> 
+             
     </group>
 
   <!-- <include if="$(arg cartesio)" file="$(find kyon_cartesio)/launch/kyon.launch">
