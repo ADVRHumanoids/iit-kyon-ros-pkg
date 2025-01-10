@@ -41,10 +41,6 @@
       filename="gz-sim-scene-broadcaster-system"
       name="gz::sim::systems::SceneBroadcaster">
     </plugin>
-    <plugin
-      filename="xbot2_gz_clock"
-      name="gz::sim::systems::GzClockPlugin">
-    </plugin>
     <gravity>0 0 -9.81</gravity>
 
     <light type="directional" name="sun">

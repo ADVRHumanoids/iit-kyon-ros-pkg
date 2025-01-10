@@ -9,9 +9,10 @@
             <link name="pelvis"/>
         </links>
     </plugin>
-    
+
+    <plugin name="gz::sim::systems::GzClockPlugin" filename="libxbot2_gz_clock.so"/>
+
     <!-- <plugin name="xbot2_ft_driver" filename="libxbot2_gz_ft_server.so"/>
-    
     <plugin name="xbot2_imu_driver" filename="libxbot2_gz_imu_server.so"/> -->
     
     <plugin name="gz::sim::systems::GzJointServer" filename="libxbot2_gz_joint_server.so">
