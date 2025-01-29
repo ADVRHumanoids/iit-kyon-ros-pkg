@@ -1,28 +1,30 @@
 <launch>
 
-  <arg name="world" default="$(find kyon_mujoco)/config/world.xml"/>
-  <arg name="simopt" default="$(find kyon_mujoco)/config/options.xml"/>
-  <arg name="sites" default="$(find kyon_mujoco)/config/sites.xml"/>
-  <arg name="ctrlcfg" default="$(find kyon_mujoco)/config/kyon.yaml"/>
-  <arg name="urdf" default="$(find kyon_urdf)/urdf/kyon.urdf.xacro"/>
-  <arg name="srdf" default="$(find kyon_srdf)/srdf/kyon.srdf.xacro"/>
+  <arg name="world" default="$(find-pkg-share kyon_mujoco)/config/world.xml"/>
+  <arg name="simopt" default="$(find-pkg-share kyon_mujoco)/config/options.xml"/>
+  <arg name="sites" default="$(find-pkg-share kyon_mujoco)/config/sites.xml"/>
+  <arg name="ctrlcfg" default="$(find-pkg-share kyon_mujoco)/config/kyon.yaml"/>
+  <arg name="urdf" default="$(find-pkg-share kyon_urdf)/urdf/kyon.urdf.xacro"/>
+  <arg name="srdf" default="$(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro"/>
 
    <!-- kyon configuration parameters -->
-  <arg name="arms" default="false"/>
-  <arg name="legs" default="true"/>
-  <arg name="sensors" default="false"/>
-  <arg name="payload" default="false"/>
-  <arg name="dagana" default="false"/>
-  <arg name="wheels" default="false"/>
-  <arg name="ft_sensors" default="false"/>
+    <arg name="arms" default="false"/>
+    <arg name="legs" default="true"/>
+    <arg name="sensors" default="false"/>
+    <arg name="payload" default="false"/>
+    <arg name="dagana" default="false"/>
+    <arg name="feet" default="true"/>
+    <arg name="wheels" default="false"/>
+    <arg name="steering_wheels" default="false"/>
+    <arg name="ft_sensors" default="true"/>
+    <arg name="velodyne" default="false"/>
 
-  <param name="robot_description"
-         command="$(find xacro)/xacro $(arg urdf) floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)"/>
+  <!-- Load the URDF/SRDF into the ROS Parameter Server -->
+  <let name="urdf_command"
+      value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)"/>
 
-    <param name="robot_description_semantic"
-         command="$(find xacro)/xacro $(arg srdf) floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)"/>
-  
-  <node pkg="kyon_mujoco" type="simulator_wrapper.bash" name="kyon_mujoco"
-    args="--name kyon --urdf-command 'rosparam get -p /robot_description' --world $(arg world) --simopt $(arg simopt) --ctrlcfg $(arg ctrlcfg) --sites $(arg sites)"/>
+  <node pkg="kyon_mujoco" exec="simulator_wrapper.bash" name="kyon_mujoco"
+    args="--name kyon --urdf-command $(var urdf_command) --world $(var world) --simopt $(var simopt) --ctrlcfg $(var ctrlcfg) --sites $(var sites)"/>
+
 
 </launch>
