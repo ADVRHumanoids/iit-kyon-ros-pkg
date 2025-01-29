@@ -10,6 +10,7 @@
 <xacro:arg name="upper_body" default="true"/>
 <xacro:arg name="dagana" default="true"/>
 <xacro:arg name="feet" default="true"/>
+<xacro:arg name="footonly_collision" default="false"/>
 <xacro:arg name="wheels" default="false"/>
 <xacro:arg name="floating_joint" default="true"/>
 <xacro:arg name="sensors" default="false"/>
@@ -40,5 +41,7 @@
 <xacro:property name="ADD_FLOATING_BASE" value="$(arg floating_joint)" />
 <xacro:property name="ADD_VIRTUAL_FRAME" value="false" />
 <xacro:property name="PAYLOAD" value="$(arg payload)"/>
+
+<xacro:property name="FOOTONLY_COLLISION" value="$(arg footonly_collision)"/>
 
 </robot>
