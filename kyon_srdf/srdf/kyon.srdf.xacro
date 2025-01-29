@@ -67,6 +67,10 @@
 		</group>
     </xacro:if>
 
+    <group name="imu_sensors">
+        <link name="imu_link"/>
+    </group>
+
     <!-- <xacro:if value="${ADD_FT_SENSORS}">
         <group name="ft_sensors">
             <joint name="knee_pitch_1"/>
@@ -212,5 +216,3 @@
     <disable_collisions link1="wrist_pitch_1_link" link2="wrist_yaw_1_link" reason="Adjacent"/>
     <disable_collisions link1="wrist_pitch_2_link" link2="wrist_yaw_2_link" reason="Adjacent"/>
 </robot>	
-
-
