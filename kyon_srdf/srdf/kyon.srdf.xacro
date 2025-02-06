@@ -12,6 +12,10 @@
     <group name="base">
         <link name="pelvis"/>
     </group>
+    
+    <group name="imu_sensors">
+        <link name="imu_link"/>
+    </group>
 
     <xacro:if value="${ADD_LEGS}">
     	<xacro:if value="${ADD_WHEELS}">
