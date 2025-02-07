@@ -1,0 +1,81 @@
+solver_options:
+    regularization: 1e-2
+    back_end: osqp
+    
+stack:
+    - [contact_1, contact_2, contact_3, contact_4, l_arm, r_arm]
+    - [Postural, Com, PelvisRot]
+
+constraints: [collision, jlim, vlim]
+
+
+jlim:
+  type: JointLimits
+
+vlim: 
+  type: VelocityLimits
+
+collision:
+    type: CollisionConstraint
+    lib_name: libcartesio_collision_support.so
+    bound_scaling: 0.1
+    distance_threshold: 0.01
+    max_pairs: 10
+    collision_urdf_path: $(rospack find kyon_urdf)/urdf/kyon_capsule.urdf
+    collision_srdf_path: $(rospack find kyon_srdf)/srdf/kyon_capsule.srdf
+    
+contact_1:
+    type: Cartesian
+    distal_link: contact_1
+    base_link: world
+    indices: [0, 1, 2]
+    
+contact_2:
+    type: Cartesian
+    distal_link: contact_2
+    base_link: world
+    indices: [0, 1, 2]
+    
+contact_3:
+    type: Cartesian
+    distal_link: contact_3
+    base_link: world
+    indices: [0, 1, 2]
+    
+contact_4:
+    type: Cartesian
+    distal_link: contact_4
+    base_link: world
+    indices: [0, 1, 2]
+    
+
+l_arm:
+    type: Cartesian
+    distal_link: dagana_1_base
+    base_link: world 
+    indices: [0, 1, 2, 3, 4, 5]
+    lambda: 0.1
+    
+
+r_arm:
+    type: Cartesian
+    distal_link: dagana_2_base
+    base_link: world 
+    indices: [0, 1, 2, 3, 4, 5]
+    lambda: 0.1
+    
+    
+Com:
+    type: Com
+    indices: [0, 1]
+    weight: 10
+    
+Postural:
+    type: Postural
+    lambda: 0.1
+    
+PelvisRot:
+    type: Cartesian
+    distal_link: pelvis
+    weight: 10
+    indices: [4, 5]
