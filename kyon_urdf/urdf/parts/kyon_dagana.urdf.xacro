@@ -20,7 +20,13 @@
     <collision>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
-            <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-base.stl" scale="0.001 0.001 0.001"/>
+            <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-base-simplified.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    <collision>
+        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+        <geometry>
+            <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-base-base-simplified.stl" scale="0.001 0.001 0.001"/>
         </geometry>
     </collision>
 </link>
@@ -41,7 +47,13 @@
     <collision>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
-            <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-clamp.stl" scale="0.001 0.001 0.001"/>
+            <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-clamp-base-simplified.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    <collision>
+        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+        <geometry>
+            <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-clamp-simplified.stl" scale="0.001 0.001 0.001"/>
         </geometry>
     </collision>
 </link>
