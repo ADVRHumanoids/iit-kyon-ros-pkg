@@ -41,10 +41,13 @@
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
+			<!-- <mesh filename="package://kyon_urdf/meshes/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/> -->
+            <cylinder radius="0.11" length="0.045"/>
 		</geometry> 
 	</collision>
 </link>
+
+<link name="contact_${leg_num}"/>
 
 <joint name="knee_pitch_${leg_num}" type="revolute">
     <parent link="${parent}"/>
@@ -60,6 +63,11 @@
     <origin xyz="${Wheel_Ox} ${Wheel_Oy} ${Wheel_Oz}" rpy="${Wheel_roll} ${Wheel_pitch} ${Wheel_yaw}"/>
     <axis xyz="0 0 1"/>
     <limit lower="-10000000" upper="10000000" effort="${motorWheel_effort}" velocity="${motorWheel_velocity}"/>
+</joint>
+
+<joint name="contact_${leg_num}_joint" type="fixed">
+    <parent link="wheel_${leg_num}"/>
+    <child link="contact_${leg_num}"/>
 </joint>
 
 </xacro:macro>
