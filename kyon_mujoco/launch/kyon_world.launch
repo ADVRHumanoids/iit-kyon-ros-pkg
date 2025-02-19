@@ -12,18 +12,18 @@
     <arg name="legs" default="true"/>
     <arg name="sensors" default="false"/>
     <arg name="payload" default="false"/>
-    <arg name="dagana" default="false"/>
+
     <arg name="feet" default="true"/>
     <arg name="wheels" default="false"/>
     <arg name="steering_wheels" default="false"/>
-    <arg name="ft_sensors" default="true"/>
+    <arg name="ft_sensors" default="false"/>
     <arg name="velodyne" default="false"/>
 
   <param name="robot_description"
-         command="$(find xacro)/xacro $(arg urdf) floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)"/>
+         command="$(find xacro)/xacro $(arg urdf) floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) feet:=$(arg feet) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)"/>
 
     <param name="robot_description_semantic"
-         command="$(find xacro)/xacro $(arg srdf) floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)"/>
+         command="$(find xacro)/xacro $(arg srdf) floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) feet:=$(arg feet) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)"/>
   
   <node pkg="kyon_mujoco" type="simulator_wrapper.bash" name="kyon_mujoco"
     args="--name kyon --urdf-command 'rosparam get -p /robot_description' --world $(arg world) --simopt $(arg simopt) --ctrlcfg $(arg ctrlcfg) --sites $(arg sites)"/>
