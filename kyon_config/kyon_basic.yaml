@@ -1,6 +1,6 @@
 XBotInterface:
-    urdf: xacro $(ros2 pkg prefix --share kyon_urdf)/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=false legs:=true sensors:=false payload:=false dagana:=false feet:=true wheels:=false steering_wheels:=false ft_sensors:=false velodyne:=false
-    srdf: xacro $(ros2 pkg prefix --share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=false legs:=true sensors:=false payload:=false dagana:=false feet:=true wheels:=false steering_wheels:=false ft_sensors:=false velodyne:=false
+    urdf: ros2 run xbot2_ros topic_echo /robot_description
+    srdf: ros2 run xbot2_ros topic_echo /robot_description_semantic
 
 ModelInterface:
   model_type: pin
