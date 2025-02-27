@@ -15,7 +15,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -47,7 +47,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_sh_yaw.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_sh_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -65,7 +65,7 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_sh_pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_sh_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -82,7 +82,7 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -100,7 +100,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_wrist_pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_wrist_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -119,7 +119,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_wrist_yaw.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_wrist_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -182,7 +182,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_dagana_base.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_dagana_base.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -201,7 +201,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_dagana_clamp.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_dagana_clamp.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -235,7 +235,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_sh_yaw.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_sh_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -253,7 +253,7 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_sh_pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_sh_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -270,7 +270,7 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -288,7 +288,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_wrist_pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_wrist_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -307,7 +307,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_wrist_yaw.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_wrist_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -370,7 +370,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_dagana_base.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_dagana_base.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -389,7 +389,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_dagana_clamp.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_dagana_clamp.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -424,7 +424,7 @@
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_hip_roll.stl" scale="0.001 -0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_roll.stl" scale="0.001 -0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -444,7 +444,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -480,7 +480,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_foot_leg.stl" scale="-0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_foot_leg.stl" scale="-0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -515,7 +515,7 @@
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_hip_roll.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_roll.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -535,7 +535,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -571,7 +571,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_foot_leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_foot_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -606,7 +606,7 @@
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_hip_roll.stl" scale="0.001 -0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_roll.stl" scale="0.001 -0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -626,7 +626,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -662,7 +662,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_foot_leg.stl" scale="-0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_foot_leg.stl" scale="-0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -697,7 +697,7 @@
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_hip_roll.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_roll.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -717,7 +717,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -753,7 +753,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/meshes/mesh_foot_leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_foot_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
