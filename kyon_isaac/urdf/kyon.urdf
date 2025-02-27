@@ -19,9 +19,9 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0 0.05"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="1.0 0.1615 0.30"/>
       </geometry>
     </collision>
   </link>
@@ -51,9 +51,9 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.05"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <cylinder length="0.16" radius="0.07"/>
       </geometry>
     </collision>
   </link>
@@ -69,8 +69,15 @@
       </geometry>
     </visual>
     <collision>
+      <origin xyz="0.0 -0.17 -0.02" rpy="0.18 0.0 0.0"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="0.08 0.19 0.05"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.0 -0.32 0.0" rpy="0.02 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.12" radius="0.055"/>
       </geometry>
     </collision>
   </link>
@@ -86,8 +93,9 @@
       </geometry>
     </visual>
     <collision>
+      <origin xyz="0.0 -0.135 0.035" rpy="0.01 0.0 0.0"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="0.08 0.14 0.05"/>
       </geometry>
     </collision>
   </link>
@@ -104,9 +112,8 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <cylinder length="0.1" radius="0.04"/>
       </geometry>
     </collision>
   </link>
@@ -123,9 +130,9 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.04"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <cylinder length="0.1" radius="0.04"/>
       </geometry>
     </collision>
   </link>
@@ -186,9 +193,15 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.045"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="0.095 0.08 0.06"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0.02 0.0 0.0" xyz="0.0 -0.025 0.13"/>
+      <geometry>
+        <box size="0.11 0.03 0.09"/>
       </geometry>
     </collision>
   </link>
@@ -205,9 +218,9 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.02 0.0 0.0" xyz="0.04 0.025 -0.03"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="0.11 0.03 0.09"/>
       </geometry>
     </collision>
   </link>
@@ -427,13 +440,6 @@
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_roll.stl" scale="0.001 -0.001 0.001"/>
       </geometry>
     </visual>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-      <geometry>
-        <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-        <box size="0.894 0.1615 0.356"/>
-      </geometry>
-    </collision>
   </link>
   <link name="hip_pitch_1_link">
     <inertial>
@@ -448,15 +454,21 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.2 0.2"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="0.13 0.4 0.08"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.15"/>
+      <geometry>
+        <cylinder length="0.17" radius="0.065"/>
       </geometry>
     </collision>
   </link>
   <!-- joints -->
   <joint name="hip_roll_1" type="revolute">
-    <parent link="base_link"/>
+    <parent link="pelvis"/>
     <child link="hip_roll_1_link"/>
     <origin rpy="0.0 1.57079632679 0.0" xyz="0.41100000000000003 0.0775 0.0"/>
     <axis xyz="0 0 1"/>
@@ -484,9 +496,15 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.135 0.02"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="0.05 0.33 0.04"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.32 0.02"/>
+      <geometry>
+        <sphere radius="0.03"/>
       </geometry>
     </collision>
   </link>
@@ -518,13 +536,6 @@
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_roll.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-      <geometry>
-        <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-        <box size="0.894 0.1615 0.356"/>
-      </geometry>
-    </collision>
   </link>
   <link name="hip_pitch_2_link">
     <inertial>
@@ -539,9 +550,15 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.2 0.2"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="0.13 0.4 0.08"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.15"/>
+      <geometry>
+        <cylinder length="0.17" radius="0.065"/>
       </geometry>
     </collision>
   </link>
@@ -575,9 +592,15 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.135 0.02"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="0.05 0.33 0.04"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.32 0.02"/>
+      <geometry>
+        <sphere radius="0.03"/>
       </geometry>
     </collision>
   </link>
@@ -609,13 +632,6 @@
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_roll.stl" scale="0.001 -0.001 0.001"/>
       </geometry>
     </visual>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-      <geometry>
-        <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-        <box size="0.894 0.1615 0.356"/>
-      </geometry>
-    </collision>
   </link>
   <link name="hip_pitch_3_link">
     <inertial>
@@ -630,9 +646,15 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.2 0.2"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="0.13 0.4 0.08"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.15"/>
+      <geometry>
+        <cylinder length="0.17" radius="0.065"/>
       </geometry>
     </collision>
   </link>
@@ -666,9 +688,15 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.135 0.02"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="0.05 0.33 0.04"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.32 0.02"/>
+      <geometry>
+        <sphere radius="0.03"/>
       </geometry>
     </collision>
   </link>
@@ -700,13 +728,6 @@
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_roll.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-      <geometry>
-        <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-        <box size="0.894 0.1615 0.356"/>
-      </geometry>
-    </collision>
   </link>
   <link name="hip_pitch_4_link">
     <inertial>
@@ -721,9 +742,15 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.2 0.2"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="0.13 0.4 0.08"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.15"/>
+      <geometry>
+        <cylinder length="0.17" radius="0.065"/>
       </geometry>
     </collision>
   </link>
@@ -757,9 +784,15 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.135 0.02"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <box size="0.05 0.33 0.04"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.32 0.02"/>
+      <geometry>
+        <sphere radius="0.03"/>
       </geometry>
     </collision>
   </link>
