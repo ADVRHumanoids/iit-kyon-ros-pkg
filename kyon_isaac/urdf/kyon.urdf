@@ -5,7 +5,7 @@
 <!-- =================================================================================== -->
 <robot name="kyon">
   <!-- Compound properties (i.e. based on the props parsed from the yaml) -->
-  <link name="base_link"/>
+  <!--link name="base_link"/-->
   <link name="pelvis">
     <inertial>
       <origin xyz="0.04972368 0.0022995169 0.058657543"/>
@@ -19,20 +19,20 @@
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0 0.05"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0 0.0"/>
       <geometry>
-        <box size="1.0 0.1615 0.30"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
-  <joint name="base_joint" type="fixed" dont_collapse="true">
+  <!--joint name="base_joint" type="fixed" dont_collapse="true">
     <parent link="pelvis"/>
     <child link="base_link"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
-  </joint>
+  </joint-->
   <link name="imu_link"/>
   <joint name="imu_joint" type="fixed" dont_collapse="true">
-    <parent link="base_link"/>
+    <parent link="pelvis"/>
     <child link="imu_link"/>
   </joint>
   <!-- /macro arms -->
@@ -44,16 +44,18 @@
       <mass value="0.67826074"/>
       <inertia ixx="0.0025001498999999996" ixy="-6.3655528e-07" ixz="1.7271058999999999e-07" iyy="0.0019131558999999998" iyz="-6.5053652e-05" izz="0.0019311455"/>
     </inertial>
-    <visual>
+    <visual>gitg
+
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_sh_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.05"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <cylinder length="0.16" radius="0.07"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_sh_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -67,17 +69,11 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_sh_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin xyz="0.0 -0.17 -0.02" rpy="0.18 0.0 0.0"/>
       <geometry>
-        <box size="0.08 0.19 0.05"/>
-      </geometry>
-    </collision>
-    <collision>
-      <origin xyz="0.0 -0.32 0.0" rpy="0.02 0.0 0.0"/>
-      <geometry>
-        <cylinder length="0.12" radius="0.055"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_sh_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -93,9 +89,8 @@
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0.0 -0.135 0.035" rpy="0.01 0.0 0.0"/>
       <geometry>
-        <box size="0.08 0.14 0.05"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -110,10 +105,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_wrist_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <cylinder length="0.1" radius="0.04"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_wrist_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -128,11 +125,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_wrist_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.04"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <cylinder length="0.1" radius="0.04"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_wrist_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -140,7 +138,7 @@
   <!-- JOINTS -->
   <!-- shoulder yaw -->
   <joint name="shoulder_yaw_1" type="revolute">
-    <parent link="base_link"/>
+    <parent link="pelvis"/>
     <child link="shoulder_yaw_1_link"/>
     <origin rpy="-0.3490656 0.0 0.0" xyz="0.28 0.0998258 0.203238"/>
     <axis xyz="0 0 1"/>
@@ -191,17 +189,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_dagana_base.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.045"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.095 0.08 0.06"/>
-      </geometry>
-    </collision>
-    <collision>
-      <origin rpy="0.02 0.0 0.0" xyz="0.0 -0.025 0.13"/>
-      <geometry>
-        <box size="0.11 0.03 0.09"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_dagana_base.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -216,11 +209,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_dagana_clamp.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.02 0.0 0.0" xyz="0.04 0.025 -0.03"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.11 0.03 0.09"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_dagana_clamp.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -250,11 +244,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_sh_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_sh_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -268,10 +263,11 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_sh_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_sh_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -288,7 +284,7 @@
     </visual>
     <collision>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -303,11 +299,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_wrist_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_wrist_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -322,11 +319,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_wrist_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_wrist_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -334,7 +332,7 @@
   <!-- JOINTS -->
   <!-- shoulder yaw -->
   <joint name="shoulder_yaw_2" type="revolute">
-    <parent link="base_link"/>
+    <parent link="pelvis"/>
     <child link="shoulder_yaw_2_link"/>
     <origin rpy="0.3490656 0.0 0.0" xyz="0.28 -0.0998258 0.203238"/>
     <axis xyz="0 0 1"/>
@@ -385,11 +383,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_dagana_base.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_dagana_base.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -404,11 +403,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_dagana_clamp.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.894 0.1615 0.356"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_dagana_clamp.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -439,7 +439,15 @@
         <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_roll.stl" scale="0.001 -0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_hip_roll.stl" scale="0.001 -0.001 0.001"/>
+      </geometry>
+    </collision>
   </link>
   <link name="hip_pitch_1_link">
     <inertial>
@@ -452,17 +460,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.2 0.2"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.13 0.4 0.08"/>
-      </geometry>
-    </collision>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.15"/>
-      <geometry>
-        <cylinder length="0.17" radius="0.065"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -494,17 +497,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_foot_leg.stl" scale="-0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.135 0.02"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.05 0.33 0.04"/>
-      </geometry>
-    </collision>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.32 0.02"/>
-      <geometry>
-        <sphere radius="0.03"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_foot_leg.stl" scale="-0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -535,7 +533,15 @@
         <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_roll.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_hip_roll.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
   </link>
   <link name="hip_pitch_2_link">
     <inertial>
@@ -548,23 +554,18 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.2 0.2"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.13 0.4 0.08"/>
-      </geometry>
-    </collision>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.15"/>
-      <geometry>
-        <cylinder length="0.17" radius="0.065"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
   <!-- joints -->
   <joint name="hip_roll_2" type="revolute">
-    <parent link="base_link"/>
+    <parent link="pelvis"/>
     <child link="hip_roll_2_link"/>
     <origin rpy="0.0 1.57079632679 0.0" xyz="0.41100000000000003 -0.0775 0.0"/>
     <axis xyz="0 0 1"/>
@@ -590,17 +591,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_foot_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.135 0.02"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.05 0.33 0.04"/>
-      </geometry>
-    </collision>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.32 0.02"/>
-      <geometry>
-        <sphere radius="0.03"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_foot_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -631,7 +627,15 @@
         <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_roll.stl" scale="0.001 -0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_hip_roll.stl" scale="0.001 -0.001 0.001"/>
+      </geometry>
+    </collision>
   </link>
   <link name="hip_pitch_3_link">
     <inertial>
@@ -644,23 +648,18 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.2 0.2"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.13 0.4 0.08"/>
-      </geometry>
-    </collision>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.15"/>
-      <geometry>
-        <cylinder length="0.17" radius="0.065"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
   <!-- joints -->
   <joint name="hip_roll_3" type="revolute">
-    <parent link="base_link"/>
+    <parent link="pelvis"/>
     <child link="hip_roll_3_link"/>
     <origin rpy="0.0 -1.57079632679 0.0" xyz="-0.41100000000000003 0.0775 0.0"/>
     <axis xyz="0 0 1"/>
@@ -686,17 +685,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_foot_leg.stl" scale="-0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.135 0.02"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.05 0.33 0.04"/>
-      </geometry>
-    </collision>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.32 0.02"/>
-      <geometry>
-        <sphere radius="0.03"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_foot_leg.stl" scale="-0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -727,7 +721,15 @@
         <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_roll.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_hip_roll.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
   </link>
   <link name="hip_pitch_4_link">
     <inertial>
@@ -740,23 +742,18 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.2 0.2"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.13 0.4 0.08"/>
-      </geometry>
-    </collision>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.15"/>
-      <geometry>
-        <cylinder length="0.17" radius="0.065"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_hip_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
   <!-- joints -->
   <joint name="hip_roll_4" type="revolute">
-    <parent link="base_link"/>
+    <parent link="pelvis"/>
     <child link="hip_roll_4_link"/>
     <origin rpy="0.0 -1.57079632679 0.0" xyz="-0.41100000000000003 -0.0775 0.0"/>
     <axis xyz="0 0 1"/>
@@ -782,17 +779,12 @@
       <geometry>
         <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_foot_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
+      <material name="dark_grey"/>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.135 0.02"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.05 0.33 0.04"/>
-      </geometry>
-    </collision>
-    <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.32 0.02"/>
-      <geometry>
-        <sphere radius="0.03"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/collision/mesh_foot_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
