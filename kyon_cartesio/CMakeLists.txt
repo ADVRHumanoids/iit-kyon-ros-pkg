@@ -1,17 +1,17 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.20)
 project(kyon_cartesio)
 
-find_package(catkin REQUIRED)
-
-catkin_package()
+find_package(ament_cmake REQUIRED)
 
 install(DIRECTORY launch
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  DESTINATION share/${PROJECT_NAME}
 )
 
 install(
   FILES 
   config/kyon_stack.yaml
   DESTINATION 
-  ${CATKIN_PACKAGE_SHARE_DESTINATION}/config
+  share/${PROJECT_NAME}/config
 )
+
+ament_package()

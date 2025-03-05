@@ -3,9 +3,30 @@ solver_options:
     back_end: osqp
     
 stack:
-    - [contact_1, contact_2, contact_3, contact_4] #, l_arm, r_arm]
+    - [contact_1, contact_2, contact_3, contact_4, l_arm, r_arm]
     - [Postural, Com, PelvisRot]
-    
+
+constraints: 
+    - jlim
+    - vlim
+    - collision
+
+jlim:
+    type: JointLimits
+
+vlim:
+    type: VelocityLimits
+
+collision:
+    type: CollisionConstraint
+    lib_name: libcartesio_collision_support.so
+    bound_scaling: 0.1
+    distance_threshold: 0.02
+    detection_threshold: 0.10
+    max_pairs: 30
+    collision_urdf_path: $(ros2 pkg prefix --share kyon_urdf)/urdf/kyon_capsule.urdf
+    collision_srdf_path: $(ros2 pkg prefix --share kyon_srdf)/srdf/kyon_capsule.srdf
+
 contact_1:
     type: Cartesian
     distal_link: contact_1
