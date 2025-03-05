@@ -3,8 +3,8 @@ solver_options:
     back_end: osqp
     
 stack:
-    - [contact_1, contact_2, contact_3, contact_4, l_arm, r_arm]
-    - [Postural, Com, PelvisRot]
+    - [contact_1, contact_2, contact_3, contact_4, r_arm, PelvisRot, Postural, Com]
+    # - [Postural, Com, PelvisRot]
 
 constraints: 
     - jlim
@@ -26,6 +26,14 @@ collision:
     max_pairs: 30
     collision_urdf_path: $(ros2 pkg prefix --share kyon_urdf)/urdf/kyon_capsule.urdf
     collision_srdf_path: $(ros2 pkg prefix --share kyon_srdf)/srdf/kyon_capsule.srdf
+    infeasible_pair_weight: 0.01
+    # weight: 100.0
+    # pairs:
+    #  - [dagana_2_base, pelvis]
+    world:
+     - name: floor
+       type: halfspace
+       disabled_collisions: [knee_pitch_1_link, knee_pitch_2_link, knee_pitch_3_link, knee_pitch_4_link]
 
 contact_1:
     type: Cartesian
@@ -56,7 +64,9 @@ l_arm:
     type: Cartesian
     distal_link: dagana_1_base
     base_link: world 
-    indices: [0, 1, 2, 3, 4, 5]
+    indices: [0, 1, 2, 3, 5]
+    use_local_subtasks: true
+    lambda: 0.1
     
 
 r_arm:
@@ -64,19 +74,22 @@ r_arm:
     distal_link: dagana_2_base
     base_link: world 
     indices: [0, 1, 2, 3, 4, 5]
+    use_local_subtasks: true
+    lambda: 0.1
     
     
 Com:
     type: Com
     indices: [0, 1]
-    weight: 10
+    weight: 0.01
     
 Postural:
     type: Postural
-    lambda: 0.1
+    lambda: 0.05
+    weight: 0.001
     
 PelvisRot:
     type: Cartesian
     distal_link: pelvis
-    weight: 10
+    weight: 0.01
     indices: [4, 5]
