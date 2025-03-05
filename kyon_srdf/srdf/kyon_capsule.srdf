@@ -143,4 +143,28 @@
     <disable_collisions link1="shoulder_yaw_1_link" link2="shoulder_yaw_2_link" reason="Never"/>
     <disable_collisions link1="wrist_pitch_1_link" link2="wrist_yaw_1_link" reason="Adjacent"/>
     <disable_collisions link1="wrist_pitch_2_link" link2="wrist_yaw_2_link" reason="Adjacent"/>
+    <disable_collisions link1="dagana_1_claw" link2="elbow_pitch_1_link" reason="Never"/>
+    <disable_collisions link1="dagana_2_claw" link2="elbow_pitch_2_link" reason="Never"/>
+    <disable_collisions link1="dagana_1_base" link2="elbow_pitch_1_link" reason="Never"/>
+    <disable_collisions link1="dagana_2_base" link2="elbow_pitch_2_link" reason="Never"/>
+    <disable_collisions link1="dagana_1_claw" link2="wrist_pitch_1_link" reason="Never"/>
+    <disable_collisions link1="dagana_2_claw" link2="wrist_pitch_2_link" reason="Never"/>
+    <disable_collisions link1="dagana_1_base" link2="wrist_pitch_1_link" reason="Never"/>
+    <disable_collisions link1="dagana_2_base" link2="wrist_pitch_2_link" reason="Never"/>
+    <disable_collisions link1="wrist_yaw_1_link" link2="elbow_pitch_1_link" reason="Never"/>
+    <disable_collisions link1="wrist_yaw_2_link" link2="elbow_pitch_2_link" reason="Never"/>
+    <!-- <disable_collisions link1="hip_pitch_1_link" link2="shoulder_yaw_1_link" reason="Adjacent"/> -->
+    <!-- <disable_collisions link1="hip_pitch_2_link" link2="shoulder_yaw_2_link" reason="Adjacent"/> -->
+
+    <disable_collisions link1="hip_roll_1_link" link2="hip_pitch_2_link" reason="Default"/>
+    <disable_collisions link1="hip_roll_2_link" link2="hip_pitch_1_link" reason="Default"/>
+    <disable_collisions link1="hip_roll_3_link" link2="hip_pitch_4_link" reason="Default"/>
+    <disable_collisions link1="hip_roll_4_link" link2="hip_pitch_3_link" reason="Default"/>
+
+    <disable_collisions link1="shoulder_pitch_1_link" link2="pelvis" reason="Default"/>
+    <disable_collisions link1="shoulder_pitch_2_link" link2="pelvis" reason="Default"/>
+
+    <disable_collisions link1="shoulder_pitch_1_link" link2="hip_pitch_1_link" reason="Default"/>
+    <disable_collisions link1="shoulder_pitch_2_link" link2="hip_pitch_2_link" reason="Default"/>
+
 </robot>
