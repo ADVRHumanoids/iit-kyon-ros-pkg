@@ -207,7 +207,7 @@
   </link>
   <joint name="shoulder_yaw_1" type="revolute">
     <origin xyz="0.28 0.0998258 0.203238" rpy="-0.3490656 0.0 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0.0 0.0 -1.0"/>
     <parent link="pelvis"/>
     <child link="shoulder_yaw_1_link"/>
     <limit effort="132.0" lower="-3.312" upper="3.312" velocity="15.5"/>
@@ -221,14 +221,14 @@
   </joint>
   <joint name="elbow_pitch_1" type="revolute">
     <origin xyz="0.0 -0.32 0.0" rpy="0.0 0.0 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0.0 0.0 -1.0"/>
     <parent link="shoulder_pitch_1_link"/>
     <child link="elbow_pitch_1_link"/>
     <limit effort="132.0" lower="-3.0" upper="3.0" velocity="15.5"/>
   </joint>
   <joint name="wrist_pitch_1" type="revolute">
     <origin xyz="0.0 -0.25 0.0" rpy="0.0 0.0 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0.0 0.0 -1.0"/>
     <parent link="elbow_pitch_1_link"/>
     <child link="wrist_pitch_1_link"/>
     <limit effort="132.0" lower="-2.4056" upper="2.4056" velocity="15.5"/>
@@ -475,7 +475,7 @@
   </link>
   <joint name="shoulder_yaw_2" type="revolute">
     <origin xyz="0.28 -0.0998258 0.203238" rpy="0.3490656 0.0 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0.0 0.0 -1.0"/>
     <parent link="pelvis"/>
     <child link="shoulder_yaw_2_link"/>
     <limit effort="132.0" lower="-3.3458" upper="3.3458" velocity="15.5"/>
@@ -489,14 +489,14 @@
   </joint>
   <joint name="elbow_pitch_2" type="revolute">
     <origin xyz="0.0 -0.32 0.0" rpy="0.0 0.0 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0.0 0.0 -1.0"/>
     <parent link="shoulder_pitch_2_link"/>
     <child link="elbow_pitch_2_link"/>
     <limit effort="132.0" lower="-3.0" upper="3.0" velocity="15.5"/>
   </joint>
   <joint name="wrist_pitch_2" type="revolute">
     <origin xyz="0.0 -0.25 0.0" rpy="0.0 0.0 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0.0 0.0 -1.0"/>
     <parent link="elbow_pitch_2_link"/>
     <child link="wrist_pitch_2_link"/>
     <limit effort="132.0" lower="-2.3266" upper="2.3266" velocity="15.5"/>
