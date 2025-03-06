@@ -33,6 +33,7 @@ collision:
     world:
      - name: floor
        type: halfspace
+       normal: [0, 0, 1]
        disabled_collisions: [knee_pitch_1_link, knee_pitch_2_link, knee_pitch_3_link, knee_pitch_4_link]
 
 contact_1:
