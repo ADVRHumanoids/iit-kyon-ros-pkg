@@ -1,0 +1,24 @@
+<launch>
+
+<arg name="rate" default="100.0" />
+<arg name="prefix" default="" />
+<arg name="gui" default="false" />
+
+<include file="$(find-pkg-share kyon_cartesio)/launch/kyon.launch">
+    <arg name="rate" value="$(var rate)"/>
+    <arg name="prefix" value="$(var prefix)"/>
+    <arg name="ik" value="$(find-pkg-share kyon_cartesio)/config/kyon_stack_basic.yaml"/>
+    <arg name="arms" value="true"/>
+    <arg name="legs" value="true"/>
+    <arg name="sensors" value="false"/>
+    <arg name="payload" value="false"/>
+    <arg name="wheels" value="false"/>
+    <arg name="steering_wheels" value="false"/>
+    <arg name="ft_sensors" value="false"/>
+    <arg name="velodyne" value="false"/>
+    <arg name="feet" value="true"/>
+    <arg name="dagana" value="true"/>
+    <arg name="gui" value="$(var gui)"/>
+</include>
+
+</launch>

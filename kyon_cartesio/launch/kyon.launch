@@ -14,6 +14,7 @@
     <arg name="feet" default="true" />
     <arg name="dagana" default="true" />
     <arg name="gui" default="false" />
+    <arg name="home" default="home"/>
 
     <!-- Load the URDF/SRDF into the ROS Parameter Server -->
     <let name="urdf_command"
@@ -37,8 +38,9 @@
     <include file="$(find-pkg-share cartesian_interface_ros)/launch/cartesio.launch.xml">
         <arg name="rate" value="100.0"/>
         <arg name="prefix" value="$(var prefix)"/>
-        <arg name="problem_description_filename" value="$(find-pkg-share kyon_cartesio)/config/kyon_stack.yaml"/>
+        <arg name="problem_description_filename" value="$(var ik)"/>
         <arg name="markers" value="true"/>
+        <arg name="home" value="$(var home)"/>
     </include>
 
     <node if="$(var gui)" pkg="rviz2" exec="rviz2" name="rviz" output="screen" args="-d $(find-pkg-share kyon_cartesio)/config/kyon.rviz" />
