@@ -15,7 +15,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0 0.0"/>
       <geometry>
-        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="/workspace/iit-kyon-ros-pkg/kyon_isaac/urdf/meshes/mesh_pelvis_no_lidar.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -38,6 +38,7 @@
   </joint>
   <link name="imu_link"/>
   <joint name="imu_joint" type="fixed" dont_collapse="true">
+    <origin rpy="3.14159265359 0 0" xyz="-0.256190 0 0.103"/>
     <parent link="base_link"/>
     <child link="imu_link"/>
   </joint>
@@ -149,7 +150,7 @@
     <parent link="base_link"/>
     <child link="shoulder_yaw_1_link"/>
     <origin rpy="-0.3490656 0.0 0.0" xyz="0.28 0.0998258 0.203238"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
     <limit effort="146" lower="-3.312" upper="3.312" velocity="3.8"/>
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
@@ -166,7 +167,7 @@
     <parent link="shoulder_pitch_1_link"/>
     <child link="elbow_pitch_1_link"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.32 0.0"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
     <limit effort="122" lower="-3" upper="3" velocity="4.6"/>
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
@@ -174,7 +175,7 @@
     <parent link="elbow_pitch_1_link"/>
     <child link="wrist_pitch_1_link"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.25 0.0"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
     <limit effort="25" lower="-2.4056" upper="2.4056" velocity="14"/>
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
@@ -350,7 +351,7 @@
     <parent link="base_link"/>
     <child link="shoulder_yaw_2_link"/>
     <origin rpy="0.3490656 0.0 0.0" xyz="0.28 -0.0998258 0.203238"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
     <limit effort="146" lower="-3.3458" upper="3.3458" velocity="3.8"/>
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
@@ -367,7 +368,7 @@
     <parent link="shoulder_pitch_2_link"/>
     <child link="elbow_pitch_2_link"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.32 0.0"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
     <limit effort="122" lower="-3" upper="3" velocity="4.6"/>
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
@@ -375,7 +376,7 @@
     <parent link="elbow_pitch_2_link"/>
     <child link="wrist_pitch_2_link"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.25 0.0"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
     <limit effort="25" lower="-2.3266" upper="2.3266" velocity="14"/>
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
@@ -545,7 +546,7 @@
   <joint name="contact_1_joint" type="fixed" dont_collapse="true">
     <parent link="knee_pitch_1_link"/>
     <child link="contact_1"/>
-    <origin rpy="-1.57 0 0.785" xyz="0.03 -0.35 0.03"/>
+    <origin rpy="-1.57 0 0.785" xyz="0.0 -0.3 0.054"/>
   </joint>
   <!-- links -->
   <link name="hip_roll_2_link">
@@ -647,7 +648,7 @@
   <joint name="contact_2_joint" type="fixed" dont_collapse="true">
     <parent link="knee_pitch_2_link"/>
     <child link="contact_2"/>
-    <origin rpy="1.57 0 2.356" xyz="-0.03 -0.35 0.03"/>
+    <origin rpy="1.57 0 2.356" xyz="-0.0 -0.3 0.054"/>
   </joint>
   <!-- links -->
   <link name="hip_roll_3_link">
@@ -749,7 +750,7 @@
   <joint name="contact_3_joint" type="fixed" dont_collapse="true">
     <parent link="knee_pitch_3_link"/>
     <child link="contact_3"/>
-    <origin rpy="-1.57 0 0.785" xyz="0.03 -0.35 0.03"/>
+    <origin rpy="-1.57 0 0.785" xyz="0.0 -0.3 0.054"/>
   </joint>
   <!-- links -->
   <link name="hip_roll_4_link">
@@ -851,7 +852,7 @@
   <joint name="contact_4_joint" type="fixed" dont_collapse="true">
     <parent link="knee_pitch_4_link"/>
     <child link="contact_4"/>
-    <origin rpy="1.57 0 2.356" xyz="-0.03 -0.35 0.03"/>
+    <origin rpy="1.57 0 2.356" xyz="-0.0 -0.3 0.054"/>
   </joint>
   <!-- ************ Control frames ************ -->
   <!--xacro:include filename="$(find pholus_urdf)/urdf/control_frames.urdf.xacro"/-->
