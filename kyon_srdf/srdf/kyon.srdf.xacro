@@ -123,6 +123,21 @@
             <joint name="wrist_yaw_2" value="0.0"/>
         </xacro:if>
     </group_state>
+
+    <group_state name="parked" group="chains">
+        <joint name="hip_roll_1" value="0.0"/>
+        <joint name="hip_pitch_1" value="1.57"/>
+        <joint name="knee_pitch_1" value="-3.10"/>
+        <joint name="hip_roll_2" value="0.0"/>
+        <joint name="hip_pitch_2" value="-1.57"/>
+        <joint name="knee_pitch_2" value="3.1"/>
+        <joint name="hip_roll_3" value="0.0"/>
+        <joint name="hip_pitch_3" value="1.57"/>
+        <joint name="knee_pitch_3" value="-3.1"/>
+        <joint name="hip_roll_4" value="0.0"/>
+        <joint name="hip_pitch_4" value="-1.57"/>
+        <joint name="knee_pitch_4" value="3.1"/>
+    </group_state>
     
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="dagana_1_base" link2="dagana_1_claw" reason="Adjacent"/>
