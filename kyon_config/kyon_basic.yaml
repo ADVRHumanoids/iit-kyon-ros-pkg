@@ -17,7 +17,7 @@ xbotcore_device_configs:
 # threads
 xbotcore_threads:
     rt_main:  {sched: fifo , prio: 60, period: 0.001}
-    nrt_main: {sched: other, prio: 0 , period: 0.001}
+    nrt_main: {sched: other, prio: 0 , period: 0.005}
 
 
 # plugins
@@ -40,7 +40,11 @@ xbotcore_param:
     /jm/enable_safety: {value: false, type: bool}
     /xbot_internal/ros_io/call_timeout: {value: 1.0, type: chrono}
     /rt_main/memory_hooks: {value: true, type: bool}
-    /xbot/hal/enable_safety: {value: false, type: bool}
+    /xbot/hal/enable_safety: {value: true, type: bool}
+    /xbot/hal/joint_safety/filter_safe_cutoff_hz: {value: 5.0, type: double}
+    /xbot/hal/joint_safety/filter_medium_cutoff_hz: {value: 20.0, type: double}
+    /xbot/hal/joint_safety/filter_fast_cutoff_hz: {value: 40.0, type: double}
+    /xbot/hal/joint_safety/delta_check_dt: 0.05
 
 
 
