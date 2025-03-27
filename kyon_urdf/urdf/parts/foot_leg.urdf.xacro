@@ -29,7 +29,7 @@
     <parent link="${parent}"/>
     <child link="knee_pitch_${leg_num}_link"/>
     <origin xyz="${KneePitch_Ox} ${KneePitch_Oy} ${KneePitch_Oz}" rpy="${KneePitch_roll} ${KneePitch_pitch} ${KneePitch_yaw}"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
     <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
 </joint>
 
