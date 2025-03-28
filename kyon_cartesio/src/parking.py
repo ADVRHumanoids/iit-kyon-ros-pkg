@@ -131,10 +131,6 @@ rospy.init_node('parking')
 # create parking object
 parking = Parking()
 
-# fall
-if args.z:
-    parking.fall()
-
 # move
 if args.action:
     parking.move(args.action)
