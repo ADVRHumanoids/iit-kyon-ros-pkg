@@ -102,28 +102,28 @@
     <group_state name="home" group="chains">
         <xacro:if value="${ADD_LEGS}">
             <joint name="hip_roll_1" value="0.0"/>
-            <joint name="hip_pitch_1" value="0.7"/>
-            <joint name="knee_pitch_1" value="-1.4"/>
+            <joint name="hip_pitch_1" value="-0.7"/>
+            <joint name="knee_pitch_1" value="1.4"/>
             <joint name="hip_roll_2" value="0.0"/>
-            <joint name="hip_pitch_2" value="-0.7"/>
-            <joint name="knee_pitch_2" value="1.4"/>
+            <joint name="hip_pitch_2" value="0.7"/>
+            <joint name="knee_pitch_2" value="-1.4"/>
             <joint name="hip_roll_3" value="0.0"/>
-            <joint name="hip_pitch_3" value="0.7"/>
-            <joint name="knee_pitch_3" value="-1.4"/>
+            <joint name="hip_pitch_3" value="-0.7"/>
+            <joint name="knee_pitch_3" value="1.4"/>
             <joint name="hip_roll_4" value="0.0"/>
-            <joint name="hip_pitch_4" value="-0.7"/>
-            <joint name="knee_pitch_4" value="1.4"/>
+            <joint name="hip_pitch_4" value="0.7"/>
+            <joint name="knee_pitch_4" value="-1.4"/>
         </xacro:if>
         <xacro:if value="${ADD_UPPER_BODY}">
             <joint name="shoulder_yaw_1" value="0.0"/>
-            <joint name="shoulder_pitch_1" value="1.0"/>
-            <joint name="elbow_pitch_1" value="2.50"/>
-            <joint name="wrist_pitch_1" value="-0.75"/>
+            <joint name="shoulder_pitch_1" value="1.57"/>
+            <joint name="elbow_pitch_1" value="0.0"/>
+            <joint name="wrist_pitch_1" value="0.0"/>
             <joint name="wrist_yaw_1" value="0.0"/>
             <joint name="shoulder_yaw_2" value="0.0"/>
-            <joint name="shoulder_pitch_2" value="-1.0"/>
-            <joint name="elbow_pitch_2" value="-2.50"/>
-            <joint name="wrist_pitch_2" value="0.75"/>
+            <joint name="shoulder_pitch_2" value="-1.57"/>
+            <joint name="elbow_pitch_2" value="0.0"/>
+            <joint name="wrist_pitch_2" value="0.0"/>
             <joint name="wrist_yaw_2" value="0.0"/>
         </xacro:if>
     </group_state>
