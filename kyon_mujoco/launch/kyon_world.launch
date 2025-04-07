@@ -20,12 +20,12 @@
     <arg name="velodyne" default="false"/>
 
   <param name="robot_description"
-         command="$(find xacro)/xacro $(arg urdf) floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) feet:=$(arg feet) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)"/>
+         command="$(find xacro)/xacro $(arg urdf) floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) feet:=$(arg feet) wheels:=$(arg wheels) steering_wheels:=$(arg steering_wheels) ft_sensors:=$(arg ft_sensors)"/>
 
     <param name="robot_description_semantic"
-         command="$(find xacro)/xacro $(arg srdf) floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) feet:=$(arg feet) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)"/>
+         command="$(find xacro)/xacro $(arg srdf) floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) feet:=$(arg feet) wheels:=$(arg wheels) steering_wheels:=$(arg steering_wheels) ft_sensors:=$(arg ft_sensors)"/>
   
-  <node pkg="kyon_mujoco" type="simulator_wrapper.bash" name="kyon_mujoco"
+  <node pkg="kyon_mujoco" type="simulator_wrapper.bash" name="kyon_mujoco" output="screen"
     args="--name kyon --urdf-command 'rosparam get -p /robot_description' --world $(arg world) --simopt $(arg simopt) --ctrlcfg $(arg ctrlcfg) --sites $(arg sites)"/>
 
 </launch>
