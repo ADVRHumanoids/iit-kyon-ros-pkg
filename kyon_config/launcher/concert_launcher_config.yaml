@@ -1,0 +1,31 @@
+context:
+  session: kyon_sim
+  params:
+    hw_type: sim
+
+# Simulation components
+roscore:
+  cmd: roscore
+  ready_check: rostopic list
+
+# mujoco_sim:
+#  cmd: roslaunch kyon_mujoco kyon_world.launch arms:=false legs:=true
+#  depends:
+#    - roscore
+
+rviz:
+  cmd: rviz
+  depends: 
+    - roscore
+
+xbot2_sim:
+  cmd: xbot2-core --hw mj -C $(rospack find kyon_config)/kyon_basic.yaml
+  ready_check: timeout 5 rostopic echo /xbotcore/joint_states -n 1
+  depends:
+    - roscore
+    - rviz
+sim_all:
+  cmd: echo "Starting full simulation environment"
+  persistent: true
+  depends:
+    - xbot2_sim
