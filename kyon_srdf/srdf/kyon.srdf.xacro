@@ -138,6 +138,19 @@
         <joint name="hip_pitch_4" value="1.57"/>
         <joint name="knee_pitch_4" value="-3.1"/>
     </group_state>
+
+    <group_state name="naruto" group="chains">
+        <joint name="shoulder_yaw_1" value="0.0"/>
+        <joint name="shoulder_pitch_1" value="1.68"/>
+        <joint name="elbow_pitch_1" value="0.1"/>
+        <joint name="wrist_pitch_1" value="0.8"/>
+        <joint name="wrist_yaw_1" value="0.0"/>
+        <joint name="shoulder_yaw_2" value="0.0"/>
+        <joint name="shoulder_pitch_2" value="-1.68"/>
+        <joint name="elbow_pitch_2" value="-0.1"/>
+        <joint name="wrist_pitch_2" value="-0.8"/>
+        <joint name="wrist_yaw_2" value="0.0"/>
+    </group_state>
     
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="dagana_1_base" link2="dagana_1_claw" reason="Adjacent"/>
