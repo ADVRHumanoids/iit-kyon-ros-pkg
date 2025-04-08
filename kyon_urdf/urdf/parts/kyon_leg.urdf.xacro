@@ -45,6 +45,13 @@
 	  	<geometry>
 	 		<mesh filename="package://kyon_urdf/meshes/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
 	  	</geometry>
+  		<material name="kyon_orange"/>
+	</visual>
+	<visual>
+		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+	  	<geometry>
+	 		<mesh filename="package://kyon_urdf/meshes/mesh_hip-pitch_cover.stl" scale="0.001 0.001 0.001"/>
+	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
 	<collision>
@@ -52,6 +59,7 @@
 		<geometry>
 			<mesh filename="package://kyon_urdf/meshes/collision/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
+		<material name="kyon_orange"/>
 	</collision>
 </link>
 
@@ -73,17 +81,17 @@
 	<limit lower="${hip_pitch_lower[leg_num-1]}" upper="${hip_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
 </joint>
 
-<xacro:if value="${ADD_FEET}">
+<xacro:unless value="${ADD_WHEELS}">
 	<xacro:foot_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
-</xacro:if>
+</xacro:unless>
 
-<xacro:if value="${ADD_STEERING_WHEELS}">
+<xacro:if value="${ADD_WHEELS}">
 	<xacro:steering_wheel leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
 </xacro:if>
 
-<xacro:if value="${ADD_WHEELS}">
-	<xacro:wheel_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
-</xacro:if>
+<!-- <xacro:if value="${ADD_WHEELS}">
+    <xacro:wheel_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
+</xacro:if> -->
 
 </xacro:macro>
 

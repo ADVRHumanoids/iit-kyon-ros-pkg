@@ -7,24 +7,33 @@
   <arg name="urdf" default="$(find kyon_urdf)/urdf/kyon.urdf.xacro"/>
   <arg name="srdf" default="$(find kyon_srdf)/srdf/kyon.srdf.xacro"/>
 
-   <!-- kyon configuration parameters -->
-    <arg name="arms" default="false"/>
-    <arg name="legs" default="true"/>
-    <arg name="sensors" default="false"/>
-    <arg name="payload" default="false"/>
-
-    <arg name="feet" default="true"/>
-    <arg name="wheels" default="false"/>
-    <arg name="steering_wheels" default="false"/>
-    <arg name="ft_sensors" default="false"/>
-    <arg name="velodyne" default="false"/>
+  <!-- kyon configuration parameters -->
+  <arg name="arms" default="false"/>
+  <arg name="legs" default="true"/>
+  <arg name="cameras" default="false"/>
+  <arg name="payload" default="false"/>
+  <arg name="wheels" default="false"/>
+  <arg name="varta" default="false"/>
+  <arg name="d034_li_ion" default="false"/>
+  <arg name="velodyne" default="false"/>
 
   <param name="robot_description"
-         command="$(find xacro)/xacro $(arg urdf) floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) feet:=$(arg feet) wheels:=$(arg wheels) steering_wheels:=$(arg steering_wheels) ft_sensors:=$(arg ft_sensors)"/>
-
-    <param name="robot_description_semantic"
-         command="$(find xacro)/xacro $(arg srdf) floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) feet:=$(arg feet) wheels:=$(arg wheels) steering_wheels:=$(arg steering_wheels) ft_sensors:=$(arg ft_sensors)"/>
-  
+         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro 
+         floating_joint:=true 
+         upper_body:=$(arg arms)
+         legs:=$(arg legs)
+         cameras:=$(arg cameras) 
+         velodyne:=$(arg velodyne) 
+         payload:=$(arg payload)
+         wheels:=$(arg wheels)"/>
+         
+  <param name="robot_description_semantic"
+         command="$(find xacro)/xacro $(find kyon_srdf)/srdf/kyon.srdf.xacro 
+         floating_joint:=true 
+         upper_body:=$(arg arms) 
+         legs:=$(arg legs) 
+         wheels:=$(arg wheels)"/>
+         
   <node pkg="kyon_mujoco" type="simulator_wrapper.bash" name="kyon_mujoco" output="screen"
     args="--name kyon --urdf-command 'rosparam get -p /robot_description' --world $(arg world) --simopt $(arg simopt) --ctrlcfg $(arg ctrlcfg) --sites $(arg sites)"/>
 

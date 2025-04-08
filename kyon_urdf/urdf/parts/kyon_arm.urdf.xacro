@@ -37,14 +37,21 @@
 	</inertial>
 	<visual>
 	  	<geometry>
-	 		<mesh filename="package://kyon_urdf/meshes/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/mesh_sh-pitch_cover.stl" scale="0.001 0.001 0.001"/>
 	  	</geometry>
   		<material name="dark_grey"/>
+	</visual>
+	<visual>
+	  	<geometry>
+	 		<mesh filename="package://kyon_urdf/meshes/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
+	  	</geometry>
+  		<material name="kyon_orange"/>
 	</visual>
 	<collision>
 	  	<geometry>
 			<mesh filename="package://kyon_urdf/meshes/collision/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
+		<material name="kyon_orange"/>
 	</collision>
 </link>
 
@@ -58,6 +65,7 @@
 		<geometry>
 			<mesh filename="package://kyon_urdf/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
+		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<geometry>
