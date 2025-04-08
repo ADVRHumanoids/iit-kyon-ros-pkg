@@ -41,8 +41,8 @@
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<!--mesh filename="package://kyon_urdf/meshes/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/-->
-			<cylinder radius="0.11" length="0.045"/>
+			<!-- <mesh filename="package://kyon_urdf/meshes/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/> -->
+            <cylinder radius="0.11" length="0.045"/>
 		</geometry> 
 	</collision>
 </link>
@@ -53,16 +53,16 @@
     <parent link="${parent}"/>
     <child link="knee_pitch_${leg_num}_link"/>
     <origin xyz="${KneePitch_Ox} ${KneePitch_Oy} ${KneePitch_Oz}" rpy="${KneePitch_roll} ${KneePitch_pitch} ${KneePitch_yaw}"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
     <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
 </joint>
 
-<joint name="wheel_joint_${leg_num}" type="revolute">
+<joint name="wheel_joint_${leg_num}" type="continuous">
     <parent link="knee_pitch_${leg_num}_link"/>
     <child link="wheel_${leg_num}"/>
     <origin xyz="${Wheel_Ox} ${Wheel_Oy} ${Wheel_Oz}" rpy="${Wheel_roll} ${Wheel_pitch} ${Wheel_yaw}"/>
     <axis xyz="0 0 1"/>
-    <limit lower="-10000000" upper="10000000" effort="${motorWheel_effort}" velocity="${motorWheel_velocity}"/>
+    <limit effort="${motorWheel_effort}" velocity="${motorWheel_velocity}"/>
 </joint>
 
 <joint name="contact_${leg_num}_joint" type="fixed">

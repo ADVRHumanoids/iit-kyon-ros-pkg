@@ -1,0 +1,45 @@
+<launch>
+
+    <arg name="rate" default="100.0"/>
+    <arg name="prefix" default=""/>
+    <arg name="ik" default="$(find kyon_cartesio)/config/kyon_wheel_stack.yaml"/>
+    <arg name="arms" default="true"/>
+    <arg name="legs" default="true"/>
+    <arg name="sensors" default="false"/>
+    <arg name="payload" default="false"/>
+    <arg name="wheels" default="true"/>
+    <arg name="feet" default="false"/>
+    <arg name="steering_wheels" default="false"/>
+    <arg name="xbot" default="false"/>
+    
+    <param name="robot_description"
+        command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro 
+        floating_joint:=true 
+        feet:=$(arg feet)
+        upper_body:=$(arg arms)
+        legs:=$(arg legs)
+        sensors:=$(arg sensors) 
+        payload:=$(arg payload)
+        wheels:=$(arg wheels)"/>
+    
+    <param name="robot_description_semantic"
+        command="$(find xacro)/xacro $(find kyon_srdf)/srdf/kyon.srdf.xacro 
+        floating_joint:=true 
+        feet:=$(arg feet)
+        upper_body:=$(arg arms) 
+        legs:=$(arg legs) 
+        sensors:=$(arg sensors)
+        wheels:=$(arg wheels)"/>
+    
+    <param name="cartesian/problem_description" 
+        textfile="$(arg ik)"/>
+    
+    <include file="$(find cartesian_interface)/launch/cartesio.launch">
+        <arg name="rate" value="$(arg rate)"/>
+        <arg name="prefix" value="$(arg prefix)"/>
+        <arg name="xbot" value="$(arg xbot)"/>
+    </include>
+
+    <node pkg="rviz" name="rviz" type="rviz" args="-d $(find kyon_cartesio)/config/kyon.rviz"/>
+    
+</launch>

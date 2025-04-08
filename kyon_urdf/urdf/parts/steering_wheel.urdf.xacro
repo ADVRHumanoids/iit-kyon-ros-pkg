@@ -62,7 +62,7 @@
 	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
 			<mesh filename="package://kyon_urdf/meshes/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
 		</geometry> 
-  		<material name="dark_grey"/>
+  		<material name="light_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -70,6 +70,7 @@
 	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
 			<mesh filename="package://kyon_urdf/meshes/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
 		</geometry> 
+		<material name="light_grey"/>
 	</collision>
 </link>
 
@@ -77,7 +78,7 @@
     <parent link="${parent}"/>
     <child link="knee_pitch_${leg_num}_link"/>
     <origin xyz="${KneePitch_Ox} ${KneePitch_Oy} ${KneePitch_Oz}" rpy="${KneePitch_roll} ${KneePitch_pitch} ${KneePitch_yaw}"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
     <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
 </joint>
 
@@ -86,15 +87,15 @@
     <child link="ankle_yaw_${leg_num}_link"/>
     <origin xyz="${AnkleYaw_Ox} ${AnkleYaw_Oy} ${AnkleYaw_Oz}" rpy="${AnkleYaw_roll} ${AnkleYaw_pitch} ${AnkleYaw_yaw}"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
+    <limit lower="${ankle_yaw_lower[leg_num-1]}" upper="${ankle_yaw_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
 </joint>
 
-<joint name="wheel_joint_${leg_num}" type="revolute">
+<joint name="wheel_joint_${leg_num}" type="continuous">
     <parent link="ankle_yaw_${leg_num}_link"/>
     <child link="wheel_${leg_num}"/>
     <origin xyz="${SteeringWheel_Ox} ${SteeringWheel_Oy} ${SteeringWheel_Oz}" rpy="${SteeringWheel_roll} ${SteeringWheel_pitch} ${SteeringWheel_yaw}"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorWheel_effort}" velocity="${motorWheel_velocity}"/> 
+    <limit effort="${motorWheel_effort}" velocity="${motorWheel_velocity}"/> 
 </joint>
 
 </xacro:macro>

@@ -21,4 +21,12 @@
     <color rgba="0.1 0.1 0.1 1"/>
 </material>
 
+<material name="light_grey">
+    <color rgba="0.2 0.2 0.2 1"/>
+</material>
+
+<material name="kyon_orange">
+    <color rgba="0.925 0.325 0.0 1"/>
+</material>
+
 </robot>
