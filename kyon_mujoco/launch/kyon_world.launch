@@ -4,6 +4,7 @@
   <arg name="simopt" default="$(find kyon_mujoco)/config/options.xml"/>
   <arg name="sites" default="$(find kyon_mujoco)/config/sites.xml"/>
   <arg name="ctrlcfg" default="$(find kyon_mujoco)/config/kyon.yaml"/>
+  <arg name="sdf" default="$(find kyon_mujoco)/config/sdf.yaml"/>
   <arg name="urdf" default="$(find kyon_urdf)/urdf/kyon.urdf.xacro"/>
   <arg name="srdf" default="$(find kyon_srdf)/srdf/kyon.srdf.xacro"/>
 
@@ -35,6 +36,6 @@
          wheels:=$(arg wheels)"/>
          
   <node pkg="kyon_mujoco" type="simulator_wrapper.bash" name="kyon_mujoco" output="screen"
-    args="--name kyon --urdf-command 'rosparam get -p /robot_description' --world $(arg world) --simopt $(arg simopt) --ctrlcfg $(arg ctrlcfg) --sites $(arg sites)"/>
+    args="--name kyon --urdf-command 'rosparam get -p /robot_description' --world $(arg world) --simopt $(arg simopt) --ctrlcfg $(arg ctrlcfg) --sdf $(arg sdf) --sites $(arg sites)"/>
 
 </launch>

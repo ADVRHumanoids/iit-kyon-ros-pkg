@@ -9,3 +9,5 @@ motor_pd:
   elbow_pitch_*: [500, 5]
   wrist_pitch_*: [500, 5]
   wrist_yaw_*: [500, 5]
+
+
