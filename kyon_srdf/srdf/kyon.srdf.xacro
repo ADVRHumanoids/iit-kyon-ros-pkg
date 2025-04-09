@@ -50,10 +50,20 @@
 
     <xacro:if value="${ADD_UPPER_BODY}">
 		<group name="left_arm">
-			<chain base_link="pelvis" tip_link="dagana_1_claw"/>
+            <xacro:if value="${ADD_DAGANA}">
+			    <chain base_link="pelvis" tip_link="dagana_1_claw"/>
+            </xacro:if>
+            <xacro:unless value="${ADD_DAGANA}">
+                <chain base_link="pelvis" tip_link="wrist_yaw_1_link"/>
+            </xacro:unless>
 		</group>
 		<group name="right_arm">
-			<chain base_link="pelvis" tip_link="dagana_2_claw"/>
+            <xacro:if value="${ADD_DAGANA}">
+			    <chain base_link="pelvis" tip_link="dagana_2_claw"/>
+            </xacro:if>
+            <xacro:unless value="${ADD_DAGANA}">
+                <chain base_link="pelvis" tip_link="wrist_yaw_2_link"/>
+            </xacro:unless>
 		</group>
     </xacro:if>
 
