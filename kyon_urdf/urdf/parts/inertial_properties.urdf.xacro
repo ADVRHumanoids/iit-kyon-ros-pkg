@@ -4,7 +4,7 @@
     <xacro:property name="mm2Tom2" value="${0.001*0.001}"/>
 
     <!-- Pelvis -->
-    <xacro:property name="Pelvis_mass" value="23.024083"/>
+    <xacro:property name="Pelvis_mass" value="27.724083"/>  <!-- ERA 23 poi 15 poi 18 -->
 
     <xacro:property name="Pelvis_x" value="${4.9723680e+01 * mmTom}"/>
     <xacro:property name="Pelvis_y" value="${2.2995169e+00 * mmTom}"/> 
