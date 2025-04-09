@@ -1,0 +1,61 @@
+solver_options:
+    regularization: 1e-2
+    back_end: osqp
+    
+stack:
+    - [contact_1, contact_2, contact_3, contact_4, l_arm, r_arm]
+    - [Postural, Com, PelvisRot]
+    
+contact_1:
+    type: Cartesian
+    distal_link: contact_1
+    base_link: world
+    indices: [0, 1, 2]
+    
+contact_2:
+    type: Cartesian
+    distal_link: contact_2
+    base_link: world
+    indices: [0, 1, 2]
+    
+contact_3:
+    type: Cartesian
+    distal_link: contact_3
+    base_link: world
+    indices: [0, 1, 2]
+    
+contact_4:
+    type: Cartesian
+    distal_link: contact_4
+    base_link: world
+    indices: [0, 1, 2]
+    
+
+l_arm:
+    type: Cartesian
+    distal_link: dagana_1_base
+    base_link: world 
+    indices: [0, 1, 2, 3, 4, 5]
+    
+
+r_arm:
+    type: Cartesian
+    distal_link: dagana_2_base
+    base_link: world 
+    indices: [0, 1, 2, 3, 4, 5]
+    
+    
+Com:
+    type: Com
+    indices: [0, 1]
+    weight: 10
+    
+Postural:
+    type: Postural
+    lambda: 0.1
+    
+PelvisRot:
+    type: Cartesian
+    distal_link: pelvis
+    weight: 10
+    indices: [4, 5]

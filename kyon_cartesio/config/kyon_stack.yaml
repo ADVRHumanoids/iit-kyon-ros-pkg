@@ -3,9 +3,41 @@ solver_options:
     back_end: osqp
     
 stack:
-    - [contact_1, contact_2, contact_3, contact_4, l_arm, r_arm]
-    - [Postural, Com, PelvisRot]
-    
+    - [contact_1, contact_2, contact_3, contact_4, r_arm, PelvisRot, Postural, Com]
+    # - [Postural, Com, PelvisRot]
+
+constraints: 
+    - jlim
+    - vlim
+    - collision
+
+jlim:
+    type: JointLimits
+
+vlim:
+    type: VelocityLimits
+
+collision:
+    type: CollisionConstraint
+    lib_name: libcartesio_collision_support.so
+    bound_scaling: 0.1
+    distance_threshold: 0.02
+    detection_threshold: 0.10
+    max_pairs: 30
+    collision_urdf_path: $(rospack find kyon_urdf)/urdf/kyon_capsule.urdf
+    collision_srdf_path: $(rospack find kyon_srdf)/srdf/kyon_capsule.srdf
+    env_collision_links: [hip_pitch_1_link, hip_pitch_2_link, hip_pitch_3_link, hip_pitch_4_link, pelvis]
+    infeasible_pair_weight: 0.01
+    # weight: 100.0
+    # pairs:
+    #  - [dagana_2_base, pelvis]
+    world:
+     - name: floor
+       type: halfspace
+       normal: [0, 0, 1]
+       disabled_collisions: [knee_pitch_1_link, knee_pitch_2_link, knee_pitch_3_link, knee_pitch_4_link]
+       position: [0, 0, -0.6]
+
 contact_1:
     type: Cartesian
     distal_link: contact_1
@@ -35,7 +67,9 @@ l_arm:
     type: Cartesian
     distal_link: dagana_1_base
     base_link: world 
-    indices: [0, 1, 2, 3, 4, 5]
+    indices: [0, 1, 2, 3, 5]
+    use_local_subtasks: true
+    lambda: 0.1
     
 
 r_arm:
@@ -43,19 +77,22 @@ r_arm:
     distal_link: dagana_2_base
     base_link: world 
     indices: [0, 1, 2, 3, 4, 5]
+    use_local_subtasks: true
+    lambda: 0.1
     
     
 Com:
     type: Com
     indices: [0, 1]
-    weight: 10
+    weight: 0.01
     
 Postural:
     type: Postural
-    lambda: 0.1
+    lambda: 0.05
+    weight: 0.001
     
 PelvisRot:
     type: Cartesian
     distal_link: pelvis
-    weight: 10
+    weight: 0.01
     indices: [4, 5]
