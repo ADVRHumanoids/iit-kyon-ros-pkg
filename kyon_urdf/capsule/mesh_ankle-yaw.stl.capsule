@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<robot name="/home/kyon_ros1/xbot2_ws/ros_src/iit-kyon-ros-pkg/kyon_urdf/meshes/collision/mesh_ankle-yaw.stl" version="1.0">
+  <link name="0.00100_0.00100_0.00100">
+    <collision>
+      <origin xyz="-7.60191e-06 -0.0150134375 -0.0999498" rpy="3.0116727909037384 -4.325595065517076e-05 -0.0006649497211468285"/>
+      <geometry>
+        <cylinder radius="0.058406" length="0.24025318703748175"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

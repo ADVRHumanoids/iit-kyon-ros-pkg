@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<robot name="/home/kyon_ros1/xbot2_ws/ros_src/iit-kyon-ros-pkg/kyon_urdf/meshes/collision/mesh_dagana-base-simplified.stl" version="1.0">
+  <link name="0.00100_0.00100_0.00100">
+    <collision>
+      <origin xyz="4.02922e-06 -0.021904399999999997 0.12187785" rpy="-0.220700880149859 -7.190777416443431e-05 7.967421157843213e-06"/>
+      <geometry>
+        <cylinder radius="0.0463682" length="0.05560094231679104"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

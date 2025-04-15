@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
-<robot name="/home/alaurenzi/code/next_ws/ros_src/iit-kyon-ros-pkg/kyon_urdf/meshes/collision/mesh_pelvis.stl" version="1.0">
+<robot name="/home/kyon_ros1/xbot2_ws/ros_src/iit-kyon-ros-pkg/kyon_urdf/meshes/collision/mesh_pelvis.stl" version="1.0">
   <link name="0.00100_0.00100_0.00100">
     <collision>
-      <origin xyz="0.036495 -9.9371885e-12 0.046774" rpy="1.5707938937123678 1.57079632676973 1.5707938936872012"/>
+      <origin xyz="0.009653999999999996 0.0017140649999999999 0.0533842" rpy="-0.7697731086680738 1.5605385521312143 -0.7626601453162952"/>
       <geometry>
-        <cylinder radius="0.1724" length="0.749376"/>
+        <cylinder radius="0.180153" length="0.7715265904067888"/>
       </geometry>
     </collision>
   </link>
