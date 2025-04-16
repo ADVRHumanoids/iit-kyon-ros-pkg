@@ -40,7 +40,7 @@
 <xacro:property name="motorB_velocity" value="3.8"/>
 <xacro:property name="motorC_velocity" value="4.6"/>
 <xacro:property name="motorD_velocity" value="14"/>
-<xacro:property name="motorWheel_velocity" value="20"/>
+<xacro:property name="motorWheel_velocity" value="30"/>
 
 
 <!-- Motor effort -->
