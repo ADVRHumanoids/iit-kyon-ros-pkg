@@ -120,7 +120,7 @@
     <xacro:property name="DaganaBase_Oz" value="0.0"/>
     <xacro:property name="DaganaBase_roll" value="0.0"/>
     <xacro:property name="DaganaBase_pitch" value="0.0"/>
-    <xacro:property name="DaganaBase_yaw" value="0.0"/>
+    <xacro:property name="DaganaBase_yaw" value="${-PI_2}"/>
 
     <xacro:property name="DaganaClamp_Ox" value="${36.1625 * mmTom}"/>
     <xacro:property name="DaganaClamp_Oy" value="${16.000 * mmTom}"/>

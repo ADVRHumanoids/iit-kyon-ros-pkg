@@ -61,14 +61,14 @@
 <joint name="dagana_${arm_num}_base_joint" type="fixed">
     <parent link="${parent}"/>
     <child link="dagana_${arm_num}_base"/>
-    <origin xyz="${DaganaBase_Ox} ${DaganaBase_Oy} ${DaganaBase_Oz}" rpy="${DaganaBase_roll} ${DaganaBase_pitch} ${DaganaBase_yaw}"/>
+    <origin xyz="${DaganaBase_Ox} ${DaganaBase_Oy} ${DaganaBase_Oz}" rpy="${DaganaBase_roll} ${DaganaBase_pitch} ${DaganaBase_yaw * (1.0 if arm_num == 1 else -1)}"/>
 </joint>
 
 <joint name="dagana_${arm_num}_clamp_joint" type="revolute">
     <parent link="dagana_${arm_num}_base"/>
     <child link="dagana_${arm_num}_claw"/>
     <origin xyz="${DaganaClamp_Ox} ${DaganaClamp_Oy} ${DaganaClamp_Oz}" rpy="${DaganaClamp_roll} ${DaganaClamp_pitch} ${DaganaClamp_yaw}"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
     <limit lower="${dagana_lower[arm_num-1]}" upper="${dagana_upper[arm_num-1]}" effort="${motorD_effort}" velocity="${motorD_velocity}"/> 
 </joint>
 

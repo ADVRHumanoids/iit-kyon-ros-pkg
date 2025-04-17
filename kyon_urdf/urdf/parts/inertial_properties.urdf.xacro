@@ -5,7 +5,7 @@
 
     <!-- Battery -->
     <xacro:if value="${ADD_VARTA}">
-        <xacro:property name="Battery_mass" value="9.8"/>
+        <xacro:property name="Battery_mass" value="9.8"/> 
     </xacro:if>
     <xacro:if value="${ADD_D034_LI_ION}">
         <xacro:property name="Battery_mass" value="5.8"/>
