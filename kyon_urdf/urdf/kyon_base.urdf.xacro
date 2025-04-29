@@ -69,29 +69,29 @@
 </joint>
 
 <!-- CAMERA BASE FRAMES -->
-<link name="up_front_camera_mount_link"/>
-<joint name="up_front_camera_mount_link" type="fixed">
+<link name="zed_front_up_mount_link"/>
+<joint name="zed_front_up_mount_joint" type="fixed">
     <parent link="pelvis"/>
-    <child link="up_front_camera_mount_link"/>
+    <child link="zed_front_up_mount_link"/>
     <origin xyz="0.526174 0 0.0674608" rpy="0 -0.1745327 0"/>
 </joint>
 
-<link name="down_front_camera_mount_link"/>
-<joint name="down_front_camera_mount_link" type="fixed">
+<link name="zed_front_down_mount_link"/>
+<joint name="zed_front_down_mount_joint" type="fixed">
     <parent link="pelvis"/>
-    <child link="down_front_camera_mount_link"/>
+    <child link="zed_front_down_mount_link"/>
     <origin xyz="0.509601 0 0.00343992" rpy="0 0.9250251 0"/>
 </joint>
 
 <link name="left_camera_mount_link"/>
-<joint name="left_camera_mount_link" type="fixed">
+<joint name="left_camera_mount_joint" type="fixed">
     <parent link="pelvis"/>
     <child link="left_camera_mount_link"/>
     <origin xyz="0 0.150100 0.109486" rpy="0 0.3490656 1.5707963"/>
 </joint>
 
 <link name="right_camera_mount_link"/>
-<joint name="right_camera_mount_link" type="fixed">
+<joint name="right_camera_mount_joint" type="fixed">
     <parent link="pelvis"/>
     <child link="right_camera_mount_link"/>
     <origin xyz="0 -0.150100 0.109486" rpy="0 0.3490656 -1.5707963"/>
