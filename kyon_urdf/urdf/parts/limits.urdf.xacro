@@ -6,8 +6,8 @@
 <xacro:property name="hip_roll_upper" value="${[ 0.65, 0.65,  0.65 , 0.65]}"/>
 <xacro:property name="hip_pitch_lower" value="${[-2.4056, -2.3266, -2.4696, -2.3426]}"/>
 <xacro:property name="hip_pitch_upper" value="${[2.4056, 2.3266, 2.4696, 2.3426]}"/>
-<xacro:property name="knee_pitch_lower" value="${[-3.0, -3.0, -3.0, -3.0]}"/>
-<xacro:property name="knee_pitch_upper" value="${[3.0, 3.0, 3.0, 3.0]}"/>
+<xacro:property name="knee_pitch_lower" value="${[-3.20, -3.20, -3.20, -3.20]}"/>
+<xacro:property name="knee_pitch_upper" value="${[3.20, 3.20, 3.20, 3.20]}"/>
 <xacro:property name="ankle_yaw_lower" value="${[-3.0, -3.0, -3.0, -3.0]}"/>
 <xacro:property name="ankle_yaw_upper" value="${[ 3.0,  3.0,  3.0,  3.0]}"/>
 
