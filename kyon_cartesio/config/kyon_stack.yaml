@@ -3,7 +3,7 @@ solver_options:
     back_end: qpoases
     
 stack:
-    - [contact_1, contact_2, contact_3, contact_4, r_arm, PelvisRot, Postural, Com]
+    - [contact_1, contact_2, contact_3, contact_4, r_arm, l_arm, PelvisRot, Postural, Com]
     # - [Postural, Com, PelvisRot]
 
 constraints: 
@@ -67,7 +67,7 @@ l_arm:
     type: Cartesian
     distal_link: dagana_1_base
     base_link: world 
-    indices: [0, 1, 2, 3, 5]
+    # indices: [0, 1, 2, 4, 5]
     use_local_subtasks: true
     lambda: 0.1
     
@@ -76,10 +76,9 @@ r_arm:
     type: Cartesian
     distal_link: dagana_2_base
     base_link: world 
-    indices: [0, 1, 2, 3, 4, 5]
+    # indices: [0, 1, 2, 4, 5]
     use_local_subtasks: true
     lambda: 0.1
-    weight: 0.1
     
     
 Com:
