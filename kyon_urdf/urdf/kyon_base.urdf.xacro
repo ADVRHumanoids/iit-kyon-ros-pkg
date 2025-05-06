@@ -120,6 +120,9 @@
         color_width="1280"
         color_height="720"
         color_fps="1">
+
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+
     </xacro:sensor_d435i>
 
     <!-- RIGHT D435 CAMERA -->
@@ -141,10 +144,13 @@
         color_width="1280"
         color_height="720"
         color_fps="1">
+
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+
     </xacro:sensor_d435i>
 
     <!-- FRONT1 D435 CAMERA -->
-    <xacro:sensor_d435i parent="up_front_camera_mount_link"
+    <xacro:sensor_d435i parent="zed_front_up_mount_link"
         name="D435_front1"
         topics_ns="D435_front1"
         enable_pointCloud="true"
@@ -162,10 +168,13 @@
         color_width="1280"
         color_height="720"
         color_fps="30">
+
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+
     </xacro:sensor_d435i>
 
     <!-- FRONT2 D435 CAMERA -->
-    <xacro:sensor_d435i parent="down_front_camera_mount_link"
+    <xacro:sensor_d435i parent="zed_front_down_mount_link"
         name="D435_front2"
         topics_ns="D435_front2"
         enable_pointCloud="true"
@@ -183,6 +192,9 @@
         color_width="1280"
         color_height="720"
         color_fps="30">
+
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        
     </xacro:sensor_d435i>
     
 </xacro:if>
