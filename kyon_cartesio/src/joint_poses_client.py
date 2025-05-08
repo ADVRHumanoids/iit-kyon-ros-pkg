@@ -18,29 +18,19 @@ poses['home_left'] = {
     'wrist_yaw_1': 0.0,
 }
 
-poses['home_right'] = {
-    'shoulder_yaw_2': 0.0,
-    'shoulder_pitch_2': -1.5,
-    'elbow_pitch_2': -2.6,
-    'wrist_pitch_2': -0.7,
-    'wrist_yaw_2': 0.0,
-}
+poses['home_right'] = {k.replace('1', '2'): -v for k, v in poses['home_left'].items()}
+
+poses['home_lr'] = {**poses['home_left'], **poses['home_right']}
 
 poses['reach_to_grasp_left'] = {
     'shoulder_yaw_1': 0.0,
     'shoulder_pitch_1': -0.5,
     'elbow_pitch_1': 1.0,
     'wrist_pitch_1': 0.1,
-    'wrist_yaw_1': 0.0,
+    'wrist_yaw_1': 1.57,
 }
 
-poses['reach_to_grasp_right'] = {
-    'shoulder_yaw_2': 0.0,
-    'shoulder_pitch_2': 0.5,
-    'elbow_pitch_2': -1.0,
-    'wrist_pitch_2': -0.1,
-    'wrist_yaw_2': 0.0,
-}
+poses['reach_to_grasp_right'] = {k.replace('1', '2'): -v for k, v in poses['reach_to_grasp_left'].items()}
 
 # use argparse to get the pose name from the command line
 parser = argparse.ArgumentParser(description='Send joint poses to the robot.')
