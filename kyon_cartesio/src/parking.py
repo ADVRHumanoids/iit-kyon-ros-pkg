@@ -31,9 +31,9 @@ solver_options:
     back_end: osqp
     
 stack:
-    - [postural, base]
+    - [postural, base, contact_1, contact_2, contact_3, contact_4]
 
-constraints: [vlim, contact_1, contact_2, contact_3, contact_4]
+constraints: [vlim]
 
 vlim:
     type: VelocityLimits
@@ -65,6 +65,7 @@ contact_4:
 postural:
     type: Postural
     lambda: 0.1
+    weight: 0.01
 
 base:
     type: Cartesian
@@ -106,6 +107,7 @@ base:
 
         dt = 0.01
         ci = pyci.CartesianInterface.MakeInstance(solver='OpenSot', problem=Parking.ikpb, model=model, dt=dt)
+        rsc = pyci.RosServerClass(ci)
         postural = ci.getTask('Postural')
 
         t = 0.0
@@ -119,6 +121,7 @@ base:
             ci.update(t, dt)
             model.setJointPosition(model.getJointPosition() + model.getJointVelocity() * dt)
             model.update()
+            rsc.run()
             
             # set reference to robot and move
             robot.setPositionReference(model.getJointPositionMap())

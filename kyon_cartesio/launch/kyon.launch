@@ -9,16 +9,27 @@
     <arg name="payload" default="false"/>
     <arg name="wheels" default="false"/>
     <arg name="feet" default="true"/>
-    <arg name="xbot" default="false"/>
+    <arg name="xbot" default="true"/>
+    <arg name="gui" default="false"/>
+    <arg name="enable_force_estimation" default="true"/>
     
-    <param unless="xbot" name="robot_description"
+    <param unless="$(arg xbot)" name="robot_description"
          command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) wheels:=$(arg wheels)"/>
     
-    <param unless="xbot" name="robot_description_semantic"
+    <param unless="$(arg xbot)" name="robot_description_semantic"
         command="$(find xacro)/xacro $(find kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) wheels:=$(arg wheels)"/>
     
     <param name="cartesian/problem_description" 
         textfile="$(arg ik)"/>
+
+    <remap if="$(arg xbot)" from="/robot_description" to="/xbotcore/robot_description"/>
+    <remap if="$(arg xbot)" from="/robot_description_semantic" to="/xbotcore/robot_description_semantic"/>
+
+    <param name="cartesian/joint_blacklist" type="yaml" 
+        value="[dagana_1_clamp_joint, dagana_2_clamp_joint]"/>
+        
+    <param name="cartesian/velocity_whitelist" type="yaml" 
+        value="[]"/>
     
     <include file="$(find cartesian_interface)/launch/cartesio.launch">
         <arg name="rate" value="$(arg rate)"/>
@@ -26,6 +37,10 @@
         <arg name="xbot" value="$(arg xbot)"/>
     </include>
 
-    <node pkg="rviz" name="rviz" type="rviz" args="-d $(find kyon_cartesio)/config/kyon.rviz"/>
+    <node if="$(arg gui)" pkg="rviz" name="rviz" type="rviz" args="-d $(find kyon_cartesio)/config/kyon.rviz"/>
+
+    <include if="$(arg enable_force_estimation)" file="$(find kyon_cartesio)/launch/kyon_force_estimation.launch">
+        <arg name="xbot" value="$(arg xbot)"/>
+    </include>
     
 </launch>
