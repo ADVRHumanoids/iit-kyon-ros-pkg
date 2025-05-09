@@ -200,6 +200,13 @@
 </xacro:if>
 
 <!-- Velodyne -->
+<link name="hesai_lidar"/>
+<joint name="hesai_lidar_joints" type="fixed">
+    <origin xyz="0.43 0 0.118" rpy="0 0 0.5220063" />
+    <parent link="pelvis"/>
+	<child link="hesai_lidar"/>
+</joint>
+
 <xacro:if value="${ADD_VELODYNE}">
     <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
     <xacro:VLP-16 parent="pelvis" name="velodyne" topic="/velodyne_points" hz="10" samples="440">
