@@ -33,11 +33,24 @@
     <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
 </joint>
 
-<link name="contact_${leg_num}"/>
+<link name="contact_${leg_num}">
+    <xacro:if value="${FOOT_CONTACT_COLLISION}">
+        <collision name="contact_${leg_num}">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <sphere radius="0.039" />
+            </geometry>
+            <material>
+                <color rgba="0 1.0 1.0 1.0" />
+            </material>
+        </collision>
+    </xacro:if>
+</link>
+
 <joint name="contact_${leg_num}_joint" type="fixed">
     <parent link="knee_pitch_${leg_num}_link"/>
     <child link="contact_${leg_num}"/>
-    <origin xyz="${-mirror*0.0} -0.3 0.054" rpy="${1.57*mirror} ${0} ${0.785 if mirror == -1 else 2.356}"/>    
+    <origin xyz="${-mirror*0.0} -0.305 0.054" rpy="${1.57*mirror} ${0} ${0.785 if mirror == -1 else 2.356}"/>    
 </joint>
 
 </xacro:macro>

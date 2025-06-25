@@ -16,6 +16,7 @@
 <xacro:arg name="d034_li_ion" default="false"/>
 <xacro:arg name="velodyne" default="false"/>
 <xacro:arg name="dagana" default="$(arg upper_body)"/>
+<xacro:arg name="foot_contact_collision" default="true"/>
 
 
 <!-- ************SELECT PARTS*************-->
@@ -31,5 +32,6 @@
 <xacro:property name="ADD_VELODYNE" value="$(arg velodyne)"/>
 <xacro:property name="ADD_VIRTUAL_FRAME" value="false" />
 <xacro:property name="PAYLOAD" value="$(arg payload)"/>
+<xacro:property name="FOOT_CONTACT_COLLISION" value="$(arg foot_contact_collision)"/>
 
 </robot>
