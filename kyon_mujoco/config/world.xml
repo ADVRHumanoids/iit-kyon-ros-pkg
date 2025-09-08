@@ -1,4 +1,5 @@
 <mujoco>
+    <option noslip_iterations="5"/>
     <extension>
         <plugin plugin="mujoco.sdf.torus">
             <instance name="torus">

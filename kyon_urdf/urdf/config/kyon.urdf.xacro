@@ -15,12 +15,14 @@
 <xacro:arg name="varta" default="false"/>
 <xacro:arg name="d034_li_ion" default="false"/>
 <xacro:arg name="velodyne" default="false"/>
+<xacro:arg name="dagana" default="$(arg upper_body)"/>
 
 
 <!-- ************SELECT PARTS*************-->
 <!-- *************************************-->
 <xacro:property name="ADD_LEGS" value="$(arg legs)"/>
 <xacro:property name="ADD_UPPER_BODY" value="$(arg upper_body)"/>
+<xacro:property name="ADD_DAGANA" value="$(arg dagana)"/>
 <xacro:property name="ADD_CAMERAS" value="$(arg cameras)"/>
 <xacro:property name="ADD_WHEELS" value="$(arg wheels)"/>
 <xacro:property name="ADD_VARTA" value="$(arg varta)"/>

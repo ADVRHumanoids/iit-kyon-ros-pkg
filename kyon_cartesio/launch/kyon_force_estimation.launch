@@ -1,0 +1,33 @@
+<launch>
+
+    <arg name="use_momentum_based" default="false"/>
+    <arg name="xbot" default="true"/>
+     
+    <node pkg="cartesian_interface" 
+          type="force_estimation_node" 
+          name="force_estimator"
+          output="screen">
+	  
+        <param name="is_model_floating_base" value="true"/>
+        <param name="model_type" value="RBDL"/>
+        
+        <param name="links" type="yaml" value="[dagana_1_base, dagana_2_base, contact_1, contact_2, contact_3, contact_4]"/>
+        <param name="chains" type="yaml" value="[left_arm, right_arm, front_left_leg, front_right_leg, rear_right_leg, rear_left_leg]"/>
+        
+        <param name="dagana_1_base/dofs" type="yaml" value="[0, 1, 2]"/>
+        <param name="dagana_2_base/dofs" type="yaml" value="[0, 1, 2]"/>
+		<param name="contact_1/dofs" type="yaml" value="[0, 1, 2]"/>
+        <param name="contact_2/dofs" type="yaml" value="[0, 1, 2]"/>
+		<param name="contact_3/dofs" type="yaml" value="[0, 1, 2]"/>
+        <param name="contact_4/dofs" type="yaml" value="[0, 1, 2]"/>
+
+        <param name="rate" value="200.0"/>
+        <param name="use_momentum_based" value="$(arg use_momentum_based)"/>
+        
+        <remap if="$(arg xbot)" from="/robot_description" to="/xbotcore/robot_description"/>
+        <remap if="$(arg xbot)" from="/robot_description_semantic" to="/xbotcore/robot_description_semantic"/>
+        
+    </node>
+
+
+</launch>

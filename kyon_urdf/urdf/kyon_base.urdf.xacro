@@ -68,11 +68,41 @@
     <child link="imu_link"/>
 </joint>
 
+<!-- CAMERA BASE FRAMES -->
+<link name="zed_front_up_mount_link"/>
+<joint name="zed_front_up_mount_joint" type="fixed">
+    <parent link="pelvis"/>
+    <child link="zed_front_up_mount_link"/>
+    <origin xyz="0.526174 0 0.0674608" rpy="0 -0.1745327 0"/>
+</joint>
+
+<link name="zed_front_down_mount_link"/>
+<joint name="zed_front_down_mount_joint" type="fixed">
+    <parent link="pelvis"/>
+    <child link="zed_front_down_mount_link"/>
+    <origin xyz="0.509601 0 0.00343992" rpy="0 0.9250251 0"/>
+</joint>
+
+<link name="left_camera_mount_link"/>
+<joint name="left_camera_mount_joint" type="fixed">
+    <parent link="pelvis"/>
+    <child link="left_camera_mount_link"/>
+    <origin xyz="0 0.150100 0.109486" rpy="0 0.3490656 1.5707963"/>
+</joint>
+
+<link name="right_camera_mount_link"/>
+<joint name="right_camera_mount_joint" type="fixed">
+    <parent link="pelvis"/>
+    <child link="right_camera_mount_link"/>
+    <origin xyz="0 -0.150100 0.109486" rpy="0 0.3490656 -1.5707963"/>
+</joint>
+
+
 <xacro:if value="${ADD_CAMERAS}">
     <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro" />
 
     <!-- LEFT D435 CAMERA -->
-    <xacro:sensor_d435i parent="pelvis"
+    <xacro:sensor_d435i parent="left_camera_mount_link"
         name="D435_left"
         topics_ns="D435_left"
         enable_pointCloud="true"
@@ -91,12 +121,12 @@
         color_height="720"
         color_fps="1">
 
-        <origin xyz="0 0.150100 0.109486" rpy="0 0.3490656 1.5707963"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
 
     </xacro:sensor_d435i>
 
     <!-- RIGHT D435 CAMERA -->
-    <xacro:sensor_d435i parent="pelvis"
+    <xacro:sensor_d435i parent="right_camera_mount_link"
         name="D435_right"
         topics_ns="D435_right"
         enable_pointCloud="true"
@@ -115,12 +145,12 @@
         color_height="720"
         color_fps="1">
 
-        <origin xyz="0 -0.150100 0.109486" rpy="0 0.3490656 -1.5707963"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
 
     </xacro:sensor_d435i>
 
     <!-- FRONT1 D435 CAMERA -->
-    <xacro:sensor_d435i parent="pelvis"
+    <xacro:sensor_d435i parent="zed_front_up_mount_link"
         name="D435_front1"
         topics_ns="D435_front1"
         enable_pointCloud="true"
@@ -139,12 +169,12 @@
         color_height="720"
         color_fps="30">
 
-        <origin xyz="0.526174 0 0.0674608" rpy="0 -0.1745327 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
 
     </xacro:sensor_d435i>
 
     <!-- FRONT2 D435 CAMERA -->
-    <xacro:sensor_d435i parent="pelvis"
+    <xacro:sensor_d435i parent="zed_front_down_mount_link"
         name="D435_front2"
         topics_ns="D435_front2"
         enable_pointCloud="true"
@@ -163,13 +193,20 @@
         color_height="720"
         color_fps="30">
 
-        <origin xyz="0.509601 0 0.00343992" rpy="0 0.9250251 0"/>
-
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        
     </xacro:sensor_d435i>
     
 </xacro:if>
 
 <!-- Velodyne -->
+<link name="hesai_lidar"/>
+<joint name="hesai_lidar_joints" type="fixed">
+    <origin xyz="0.43 0 0.118" rpy="0 0 0.5220063" />
+    <parent link="pelvis"/>
+	<child link="hesai_lidar"/>
+</joint>
+
 <xacro:if value="${ADD_VELODYNE}">
     <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
     <xacro:VLP-16 parent="pelvis" name="velodyne" topic="/velodyne_points" hz="10" samples="440">

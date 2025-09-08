@@ -14,7 +14,12 @@ from cartesian_interface.pyci_all import *
 # parse arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('-a', '--action', choices=('park', 'unpark'))
+parser.add_argument('-d', '--dance', action='store_true')
 args = parser.parse_args()
+
+# -d only valid for unpark
+if args.dance and args.action != 'unpark':
+    raise ValueError('Dance only valid for unpark action')
 
 
 class Parking:
@@ -26,9 +31,9 @@ solver_options:
     back_end: osqp
     
 stack:
-    - [postural]
+    - [postural, base, contact_1, contact_2, contact_3, contact_4]
 
-constraints: [vlim, contact_1, contact_2, contact_3, contact_4]
+constraints: [vlim]
 
 vlim:
     type: VelocityLimits
@@ -60,6 +65,13 @@ contact_4:
 postural:
     type: Postural
     lambda: 0.1
+    weight: 0.01
+
+base:
+    type: Cartesian
+    distal_link: base_link
+    lambda: 0.1
+    weight: 0.0
 """
 
 
@@ -95,6 +107,7 @@ postural:
 
         dt = 0.01
         ci = pyci.CartesianInterface.MakeInstance(solver='OpenSot', problem=Parking.ikpb, model=model, dt=dt)
+        rsc = pyci.RosServerClass(ci)
         postural = ci.getTask('Postural')
 
         t = 0.0
@@ -102,6 +115,21 @@ postural:
 
         q0 = model.getJointPosition()[qidx+6]
         qf = model.getRobotState(qname)[qidx+6]
+
+        def solve_and_move():
+            nonlocal t
+            ci.update(t, dt)
+            model.setJointPosition(model.getJointPosition() + model.getJointVelocity() * dt)
+            model.update()
+            rsc.run()
+            
+            # set reference to robot and move
+            robot.setPositionReference(model.getJointPositionMap())
+            robot.move()
+            
+            # update time and sync loop
+            t += dt
+            time.sleep(dt)
 
         while t < trj_time:
 
@@ -112,17 +140,47 @@ postural:
 
             # set reference and solve
             postural.setReferencePosture({joints[i]: q[i] for i in range(len(joints))})
-            ci.update(t, dt)
-            model.setJointPosition(model.getJointPosition() + model.getJointVelocity() * dt)
-            model.update()
-            
-            # set reference to robot and move
-            robot.setPositionReference(model.getJointPositionMap())
-            robot.move()
-            
-            # update time and sync loop
-            t += dt
-            time.sleep(dt)
+            solve_and_move()
+
+        if not args.dance or action != 'unpark':
+            return
+        
+        # dance
+        base = ci.getTask('base_link')
+        base.setWeight(np.eye(6) * 100.0)
+        th = np.pi / 4
+
+        T0 = base.getPoseReference()[0]
+        T1 = T0.copy()
+        T1.quaternion = [0, 0, np.sin(th/2), np.cos(th/2)]
+        base.setPoseTarget(T1, 1.0)
+
+        t0 = t
+        while t < t0 + 1.0:
+            solve_and_move()
+            if base.getTaskState() == pyci.State.Online:
+                print('done')
+                break
+
+        T1.quaternion = [0, 0, -np.sin(th/2), np.cos(th/2)]
+        base.setPoseTarget(T1, 1.0)
+
+        t0 = t
+        while t < t0 + 1.0:
+            solve_and_move()
+            if base.getTaskState() == pyci.State.Online:
+                print('done')
+                break
+
+        base.setPoseTarget(T0, 1.0)
+
+        t0 = t
+        while t < t0 + 1.0:
+            solve_and_move()
+            if base.getTaskState() == pyci.State.Online:
+                print('done')
+                break
+
 
 
 # init ros
@@ -131,10 +189,8 @@ rospy.init_node('parking')
 # create parking object
 parking = Parking()
 
-# fall
-if args.z:
-    parking.fall()
-
 # move
 if args.action:
     parking.move(args.action)
+
+print('Done')

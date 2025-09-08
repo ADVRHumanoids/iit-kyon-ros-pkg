@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<robot name="/home/kyon_ros1/xbot2_ws/ros_src/iit-kyon-ros-pkg/kyon_urdf/meshes/collision/mesh_knee-steering.stl" version="1.0">
+  <link name="0.00100_0.00100_0.00100">
+    <collision>
+      <origin xyz="-1.53553e-05 0.0003858051 0.0559173" rpy="0.11099410047220704 0.008260122064470223 0.0004588862156843293"/>
+      <geometry>
+        <cylinder radius="0.0660721" length="0.007315665155126021"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>
