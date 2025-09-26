@@ -24,7 +24,9 @@
          upper_body:=$(arg arms)
          legs:=$(arg legs)
          cameras:=$(arg cameras) 
-         velodyne:=$(arg velodyne) 
+         velodyne:=$(arg velodyne)
+         varta:=$(arg varta)
+         d034_li_ion:=$(arg d034_li_ion) 
          payload:=$(arg payload)
          wheels:=$(arg wheels)"/>
          

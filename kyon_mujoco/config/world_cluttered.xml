@@ -18,6 +18,8 @@
         <mesh name="torus">
             <plugin instance="torus"/>
         </mesh>
+        
+        <hfield name="terrain" file="assets/height_field.png" size="10 10 0.3 0.01"/>
 
         <texture type="skybox" builtin="gradient" rgb1=".3 .5 .7" rgb2="0 0 0" width="512" height="512"/>
         <texture name="body" type="cube" builtin="flat" mark="cross" width="127" height="1278" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01"/>
@@ -26,23 +28,8 @@
         <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2"/>
     </asset>
     <worldbody>
-        <geom name="floor_0" size="0 0 .05" pos="0 0 -1.0" type="plane" material="grid" condim="3" group="0" friction="0.6"/>
-        <!-- <geom name="slope_0" size="0 0 .05" pos="2 0 -1.0" euler="0 -0.1 0" type="plane" material="grid" condim="3" group="0" friction="0.6"/> -->
-        <geom name="ramp_up_0" type="box" size="2.5 1.5 0.05"
-            pos="5.5 0 -0.80"
-            euler="0 -0.1 0"
-            rgba="0.8 0.6 0.4 1"/>
-
-        <geom name="flat_top" type="box" size="0.5 1.5 0.05"
-          pos="8.475 0 -0.55"
-          rgba="0.4 0.6 0.8 1"/>
-
-        <geom name="ramp_down" type="box" size="2.5 1.5 0.05"
-            pos="11.45 0 -0.80"
-            euler="0 0.1 0"
-            rgba="0.9 0.4 0.4 1"/>
-        <geom name="floor_1" size="0 0 .05" pos="0 0 -1.0" type="plane" material="grid" condim="3" group="1" friction="0.6"/>
-        <!-- <geom name="slope_1" size="0 0 .05" pos="2 0 -1.0" euler="0 -0.1 0" type="plane" material="grid" condim="3" group="1" friction="0.6"/> -->
+        <geom name="floor_0"  group="0" type="hfield" hfield="terrain" pos="0 0 -1.0" size="10 10 0.05" material="grid" friction="0.6" condim="3"/>
+        <geom name="floor_1" group="1" type="hfield" hfield="terrain" pos="0 0 -1.0" size="10 10 0.05" material="grid" friction="0.6" condim="3"/>
         <!-- <light name="spotlight" mode="targetbodycom" target="pelvis" diffuse=".8 .8 .8" specular="0.3 0.3 0.3" pos="0 -20 4" cutoff="10"/> -->
     </worldbody>
     <visual>
