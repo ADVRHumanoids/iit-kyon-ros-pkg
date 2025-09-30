@@ -73,7 +73,7 @@
 <joint name="zed_front_up_mount_joint" type="fixed">
     <parent link="pelvis"/>
     <child link="zed_front_up_mount_link"/>
-    <origin xyz="0.526174 0 0.0674608" rpy="0 -0.1745327 0"/>
+    <origin xyz="-0.509601 0 0.00343992" rpy="0 2.0250251 -${PI}"/>
 </joint>
 
 <link name="zed_front_down_mount_link"/>
@@ -109,17 +109,17 @@
         align_depth="true"
         unite_imu_method="false"
         visualize="false"
-        accel_fps="300"
-        gyro_fps="300"
-        depth_width="1280"
-        depth_height="720"
-        depth_fps="10"
-        infra_width="1280"
-        infra_height="720"
-        infra_fps="10"
-        color_width="1280"
-        color_height="720"
-        color_fps="1">
+        accel_fps="30"
+        gyro_fps="30"
+        depth_width="320"
+        depth_height="162"
+        depth_fps="30"
+        infra_width="320"
+        infra_height="162"
+        infra_fps="30"
+        color_width="320"
+        color_height="162"
+        color_fps="30">
 
         <origin xyz="0 0 0" rpy="0 0 0"/>
 
@@ -133,17 +133,17 @@
         align_depth="true"
         unite_imu_method="false"
         visualize="false"
-        accel_fps="300"
-        gyro_fps="300"
-        depth_width="1280"
-        depth_height="720"
-        depth_fps="10"
-        infra_width="1280"
-        infra_height="720"
-        infra_fps="10"
-        color_width="1280"
-        color_height="720"
-        color_fps="1">
+        accel_fps="30"
+        gyro_fps="30"
+        depth_width="320"
+        depth_height="162"
+        depth_fps="30"
+        infra_width="848"
+        infra_height="480"
+        infra_fps="30"
+        color_width="848"
+        color_height="480"
+        color_fps="30">
 
         <origin xyz="0 0 0" rpy="0 0 0"/>
 
@@ -157,16 +157,16 @@
         align_depth="true"
         unite_imu_method="false"
         visualize="false"
-        accel_fps="300"
-        gyro_fps="300"
-        depth_width="1280"
-        depth_height="720"
-        depth_fps="90"
-        infra_width="1280"
-        infra_height="720"
-        infra_fps="90"
-        color_width="1280"
-        color_height="720"
+        accel_fps="30"
+        gyro_fps="30"
+        depth_width="320"
+        depth_height="162"
+        depth_fps="30"
+        infra_width="320"
+        infra_height="162"
+        infra_fps="30"
+        color_width="320"
+        color_height="162"
         color_fps="30">
 
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -181,16 +181,16 @@
         align_depth="true"
         unite_imu_method="false"
         visualize="false"
-        accel_fps="300"
-        gyro_fps="300"
-        depth_width="1280"
-        depth_height="720"
-        depth_fps="90"
-        infra_width="1280"
-        infra_height="720"
-        infra_fps="90"
-        color_width="1280"
-        color_height="720"
+        accel_fps="30"
+        gyro_fps="30"
+        depth_width="320"
+        depth_height="162"
+        depth_fps="30"
+        infra_width="320"
+        infra_height="162"
+        infra_fps="30"
+        color_width="320"
+        color_height="162"
         color_fps="30">
 
         <origin xyz="0 0 0" rpy="0 0 0"/>
