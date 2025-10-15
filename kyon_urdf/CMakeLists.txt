@@ -1,5 +1,7 @@
 project(kyon_urdf)
 
+cmake_minimum_required(VERSION 3.20)
+
 find_package(ament_cmake REQUIRED)
 cmake_policy(SET CMP0057 NEW)
 
