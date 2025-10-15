@@ -1,35 +1,15 @@
 project(kyon_srdf)
 
-find_package(catkin REQUIRED)
+cmake_minimum_required(VERSION 3.20)
 
-catkin_package()
-
-# main srdf, with acm
-generate_srdf(
-  XACRO ${ROBOT_NAME}.srdf.xacro
-  CONFIG config/${ROBOT_NAME}.urdf.xacro
-  ADD_TO_ALL TRUE
-#  GEN_ACM TRUE
-)
+find_package(ament_cmake REQUIRED)
 
 install(DIRECTORY srdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  DESTINATION share/${PROJECT_NAME}
 )
 
-# updated acm for capsule model
-#generate_capsule_srdf_acm(
-#  CONFIG_NAME ${ROBOT_NAME}
-#  ADD_TO_ALL TRUE
-#)
+# Additional dependencies for ROS 2
+ament_export_dependencies(xacro)
 
-# plain srdf for virtual frame model
-#generate_srdf(
-#  XACRO ${ROBOT_NAME}.srdf.xacro
-#  CONFIG config/${ROBOT_NAME}_virtual_frame.urdf.xacro
-#  ADD_TO_ALL TRUE
-#)
+ament_package()
 
-# mark srdf for installation
-#install(DIRECTORY srdf
-#  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-#)

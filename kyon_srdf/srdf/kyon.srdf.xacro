@@ -6,7 +6,11 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon">
 
     <!-- ************ MODEL CONFIGURATION ************ -->
-    <xacro:arg name="config" default="$(find kyon_urdf)/urdf/config/kyon.urdf.xacro"/>
+
+    <xacro:arg name="root" default="$(find kyon_urdf)" />  
+    <xacro:property name="ROOT" value="$(arg root)" />
+    
+    <xacro:arg name="config" default="${ROOT}/urdf/config/kyon.urdf.xacro"/>
     <xacro:include filename="$(arg config)"/>
 
     <group name="base">
@@ -222,5 +226,3 @@
     <disable_collisions link1="wrist_pitch_1_link" link2="wrist_yaw_1_link" reason="Adjacent"/>
     <disable_collisions link1="wrist_pitch_2_link" link2="wrist_yaw_2_link" reason="Adjacent"/>
 </robot>	
-
-
