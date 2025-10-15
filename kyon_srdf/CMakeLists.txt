@@ -1,4 +1,4 @@
-project(kyon_srdf)
+project(kyon_srdf_simple)
 
 cmake_minimum_required(VERSION 3.20)
 

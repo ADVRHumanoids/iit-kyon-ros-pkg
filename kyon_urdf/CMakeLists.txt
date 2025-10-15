@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(kyon_urdf)
+project(kyon_urdf_simple)
 
 find_package(ament_cmake REQUIRED)
 
