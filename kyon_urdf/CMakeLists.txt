@@ -1,4 +1,4 @@
-project(kyon_urdf)
+project(kyon_urdf_simple)
 
 find_package(catkin REQUIRED COMPONENTS)
 

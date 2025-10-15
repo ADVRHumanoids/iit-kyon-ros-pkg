@@ -1,4 +1,4 @@
-project(kyon_srdf)
+project(kyon_srdf_simple)
 
 find_package(catkin REQUIRED)
 
