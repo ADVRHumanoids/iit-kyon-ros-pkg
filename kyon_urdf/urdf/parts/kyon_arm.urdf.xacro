@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/kyon_dagana.urdf.xacro"/>
+<xacro:include filename="${ROOT}/urdf/parts/kyon_dagana.urdf.xacro"/>
 
 <!-- macro arms -->
 <xacro:macro name="kyon_arm" params="arm_num rot parent">
@@ -17,14 +17,14 @@
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/mesh_sh-yaw.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/mesh_sh-yaw.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_sh-yaw.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/collision/mesh_sh-yaw.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>
 </link>
@@ -37,19 +37,19 @@
 	</inertial>
 	<visual>
 	  	<geometry>
-			<mesh filename="package://kyon_urdf/meshes/mesh_sh-pitch_cover.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/mesh_sh-pitch_cover.stl" scale="0.001 0.001 0.001"/>
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
 	<visual>
 	  	<geometry>
-	 		<mesh filename="package://kyon_urdf/meshes/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
+	 		<mesh filename="${MESH_PATH}/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
 	  	</geometry>
   		<material name="kyon_orange"/>
 	</visual>
 	<collision>
 	  	<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/collision/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 		<material name="kyon_orange"/>
 	</collision>
@@ -63,13 +63,13 @@
 	</inertial>
 	<visual>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>
 </link>
@@ -83,14 +83,14 @@
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<mesh filename="package://kyon_urdf/meshes/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001"/>
+	 		<mesh filename="${MESH_PATH}/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001"/>
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/collision/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>
 </link>
@@ -104,14 +104,14 @@
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<mesh filename="package://kyon_urdf/meshes/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001"/>
+	 		<mesh filename="${MESH_PATH}/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001"/>
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/collision/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>
 </link>

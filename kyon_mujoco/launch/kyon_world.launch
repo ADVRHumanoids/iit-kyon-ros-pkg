@@ -5,7 +5,7 @@
   <arg name="sites" default="$(find kyon_mujoco)/config/sites.xml"/>
   <arg name="ctrlcfg" default="$(find kyon_mujoco)/config/kyon.yaml"/>
   <arg name="sdf" default="$(find kyon_mujoco)/config/sdf.yaml"/>
-  <arg name="urdf" default="$(find kyon_urdf)/urdf/kyon.urdf.xacro"/>
+  <arg name="urdf" default="${ROOT}/urdf/kyon.urdf.xacro"/>
   <arg name="srdf" default="$(find kyon_srdf)/srdf/kyon.srdf.xacro"/>
 
   <!-- kyon configuration parameters -->
@@ -19,7 +19,7 @@
   <arg name="velodyne" default="false"/>
 
   <param name="robot_description"
-         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro 
+         command="$(find xacro)/xacro ${ROOT}/urdf/kyon.urdf.xacro 
          floating_joint:=true 
          upper_body:=$(arg arms)
          legs:=$(arg legs)

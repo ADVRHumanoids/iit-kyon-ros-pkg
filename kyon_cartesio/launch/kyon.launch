@@ -14,7 +14,7 @@
     <arg name="enable_force_estimation" default="true"/>
     
     <param unless="$(arg xbot)" name="robot_description"
-         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) wheels:=$(arg wheels)"/>
+         command="$(find xacro)/xacro ${ROOT}/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) wheels:=$(arg wheels)"/>
     
     <param unless="$(arg xbot)" name="robot_description_semantic"
         command="$(find xacro)/xacro $(find kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) wheels:=$(arg wheels)"/>

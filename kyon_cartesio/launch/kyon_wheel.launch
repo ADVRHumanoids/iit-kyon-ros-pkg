@@ -13,7 +13,7 @@
     <arg name="xbot" default="false"/>
     
     <param name="robot_description"
-        command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro 
+        command="$(find xacro)/xacro ${ROOT}/urdf/kyon.urdf.xacro 
         floating_joint:=true 
         feet:=$(arg feet)
         upper_body:=$(arg arms)

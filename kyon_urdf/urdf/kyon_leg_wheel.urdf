@@ -31,7 +31,7 @@
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-        <mesh filename="package://kyon_urdf/meshes/mesh_hip-roll.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_hip-roll.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -39,7 +39,7 @@
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-        <mesh filename="package://kyon_urdf/meshes/collision/mesh_hip-roll.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/collision/mesh_hip-roll.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -52,14 +52,14 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
     <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/collision/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/collision/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -87,14 +87,14 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_foot-leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_foot-leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
     <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/collision/mesh_foot-leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/collision/mesh_foot-leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -120,14 +120,14 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_fixed-wheel-leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_fixed-wheel-leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
     <collision>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/collision/mesh_fixed-wheel-leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/collision/mesh_fixed-wheel-leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -141,7 +141,7 @@
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-        <mesh filename="package://kyon_urdf/meshes/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -149,7 +149,7 @@
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-        <mesh filename="package://kyon_urdf/meshes/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>

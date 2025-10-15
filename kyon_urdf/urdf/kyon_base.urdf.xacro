@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon_real">
 
 <xacro:arg name="bilevel_codes" default="false" /> <!-- if true, load codes vars from externally provided files-->
 <xacro:arg name="sample_idx" default = "0"/>
 
-<xacro:include filename="$(find kyon_urdf)/urdf/utils.urdf.xacro" />
+<xacro:include filename="${ROOT}/urdf/utils.urdf.xacro" />
 
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/kinematics_properties.urdf.xacro" />
+<xacro:include filename="${ROOT}/urdf/parts/kinematics_properties.urdf.xacro" />
 <!-- NOTE: here we need to include "kinematics_properties" first because "inertial_properties" depends on it-->
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/inertial_properties.urdf.xacro" />
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/limits.urdf.xacro" />
+<xacro:include filename="${ROOT}/urdf/parts/inertial_properties.urdf.xacro" />
+<xacro:include filename="${ROOT}/urdf/parts/limits.urdf.xacro" />
 
 <link name="base_link"/>
 
@@ -22,14 +22,14 @@
 	<visual>
 		<origin xyz="0.0 0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-	 		<mesh filename="package://kyon_urdf/meshes/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
+	 		<mesh filename="${MESH_PATH}/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
         <material name="dark_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-	  		<mesh filename="package://kyon_urdf/meshes/collision/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
+	  		<mesh filename="${MESH_PATH}/collision/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>
 </link>
@@ -215,11 +215,11 @@
 </xacro:if>
 
 <xacro:if value="${ADD_UPPER_BODY}">
-    <xacro:include filename="$(find kyon_urdf)/urdf/parts/arms.urdf.xacro" />
+    <xacro:include filename="${ROOT}/urdf/parts/arms.urdf.xacro" />
 </xacro:if>
 
 <xacro:if value="${ADD_LEGS}">
-	<xacro:include filename="$(find kyon_urdf)/urdf/parts/legs.urdf.xacro" />
+	<xacro:include filename="${ROOT}/urdf/parts/legs.urdf.xacro" />
 </xacro:if>
 
 <xacro:if value="${PAYLOAD}">

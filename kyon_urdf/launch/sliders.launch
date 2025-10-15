@@ -12,10 +12,10 @@
     <arg name="ft_sensors" default="false" />
 
     <param name="robot_description"
-        command="xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)" />
+        command="xacro ${ROOT}/urdf/kyon.urdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)" />
 
     <param name="robot_description_capsule"
-        command="xacro $(find kyon_urdf)/urdf/kyon_capsule.urdf" />
+        command="xacro ${ROOT}/urdf/kyon_capsule.urdf" />
 
     <param name="robot_description_semantic"
         command="xacro $(find kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(arg arms) legs:=$(arg legs) sensors:=$(arg sensors) payload:=$(arg payload) dagana:=$(arg dagana) wheels:=$(arg wheels) ft_sensors:=$(arg ft_sensors)" />
@@ -24,6 +24,6 @@
 
     <node if="$(arg gui)" pkg="joint_state_publisher_gui"  type="joint_state_publisher_gui" name="sliders"/>
 
-    <node if="$(arg gui)" pkg="rviz"  type="rviz" name="rviz" args="-d $(find kyon_urdf)/config/kyon.rviz"/>
+    <node if="$(arg gui)" pkg="rviz"  type="rviz" name="rviz" args="-d ${ROOT}/config/kyon.rviz"/>
 
 </launch>

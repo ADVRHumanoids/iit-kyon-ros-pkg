@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/kyon_arm.urdf.xacro"/>
+<xacro:include filename="${ROOT}/urdf/parts/kyon_arm.urdf.xacro"/>
 
 <!-- arms -->
 <xacro:kyon_arm arm_num="1"  rot="-1"  parent="pelvis">

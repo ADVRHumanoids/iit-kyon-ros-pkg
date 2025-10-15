@@ -13,14 +13,14 @@
     <visual>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
-            <mesh filename="package://kyon_urdf/meshes/mesh_fixed-wheel-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
+            <mesh filename="${MESH_PATH}/mesh_fixed-wheel-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
         </geometry>
         <material name="dark_grey"/>
     </visual>
     <collision>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
-            <mesh filename="package://kyon_urdf/meshes/collision/mesh_fixed-wheel-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
+            <mesh filename="${MESH_PATH}/collision/mesh_fixed-wheel-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
         </geometry>
     </collision>
 </link>
@@ -34,14 +34,14 @@
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-			<mesh filename="package://kyon_urdf/meshes/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
 		</geometry> 
   		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<!-- <mesh filename="package://kyon_urdf/meshes/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/> -->
+			<!-- <mesh filename="${MESH_PATH}/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/> -->
             <cylinder radius="0.11" length="0.045"/>
 		</geometry> 
 	</collision>

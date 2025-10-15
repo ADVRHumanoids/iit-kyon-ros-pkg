@@ -2,9 +2,9 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <!-- include end-effectors -->
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/foot_leg.urdf.xacro"/>
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/steering_wheel.urdf.xacro"/>
-<xacro:include filename="$(find kyon_urdf)/urdf/parts/wheel_leg.urdf.xacro"/>
+<xacro:include filename="${ROOT}/urdf/parts/foot_leg.urdf.xacro"/>
+<xacro:include filename="${ROOT}/urdf/parts/steering_wheel.urdf.xacro"/>
+<xacro:include filename="${ROOT}/urdf/parts/wheel_leg.urdf.xacro"/>
 
 <!-- macro legs -->
 <xacro:macro name="kyon_leg" params="leg_num origin_x origin_y mirror">
@@ -21,7 +21,7 @@
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
 	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-			<mesh filename="package://kyon_urdf/meshes/mesh_hip-roll.stl" scale="0.001 ${mirror*0.001} 0.001"/>
+			<mesh filename="${MESH_PATH}/mesh_hip-roll.stl" scale="0.001 ${mirror*0.001} 0.001"/>
 		</geometry> 
   		<material name="dark_grey"/>
 	</visual>
@@ -29,7 +29,7 @@
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
 	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_hip-roll.stl" scale="0.001 ${mirror*0.001} 0.001"/>
+			<mesh filename="${MESH_PATH}/collision/mesh_hip-roll.stl" scale="0.001 ${mirror*0.001} 0.001"/>
 		</geometry> 
 	</collision>
 </link>
@@ -43,21 +43,21 @@
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<mesh filename="package://kyon_urdf/meshes/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+	 		<mesh filename="${MESH_PATH}/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
 	  	</geometry>
   		<material name="kyon_orange"/>
 	</visual>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<mesh filename="package://kyon_urdf/meshes/mesh_hip-pitch_cover.stl" scale="0.001 0.001 0.001"/>
+	 		<mesh filename="${MESH_PATH}/mesh_hip-pitch_cover.stl" scale="0.001 0.001 0.001"/>
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/collision/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 		<material name="kyon_orange"/>
 	</collision>

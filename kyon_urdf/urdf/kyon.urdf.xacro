@@ -1,13 +1,36 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon_real">
 
-<xacro:arg name="config" default="$(find kyon_urdf)/urdf/config/kyon.urdf.xacro"/>
+<xacro:arg name="root" default="${ROOT}" />  
+<xacro:property name="ROOT" value="$(arg root)" />
+
+<!-- setting use_abs_mesh_paths should be kept to false
+for use with tools like RViz, which does not accept plain
+abolute paths for mesh paths-->
+<xacro:arg name="use_abs_mesh_paths" default="false" />  
+<xacro:arg name="use_local_filesys_for_meshes" default="false" />  
+<xacro:property name="USE_ABS_MESH_PATHS" value="$(arg use_abs_mesh_paths)" />
+<xacro:property name="USE_LOCAL_FILESYS_FOR_MESHES" value="$(arg use_local_filesys_for_meshes)" />
+
+<xacro:if value="${USE_ABS_MESH_PATHS}">
+	<xacro:if value="${USE_LOCAL_FILESYS_FOR_MESHES}">
+	<xacro:property name="MESH_PATH" value="file://${ROOT}/meshes" />
+	</xacro:if>
+	<xacro:unless value="${USE_LOCAL_FILESYS_FOR_MESHES}">
+	<xacro:property name="MESH_PATH" value="${ROOT}/meshes" />
+	</xacro:unless>
+	</xacro:if>
+<xacro:unless value="${USE_ABS_MESH_PATHS}">
+<xacro:property name="MESH_PATH" value="package://kyon_urdf_simple/meshes" />
+</xacro:unless>
+
+<xacro:arg name="config" default="${ROOT}/urdf/config/kyon.urdf.xacro"/>
 
 <!-- ************ MODEL CONFIGURATION ************ -->
 <xacro:include filename="$(arg config)"/>
 
 <!-- ************ CETC-SAT plain model ************ -->
-<xacro:include filename="$(find kyon_urdf)/urdf/kyon_base.urdf.xacro"/>
+<xacro:include filename="${ROOT}/urdf/kyon_base.urdf.xacro"/>
 
 <!-- ************ Control frames ************ -->
 <!--xacro:include filename="$(find pholus_urdf)/urdf/control_frames.urdf.xacro"/-->
@@ -21,4 +44,3 @@
 </xacro:if>
 
 </robot>
-

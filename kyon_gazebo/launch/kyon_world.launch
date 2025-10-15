@@ -46,7 +46,7 @@
   
   <!-- Load the URDF/SRDF into the ROS Parameter Server -->
   <param name="robot_description_gz"
-         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon_robot.urdf.xacro 
+         command="$(find xacro)/xacro ${ROOT}/urdf/kyon_robot.urdf.xacro 
          floating_joint:=false 
          upper_body:=$(arg arms) 
          legs:=$(arg legs) 
@@ -56,7 +56,7 @@
          wheels:=$(arg wheels)"/>
          
   <param name="robot_description"
-         command="$(find xacro)/xacro $(find kyon_urdf)/urdf/kyon.urdf.xacro 
+         command="$(find xacro)/xacro ${ROOT}/urdf/kyon.urdf.xacro 
          floating_joint:=true 
          upper_body:=$(arg arms)
          legs:=$(arg legs)

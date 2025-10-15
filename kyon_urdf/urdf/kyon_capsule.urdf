@@ -16,7 +16,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -57,7 +57,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_sh-yaw.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_sh-yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -88,7 +88,7 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -119,7 +119,7 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -150,7 +150,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -182,7 +182,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -249,7 +249,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_dagana-base.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_dagana-base.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -281,7 +281,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_dagana-clamp.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_dagana-clamp.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -325,7 +325,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_sh-yaw.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_sh-yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -356,7 +356,7 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -387,7 +387,7 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
@@ -418,7 +418,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -450,7 +450,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -517,7 +517,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_dagana-base.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_dagana-base.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -549,7 +549,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_dagana-clamp.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_dagana-clamp.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -593,7 +593,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_hip-roll.stl" scale="0.001 -0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_hip-roll.stl" scale="0.001 -0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -625,7 +625,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -671,7 +671,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_foot-leg.stl" scale="-0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_foot-leg.stl" scale="-0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -716,7 +716,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_hip-roll.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_hip-roll.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -748,7 +748,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -794,7 +794,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_foot-leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_foot-leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -839,7 +839,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_hip-roll.stl" scale="0.001 -0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_hip-roll.stl" scale="0.001 -0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -871,7 +871,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -917,7 +917,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_foot-leg.stl" scale="-0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_foot-leg.stl" scale="-0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -962,7 +962,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_hip-roll.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_hip-roll.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -994,7 +994,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
@@ -1040,7 +1040,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kyon_urdf/meshes/mesh_foot-leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="${MESH_PATH}/mesh_foot-leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </visual>
