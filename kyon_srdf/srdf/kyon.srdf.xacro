@@ -7,7 +7,7 @@
 
     <!-- ************ MODEL CONFIGURATION ************ -->
 
-    <xacro:arg name="root" default="$(find kyon_urdf)" />  
+    <xacro:arg name="root" default="$(find kyon_urdf_simple)" />  
     <xacro:property name="ROOT" value="$(arg root)" />
 
     <xacro:arg name="config" default="${ROOT}/urdf/config/kyon.urdf.xacro"/>
