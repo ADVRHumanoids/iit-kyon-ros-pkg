@@ -160,7 +160,7 @@
     <axis xyz="0 0 1"/>
     <limit effort="132" lower="-3.3266" upper="3.3266" velocity="15.5"/>
   </joint>
-  <joint name="wheel_joint_2" type="revolute">
+  <joint name="wheel_joint_2" type="continuous">
     <parent link="knee_pitch_2"/>
     <child link="wheel_2_link"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.3 0.054"/>
