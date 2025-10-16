@@ -67,8 +67,8 @@
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-			<mesh filename="${MESH_PATH}/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
+	 		<cylinder radius="0.1066" length="0.05"/>
+			<!-- <mesh filename="${MESH_PATH}/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/> -->
 		</geometry> 
 		<material name="light_grey"/>
 	</collision>
@@ -105,6 +105,14 @@
 </joint>
 
 <link name="contact_${leg_num}"/>
+
+<joint name="ball_joint_${leg_num}" type="fixed">
+	<parent link="ankle_yaw_${leg_num}_link"/>
+    <child link="ball_${leg_num}"/>
+    <origin xyz="${SteeringWheel_Ox} ${SteeringWheel_Oy} ${SteeringWheel_Oz}" rpy="${SteeringWheel_roll} ${SteeringWheel_pitch} ${SteeringWheel_yaw}"/>
+</joint>
+
+<link name="ball_${leg_num}"/>
 
 </xacro:macro>
 </robot>
