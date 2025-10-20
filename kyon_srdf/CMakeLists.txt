@@ -11,5 +11,5 @@ install(DIRECTORY srdf
 # Additional dependencies for ROS 2
 ament_export_dependencies(xacro)
 
-ament_package()
+catkin_package()
 
