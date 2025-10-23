@@ -53,7 +53,7 @@
 <joint name="contact_${leg_num}_joint" type="fixed">
     <parent link="knee_pitch_${leg_num}_link"/>
     <child link="contact_${leg_num}"/>
-    <origin xyz="${-mirror*0.0} -0.3 0.054" rpy="${1.57*mirror} ${0} ${0.785 if mirror == -1 else 2.356}"/>    
+    <origin xyz="${-mirror*0.0} -0.312 0.024" rpy="${1.57*mirror} ${0} ${0.785 if mirror == -1 else 2.356}"/>    
 </joint>
 
 </xacro:macro>
