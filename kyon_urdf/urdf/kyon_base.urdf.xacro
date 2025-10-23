@@ -26,12 +26,14 @@
 		</geometry>
         <material name="dark_grey"/>
 	</visual>
+    <xacro:if value="${ADD_COLLISION}">
 	<collision>
 		<origin xyz="0.0 0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
 	  		<mesh filename="package://kyon_urdf/meshes/collision/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>
+    </xacro:if>
 </link>
 
 <xacro:if value="${ADD_VARTA or ADD_D034_LI_ION}">

@@ -25,6 +25,7 @@
 		</geometry> 
   		<material name="dark_grey"/>
 	</visual>
+	<xacro:if value="${ADD_COLLISION}">
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
@@ -32,6 +33,7 @@
 			<mesh filename="package://kyon_urdf/meshes/collision/mesh_hip-roll.stl" scale="0.001 ${mirror*0.001} 0.001"/>
 		</geometry> 
 	</collision>
+	</xacro:if>
 </link>
 
 <link name="hip_pitch_${leg_num}_link">
@@ -54,6 +56,7 @@
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
+	<xacro:if value="${ADD_COLLISION}">
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
@@ -61,6 +64,7 @@
 		</geometry>
 		<material name="kyon_orange"/>
 	</collision>
+	</xacro:if>
 </link>
 
 <!-- joints -->
