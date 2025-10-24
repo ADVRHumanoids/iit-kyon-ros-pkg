@@ -12,7 +12,7 @@
 <xacro:arg name="floating_joint" default="true"/>
 <xacro:arg name="cameras" default="false"/>
 <xacro:arg name="payload" default="false"/>
-<xacro:arg name="varta" default="false"/>
+<xacro:arg name="varta" default="true"/>
 <xacro:arg name="d034_li_ion" default="false"/>
 <xacro:arg name="velodyne" default="false"/>
 <xacro:arg name="dagana" default="$(arg upper_body)"/>
