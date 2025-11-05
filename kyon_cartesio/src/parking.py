@@ -2,13 +2,18 @@
 
 import time
 import numpy as np
+np.set_printoptions(precision=2, suppress=True)
 import argparse
 import os
 
-import rospy
+import rclpy
+from rclpy.node import Node
+from rclpy.wait_for_message import wait_for_message
+from rclpy.qos import QoSDurabilityPolicy, QoSProfile
+from std_msgs.msg import String
 
 os.environ['XBOT_VERBOSE'] = '2'
-from xbot_interface import xbot_interface as xb
+from xbot2_interface import pyxbot2_interface as xb
 from cartesian_interface.pyci_all import *
 
 # parse arguments
@@ -75,16 +80,31 @@ base:
 """
 
 
-    def __init__(self):
+    def __init__(self, node: Node):
+        
+        qos_profile = QoSProfile(depth=10, durability=QoSDurabilityPolicy.TRANSIENT_LOCAL)
+        _, urdf = wait_for_message(msg_type=String, 
+                                node=node,
+                                topic='/xbotcore/robot_description',
+                                qos_profile=qos_profile,
+                                time_to_wait=5.0)
+        _, srdf = wait_for_message(msg_type=String, 
+                                node=node,
+                                topic='/xbotcore/robot_description_semantic',
+                                qos_profile=qos_profile,
+                                time_to_wait=5.0)
+        
+        if urdf is None or srdf is None:
+            raise RuntimeError('failed to receive urdf / srdf')
+        
         # create robot
-        self.cfg = get_xbot_config(prefix='xbotcore/')
-        self.robot = xb.RobotInterface(self.cfg)
+        self.robot = xb.RobotInterface2(urdf.data, srdf.data)
 
         self.joints = sum([[f'hip_roll_{i+1}', f'hip_pitch_{i+1}', f'knee_pitch_{i+1}'] for i in range(4)], [])
-        self.robot.setControlMode(xb.ControlMode.Idle())
-        self.robot.setControlMode({j: xb.ControlMode.Position() for j in self.joints})
-        self.idx = np.array([self.robot.getDofIndex(j) for j in self.joints])
-        self.qidx = self.idx
+        self.robot.setControlMode(xb.ControlMode.None_().type())
+        self.robot.setControlMode({j: xb.ControlMode.Position().type() for j in self.joints})
+        self.vidx = np.array([self.robot.getVIndexFromVName(j) for j in self.joints])
+        self.qidx = np.array([self.robot.getQIndexFromQName(j) for j in self.joints])
 
 
     def move(self, action):
@@ -98,33 +118,34 @@ base:
         joints = self.joints
         qidx = self.qidx
 
-        while not robot.sense(update_references=True):
+        while not robot.sense():
             time.sleep(0.1)
 
-        model = xb.ModelInterface(self.cfg)
-        model.setJointPosition(robot.eigenToMap(robot.getPositionReference()))
+        model = xb.ModelInterface2(robot.getUrdfString(), robot.getSrdfString(), 'pin')
+        model.q = robot.getPositionReferenceFeedback()
         model.update()
 
         dt = 0.01
         ci = pyci.CartesianInterface.MakeInstance(solver='OpenSot', problem=Parking.ikpb, model=model, dt=dt)
-        rsc = pyci.RosServerClass(ci)
+        # rsc = pyci.RosServerClass(ci)
         postural = ci.getTask('Postural')
 
         t = 0.0
         trj_time = 5.0
 
-        q0 = model.getJointPosition()[qidx+6]
-        qf = model.getRobotState(qname)[qidx+6]
-
+        q0 = model.getJointPosition().copy()
+        qf = model.getRobotState(qname).copy()
+        delta_q = model.difference(qf, q0)
+        
         def solve_and_move():
             nonlocal t
             ci.update(t, dt)
-            model.setJointPosition(model.getJointPosition() + model.getJointVelocity() * dt)
+            model.q = model.sum(model.q, model.v * dt)
             model.update()
-            rsc.run()
+            # rsc.run()
             
             # set reference to robot and move
-            robot.setPositionReference(model.getJointPositionMap())
+            robot.setPositionReference(model.q)
             robot.move()
             
             # update time and sync loop
@@ -136,10 +157,10 @@ base:
             # compute trajectory for postural task
             tau = t / trj_time
             alpha = 6 * tau**5 - 15 * tau**4 + 10 * tau**3
-            q = (1-alpha) * q0 + alpha * qf
-
+            q = model.sum(q0,  alpha * delta_q)
+            
             # set reference and solve
-            postural.setReferencePosture({joints[i]: q[i] for i in range(len(joints))})
+            postural.setReferencePosture(model.qToMap(q))
             solve_and_move()
 
         if not args.dance or action != 'unpark':
@@ -183,11 +204,12 @@ base:
 
 
 
-# init ros
-rospy.init_node('parking')
+# init ros2
+rclpy.init()
+node = Node('parking_node')
 
 # create parking object
-parking = Parking()
+parking = Parking(node)
 
 # move
 if args.action:
