@@ -25,13 +25,12 @@
 		</geometry> 
   		<material name="dark_grey"/>
 	</visual>
-	<collision>
+	<!-- <collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
 			<mesh filename="${MESH_PATH}/collision/mesh_hip-roll.stl" scale="0.001 ${mirror*0.001} 0.001"/>
 		</geometry> 
-	</collision>
+	</collision> -->
 </link>
 
 <link name="hip_pitch_${leg_num}_link">
@@ -57,7 +56,7 @@
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<mesh filename="${MESH_PATH}/collision/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/collision/mesh_hip-pitch_cut.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 		<material name="kyon_orange"/>
 	</collision>
