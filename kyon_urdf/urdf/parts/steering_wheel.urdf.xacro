@@ -22,7 +22,7 @@
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
 	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-			<mesh filename="${MESH_PATH}/collision/mesh_knee-steering.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/collision/mesh_knee-steering_cut.stl" scale="0.001 0.001 0.001"/>
 		</geometry> 
 	</collision>
 </link>
@@ -45,7 +45,7 @@
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
 	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-			<mesh filename="${MESH_PATH}/collision/mesh_ankle-yaw.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="${MESH_PATH}/collision/mesh_ankle-yaw_cut.stl" scale="0.001 0.001 0.001"/>
 		</geometry> 
 	</collision>
 </link>
