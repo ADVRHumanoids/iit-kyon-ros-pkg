@@ -1,11 +1,7 @@
 <launch>
         
     <arg name="gazebo" default="true"/>
-    <arg name="cartesio" default="false"/>
 
-    <!-- <param if="$(arg gazebo)" name="use_sim_time" type="bool" value="true"/>
-    <param if="$(arg cartesio)" name="use_sim_time" type="bool" value="false"/>   -->
-    
     <!-- gazebo configuration parameters -->
     <arg name="paused" default="false"/>
     <arg name="use_sim_time" default="true"/>
@@ -15,19 +11,16 @@
     <arg name="physics" default="ode"/>
     <arg name="verbose" default="false"/>
     <arg name="extra_gazebo_args" default=""/>
-    <arg name="codesign" default="false"/>
     
     <!-- kyon configuration parameters -->
     <arg name="arms" default="false"/>
     <arg name="legs" default="true"/>
-    <arg name="sensors" default="false"/>
     <arg name="payload" default="false"/>
     <arg name="dagana" default="false"/>
-    <arg name="feet" default="true"/>
     <arg name="wheels" default="false"/>
-    <arg name="steering_wheels" default="false"/>
-    <arg name="ft_sensors" default="true"/>
     <arg name="velodyne" default="false"/>
+    <arg name="camera_front_up" default="false"/>
+    <arg name="camera_front_down" default="false"/>
 
 
     <!-- Internal arguments, rewrite human-readable gazebo arguments to it's internal arguments -->
@@ -42,7 +35,7 @@
 
     <let name="script_type" value="gzserver" unless="$(var debug)"/>
     <let name="script_type" value="debug" if="$(var debug)"/>
-  
+
     <!-- run gazebo -->
     <group if="$(var gazebo)">
   
@@ -52,7 +45,7 @@
        
        <!-- Load the URDF/SRDF into the ROS Parameter Server -->
        <let name="robot_description_gz"
-            value="$(command 'xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=false upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)')"/>
+            value="$(command 'xacro $(find-pkg-share kyon_gazebo)/urdf/kyon_gazebo.urdf.xacro floating_joint:=false upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) dagana:=$(var dagana) wheels:=$(var wheels) velodyne:=$(var velodyne) camera_front_up:=$(var camera_front_up) camera_front_down:=$(var camera_front_down)')"/>
  
        <!-- Start gazebo-->
        <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
@@ -66,25 +59,32 @@
        </node>
 
        <!-- ROS-gazebo topics bridge-->
-       <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge" if="$(var velodyne)"
-            args="/VLP16_lidar_front/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
-             /VLP16_lidar_front@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan
-             /clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"/> 
+       <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge"
+            args="
+             /hesai_lidar/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
+             /hesai_lidar@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan
+             /clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock 
+             /zed_front_up/image@sensor_msgs/msg/Image[gz.msgs.Image
+             /zed_front_up/depth_image@sensor_msgs/msg/Image[gz.msgs.Image
+             /zed_front_up/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo
+             /zed_front_up/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
+             /zed_front_down/image@sensor_msgs/msg/Image[gz.msgs.Image
+             /zed_front_down/depth_image@sensor_msgs/msg/Image[gz.msgs.Image
+             /zed_front_down/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo
+             /zed_front_down/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
+             "/> 
             
-       <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge" unless="$(var velodyne)"
-             args="/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"/> 
-             
     </group>
 
        <!-- Load the URDF/SRDF into the ROS Parameter Server -->
     <let name="urdf_command"
-        value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)"/>
+        value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) dagana:=$(var dagana) wheels:=$(var wheels) velodyne:=$(var velodyne)"/>
 
     <let name="urdf_string"
         value="$(command '$(var urdf_command)' ignore)"/>
 
     <let name="srdf_command"
-        value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)"/>
+        value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) dagana:=$(var dagana) wheels:=$(var wheels) velodyne:=$(var velodyne)"/>
 
     <let name="srdf_string"
         value="$(command '$(var srdf_command)' ignore)"/>
@@ -93,15 +93,5 @@
         <param name="robot_description" value="$(var urdf_string)" type="str"/>
         <param name="robot_description_semantic" value="$(var srdf_string)" type="str"/>
     </node>
-
-  <!-- <include if="$(arg cartesio)" file="$(find kyon_cartesio)/launch/kyon.launch">
-  	<arg name="arms" value="$(arg arms)"/>
-  	<arg name="legs" value="$(arg legs)"/>
-  	<arg name="sensors" value="$(arg sensors)"/>
-  	<arg name="payload" value="$(arg payload)"/>
-  	<arg name="dagana" value="$(arg dagana)"/>
-  	<arg name="wheels" value="$(arg wheels)"/>
-	<arg if="$(arg codesign)" name="ik" value="$(find kyon_cartesio)/config/kyon_stack_codesign.yaml"/>
-  </include> -->
 
 </launch>
