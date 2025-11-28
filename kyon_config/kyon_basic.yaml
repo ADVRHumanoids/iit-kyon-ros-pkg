@@ -31,7 +31,16 @@ xbotcore_plugins:
 
     ros_io: {thread: nrt_main, type: ros2_io}
 
-    ros_control: {thread: nrt_main, type: ros2_control, params: {autostart: {type: bool, value: true}}}
+    ros_control: {thread: nrt_main, type: ros2_control, params: {autostart: true}}
+
+    omnisteering:
+      type: omnisteering_controller_plugin
+      thread: nrt_main
+      params:
+        wheel_names: [wheel_1, wheel_2, wheel_3, wheel_4]
+        wheel_radius: [0.107, 0.107, 0.107, 0.107]
+
+
     
     # Used for Horizon 
     # ros_io: {thread: nrt_main, type: ros2_io, params: {joint_state_queue_depth: {type: int, value: 1}}}

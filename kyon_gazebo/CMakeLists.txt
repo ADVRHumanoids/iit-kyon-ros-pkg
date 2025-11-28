@@ -12,6 +12,10 @@ install(DIRECTORY launch worlds urdf
   DESTINATION share/${PROJECT_NAME}
 )
 
+install(PROGRAMS
+  src/reset_initial_state.bash
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
