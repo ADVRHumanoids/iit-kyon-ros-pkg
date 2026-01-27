@@ -26,8 +26,8 @@ xbotcore_threads:
 xbotcore_plugins:
 
     homing:
-        thread: rt_main
-        type: homing
+      thread: rt_main
+      type: homing
 
     ros_io: {thread: nrt_main, type: ros2_io}
 
@@ -51,7 +51,7 @@ xbotcore_param:
     /xbot/hal/joint_safety/filter_safe_cutoff_hz: {value: 5.0, type: double}
     /xbot/hal/joint_safety/filter_medium_cutoff_hz: {value: 20.0, type: double}
     /xbot/hal/joint_safety/filter_fast_cutoff_hz: {value: 40.0, type: double}
-    /xbot/hal/joint_safety/delta_check_dt: 0.05
+    /xbot/hal/joint_safety/delta_check_dt: 0.08
 
 
 

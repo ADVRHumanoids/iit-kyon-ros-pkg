@@ -1,6 +1,6 @@
 <mujoco>
     <compiler angle="radian" />
-    <option timestep="0.0002"/>
+    <option timestep="0.0002" impratio="5"/>
     <size njmax="1000" nconmax="200"/>
     <contact>
         <exclude name="upper_leg_1_exclude" body1="pelvis" body2="hip_pitch_1_link"/>
