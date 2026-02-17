@@ -39,6 +39,7 @@ xbotcore_plugins:
       params:
         wheel_names: [wheel_1, wheel_2, wheel_3, wheel_4]
         wheel_radius: [0.107, 0.107, 0.107, 0.107]
+        vel_offset_gain: 1.0
 
 
     

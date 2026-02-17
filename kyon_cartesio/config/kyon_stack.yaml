@@ -24,8 +24,8 @@ collision:
     distance_threshold: 0.02
     detection_threshold: 0.10
     max_pairs: 60
-    collision_urdf_path: $(rospack find kyon_urdf)/urdf/kyon_wheels_capsule.urdf
-    collision_srdf_path: $(rospack find kyon_srdf)/srdf/kyon_capsule.srdf
+    collision_urdf_path: $(ros2 pkg prefix --share kyon_urdf)/urdf/kyon_wheels_capsule.urdf
+    collision_srdf_path: $(ros2 pkg prefix --share kyon_srdf)/srdf/kyon_capsule.srdf
     env_collision_links: [knee_pitch_1_link, knee_pitch_2_link, knee_pitch_3_link, knee_pitch_4_link] #, pelvis]
     infeasible_pair_weight: 0.01
     # weight: 100.0

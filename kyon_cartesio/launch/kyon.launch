@@ -3,37 +3,11 @@
     <arg name="rate" default="100.0" />
     <arg name="prefix" default="" />
     <arg name="ik" default="$(find-pkg-share kyon_cartesio)/config/kyon_stack.yaml" />
-    <arg name="arms" default="true" />
-    <arg name="legs" default="true" />
-    <arg name="sensors" default="false" />
-    <arg name="payload" default="false" />
-    <arg name="wheels" default="false" />
-    <arg name="steering_wheels" default="false" />
-    <arg name="ft_sensors" default="false" />
-    <arg name="velodyne" default="false" />
-    <arg name="feet" default="true" />
-    <arg name="dagana" default="true" />
     <arg name="gui" default="false" />
     <arg name="home" default="home"/>
 
-    <!-- Load the URDF/SRDF into the ROS Parameter Server -->
-    <let name="urdf_command"
-        value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)" />
-
-    <let name="urdf_string"
-        value="$(command '$(var urdf_command)' ignore)" />
-
-    <let name="srdf_command"
-        value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)" />
-
-    <let name="srdf_string"
-        value="$(command '$(var srdf_command)' ignore)" />
-
-    <node pkg="xbot2_ros" exec="robot_description_publisher" name="robot_description_publisher"
-        output="screen">
-        <param name="robot_description" value="$(var urdf_string)" type="str" />
-        <param name="robot_description_semantic" value="$(var srdf_string)" type="str" />
-    </node>
+    <!-- <remap from="/robot_description" to="/xbotcore/robot_description" /> -->
+    <!-- <remap from="/robot_description_semantic" to="/xbotcore/robot_description_semantic" /> -->
 
     <include file="$(find-pkg-share cartesian_interface_ros)/launch/cartesio.launch.xml">
         <arg name="rate" value="100.0"/>
