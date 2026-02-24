@@ -5,6 +5,7 @@
     <arg name="ik" default="$(find-pkg-share kyon_cartesio)/config/kyon_stack.yaml" />
     <arg name="gui" default="false" />
     <arg name="home" default="home"/>
+    <arg name="visual_mode" default="false"/>
 
     <!-- <remap from="/robot_description" to="/xbotcore/robot_description" /> -->
     <!-- <remap from="/robot_description_semantic" to="/xbotcore/robot_description_semantic" /> -->
@@ -15,6 +16,8 @@
         <arg name="problem_description_filename" value="$(var ik)"/>
         <arg name="markers" value="true"/>
         <arg name="home" value="$(var home)"/>
+        <arg name="visual_mode" value="$(var visual_mode)"/>
+        <arg name="joint_ctrl_mode" value="{ankle_yaw_1: 0, ankle_yaw_2: 0, ankle_yaw_3: 0, ankle_yaw_4: 0, wheel_joint_1: 0, wheel_joint_2: 0, wheel_joint_3: 0, wheel_joint_4: 0}"/>
     </include>
 
     <node if="$(var gui)" pkg="rviz2" exec="rviz2" name="rviz" output="screen" args="-d $(find-pkg-share kyon_cartesio)/config/kyon.rviz" />
