@@ -1,6 +1,12 @@
+# # take urdf and srdf from ros2 topics (e.g. the gazebo launch file should publish these topics)
+# XBotInterface:
+#     urdf: ros2 run xbot2_ros topic_echo /robot_description
+#     srdf: ros2 run xbot2_ros topic_echo /robot_description_semantic
+
+# or from xacro
 XBotInterface:
-    urdf: ros2 run xbot2_ros topic_echo /robot_description
-    srdf: ros2 run xbot2_ros topic_echo /robot_description_semantic
+    urdf: xacro $(ros2 pkg prefix --share kyon_urdf)/urdf/kyon.urdf.xacro arms:=true dagana:=true wheels:=true
+    srdf: xacro $(ros2 pkg prefix --share kyon_srdf)/srdf/kyon.srdf.xacro arms:=true dagana:=true wheels:=true
 
 ModelInterface:
   model_type: pin
@@ -11,6 +17,7 @@ xbotcore_device_configs:
     sim: $(ros2 pkg prefix --share kyon_config)/hal/kyon_gz.yaml
     mj: $(ros2 pkg prefix --share kyon_config)/hal/kyon_mj.yaml
     dummy: $(ros2 pkg prefix --share kyon_config)/hal/kyon_dummy.yaml
+    isaac: $(ros2 pkg prefix --share kyon_config)/hal/kyon_isaac.yaml
 
 
 # threads

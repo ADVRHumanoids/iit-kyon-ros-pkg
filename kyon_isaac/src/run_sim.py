@@ -137,6 +137,8 @@ def run_simulator(sim: sim_utils.SimulationContext, scene: InteractiveScene):
     # Simulation loop
     qinit = robot.data.default_joint_pos.clone()
     robot.write_joint_position_to_sim(qinit)
+    robot.set_joint_position_target(qinit)
+    print(f'Initial joint positions set to: {qinit.cpu().numpy().flatten().tolist()}')
 
     while simulation_app.is_running():
 
