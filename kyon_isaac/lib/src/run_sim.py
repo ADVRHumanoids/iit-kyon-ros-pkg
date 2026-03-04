@@ -211,10 +211,6 @@ def run_simulator(sim: sim_utils.SimulationContext, scene: InteractiveScene):
             elif data_type == 'control':
                 joint_pos_def = torch.tensor(data['q'], device=robot.device).unsqueeze(0)
                 robot.set_joint_position_target(joint_pos_def)
-                joint_vel_def = torch.tensor(data['dq'], device=robot.device).unsqueeze(0)
-                robot.set_joint_velocity_target(joint_vel_def)
-                joint_effort_def = torch.tensor(data['tau'], device=robot.device).unsqueeze(0)
-                robot.set_joint_effort_target(joint_effort_def)
 
             else:
                 print(f"Unknown data type received: {data_type}")
