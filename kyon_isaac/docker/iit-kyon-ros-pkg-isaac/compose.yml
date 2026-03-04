@@ -30,4 +30,4 @@ services:
     stdin_open: true
     tty: true
     entrypoint: ''
-    command: bash -ic 'pip install -e /workspace/iit-kyon-ros-pkg/kyon_isaac/python; bash -i'
+    command: bash -ic 'pip install -e /workspace/kyon_isaac/source/kyon_isaac; bash -i'
