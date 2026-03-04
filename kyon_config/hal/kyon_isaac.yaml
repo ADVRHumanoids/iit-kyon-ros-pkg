@@ -1,0 +1,5 @@
+xbotcore_devices:
+
+    zmq_hal:
+        names: []
+        thread: rt_main
