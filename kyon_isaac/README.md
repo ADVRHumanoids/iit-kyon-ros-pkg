@@ -1,5 +1,5 @@
 # kyon_isaac
-IsaacLab powered simulation for the Kyon robot, integrated with XBot2. Tested with Isaac v5.1.
+IsaacLab powered simulation for the Kyon robot, integrated with XBot2.
 
 ## Prerequisites
 
