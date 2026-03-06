@@ -13,4 +13,5 @@ mkdir -p /tmp/.xbot2_isaac
 docker compose up -d dev --no-recreate
 
 # execute simulation script
-docker compose exec dev bash -ic "python /workspace/iit-kyon-ros-pkg/kyon_isaac/lib/src/run_sim.py"
+ARGS="$@"
+docker compose exec dev bash -ic "python /workspace/iit-kyon-ros-pkg/kyon_isaac/lib/src/run_sim.py $ARGS"
