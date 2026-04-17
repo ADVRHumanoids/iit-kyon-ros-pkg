@@ -55,6 +55,11 @@ xbotcore_plugins:
 
     # ros_control: {thread: nrt_main, type: ros2_control, params: {autostart: {type: bool, value: true}, command_queue_depth: {type: int, value: 1}}}
     
+    zmq_io:
+        thread: nrt_main
+        type: zmq_io
+        params:
+            autostart: true
 
 
 # global parameters
