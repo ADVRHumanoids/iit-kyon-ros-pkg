@@ -9,9 +9,9 @@
     </extension>
 
     <default>
-	<default class="kyon_all">
-	    <joint damping="1.7" armature="0.215" frictionloss="5"/>
-	</default>
+        <default class="kyon_all">
+            <joint armature="0.234" frictionloss="4.68" damping="1.7"/> 
+        </default>
     </default>
 
     <asset>
