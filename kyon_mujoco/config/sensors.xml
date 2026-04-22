@@ -1,0 +1,17 @@
+<mujoco>
+    <worldbody>
+        <body name="pelvis">
+        <camera name="jt128_cam"
+                pos="0.5 0 -0.1"
+                xyaxes="1 0 0 0 1 0"
+                fovy="150"
+                resolution="900 128"/>
+        </body>
+    </worldbody>
+
+    <sensor>
+        <rangefinder name="jt128_depth"
+                     camera="jt128_cam"
+                     data="dist"/>
+    </sensor>
+</mujoco>
