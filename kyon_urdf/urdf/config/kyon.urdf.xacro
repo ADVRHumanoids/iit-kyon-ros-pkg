@@ -18,7 +18,6 @@
 <xacro:arg name="varta" default="false"/>
 <xacro:arg name="d034_li_ion" default="false"/>
 <xacro:arg name="velodyne" default="false"/>
-<xacro:arg name="dagana" default="$(arg upper_body)"/>
 <xacro:arg name="add_collision" default="true"/>
 <xacro:arg name="hesai_jt128" default="false"/>
 

@@ -16,9 +16,9 @@
     <arg name="arms" default="true"/>
     <arg name="legs" default="true"/>
     <arg name="payload" default="false"/>
-    <arg name="dagana" default="false"/>
     <arg name="wheels" default="false"/>
     <arg name="velodyne" default="false"/>
+    <arg name="hesai_jt128" default="false"/>
     <arg name="camera_front_up" default="false"/>
     <arg name="camera_front_down" default="false"/>
 
@@ -45,7 +45,7 @@
        
        <!-- Load the URDF/SRDF into the ROS Parameter Server -->
        <let name="robot_description_gz"
-            value="$(command 'xacro $(find-pkg-share kyon_gazebo)/urdf/kyon_gazebo.urdf.xacro floating_joint:=false upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) dagana:=$(var dagana) wheels:=$(var wheels) velodyne:=$(var velodyne) camera_front_up:=$(var camera_front_up) camera_front_down:=$(var camera_front_down)')"/>
+            value="$(command 'xacro $(find-pkg-share kyon_gazebo)/urdf/kyon_gazebo.urdf.xacro floating_joint:=false upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) wheels:=$(var wheels) velodyne:=$(var velodyne) hesai_jt128:=$(var hesai_jt128) camera_front_up:=$(var camera_front_up) camera_front_down:=$(var camera_front_down)')"/>
  
        <!-- Start gazebo-->
        <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
@@ -63,6 +63,7 @@
             args="
              /hesai_lidar/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
              /hesai_lidar@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan
+             /hesai_jt128/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
              /clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock 
              /zed_front_up/image@sensor_msgs/msg/Image[gz.msgs.Image
              /zed_front_up/depth_image@sensor_msgs/msg/Image[gz.msgs.Image
@@ -78,13 +79,13 @@
 
        <!-- Load the URDF/SRDF into the ROS Parameter Server -->
     <let name="urdf_command"
-        value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) dagana:=$(var dagana) wheels:=$(var wheels) velodyne:=$(var velodyne)"/>
+        value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) wheels:=$(var wheels) velodyne:=$(var velodyne) hesai_jt128:=$(var hesai_jt128)"/>
 
     <let name="urdf_string"
         value="$(command '$(var urdf_command)' ignore)"/>
 
     <let name="srdf_command"
-        value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) dagana:=$(var dagana) wheels:=$(var wheels) velodyne:=$(var velodyne)"/>
+        value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) wheels:=$(var wheels) velodyne:=$(var velodyne)"/>
 
     <let name="srdf_string"
         value="$(command '$(var srdf_command)' ignore)"/>
