@@ -33,10 +33,16 @@ xbotcore_threads:
 xbotcore_plugins:
 
     homing:
-      thread: rt_main
-      type: homing
+        thread: rt_main
+        type: homing
+        
+    homing_isaac:
+        thread: rt_main
+        type: homing
+        params: 
+          home: home_isaac
 
-    ros_io: {thread: nrt_main, type: ros2_io}
+    ros_io: {thread: nrt_main, type: ros2_io, params: {publish_sim_time: true}}
 
     ros_control: {thread: nrt_main, type: ros2_control, params: {autostart: true}}
 
@@ -47,6 +53,12 @@ xbotcore_plugins:
         wheel_names: [wheel_1, wheel_2, wheel_3, wheel_4]
         wheel_radius: [0.107, 0.107, 0.107, 0.107]
         vel_offset_gain: 1.0
+        
+    zmq_io:
+      type: zmq_io
+      thread: nrt_main
+      params: 
+        autostart: true
 
 
     

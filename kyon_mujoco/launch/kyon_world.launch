@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="world" default="$(find-pkg-share kyon_mujoco)/config/world.xml"/>
+  <arg name="world" default="$(find-pkg-share kyon_mujoco)/config/world_pyramids.xml"/>
   <arg name="simopt" default="$(find-pkg-share kyon_mujoco)/config/options.xml"/>
   <arg name="sensors_file" default="$(find-pkg-share kyon_mujoco)/config/sensors.xml"/>
   <arg name="sites" default="$(find-pkg-share kyon_mujoco)/config/sites.xml"/>

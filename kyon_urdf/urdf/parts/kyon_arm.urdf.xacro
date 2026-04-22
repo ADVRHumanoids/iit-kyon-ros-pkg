@@ -161,9 +161,7 @@
 	<limit lower="${j_wrist_yaw_lower[arm_num-1]}" upper="${j_wrist_yaw_upper[arm_num-1]}" effort="${motorD_effort}" velocity="${motorD_velocity}"/>
 </joint>
 
-<xacro:if value="${ADD_DAGANA}">	
-	<xacro:kyon_dagana arm_num="${arm_num}" parent="wrist_yaw_${arm_num}_link"/>
-</xacro:if>
+<xacro:kyon_dagana arm_num="${arm_num}" parent="wrist_yaw_${arm_num}_link"/>
 
 </xacro:macro>
 <!-- /macro arms -->
