@@ -63,7 +63,8 @@
             args="
              /hesai_lidar/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
              /hesai_lidar@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan
-             /hesai_jt128/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
+             /hesai_jt128_front/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
+             /hesai_jt128_back/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
              /clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock 
              /zed_front_up/image@sensor_msgs/msg/Image[gz.msgs.Image
              /zed_front_up/depth_image@sensor_msgs/msg/Image[gz.msgs.Image

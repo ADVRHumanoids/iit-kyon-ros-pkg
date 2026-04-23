@@ -1033,7 +1033,7 @@
 			<origin xyz="0.0 0.0 0.0" rpy="0 0 0"></origin>
 		</collision>
 	</link>
-	<link name="hesai_jt128_link">
+	<link name="hesai_jt128_front_link">
 		<inertial>
 			<mass value="0.2"></mass>
 			<origin rpy="0 0 0" xyz="0 0 0"></origin>
@@ -1046,6 +1046,32 @@
 			</geometry>
 			<material name="dark_grey"></material>
 		</visual>
+		<collision>
+			<geometry>
+				<sphere radius="0.05"></sphere>
+			</geometry>
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0"></origin>
+		</collision>
+	</link>
+		<link name="hesai_jt128_back_link">
+		<inertial>
+			<mass value="0.2"></mass>
+			<origin rpy="0 0 0" xyz="0 0 0"></origin>
+			<inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"></inertia>
+		</inertial>
+		<visual>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"></origin>
+			<geometry>
+				<mesh filename="package://hesai_jt128_gz_sim_plugin/meshes/hesai_jt128.stl" scale="0.0001 0.0001 0.0001"></mesh>
+			</geometry>
+			<material name="dark_grey"></material>
+		</visual>
+		<collision>
+			<geometry>
+				<sphere radius="0.05"></sphere>
+			</geometry>
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0"></origin>
+		</collision>
 	</link>
 	<link name="world"></link>
 	<joint name="base_joint" type="fixed">
@@ -1281,10 +1307,15 @@
 		<child link="contact_4"></child>
 		<origin rpy="1.57 0 2.356" xyz="-0.0 -0.312 0.024"></origin>
 	</joint>
-	<joint name="hesai_jt128_joint" type="fixed">
+	<joint name="hesai_jt128_front_joint" type="fixed">
 		<origin rpy="3.14159265359 0 0" xyz="0.43 0 -0.118"></origin>
 		<parent link="pelvis"></parent>
-		<child link="hesai_jt128_link"></child>
+		<child link="hesai_jt128_front_link"></child>
+	</joint>
+	<joint name="hesai_jt128_back_joint" type="fixed">
+		<origin rpy="3.14159265359 0 0" xyz="-0.43 0 -0.118"></origin>
+		<parent link="pelvis"></parent>
+		<child link="hesai_jt128_back_link"></child>
 	</joint>
 	<joint name="reference" type="floating">
 		<parent link="world"></parent>
