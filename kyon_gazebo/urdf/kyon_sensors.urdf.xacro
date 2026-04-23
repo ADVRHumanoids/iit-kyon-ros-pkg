@@ -13,15 +13,51 @@
     </gazebo>
 
     <xacro:if value="${ADD_HESAI_JT128}">
-        <gazebo reference="hesai_jt128_joint">
+        <gazebo reference="hesai_jt128_front_joint">
             <preserveFixedJoint>true</preserveFixedJoint>
         </gazebo>
 
-        <gazebo reference="hesai_jt128_link">
-            <sensor name="hesai_jt128_gpu_lidar" type="gpu_lidar">
-                <gz_frame_id>hesai_jt128_link</gz_frame_id>
+        <gazebo reference="hesai_jt128_front_link">
+            <sensor name="hesai_jt128_gpu_lidar_front" type="gpu_lidar">
+                <gz_frame_id>hesai_jt128_front_link</gz_frame_id>
                 <pose>0 0 0 0 0 0</pose>
-                <topic>/hesai_jt128</topic>
+                <topic>/hesai_jt128_front</topic>
+                <update_rate>20</update_rate>
+                <ray>
+                    <scan>
+                        <horizontal>
+                            <samples>1800</samples>
+                            <resolution>1</resolution>
+                            <min_angle>-3.14159265359</min_angle>
+                            <max_angle>3.14159265359</max_angle>
+                        </horizontal>
+                        <vertical>
+                            <samples>128</samples>
+                            <resolution>1</resolution>
+                            <min_angle>-1.64933614313</min_angle>
+                            <max_angle>1.64933614313</max_angle>
+                        </vertical>
+                    </scan>
+                    <range>
+                        <min>0.05</min>
+                        <max>40.0</max>
+                        <resolution>0.01</resolution>
+                    </range>
+                </ray>
+                <always_on>true</always_on>
+                <visualize>true</visualize>
+            </sensor>   
+        </gazebo>
+
+        <gazebo reference="hesai_jt128_back_joint">
+            <preserveFixedJoint>true</preserveFixedJoint>
+        </gazebo>
+
+        <gazebo reference="hesai_jt128_back_link">
+            <sensor name="hesai_jt128_gpu_lidar_back" type="gpu_lidar">
+                <gz_frame_id>hesai_jt128_back_link</gz_frame_id>
+                <pose>0 0 0 0 0 0</pose>
+                <topic>/hesai_jt128_back</topic>
                 <update_rate>20</update_rate>
                 <ray>
                     <scan>

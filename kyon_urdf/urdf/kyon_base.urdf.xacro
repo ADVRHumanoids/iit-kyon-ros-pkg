@@ -140,7 +140,7 @@
 
 <!-- Hesai JT128 -->
 <xacro:if value="${ADD_HESAI_JT128}">
-    <link name="hesai_jt128_link">
+    <link name="hesai_jt128_front_link">
         <inertial>
         <mass value="0.2"/>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -157,10 +157,33 @@
         </visual>
     </link>
 
-    <joint name="hesai_jt128_joint" type="fixed">
+    <joint name="hesai_jt128_front_joint" type="fixed">
         <origin xyz="0.43 0 -0.118" rpy="${PI} 0 0" />
         <parent link="pelvis"/>
-        <child link="hesai_jt128_link"/>
+        <child link="hesai_jt128_front_link"/>
+    </joint>
+
+    <link name="hesai_jt128_back_link">
+        <inertial>
+        <mass value="0.2"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="0.001" ixy="0" ixz="0"
+                iyy="0.001" iyz="0"
+                izz="0.001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://kyon_urdf/meshes/hesai_jt128.stl" scale="0.0001 0.0001 0.0001"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </visual>
+    </link>
+
+    <joint name="hesai_jt128_back_joint" type="fixed">
+        <origin xyz="-0.43 0 -0.118" rpy="${PI} 0 0" />
+        <parent link="pelvis"/>
+        <child link="hesai_jt128_back_link"/>
     </joint>
 </xacro:if>
 
