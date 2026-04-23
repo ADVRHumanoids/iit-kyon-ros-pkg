@@ -61,19 +61,6 @@ xbotcore_plugins:
         autostart: true
 
 
-    
-    # Used for Horizon 
-    # ros_io: {thread: nrt_main, type: ros2_io, params: {joint_state_queue_depth: {type: int, value: 1}}}
-
-    # ros_control: {thread: nrt_main, type: ros2_control, params: {autostart: {type: bool, value: true}, command_queue_depth: {type: int, value: 1}}}
-    
-    zmq_io:
-        thread: nrt_main
-        type: zmq_io
-        params:
-            autostart: true
-
-
 # global parameters
 xbotcore_param:
     /jm/tx_filter_autostart: {value: true, type: bool}
