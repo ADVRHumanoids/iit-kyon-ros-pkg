@@ -17,7 +17,7 @@
         </geometry>
         <material name="dark_grey"/>
     </visual>
-    <collision>
+    <!-- <collision>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
             <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-base-simplified.stl" scale="0.001 0.001 0.001"/>
@@ -28,7 +28,7 @@
         <geometry>
             <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-base-base-simplified.stl" scale="0.001 0.001 0.001"/>
         </geometry>
-    </collision>
+    </collision> -->
 </link>
 
 <link name="dagana_${arm_num}_claw">
@@ -44,7 +44,7 @@
         </geometry>
         <material name="dark_grey"/>
     </visual>
-    <collision>
+    <!-- <collision>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
             <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-clamp-base-simplified.stl" scale="0.001 0.001 0.001"/>
@@ -55,7 +55,7 @@
         <geometry>
             <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-clamp-simplified.stl" scale="0.001 0.001 0.001"/>
         </geometry>
-    </collision>
+    </collision> -->
 </link>
 
 <joint name="dagana_${arm_num}_base_joint" type="fixed">

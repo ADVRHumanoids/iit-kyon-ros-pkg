@@ -108,22 +108,6 @@
 	<child link="hesai_lidar"/>
 </joint>
 
-<xacro:if value="${ADD_VELODYNE}">
-    <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
-    <xacro:VLP-16 parent="pelvis" name="velodyne" topic="/velodyne_points" hz="10" samples="440">
-        <origin xyz="0.43 0 0.118" rpy="0 0 0.5220063" />
-    </xacro:VLP-16>
-</xacro:if>
-
-
-<!-- Velodyne -->
-<xacro:if value="${ADD_VELODYNE}">
-    <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
-    <xacro:VLP-16 parent="pelvis" name="velodyne">
-        <origin xyz="0.47 0 0.11" rpy="0 0 0" />
-    </xacro:VLP-16>
-</xacro:if>
-
 <xacro:if value="${ADD_UPPER_BODY}">
     <xacro:include filename="$(find kyon_urdf)/urdf/parts/arms.urdf.xacro" />
 </xacro:if>
@@ -152,6 +136,55 @@
 		<parent link="pelvis"/>
 		<child link="payload_pelvis"/>
 	</joint>
+</xacro:if>
+
+<!-- Hesai JT128 -->
+<xacro:if value="${ADD_HESAI_JT128}">
+    <link name="hesai_jt128_front_link">
+        <inertial>
+        <mass value="0.2"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="0.001" ixy="0" ixz="0"
+                iyy="0.001" iyz="0"
+                izz="0.001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://kyon_urdf/meshes/hesai_jt128.stl" scale="0.0001 0.0001 0.0001"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </visual>
+    </link>
+
+    <joint name="hesai_jt128_front_joint" type="fixed">
+        <origin xyz="0.43 0 -0.118" rpy="${PI} 0 0" />
+        <parent link="pelvis"/>
+        <child link="hesai_jt128_front_link"/>
+    </joint>
+
+    <link name="hesai_jt128_back_link">
+        <inertial>
+        <mass value="0.2"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="0.001" ixy="0" ixz="0"
+                iyy="0.001" iyz="0"
+                izz="0.001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://kyon_urdf/meshes/hesai_jt128.stl" scale="0.0001 0.0001 0.0001"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </visual>
+    </link>
+
+    <joint name="hesai_jt128_back_joint" type="fixed">
+        <origin xyz="-0.43 0 -0.118" rpy="${PI} 0 0" />
+        <parent link="pelvis"/>
+        <child link="hesai_jt128_back_link"/>
+    </joint>
 </xacro:if>
 
 </robot>
