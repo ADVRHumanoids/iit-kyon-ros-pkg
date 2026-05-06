@@ -56,7 +56,7 @@
     <xacro:property name="HipPitch_xx" value="${1.2144025e+05 * mm2Tom2}"/>
     <xacro:property name="HipPitch_xy" value="${-6.4677573e+02 * mm2Tom2}"/>
     <xacro:property name="HipPitch_xz" value="${-5.7668584e+01 * mm2Tom2}"/>
-    <xacro:property name="HipPitch_yy" value="${2.7586781e+04 * mm2Tom2}"/>
+    <xacro:property name="HipPitch_yy" value="${3.3682020e+04 * mm2Tom2}"/>
     <xacro:property name="HipPitch_yz" value="${2.7586781e+04 * mm2Tom2}"/>
     <xacro:property name="HipPitch_zz" value="${1.0048465e+05 * mm2Tom2}"/>
 
@@ -211,7 +211,7 @@
     <xacro:property name="WristYaw_xy" value="${-6.2563895e-01 * mm2Tom2}"/>
     <xacro:property name="WristYaw_xz" value="${-1.2366562e-01 * mm2Tom2}"/>
     <xacro:property name="WristYaw_yy" value="${7.7918818e+01 * mm2Tom2}"/>
-    <xacro:property name="WristYaw_yz" value="${--8.8392181e-01 * mm2Tom2}"/>
+    <xacro:property name="WristYaw_yz" value="${-8.8392181e-01 * mm2Tom2}"/>
     <xacro:property name="WristYaw_zz" value="${1.2246055e+02 * mm2Tom2}"/>
 
     <!-- Dagana -->
