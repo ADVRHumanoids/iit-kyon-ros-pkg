@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<mujoco model="terrain_grid">
+  <compiler angle="radian"/>
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1=".3 .5 .7" rgb2="0 0 0" width="512" height="512"/>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2"/>
+    <texture name="box_texture" type="2d" builtin="checker" width="512" height="512" rgb1=".8 .8 0" rgb2=".6 .6 0"/>
+    <material name="box_material" texture="box_texture"/>
+    <hfield name="hfield_0" file="/home/alaurenzi/code/ros2_ws/src/iit-kyon-ros-pkg/kyon_mujoco/src/test_terrain_assets/heightfield_0.png" size="2.5 2.5 0.1 0.01"/>
+  </asset>
+  <worldbody>
+    <geom name="flat_terrain_0" type="plane" size="2.5 2.5 0.05" pos="-2.5 -2.5 -1.0" material="grid" friction="0.6" condim="3"/>
+    <geom name="heightfield_terrain_1" type="hfield" hfield="hfield_0" pos="2.5 -2.5 -1.0" friction="0.6" condim="3"/>
+    <geom name="pyramid_base_2" type="plane" size="2.5 2.5 0.01" pos="-2.5 2.5 -1.0" material="grid" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_0" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-4.318181818181818 0.6818181818181819 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_1" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-4.318181818181818 1.5909090909090908 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_2" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-4.318181818181818 2.5 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_3" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-4.318181818181818 3.409090909090909 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_4" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-4.318181818181818 4.318181818181818 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_5" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-3.409090909090909 0.6818181818181819 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_6" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-3.409090909090909 1.5909090909090908 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_7" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-3.409090909090909 2.5 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_8" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-3.409090909090909 3.409090909090909 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_9" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-3.409090909090909 4.318181818181818 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_10" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-2.5 0.6818181818181819 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_11" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-2.5 1.5909090909090908 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_12" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-2.5 2.5 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_13" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-2.5 3.409090909090909 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_14" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-2.5 4.318181818181818 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_15" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-1.5909090909090913 0.6818181818181819 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_16" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-1.5909090909090913 1.5909090909090908 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_17" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-1.5909090909090913 2.5 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_18" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-1.5909090909090913 3.409090909090909 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_19" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-1.5909090909090913 4.318181818181818 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_20" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-0.6818181818181821 0.6818181818181819 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_21" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-0.6818181818181821 1.5909090909090908 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_22" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-0.6818181818181821 2.5 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_23" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-0.6818181818181821 3.409090909090909 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_24" type="box" size="0.45454545454545453 0.45454545454545453 0.05" pos="-0.6818181818181821 4.318181818181818 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_25" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-3.8636363636363633 1.1363636363636365 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_26" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-3.8636363636363633 2.0454545454545454 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_27" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-3.8636363636363633 2.9545454545454546 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_28" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-3.8636363636363633 3.8636363636363633 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_29" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-2.954545454545454 1.1363636363636365 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_30" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-2.954545454545454 2.0454545454545454 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_31" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-2.954545454545454 2.9545454545454546 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_32" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-2.954545454545454 3.8636363636363633 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_33" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-2.045454545454545 1.1363636363636365 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_34" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-2.045454545454545 2.0454545454545454 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_35" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-2.045454545454545 2.9545454545454546 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_36" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-2.045454545454545 3.8636363636363633 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_37" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-1.1363636363636362 1.1363636363636365 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_38" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-1.1363636363636362 2.0454545454545454 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_39" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-1.1363636363636362 2.9545454545454546 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_40" type="box" size="0.45454545454545453 0.45454545454545453 0.1" pos="-1.1363636363636362 3.8636363636363633 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_41" type="box" size="0.45454545454545453 0.45454545454545453 0.15000000000000002" pos="-3.409090909090909 1.5909090909090908 -0.85" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_42" type="box" size="0.45454545454545453 0.45454545454545453 0.15000000000000002" pos="-3.409090909090909 2.5 -0.85" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_43" type="box" size="0.45454545454545453 0.45454545454545453 0.15000000000000002" pos="-3.409090909090909 3.409090909090909 -0.85" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_44" type="box" size="0.45454545454545453 0.45454545454545453 0.15000000000000002" pos="-2.5 1.5909090909090908 -0.85" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_45" type="box" size="0.45454545454545453 0.45454545454545453 0.15000000000000002" pos="-2.5 2.5 -0.85" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_46" type="box" size="0.45454545454545453 0.45454545454545453 0.15000000000000002" pos="-2.5 3.409090909090909 -0.85" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_47" type="box" size="0.45454545454545453 0.45454545454545453 0.15000000000000002" pos="-1.590909090909091 1.5909090909090908 -0.85" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_48" type="box" size="0.45454545454545453 0.45454545454545453 0.15000000000000002" pos="-1.590909090909091 2.5 -0.85" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_49" type="box" size="0.45454545454545453 0.45454545454545453 0.15000000000000002" pos="-1.590909090909091 3.409090909090909 -0.85" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_50" type="box" size="0.45454545454545453 0.45454545454545453 0.2" pos="-2.9545454545454546 2.0454545454545454 -0.8" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_51" type="box" size="0.45454545454545453 0.45454545454545453 0.2" pos="-2.9545454545454546 2.9545454545454546 -0.8" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_52" type="box" size="0.45454545454545453 0.45454545454545453 0.2" pos="-2.0454545454545454 2.0454545454545454 -0.8" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_53" type="box" size="0.45454545454545453 0.45454545454545453 0.2" pos="-2.0454545454545454 2.9545454545454546 -0.8" material="box_material" friction="0.6" condim="3"/>
+    <geom name="pyramid_2_box_54" type="box" size="0.45454545454545453 0.45454545454545453 0.25" pos="-2.5 2.5 -0.75" material="box_material" friction="0.6" condim="3"/>
+    <geom name="stairs_base_3" type="plane" size="2.5 2.5 0.01" pos="2.5 2.5 -1.0" material="grid" friction="0.6" condim="3"/>
+    <geom name="stairs_3_step_0" type="box" size="0.2 2.0 0.05" pos="1.0999999999999999 2.5 -0.95" material="box_material" friction="0.6" condim="3"/>
+    <geom name="stairs_3_step_1" type="box" size="0.2 2.0 0.1" pos="1.5 2.5 -0.9" material="box_material" friction="0.6" condim="3"/>
+    <geom name="stairs_3_step_2" type="box" size="0.2 2.0 0.15000000000000002" pos="1.9 2.5 -0.85" material="box_material" friction="0.6" condim="3"/>
+    <geom name="stairs_3_step_3" type="box" size="0.2 2.0 0.2" pos="2.3 2.5 -0.8" material="box_material" friction="0.6" condim="3"/>
+    <geom name="stairs_3_step_4" type="box" size="0.2 2.0 0.25" pos="2.7 2.5 -0.75" material="box_material" friction="0.6" condim="3"/>
+    <geom name="stairs_3_step_5" type="box" size="0.2 2.0 0.30000000000000004" pos="3.0999999999999996 2.5 -0.7" material="box_material" friction="0.6" condim="3"/>
+    <geom name="stairs_3_step_6" type="box" size="0.2 2.0 0.35000000000000003" pos="3.5 2.5 -0.6499999999999999" material="box_material" friction="0.6" condim="3"/>
+    <geom name="stairs_3_step_7" type="box" size="0.2 2.0 0.4" pos="3.9000000000000004 2.5 -0.6" material="box_material" friction="0.6" condim="3"/>
+  </worldbody>
+</mujoco>
