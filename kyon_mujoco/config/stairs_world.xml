@@ -10,7 +10,7 @@
 
     <default>
         <default class="kyon_all">
-            <joint damping="1.7" armature="0.215" frictionloss="5"/>
+            <joint armature="0.234" frictionloss="4.68" damping="1.7"/>
             <geom condim="3" solref="0.005 1.2" solimp="0.995 0.995 0.001 0.5 2" friction="0.7 0.005 0.001"/>
             <!-- <geom condim="3" solref="0.005 1.2" solimp="0.995 0.995 0.001 0.5 2" friction="0.8"/> -->
         </default>
