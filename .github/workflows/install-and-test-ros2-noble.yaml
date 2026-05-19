@@ -1,0 +1,20 @@
+name: Install and Test (Noble-ROS2)
+
+on:
+  push:
+    branches: [ "hesai_jt128" ]
+  pull_request:
+    branches: [ "hesai_jt128" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 
+    - name: Build the Docker image and start the container
+      run: docker compose up -d
+      working-directory: ./docker/noble-ros2
+    - name: Test robot spawn on MuJoCo
+      run: docker compose exec xvfb-run ros2 launch kyon_mujoco kyon_world.launch.py
