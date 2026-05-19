@@ -6,6 +6,7 @@ sudo chown user:user ~/test_ws ~/test_ws/src
 
 # rebuild the mounted packages (deps are already built in the Docker image)
 cd ~/test_ws
+source ~/env/bin/activate
 source /opt/ros/jazzy/setup.bash
 source setup.bash
 
