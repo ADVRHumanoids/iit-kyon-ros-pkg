@@ -6,53 +6,101 @@
         <gazebo reference="hip_roll_1">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
+            <dynamics>
+                <damping>1.7</damping>
+                <friction>5</friction>
+            </dynamics>
         </gazebo>
         <gazebo reference="hip_pitch_1">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
+            <dynamics>
+                <damping>1.7</damping>
+                <friction>5</friction>
+            </dynamics>
         </gazebo>
         <gazebo reference="knee_pitch_1">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
+            <dynamics>
+                <damping>1.7</damping>
+                <friction>5</friction>
+            </dynamics>
         </gazebo>
 
         <gazebo reference="hip_roll_2">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
+            <dynamics>
+                <damping>1.7</damping>
+                <friction>5</friction>
+            </dynamics>
         </gazebo>
         <gazebo reference="hip_pitch_2">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
+            <dynamics>
+                <damping>1.7</damping>
+                <friction>5</friction>
+            </dynamics>
         </gazebo>
         <gazebo reference="knee_pitch_2">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
+            <dynamics>
+                <damping>1.7</damping>
+                <friction>5</friction>
+            </dynamics>
         </gazebo>
 
         <gazebo reference="hip_roll_3">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
+            <dynamics>
+                <damping>1.7</damping>
+                <friction>5</friction>
+            </dynamics>
         </gazebo>
         <gazebo reference="hip_pitch_3">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
+            <dynamics>
+                <damping>1.7</damping>
+                <friction>5</friction>
+            </dynamics>
         </gazebo>
         <gazebo reference="knee_pitch_3">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
+            <dynamics>
+                <damping>1.7</damping>
+                <friction>5</friction>
+            </dynamics>
         </gazebo>
 
         <gazebo reference="hip_roll_4">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
+            <dynamics>
+                <damping>1.7</damping>
+                <friction>5</friction>
+            </dynamics>
         </gazebo>
         <gazebo reference="hip_pitch_4">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
+            <dynamics>
+                <damping>1.7</damping>
+                <friction>5</friction>
+            </dynamics>
         </gazebo>
         <gazebo reference="knee_pitch_4">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>
+            <dynamics>
+                <damping>1.7</damping>
+                <friction>5</friction>
+            </dynamics>
         </gazebo>
         
         <gazebo reference="knee_pitch_1_link">
