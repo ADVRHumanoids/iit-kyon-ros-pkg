@@ -27,6 +27,7 @@ forest add-recipes git@github.com:advrhumanoids/multidof_recipes.git -t ros2
 # build
 export PYTHONUNBUFFERED=1
 forest grow iit-kyon-ros-pkg --verbose --clone-depth 1 -j ${FOREST_JOBS:-1} --tag-override hesai_jt128
+forest grow xbot2_mujoco --verbose --clone-depth 1 -j ${FOREST_JOBS:-1}
 
 # build tests
 cd build/iit-kyon-ros-pkg
