@@ -17,5 +17,5 @@ RUN source ~/env/bin/activate && \
     forest init && \
     source /opt/ros/jazzy/setup.bash && source setup.bash && \
     forest add-recipes https://github.com/advrhumanoids/multidof_recipes.git -t ros2 && \
-    forest grow iit-kyon-ros-pkg --clone-depth 1 -j4 --tag-override hesai_jt128 && \
-    forest grow xbot2_mujoco --clone-depth 1 -j4
+    forest grow xbot2_mujoco --clone-depth 1 -j4 \
+    forest grow iit-kyon-ros-pkg && \
