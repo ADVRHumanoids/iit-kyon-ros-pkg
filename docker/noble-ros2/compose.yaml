@@ -1,6 +1,7 @@
 services:
   dev:
     build: .
+    image: iit-kyon-ros-pkg-test:latest
     stdin_open: true
     tty: true 
     entrypoint: /bin/bash
