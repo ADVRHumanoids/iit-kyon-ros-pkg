@@ -56,5 +56,5 @@ jobs:
       working-directory: ./docker/noble-ros2
 
     - name: Test robot spawn on MuJoCo
-      run: docker compose exec dev xvfb-run ros2 launch kyon_mujoco kyon_world.launch.py
+      run: docker compose exec dev ./scripts/test.bash
       working-directory: ./docker/noble-ros2
