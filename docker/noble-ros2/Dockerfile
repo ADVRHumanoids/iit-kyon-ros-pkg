@@ -3,6 +3,7 @@ FROM hhcmhub/xbot2-noble-dev
 SHELL ["/bin/bash", "-c"]
 
 # Install headless display support
+USER root
 RUN apt-get update && apt-get install -y xvfb && rm -rf /var/lib/apt/lists/*
 
 USER user
