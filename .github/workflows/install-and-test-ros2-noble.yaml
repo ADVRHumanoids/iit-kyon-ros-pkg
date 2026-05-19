@@ -32,8 +32,10 @@ jobs:
       with:
         context: ./docker/noble-ros2
         load: true
-        tags: iit-kyon-ros-pkg-test:latest        secrets: |
-          gh_token=${{ secrets.TOKEN }}        cache-from: type=registry,ref=ghcr.io/iit-kyon-ros-pkg-test/ci-noble:cache
+        tags: iit-kyon-ros-pkg-test:latest
+        secrets: |
+          gh_token=${{ secrets.TOKEN }}
+        cache-from: type=registry,ref=ghcr.io/iit-kyon-ros-pkg-test/ci-noble:cache
         cache-to: type=registry,ref=ghcr.io/iit-kyon-ros-pkg-test/ci-noble:cache,mode=max
 
     - name: Start the container
