@@ -16,5 +16,8 @@ jobs:
     - name: Build the Docker image and start the container
       run: docker compose up -d
       working-directory: ./docker/noble-ros2
+    - name: Compile the library
+      run: docker compose exec dev ./scripts/build.bash
+      working-directory: ./docker/noble-ros2
     - name: Test robot spawn on MuJoCo
-      run: docker compose exec xvfb-run ros2 launch kyon_mujoco kyon_world.launch.py
+      run: docker compose exec dev xvfb-run ros2 launch kyon_mujoco kyon_world.launch.py
