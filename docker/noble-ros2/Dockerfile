@@ -11,8 +11,12 @@ WORKDIR /home/user
 
 # Pre-build all dependencies.
 # This layer is cached in the registry and only rebuilt when this block changes.
-RUN source ~/env/bin/activate && \
+# Credentials are injected via --secret and never stored in the image.
+RUN --mount=type=secret,id=gh_token,uid=1000 \
+    source ~/env/bin/activate && \
     export HHCM_FOREST_CLONE_DEFAULT_PROTO=https && \
+    GH_TOKEN=$(cat /run/secrets/gh_token) && \
+    git config --global url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf "https://github.com/" && \
     mkdir -p ~/test_ws && cd ~/test_ws && \
     forest init && \
     source /opt/ros/jazzy/setup.bash && source setup.bash && \
