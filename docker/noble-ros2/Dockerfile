@@ -11,7 +11,8 @@ WORKDIR /home/user
 
 # Pre-build all dependencies.
 # This layer is cached in the registry and only rebuilt when this block changes.
-RUN export HHCM_FOREST_CLONE_DEFAULT_PROTO=https && \
+RUN source ~/env/bin/activate && \
+    export HHCM_FOREST_CLONE_DEFAULT_PROTO=https && \
     mkdir -p ~/test_ws && cd ~/test_ws && \
     forest init && \
     source /opt/ros/jazzy/setup.bash && source setup.bash && \
