@@ -33,8 +33,8 @@ jobs:
         context: ./docker/noble-ros2
         load: true
         tags: kyon-mujoco-ci:latest
-        cache-from: type=registry,ref=ghcr.io/${{ github.repository }}/ci-noble:cache
-        cache-to: type=registry,ref=ghcr.io/${{ github.repository }}/ci-noble:cache,mode=max
+        cache-from: type=registry,ref=ghcr.io/iit-kyon-ros-pkg-test/ci-noble:cache
+        cache-to: type=registry,ref=ghcr.io/iit-kyon-ros-pkg-test/ci-noble:cache,mode=max
 
     - name: Start the container
       run: docker compose up --no-build -d

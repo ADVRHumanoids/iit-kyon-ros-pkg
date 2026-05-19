@@ -1,30 +1,15 @@
 #!/bin/bash
 set -e
 
-# install missing dep for headless run of simulators
-sudo apt install xvfb -y
-
 # chown to user (needed after mounting volumes)
 sudo chown user:user ~/test_ws ~/test_ws/src
 
-# pip deps
-source env/bin/activate
-
-# make forest https
-export HHCM_FOREST_CLONE_DEFAULT_PROTO=https
-
-# create ws and source it
-mkdir -p ~/test_ws && cd ~/test_ws
-forest init
-
-# setup env
+# rebuild the mounted packages (deps are already built in the Docker image)
+cd ~/test_ws
 source /opt/ros/jazzy/setup.bash
 source setup.bash
 
-# add recipes
-forest add-recipes git@github.com:advrhumanoids/multidof_recipes.git -t ros2
-
-# build
+export HHCM_FOREST_CLONE_DEFAULT_PROTO=https
 export PYTHONUNBUFFERED=1
 forest grow iit-kyon-ros-pkg --verbose --clone-depth 1 -j ${FOREST_JOBS:-1} --tag-override hesai_jt128
 forest grow xbot2_mujoco --verbose --clone-depth 1 -j ${FOREST_JOBS:-1}
