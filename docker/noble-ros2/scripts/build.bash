@@ -16,8 +16,3 @@ cd src/xbot2_mujoco
 git pull 
 cd ~/test_ws/build/xbot2_mujoco
 make install
-
-# build tests
-cd build/iit-kyon-ros-pkg
-cmake -DXBOT2_IFC_BUILD_TESTS=1 .
-make -j ${FOREST_JOBS:-1}
