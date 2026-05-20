@@ -8,10 +8,10 @@ source ~/test_ws/setup.bash
 # Test with legs
 xvfb-run -a ros2 launch kyon_mujoco kyon_world.launch arms:=true wheels:=false&
 LAUNCH_MUJOCO=$!
-sleep 2
+sleep 5
 xbot2-core -C ~/test_ws/src/iit-kyon-ros-pkg/kyon_config/kyon_basic.yaml &
 LAUNCH_XBOT=$!
-sleep 2
+sleep 5
 python3 ~/test_ws/src/iit-kyon-ros-pkg/tests/test_comm_joints.py --arms true --wheels false
 LAUNCH_TEST=$!
 
@@ -27,10 +27,10 @@ pkill -f robot_description_publisher 2>/dev/null || true
 # Test with wheels
 xvfb-run -a ros2 launch kyon_mujoco kyon_world.launch arms:=true wheels:=true&
 LAUNCH_MUJOCO=$!
-sleep 2
+sleep 5
 xbot2-core -C ~/test_ws/src/iit-kyon-ros-pkg/kyon_config/kyon_basic.yaml &
 LAUNCH_XBOT=$!
-sleep 2
+sleep 5
 python3 ~/test_ws/src/iit-kyon-ros-pkg/tests/test_comm_joints.py --arms true --wheels true
 LAUNCH_TEST=$!
 
