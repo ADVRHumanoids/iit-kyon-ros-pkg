@@ -17,8 +17,13 @@ if kill -0 $LAUNCH_PID 2>/dev/null; then
     echo "Simulator ran successfully for 5 seconds."
     exit 0
 else
-    # Died before 5 s — failure
-    wait $LAUNCH_PID
-    echo "Simulator exited prematurely with code $?."
-    exit 1
+    # Exited before 5 s: success only if clean exit code (0)
+    if wait $LAUNCH_PID; then
+        echo "Simulator exited cleanly before 5 seconds."
+        exit 0
+    else
+        EXIT_CODE=$?
+        echo "Simulator exited prematurely with code $EXIT_CODE."
+        exit 1
+    fi
 fi
