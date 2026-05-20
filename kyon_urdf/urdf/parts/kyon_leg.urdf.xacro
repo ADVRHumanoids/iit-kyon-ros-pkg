@@ -89,7 +89,7 @@
 	<xacro:foot_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
 </xacro:unless>
 
-<xacro:if value="${ADD_WHEELS}">
+<xacro:if value="${ADD_WHEELS}"> 
 	<xacro:steering_wheel leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
 </xacro:if>
 
