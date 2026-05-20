@@ -2,9 +2,9 @@ name: Install and Test (Noble-ROS2)
 
 on:
   push:
-    branches: [ "hesai_jt128" ]
+    branches: [ "ros2" ]
   pull_request:
-    branches: [ "hesai_jt128" ]
+    branches: [ "ros2" ]
 
 jobs:
   build_mujoco:
