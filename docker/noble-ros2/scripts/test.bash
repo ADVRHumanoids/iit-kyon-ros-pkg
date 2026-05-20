@@ -21,6 +21,8 @@ kill $LAUNCH_TEST
 wait $LAUNCH_MUJOCO 2>/dev/null || true
 wait $LAUNCH_XBOT 2>/dev/null || true
 wait $LAUNCH_TEST 2>/dev/null || true
+# kill robot_description_publisher if it's still running (it can be left hanging after killing the main process)
+pkill -f robot_description_publisher 2>/dev/null || true
 
 # Test with wheels
 xvfb-run -a ros2 launch kyon_mujoco kyon_world.launch arms:=true wheels:=true&
@@ -38,3 +40,5 @@ kill $LAUNCH_TEST
 wait $LAUNCH_MUJOCO 2>/dev/null || true
 wait $LAUNCH_XBOT 2>/dev/null || true
 wait $LAUNCH_TEST 2>/dev/null || true
+# kill robot_description_publisher if it's still running (it can be left hanging after killing the main process)
+pkill -f robot_description_publisher 2>/dev/null || true
