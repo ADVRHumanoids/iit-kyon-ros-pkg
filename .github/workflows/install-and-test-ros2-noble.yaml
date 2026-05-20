@@ -56,5 +56,5 @@ jobs:
       working-directory: ./docker/noble-ros2
 
     - name: Test robot spawn on MuJoCo
-      run: docker compose exec dev ./scripts/test.bash
+      run: docker compose exec dev ./scripts/test_mujoco.bash
       working-directory: ./docker/noble-ros2
