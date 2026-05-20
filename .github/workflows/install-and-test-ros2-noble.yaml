@@ -58,3 +58,7 @@ jobs:
     - name: Test robot spawn on MuJoCo
       run: docker compose exec dev ./scripts/test_mujoco.bash
       working-directory: ./docker/noble-ros2
+
+    - name: Test robot spawn on gz-sim
+      run: docker compose exec dev ./scripts/test_gz-sim.bash
+      working-directory: ./docker/noble-ros2
