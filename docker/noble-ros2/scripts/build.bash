@@ -6,10 +6,10 @@ sudo chown user:user ~/test_ws ~/test_ws/src
 
 # rebuild the mounted packages (deps are already built in the Docker image)
 cd ~/test_ws
-forest grow iit-kyon-ros-pkg
 source ~/env/bin/activate
 source /opt/ros/jazzy/setup.bash
 source setup.bash
+forest grow iit-kyon-ros-pkg
 
 export HHCM_FOREST_CLONE_DEFAULT_PROTO=https
 export PYTHONUNBUFFERED=1
