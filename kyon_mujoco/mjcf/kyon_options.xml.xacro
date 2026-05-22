@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<mujoco xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <compiler angle="radian" />
+
+    <!--  integrators: [Euler, RK4, implicit, implicitfast] -->
+    <option integrator="Euler"
+        timestep="0.001"
+        iterations="100"
+    />
+    <size njmax="1000" nconmax="200" />
+
+    <!-- contact filtering -->
+    <contact>
+        <exclude name="upper_leg_1_exclude" body1="pelvis" body2="hip_pitch_1_link" />
+        <exclude name="upper_leg_2_exclude" body1="pelvis" body2="hip_pitch_2_link" />
+        <exclude name="upper_leg_3_exclude" body1="pelvis" body2="hip_pitch_3_link" />
+        <exclude name="upper_leg_4_exclude" body1="pelvis" body2="hip_pitch_4_link" />
+        <exclude name="hip_roll_1_exclude" body1="pelvis" body2="hip_roll_1_link" />
+        <exclude name="hip_roll_2_exclude" body1="pelvis" body2="hip_roll_2_link" />
+        <exclude name="hip_roll_3_exclude" body1="pelvis" body2="hip_roll_3_link" />
+        <exclude name="hip_roll_4_exclude" body1="pelvis" body2="hip_roll_4_link" />
+    </contact>
+
+    <!-- class definitions -->
+    <default>
+        <default class="kyon_arm">
+            <joint armature="0.4" damping="3.0" frictionloss="5.0" />
+            <position kp="200" kv="10" inheritrange="1.0" />
+        </default>
+        <default class="kyon_leg">
+            <joint armature="0.25" damping="1.8" frictionloss="5.0" />
+            <position kp="1000" kv="40" inheritrange="1.0" />
+        </default>
+        <default class="kyon_ankle">
+            <joint armature="0.4" damping="3.0" frictionloss="5.0" />
+            <position kp="300" kv="30" inheritrange="1.0" />
+        </default>
+        <default class="kyon_wheel">
+            <joint damping="0.01" armature="0.1" frictionloss="0.01" />
+            <position kp="0" kv="30" inheritrange="1.0" />
+        </default>
+        <default class="kyon_dagana">
+            <joint armature="0.4" damping="3.0" frictionloss="5.0" />
+            <position kp="50" kv="5" inheritrange="1.0" />
+        </default>
+    </default>
+
+    <!-- sensors -->
+    <sensor>
+        <accelerometer name="imu_link_acc" site="imu_link" />
+        <gyro name="imu_link_gyro" site="imu_link" />
+    </sensor>
+
+    <!-- substitutions -->
+    <reference element="body" name="imu_link">
+        <site name="imu_link" />
+    </reference>
+
+    <reference element="body" name="pelvis">
+        <site name="pelvis" />
+    </reference>
+
+    <!-- childclass assignments (for default friction, actuator gains, ...) -->
+    <xacro:if value="${ADD_UPPER_BODY}">
+        <setattribute element="body" name="shoulder_yaw_1_link">
+            <attribute name="childclass" value="kyon_arm" />
+        </setattribute>
+        <setattribute element="body" name="shoulder_yaw_2_link">
+            <attribute name="childclass" value="kyon_arm" />
+        </setattribute>
+    </xacro:if>
+
+    <setattribute element="body" name="hip_roll_1_link">
+        <attribute name="childclass" value="kyon_leg" />
+    </setattribute>
+    <setattribute element="body" name="hip_roll_2_link">
+        <attribute name="childclass" value="kyon_leg" />
+    </setattribute>
+    <setattribute element="body" name="hip_roll_3_link">
+        <attribute name="childclass" value="kyon_leg" />
+    </setattribute>
+    <setattribute element="body" name="hip_roll_4_link">
+        <attribute name="childclass" value="kyon_leg" />
+    </setattribute>
+
+    <xacro:if value="${ADD_WHEELS}">
+        <setattribute element="body" name="ankle_yaw_1_link">
+            <attribute name="childclass" value="kyon_ankle" />
+        </setattribute>
+        <setattribute element="body" name="ankle_yaw_2_link">
+            <attribute name="childclass" value="kyon_ankle" />
+        </setattribute>
+        <setattribute element="body" name="ankle_yaw_3_link">
+            <attribute name="childclass" value="kyon_ankle" />
+        </setattribute>
+        <setattribute element="body" name="ankle_yaw_4_link">
+            <attribute name="childclass" value="kyon_ankle" />
+        </setattribute>
+
+        <setattribute element="body" name="wheel_1">
+            <attribute name="childclass" value="kyon_wheel" />
+        </setattribute>
+        <setattribute element="body" name="wheel_2">
+            <attribute name="childclass" value="kyon_wheel" />
+        </setattribute>
+        <setattribute element="body" name="wheel_3">
+            <attribute name="childclass" value="kyon_wheel" />
+        </setattribute>
+        <setattribute element="body" name="wheel_4">
+            <attribute name="childclass" value="kyon_wheel" />
+        </setattribute>
+    </xacro:if>
+
+
+    <!-- initial configuration -->
+    <q_init>
+        <joint name="hip_roll_1" value="0.15" />
+        <joint name="hip_pitch_1" value="-0.7" />
+        <joint name="knee_pitch_1" value="1.4" />
+        <joint name="hip_roll_2" value="-0.15" />
+        <joint name="hip_pitch_2" value="0.7" />
+        <joint name="knee_pitch_2" value="-1.4" />
+        <joint name="hip_roll_3" value="-0.15" />
+        <joint name="hip_pitch_3" value="-0.7" />
+        <joint name="knee_pitch_3" value="1.4" />
+        <joint name="hip_roll_4" value="0.15" />
+        <joint name="hip_pitch_4" value="0.7" />
+        <joint name="knee_pitch_4" value="-1.4" />
+        <joint name="ankle_yaw_1" value="0.0" />
+        <joint name="ankle_yaw_2" value="0.0" />
+        <joint name="ankle_yaw_3" value="0.0" />
+        <joint name="ankle_yaw_4" value="0.0" />
+        <joint name="shoulder_yaw_1" value="0.0" />
+        <joint name="shoulder_pitch_1" value="1.5" />
+        <joint name="elbow_pitch_1" value="2.5" />
+        <joint name="wrist_pitch_1" value="0.7" />
+        <joint name="wrist_yaw_1" value="0.0" />
+        <joint name="shoulder_yaw_2" value="0.0" />
+        <joint name="shoulder_pitch_2" value="-1.5" />
+        <joint name="elbow_pitch_2" value="-2.5" />
+        <joint name="wrist_pitch_2" value="-0.7" />
+        <joint name="wrist_yaw_2" value="0.0" />
+    </q_init>
+
+</mujoco>    

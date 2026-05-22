@@ -1,10 +1,3 @@
-# add sites (e.g. needed for sensors)
-sites:
-  - body: imu_link
-    site: imu_link
-  - body: pelvis
-    site: pelvis
-
 # assign childclass attribute to subtrees (e.g. for applying proper friction values to joints)
 childclass:
   shoulder_yaw_1_link: kyon_arm

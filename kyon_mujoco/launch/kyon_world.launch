@@ -1,46 +1,41 @@
 <launch>
 
-  <arg name="world" default="$(find-pkg-share kyon_mujoco)/config/world_pyramids.xml"/>
-  <arg name="simopt" default="$(find-pkg-share kyon_mujoco)/config/options.xml"/>
-  <arg name="sites" default="$(find-pkg-share kyon_mujoco)/config/sites.xml"/>
-  <arg name="sdf" default="$(find-pkg-share kyon_mujoco)/config/sdf.yaml"/>
-  <arg name="ctrlcfg" default="$(find-pkg-share kyon_mujoco)/config/kyon.yaml"/>
-  <arg name="urdf" default="$(find-pkg-share kyon_urdf)/urdf/kyon.urdf.xacro"/>
-  <arg name="srdf" default="$(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro"/>
+    <arg name="world" default="$(find-pkg-share kyon_mujoco)/world/world.xml" />
+    <arg name="urdf" default="$(find-pkg-share kyon_urdf)/urdf/kyon.urdf.xacro" />
+    <arg name="srdf" default="$(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro" />
 
-   <!-- kyon configuration parameters -->
-    <arg name="arms" default="false"/>
-    <arg name="legs" default="true"/>
-    <arg name="sensors" default="false"/>
-    <arg name="payload" default="false"/>
-    <arg name="dagana" default="false"/>
-    <arg name="feet" default="true"/>
-    <arg name="wheels" default="false"/>
-    <arg name="steering_wheels" default="false"/>
-    <arg name="varta" default="true"/>
-    <arg name="ft_sensors" default="true"/>
-    <arg name="velodyne" default="false"/>
+    <!-- kyon configuration parameters -->
+    <arg name="arms" default="true" />
+    <arg name="legs" default="true" />
+    <arg name="sensors" default="false" />
+    <arg name="payload" default="false" />
+    <arg name="dagana" default="false" />
+    <arg name="feet" default="true" />
+    <arg name="wheels" default="false" />
+    <arg name="steering_wheels" default="false" />
+    <arg name="varta" default="true" />
+    <arg name="ft_sensors" default="true" />
+    <arg name="velodyne" default="false" />
 
-  <!-- Load the URDF/SRDF into the ROS Parameter Server -->
-  <let name="urdf_command"
-      value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) varta:=$(var varta) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)"/>
+    <!-- Load the URDF/SRDF into the ROS Parameter Server -->
+    <let name="urdf_command"
+        value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) varta:=$(var varta) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)" />
 
-  <let name="urdf_string"
-      value="$(command '$(var urdf_command)' ignore)"/>
+    <let name="srdf_command"
+        value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)" />
 
-  <let name="srdf_command"
-      value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)"/>
+    <let name="cfg_xml_command"
+        value="xacro $(find-pkg-share kyon_mujoco)/mjcf/kyon_mujoco.xml.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) varta:=$(var varta) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)" />
 
-  <let name="srdf_string"
-      value="$(command '$(var srdf_command)' ignore)"/>
-
-  <node pkg="xbot2_ros" exec="robot_description_publisher" name="robot_description_publisher" output="screen">
-    <param name="robot_description" value="$(var urdf_string)" type="str"/>
-    <param name="robot_description_semantic" value="$(var srdf_string)" type="str"/>
-  </node>
-
-  <node pkg="kyon_mujoco" exec="simulator_wrapper.bash" name="kyon_mujoco" output="screen"
-    args="--name kyon --urdf-command $(var urdf_command) --world $(var world) --simopt $(var simopt) --ctrlcfg $(var ctrlcfg) --sites $(var sites) --sdf $(var sdf)"/>
+    <executable name="xbot2_mujoco" output="screen" cmd="python3 -m xbot2_py_mujoco.simulate
+        --name kyon 
+        --urdf-cmd $(var urdf_command) 
+        --srdf-cmd $(var srdf_command)
+        --xml-cmd $(var cfg_xml_command) 
+        --xml $(var world)
+        " >
+        <env name="PYTHONUNBUFFERED" value="1" />
+    </executable>
 
 
 </launch>

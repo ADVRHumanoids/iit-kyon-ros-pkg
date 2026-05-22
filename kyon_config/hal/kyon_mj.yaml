@@ -1,15 +1,9 @@
 xbotcore_devices:
 
-    joint_gz:
+    py_bridge_hal:
         names: []
         thread: rt_main
+        params:
+          remote_sock_addr: /tmp/mj_simulator_server.sock
 
-    imu_gz:
-        names: []
-        thread: rt_main
-
-    link_state_sensor:
-        names: []
-        thread: rt_main
-        type: link_state_sensor
 

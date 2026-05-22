@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<mujoco xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- command line arguments -->
+    <xacro:arg name="legs" default="true" />
+    <xacro:arg name="upper_body" default="true" />
+    <xacro:arg name="wheels" default="false" />
+    <xacro:arg name="floating_joint" default="true" />
+    <xacro:arg name="camera_front_up" default="false" />
+    <xacro:arg name="camera_front_down" default="false" />
+    <xacro:arg name="camera_left" default="false" />
+    <xacro:arg name="camera_right" default="false" />
+    <xacro:arg name="payload" default="false" />
+    <xacro:arg name="varta" default="false" />
+    <xacro:arg name="d034_li_ion" default="false" />
+    <xacro:arg name="velodyne" default="false" />
+    <xacro:arg name="add_collision" default="true" />
+    <xacro:arg name="hesai_jt128" default="false" />
+
+
+    <!-- select parts -->
+    <xacro:property name="ADD_LEGS" value="$(arg legs)" />
+    <xacro:property name="ADD_UPPER_BODY" value="$(arg upper_body)" />
+    <xacro:property name="ADD_UPPER_BODY" value="$(arg upper_body)" />
+    <xacro:property name="ADD_CAMERAS" value="$(arg cameras)" />
+    <xacro:property name="ADD_FU_CAMERA" value="$(arg camera_front_up)" />
+    <xacro:property name="ADD_FD_CAMERA" value="$(arg camera_front_down)" />
+    <xacro:property name="ADD_LEFT_CAMERA" value="$(arg camera_left)" />
+    <xacro:property name="ADD_RIGHT_CAMERA" value="$(arg camera_right)" />
+    <xacro:property name="ADD_WHEELS" value="$(arg wheels)" />
+    <xacro:property name="ADD_VARTA" value="$(arg varta)" />
+    <xacro:property name="ADD_D034_LI_ION" value="$(arg d034_li_ion)" />
+    <xacro:property name="ADD_FLOATING_BASE" value="$(arg floating_joint)" />
+    <xacro:property name="ADD_VELODYNE" value="$(arg velodyne)" />
+    <xacro:property name="ADD_HESAI_JT128" value="$(arg hesai_jt128)" />
+    <xacro:property name="ADD_VIRTUAL_FRAME" value="false" />
+    <xacro:property name="ADD_COLLISION" value="$(arg add_collision)" />
+    <xacro:property name="PAYLOAD" value="$(arg payload)" />
+
+    <!-- include other files -->
+    <xacro:include filename="$(find kyon_mujoco)/mjcf/kyon_actuators.xml.xacro" />
+    <xacro:include filename="$(find kyon_mujoco)/mjcf/kyon_options.xml.xacro" />
+
+</mujoco>
