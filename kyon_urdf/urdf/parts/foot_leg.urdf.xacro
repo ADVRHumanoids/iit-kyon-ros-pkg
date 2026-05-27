@@ -13,14 +13,24 @@
     <visual>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
-            <mesh filename="${MESH_PATH}/mesh_foot-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
+            <xacro:if value="${mirror == -1}">
+                <mesh filename="${MESH_PATH}/mesh_foot_leg_left.stl" scale="0.001 0.001 0.001"/>
+            </xacro:if>
+            <xacro:unless value="${mirror == -1}">
+                <mesh filename="${MESH_PATH}/mesh_foot-leg.stl" scale="0.001 0.001 0.001"/>
+            </xacro:unless>
         </geometry>
         <material name="dark_grey"/>
     </visual>
     <collision>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
-            <mesh filename="${MESH_PATH}/collision/mesh_foot-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
+            <xacro:if value="${mirror == -1}">
+                <mesh filename="${MESH_PATH}/collision/mesh_foot_leg_left.stl" scale="0.001 0.001 0.001"/>
+            </xacro:if>
+            <xacro:unless value="${mirror == -1}">
+                <mesh filename="${MESH_PATH}/collision/mesh_foot-leg.stl" scale="0.001 0.001 0.001"/>
+            </xacro:unless>
         </geometry>
     </collision>
 </link>
