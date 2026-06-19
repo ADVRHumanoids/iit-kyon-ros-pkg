@@ -18,6 +18,10 @@
 <xacro:arg name="velodyne" default="false"/>
 <xacro:arg name="add_collision" default="true"/>
 <xacro:arg name="hesai_jt128" default="false"/>
+<xacro:arg name="add_fixed_base_joint" default="false"/>
+<xacro:arg name="fixed_base_x" default="0.0"/>
+<xacro:arg name="fixed_base_y" default="0.0"/>
+<xacro:arg name="fixed_base_z" default="0.0"/>
 
 
 <!-- ************SELECT PARTS*************-->
@@ -36,5 +40,10 @@
 <xacro:property name="ADD_HESAI_JT128" value="$(arg hesai_jt128)"/>
 <xacro:property name="ADD_VIRTUAL_FRAME" value="false" />
 <xacro:property name="ADD_COLLISION" value="$(arg add_collision)"/>
+
+<xacro:property name="ADD_FIXED_BASE" value="$(arg add_fixed_base_joint)"/>
+<xacro:property name="FIXED_BASE_X" value="$(arg fixed_base_x)"/>
+<xacro:property name="FIXED_BASE_Y" value="$(arg fixed_base_y)"/>
+<xacro:property name="FIXED_BASE_Z" value="$(arg fixed_base_z)"/>
 
 </robot>

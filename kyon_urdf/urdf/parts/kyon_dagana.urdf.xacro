@@ -13,9 +13,41 @@
     <visual>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
-            <mesh filename="package://kyon_urdf/meshes/mesh_dagana-base.stl" scale="0.001 0.001 0.001"/>
+            <mesh filename="package://kyon_urdf/meshes/mesh_dagana-base-boxy.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="dark_grey"/>
+    </visual>
+    <visual>
+        <origin xyz="0 -0.0145 0.181" rpy="0 1.5707 0" />
+        <geometry>
+            <cylinder radius="0.01" length="0.0279"/>
+        </geometry>
+    </visual>
+    <visual>
+        <origin xyz="0.0 0.0007432 0.0405" rpy="0 0 0" />
+        <geometry>
+            <box size="0.0879  0.0844864 0.081"/>
+        </geometry>
+    </visual>
+
+    <collision>
+        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+        <geometry>
+            <mesh filename="package://kyon_urdf/meshes/mesh_dagana-base-boxy.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="dark_grey"/>
+    </collision>
+    <collision>
+        <origin xyz="0 -0.0145 0.181" rpy="0 1.5707 0" />
+        <geometry>
+            <cylinder radius="0.01" length="0.0279"/>
+        </geometry>
+    </collision>
+    <visual>
+        <origin xyz="0.0 0.0007432 0.0405" rpy="0 0 0" />
+        <geometry>
+            <box size="0.0879  0.0844864 0.081"/>
+        </geometry>
     </visual>
     <!-- <collision>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
@@ -40,10 +72,30 @@
     <visual>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
-            <mesh filename="package://kyon_urdf/meshes/mesh_dagana-clamp.stl" scale="0.001 0.001 0.001"/>
+            <mesh filename="package://kyon_urdf/meshes/mesh_dagana-clamp-boxy.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="dark_grey"/>
     </visual>
+    <visual>
+        <origin xyz="-0.137 0.0 -0.0362125" rpy="0 0 0" />
+        <geometry>
+            <cylinder radius="0.01" length="0.0279"/>
+        </geometry>
+    </visual>
+
+    <collision>
+        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+        <geometry>
+            <mesh filename="package://kyon_urdf/meshes/mesh_dagana-clamp-boxy.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="dark_grey"/>
+    </collision>
+    <collision>
+        <origin xyz="-0.137 0.0 -0.0362125" rpy="0 0 0" />
+        <geometry>
+            <cylinder radius="0.01" length="0.0279"/>
+        </geometry>
+    </collision>
     <!-- <collision>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
