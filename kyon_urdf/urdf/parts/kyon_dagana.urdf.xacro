@@ -43,12 +43,12 @@
             <cylinder radius="0.01" length="0.0279"/>
         </geometry>
     </collision>
-    <visual>
+    <collision>
         <origin xyz="0.0 0.0007432 0.0405" rpy="0 0 0" />
         <geometry>
             <box size="0.0879  0.0844864 0.081"/>
         </geometry>
-    </visual>
+    </collision>
     <!-- <collision>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
