@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <!-- We use a custom world for the rrbot so that the camera angle is launched correctly -->
+
+  <world name="default">
+
+    <plugin
+      filename="gz-sim-physics-system"
+      name="gz::sim::systems::Physics">
+    </plugin>
+    <plugin
+      filename="gz-sim-air-pressure-system"
+      name="gz::sim::systems::AirPressure">
+    </plugin>
+    <plugin
+      filename="gz-sim-altimeter-system"
+      name="gz::sim::systems::Altimeter">
+    </plugin>
+    <plugin
+      filename="gz-sim-imu-system"
+      name="gz::sim::systems::Imu">
+    </plugin>
+    <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin
+      filename="gz-sim-magnetometer-system"
+      name="gz::sim::systems::Magnetometer">
+    </plugin>
+    <plugin
+      filename="gz-sim-forcetorque-system"
+      name="gz::sim::systems::ForceTorque">
+    </plugin>
+    <plugin
+      filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+    <plugin
+      filename="gz-sim-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+    <gravity>0 0 -9.81</gravity>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="stepped_square_pyramid">
+      <static>true</static>
+      <pose>9 0 0 0 0 0</pose>
+      <link name="pyramid_link">
+        <collision name="step_01_collision">
+          <pose>0 0 0.05 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>9.4 9.4 0.1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="step_01_visual">
+          <pose>0 0 0.05 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>9.4 9.4 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.72 0.65 0.50 1</ambient>
+            <diffuse>0.72 0.65 0.50 1</diffuse>
+          </material>
+        </visual>
+
+        <collision name="step_02_collision">
+          <pose>0 0 0.15 0 0 0</pose>
+          <geometry><box><size>8.8 8.8 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_02_visual">
+          <pose>0 0 0.15 0 0 0</pose>
+          <geometry><box><size>8.8 8.8 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_03_collision">
+          <pose>0 0 0.25 0 0 0</pose>
+          <geometry><box><size>8.2 8.2 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_03_visual">
+          <pose>0 0 0.25 0 0 0</pose>
+          <geometry><box><size>8.2 8.2 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_04_collision">
+          <pose>0 0 0.35 0 0 0</pose>
+          <geometry><box><size>7.6 7.6 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_04_visual">
+          <pose>0 0 0.35 0 0 0</pose>
+          <geometry><box><size>7.6 7.6 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_05_collision">
+          <pose>0 0 0.45 0 0 0</pose>
+          <geometry><box><size>7.0 7.0 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_05_visual">
+          <pose>0 0 0.45 0 0 0</pose>
+          <geometry><box><size>7.0 7.0 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_06_collision">
+          <pose>0 0 0.55 0 0 0</pose>
+          <geometry><box><size>6.4 6.4 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_06_visual">
+          <pose>0 0 0.55 0 0 0</pose>
+          <geometry><box><size>6.4 6.4 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_07_collision">
+          <pose>0 0 0.65 0 0 0</pose>
+          <geometry><box><size>5.8 5.8 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_07_visual">
+          <pose>0 0 0.65 0 0 0</pose>
+          <geometry><box><size>5.8 5.8 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_08_collision">
+          <pose>0 0 0.75 0 0 0</pose>
+          <geometry><box><size>5.2 5.2 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_08_visual">
+          <pose>0 0 0.75 0 0 0</pose>
+          <geometry><box><size>5.2 5.2 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_09_collision">
+          <pose>0 0 0.85 0 0 0</pose>
+          <geometry><box><size>4.6 4.6 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_09_visual">
+          <pose>0 0 0.85 0 0 0</pose>
+          <geometry><box><size>4.6 4.6 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_10_collision">
+          <pose>0 0 0.95 0 0 0</pose>
+          <geometry><box><size>4.0 4.0 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_10_visual">
+          <pose>0 0 0.95 0 0 0</pose>
+          <geometry><box><size>4.0 4.0 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_11_collision">
+          <pose>0 0 1.05 0 0 0</pose>
+          <geometry><box><size>3.4 3.4 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_11_visual">
+          <pose>0 0 1.05 0 0 0</pose>
+          <geometry><box><size>3.4 3.4 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_12_collision">
+          <pose>0 0 1.15 0 0 0</pose>
+          <geometry><box><size>2.8 2.8 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_12_visual">
+          <pose>0 0 1.15 0 0 0</pose>
+          <geometry><box><size>2.8 2.8 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_13_collision">
+          <pose>0 0 1.25 0 0 0</pose>
+          <geometry><box><size>2.2 2.2 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_13_visual">
+          <pose>0 0 1.25 0 0 0</pose>
+          <geometry><box><size>2.2 2.2 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_14_collision">
+          <pose>0 0 1.35 0 0 0</pose>
+          <geometry><box><size>1.6 1.6 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_14_visual">
+          <pose>0 0 1.35 0 0 0</pose>
+          <geometry><box><size>1.6 1.6 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+
+        <collision name="step_15_collision">
+          <pose>0 0 1.45 0 0 0</pose>
+          <geometry><box><size>1.0 1.0 0.1</size></box></geometry>
+        </collision>
+        <visual name="step_15_visual">
+          <pose>0 0 1.45 0 0 0</pose>
+          <geometry><box><size>1.0 1.0 0.1</size></box></geometry>
+          <material><ambient>0.72 0.65 0.50 1</ambient><diffuse>0.72 0.65 0.50 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Focus camera on tall pendulum -->
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>4.927360 -4.376610 3.740080 0.000000 0.275643 2.356190</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+    <physics name="update_rate" type="ode">
+      <real_time_update_rate>2000</real_time_update_rate>
+      <max_step_size>0.0015</max_step_size>
+      <max_contacts>10</max_contacts>
+      <bullet>
+        <solver>
+          <iters>100</iters>
+          <sor>1.55</sor>
+        </solver>
+        <constraints>
+          <contact_surface_layer>0.2</contact_surface_layer>
+          <cfm>0.005</cfm>
+          <erp>0.2</erp>
+        </constraints>
+      </bullet>
+      <ode>
+        <solver>
+          <!--          <type>quick</type> -->
+          <iters>50</iters>
+          <sor>1.20</sor>
+        </solver>
+        <constraints>
+          <contact_surface_layer>0.0002</contact_surface_layer>
+          <contact_max_correcting_vel>500</contact_max_correcting_vel>
+          <cfm>0.000001</cfm>
+          <erp>0.3</erp>
+        </constraints>
+      </ode>
+    </physics>
+
+  </world>
+</sdf>

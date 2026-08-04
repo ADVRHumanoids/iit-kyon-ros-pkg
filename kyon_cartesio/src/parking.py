@@ -70,7 +70,19 @@ contact_4:
 postural:
     type: Postural
     lambda: 0.1
-    weight: 0.01
+    weight:
+      hip_roll_1: 0.1
+      hip_roll_2: 0.1
+      hip_roll_3: 0.1
+      hip_roll_4: 0.1
+      hip_pitch_1: 0.1
+      hip_pitch_2: 0.1
+      hip_pitch_3: 0.1
+      hip_pitch_4: 0.1
+      knee_pitch_1: 1.0
+      knee_pitch_2: 1.0
+      knee_pitch_3: 1.0
+      knee_pitch_4: 1.0
 
 base:
     type: Cartesian
