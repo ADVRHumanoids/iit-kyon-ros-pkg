@@ -24,9 +24,9 @@ collision:
     distance_threshold: 0.02
     detection_threshold: 0.10
     max_pairs: 60
-    collision_urdf_path: $(ros2 pkg prefix --share kyon_urdf)/urdf/kyon_wheels_capsule.urdf
+    collision_urdf_path: $(ros2 pkg prefix --share kyon_urdf)/urdf/kyon_capsule.urdf
     collision_srdf_path: $(ros2 pkg prefix --share kyon_srdf)/srdf/kyon_capsule.srdf
-    env_collision_links: [knee_pitch_1_link, knee_pitch_2_link, knee_pitch_3_link, knee_pitch_4_link] #, pelvis]
+    env_collision_links: [hip_pitch_1_link, hip_pitch_2_link, hip_pitch_3_link, hip_pitch_4_link] #, pelvis]
     infeasible_pair_weight: 0.01
     # weight: 100.0
     # pairs:
@@ -35,8 +35,8 @@ collision:
      - name: floor
        type: halfspace
        normal: [0, 0, 1]
-       position: [0, 0, -0.6]
-    #    disabled_collisions: [knee_pitch_1_link, knee_pitch_2_link, knee_pitch_3_link, knee_pitch_4_link]
+       position: [0, 0, 0.0]
+       disabled_collisions: [knee_pitch_1_link, knee_pitch_2_link, knee_pitch_3_link, knee_pitch_4_link]
 
 contact_1:
     type: Cartesian
@@ -83,8 +83,8 @@ r_arm:
     
 Com:
     type: Com
-    indices: [0, 1]
-    weight: 0.01
+    indices: [0, 1, 2]
+    weight: [0, 0, 0]
     
 Postural:
     type: Postural
@@ -94,5 +94,5 @@ Postural:
 PelvisRot:
     type: Cartesian
     distal_link: pelvis
-    weight: 0.01
+    weight: 0.001
     indices: [4, 5]
