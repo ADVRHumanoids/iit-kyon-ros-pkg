@@ -17,7 +17,7 @@
 	<joint name="reference" type="floating">
 		<parent link="world"/>
 		<child link="pelvis"/>
-		<origin xyz="0 0 0.6"/>
+		<origin xyz="0 0 0"/>
 	</joint>
 </xacro:if>
 
