@@ -26,7 +26,6 @@
 <!-- *************************************-->
 <xacro:property name="ADD_LEGS" value="$(arg legs)"/>
 <xacro:property name="ADD_UPPER_BODY" value="$(arg upper_body)"/>
-<xacro:property name="ADD_CAMERAS" value="$(arg cameras)"/>
 <xacro:property name="ADD_FU_CAMERA" value="$(arg camera_front_up)"/>
 <xacro:property name="ADD_FD_CAMERA" value="$(arg camera_front_down)"/>
 <xacro:property name="ADD_LEFT_CAMERA" value="$(arg camera_left)"/>

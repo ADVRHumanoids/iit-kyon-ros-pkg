@@ -9,6 +9,31 @@
 <!-- ************ CETC-SAT plain model ************ -->
 <xacro:include filename="$(find kyon_urdf)/urdf/kyon_base.urdf.xacro"/>
 
+<!-- ************ Optional ZED Mini cameras ************ -->
+<xacro:include filename="$(find zed_description)/urdf/zed_macro.urdf.xacro"/>
+
+<xacro:if value="${ADD_FU_CAMERA}">
+	<xacro:zed_camera name="zed_front_up" model="zedm">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</xacro:zed_camera>
+	<joint name="zed_front_up_camera_mount_joint" type="fixed">
+		<parent link="zed_front_up_mount_link"/>
+		<child link="zed_front_up_camera_link"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</joint>
+</xacro:if>
+
+<xacro:if value="${ADD_FD_CAMERA}">
+	<xacro:zed_camera name="zed_front_down" model="zedm">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</xacro:zed_camera>
+	<joint name="zed_front_down_camera_mount_joint" type="fixed">
+		<parent link="zed_front_down_mount_link"/>
+		<child link="zed_front_down_camera_link"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</joint>
+</xacro:if>
+
 <!-- ************ Control frames ************ -->
 <!--xacro:include filename="$(find pholus_urdf)/urdf/control_frames.urdf.xacro"/-->
 
