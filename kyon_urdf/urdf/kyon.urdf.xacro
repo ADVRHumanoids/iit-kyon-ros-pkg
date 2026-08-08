@@ -13,7 +13,7 @@
 <xacro:include filename="$(find zed_description)/urdf/zed_macro.urdf.xacro"/>
 
 <xacro:if value="${ADD_FU_CAMERA}">
-	<xacro:zed_camera name="zed_front_up" model="zedm">
+	<xacro:zed_camera name="zed_front_up" model="zedxm">
 		<origin xyz="0 0 0" rpy="0 0 0"/>
 	</xacro:zed_camera>
 	<joint name="zed_front_up_camera_mount_joint" type="fixed">
@@ -24,7 +24,7 @@
 </xacro:if>
 
 <xacro:if value="${ADD_FD_CAMERA}">
-	<xacro:zed_camera name="zed_front_down" model="zedm">
+	<xacro:zed_camera name="zed_front_down" model="zedxm">
 		<origin xyz="0 0 0" rpy="0 0 0"/>
 	</xacro:zed_camera>
 	<joint name="zed_front_down_camera_mount_joint" type="fixed">
