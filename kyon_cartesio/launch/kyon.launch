@@ -16,15 +16,6 @@
     <let name="ik" if="$(var wheels)" value="$(find-pkg-share kyon_cartesio)/config/kyon_stack_wheel_legs.yaml" />
     <let name="ik" unless="$(var wheels)" value="$(find-pkg-share kyon_cartesio)/config/kyon_stack_stick_legs.yaml" />
 
-    <set_remap
-        if="$(var xbot)"
-        from="robot_description"
-        to="/xbotcore/robot_description" />
-
-    <set_remap
-        if="$(var xbot)"
-        from="robot_description_semantic"
-        to="/xbotcore/robot_description_semantic" />
 
     <group unless="$(var xbot)">
         <let name="urdf_command"
@@ -66,17 +57,31 @@
         <remap from="robot_description_semantic" to="robot_description_semantic_capsule" />
     </node>
 
+    <group>
 
-    <include file="$(find-pkg-share cartesian_interface_ros)/launch/cartesio.launch.xml">
-        <arg name="rate" value="100.0" />
-        <arg name="prefix" value="$(var prefix)" />
-        <arg name="problem_description_filename" value="$(var ik)" />
-        <arg name="markers" value="true" />
-        <arg name="home" value="$(var home)" />
-        <arg name="visual_mode" value="$(var visual_mode)" />
-        <arg name="joint_ctrl_mode"
-            value="{ankle_yaw_1: 0, ankle_yaw_2: 0, ankle_yaw_3: 0, ankle_yaw_4: 0, wheel_joint_1: 0, wheel_joint_2: 0, wheel_joint_3: 0, wheel_joint_4: 0}" />
-    </include>
+        <set_remap
+            if="$(var xbot)"
+            from="robot_description"
+            to="/xbotcore/robot_description" />
+
+        <set_remap
+            if="$(var xbot)"
+            from="robot_description_semantic"
+            to="/xbotcore/robot_description_semantic" />
+
+
+        <include file="$(find-pkg-share cartesian_interface_ros)/launch/cartesio.launch.xml">
+            <arg name="rate" value="100.0" />
+            <arg name="prefix" value="$(var prefix)" />
+            <arg name="problem_description_filename" value="$(var ik)" />
+            <arg name="markers" value="true" />
+            <arg name="home" value="$(var home)" />
+            <arg name="visual_mode" value="$(var visual_mode)" />
+            <arg name="joint_ctrl_mode"
+                value="{ankle_yaw_1: 0, ankle_yaw_2: 0, ankle_yaw_3: 0, ankle_yaw_4: 0, wheel_joint_1: 0, wheel_joint_2: 0, wheel_joint_3: 0, wheel_joint_4: 0}" />
+        </include>
+
+    </group>
 
     <node if="$(var gui)" pkg="rviz2" exec="rviz2" name="rviz" output="screen"
         args="-d $(find-pkg-share kyon_cartesio)/config/kyon.rviz" />
