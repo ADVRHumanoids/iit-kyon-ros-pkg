@@ -21,12 +21,24 @@
 		</geometry>
 		<material name="dark_grey"/>
 	</visual>
+	<xacro:if value="${ADD_COLLISION}">
 	<collision>
-		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+			<origin xyz="0 0 0.0465" rpy="0 0 0"/>
+		</xacro:if>
+		<xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</xacro:unless>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_sh-yaw.stl" scale="0.001 0.001 0.001"/>
+			<xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+				<box size="0.112 0.124 0.166"/>
+			</xacro:if>
+			<xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
+				<mesh filename="package://kyon_urdf/meshes/collision_simplified/mesh_sh-yaw.stl" scale="0.001 0.001 0.001"/>
+			</xacro:unless>
 		</geometry>
 	</collision>
+	</xacro:if>
 </link>
 
 <link name="shoulder_pitch_${arm_num}_link">
@@ -47,12 +59,22 @@
 	  	</geometry>
   		<material name="kyon_orange"/>
 	</visual>
+	<xacro:if value="${ADD_COLLISION}">
 	<collision>
+		<xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+			<origin xyz="0.000013 -0.159507 -0.0155" rpy="0 0 0"/>
+		</xacro:if>
 	  	<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
+			<xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+				<box size="0.111975 0.430987 0.089"/>
+			</xacro:if>
+			<xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
+				<mesh filename="package://kyon_urdf/meshes/collision_simplified/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
+			</xacro:unless>
 		</geometry>
 		<material name="kyon_orange"/>
 	</collision>
+	</xacro:if>
 </link>
 
 <link name="elbow_pitch_${arm_num}_link">
@@ -67,11 +89,21 @@
 		</geometry>
 		<material name="dark_grey"/>
 	</visual>
+	<xacro:if value="${ADD_COLLISION}">
 	<collision>
+		<xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+			<origin xyz="0 -0.1175 0.02936" rpy="0 0 0"/>
+		</xacro:if>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
+			<xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+				<box size="0.11 0.345 0.058"/>
+			</xacro:if>
+			<xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
+				<mesh filename="package://kyon_urdf/meshes/collision_simplified/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
+			</xacro:unless>
 		</geometry>
 	</collision>
+	</xacro:if>
 </link>
 
 <link name="wrist_pitch_${arm_num}_link">
@@ -87,12 +119,24 @@
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
+	<xacro:if value="${ADD_COLLISION}">
 	<collision>
-		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+			<origin xyz="0 -0.026 -0.011524" rpy="0 0 0"/>
+		</xacro:if>
+		<xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</xacro:unless>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001"/>
+			<xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+				<box size="0.08 0.132 0.104943"/>
+			</xacro:if>
+			<xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
+				<mesh filename="package://kyon_urdf/meshes/collision_simplified/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001"/>
+			</xacro:unless>
 		</geometry>
 	</collision>
+	</xacro:if>
 </link>
 
 <link name="wrist_yaw_${arm_num}_link">
@@ -108,12 +152,24 @@
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
+	<xacro:if value="${ADD_COLLISION}">
 	<collision>
-		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+			<origin xyz="0 0 -0.02125" rpy="0 0 0"/>
+		</xacro:if>
+		<xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</xacro:unless>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001"/>
+			<xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+				<box size="0.079994 0.08 0.0425"/>
+			</xacro:if>
+			<xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
+				<mesh filename="package://kyon_urdf/meshes/collision_simplified/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001"/>
+			</xacro:unless>
 		</geometry>
 	</collision>
+	</xacro:if>
 </link>
 
 <!-- /LINKS -->

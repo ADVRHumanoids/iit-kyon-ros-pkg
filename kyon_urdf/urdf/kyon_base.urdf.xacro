@@ -28,9 +28,12 @@
 	</visual>
     <xacro:if value="${ADD_COLLISION}">
 	<collision>
-		<origin xyz="0.0 0 0.0"  rpy="0.0 0.0 0.0"/>
+		<!-- This remains the sole mesh in primitive-collision mode. Its
+		     100-triangle convex hull converts reliably, while an enclosing box
+		     creates false pelvis/shoulder collisions in the nominal posture. -->
+		<origin xyz="0 0 0" rpy="0 0 0"/>
 		<geometry>
-	  		<mesh filename="package://kyon_urdf/meshes/collision/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/collision_simplified/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>
     </xacro:if>

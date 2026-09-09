@@ -26,13 +26,14 @@
   		<material name="dark_grey"/>
 	</visual>
 	<xacro:if value="${ADD_COLLISION}">
+	<xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
 	<collision>
-		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
 		<geometry>
-	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_hip-roll.stl" scale="0.001 ${mirror*0.001} 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/collision_simplified/mesh_hip-roll.stl" scale="0.001 ${mirror*0.001} 0.001"/>
 		</geometry> 
 	</collision>
+	</xacro:unless>
 	</xacro:if>
 </link>
 
@@ -58,9 +59,19 @@
 	</visual>
 	<xacro:if value="${ADD_COLLISION}">
 	<collision>
-		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+		<xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+			<origin xyz="0 -0.165 0.19736" rpy="0 0 0"/>
+		</xacro:if>
+		<xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</xacro:unless>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+			<xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+				<box size="0.138 0.468 0.094"/>
+			</xacro:if>
+			<xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
+				<mesh filename="package://kyon_urdf/meshes/collision_simplified/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+			</xacro:unless>
 		</geometry>
 		<material name="kyon_orange"/>
 	</collision>

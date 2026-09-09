@@ -19,6 +19,7 @@
 <xacro:arg name="d034_li_ion" default="false"/>
 <xacro:arg name="velodyne" default="false"/>
 <xacro:arg name="add_collision" default="true"/>
+<xacro:arg name="primitive_collisions" default="false"/>
 <xacro:arg name="hesai_jt128" default="false"/>
 
 
@@ -39,6 +40,7 @@
 <xacro:property name="ADD_HESAI_JT128" value="$(arg hesai_jt128)"/>
 <xacro:property name="ADD_VIRTUAL_FRAME" value="false" />
 <xacro:property name="ADD_COLLISION" value="$(arg add_collision)"/>
+<xacro:property name="USE_PRIMITIVE_COLLISIONS" value="$(arg primitive_collisions)"/>
 <xacro:property name="PAYLOAD" value="$(arg payload)"/>
 
 </robot>

@@ -19,9 +19,19 @@
     </visual>
     <xacro:if value="${ADD_COLLISION}">
     <collision>
-        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+        <xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+            <origin xyz="0 -0.154688 0.021831" rpy="0 0 0"/>
+        </xacro:if>
+        <xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:unless>
         <geometry>
-            <mesh filename="package://kyon_urdf/meshes/collision/mesh_foot-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
+            <xacro:if value="${USE_PRIMITIVE_COLLISIONS}">
+                <box size="0.079951 0.377576 0.043661"/>
+            </xacro:if>
+            <xacro:unless value="${USE_PRIMITIVE_COLLISIONS}">
+                <mesh filename="package://kyon_urdf/meshes/collision_simplified/mesh_foot-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
+            </xacro:unless>
         </geometry>
     </collision>
     </xacro:if>
