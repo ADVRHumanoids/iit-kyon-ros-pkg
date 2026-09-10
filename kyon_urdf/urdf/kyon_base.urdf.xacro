@@ -36,7 +36,7 @@
     </xacro:if>
 </link>
 
-<xacro:if value="${ADD_VARTA or ADD_D034_LI_ION}">
+<xacro:if value="${ADD_BATTERY}">
     <link name="battery">
         <inertial>
             <mass value="${Battery_mass}"/>
@@ -108,34 +108,12 @@
 	<child link="hesai_lidar"/>
 </joint>
 
-<xacro:if value="${ADD_UPPER_BODY}">
+<xacro:if value="${ADD_ARMS}">
     <xacro:include filename="$(find kyon_urdf)/urdf/parts/arms.urdf.xacro" />
 </xacro:if>
 
 <xacro:if value="${ADD_LEGS}">
 	<xacro:include filename="$(find kyon_urdf)/urdf/parts/legs.urdf.xacro" />
-</xacro:if>
-
-<xacro:if value="${PAYLOAD}">
-	<link name="payload_pelvis">
-		<inertial>
-		    <origin xyz="0.0 0.0 0.0"/>
-			<mass value="20"/>
-			<inertia ixx="0.13" iyy="0.13" izz="0.13" ixy="0" ixz="0" iyz="0"/>
-		</inertial>
-		<visual>
-			<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
-			<geometry>
-				<box size="0.2 0.2 0.2"/>
-			</geometry>
-			<material name="dark_grey"/>
-		</visual>
-	</link>
-	<joint name="pelvis_to_payload" type="fixed">
-		<origin xyz="-0.2 0.0 ${pelvis_height / 2 + 0.1}"/>
-		<parent link="pelvis"/>
-		<child link="payload_pelvis"/>
-	</joint>
 </xacro:if>
 
 <!-- Hesai JT128 -->

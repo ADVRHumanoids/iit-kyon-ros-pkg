@@ -37,12 +37,12 @@ xbotcore_plugins:
         type: homing
         
     homing_isaac:
-        thread: rt_main
-        type: homing
-        params: 
-          home: home_isaac
+          thread: rt_main
+          type: homing
+          params: 
+              home: home_isaac
 
-    ros_io: {thread: nrt_main, type: ros2_io, params: {publish_sim_time: false}}
+    ros_io: {thread: nrt_main, type: ros2_io, params: {publish_sim_time: true}}
 
     ros_control: {thread: nrt_main, type: ros2_control, params: {autostart: true}}
 

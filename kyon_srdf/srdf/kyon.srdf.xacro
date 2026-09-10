@@ -48,7 +48,7 @@
 		</xacro:unless>
     </xacro:if>
 
-    <xacro:if value="${ADD_UPPER_BODY}">
+    <xacro:if value="${ADD_ARMS}">
 		<group name="left_arm">
 		    <chain base_link="pelvis" tip_link="dagana_1_claw"/>
      		</group>
@@ -67,7 +67,7 @@
             <group name="rear_left_leg" />
         </xacro:if>
 
-        <xacro:if value="${ADD_UPPER_BODY}">
+        <xacro:if value="${ADD_ARMS}">
             <group name="left_arm"/>
             <group name="right_arm"/>
         </xacro:if>
@@ -76,18 +76,18 @@
     <!-- Homing posture -->
     <group_state name="home" group="chains">
         <xacro:if value="${ADD_LEGS}">
-            <joint name="hip_roll_1" value="0.15"/>
-            <joint name="hip_pitch_1" value="-0.7"/>
-            <joint name="knee_pitch_1" value="1.4"/>
-            <joint name="hip_roll_2" value="-0.15"/>
-            <joint name="hip_pitch_2" value="0.7"/>
-            <joint name="knee_pitch_2" value="-1.4"/>
-            <joint name="hip_roll_3" value="-0.15"/>
-            <joint name="hip_pitch_3" value="-0.7"/>
-            <joint name="knee_pitch_3" value="1.4"/>
-            <joint name="hip_roll_4" value="0.15"/>
-            <joint name="hip_pitch_4" value="0.7"/>
-            <joint name="knee_pitch_4" value="-1.4"/>
+            <joint name="hip_roll_1" value="0.0"/>
+            <joint name="hip_pitch_1" value="-0.6"/>
+            <joint name="knee_pitch_1" value="1.2"/>
+            <joint name="hip_roll_2" value="-0.0"/>
+            <joint name="hip_pitch_2" value="0.6"/>
+            <joint name="knee_pitch_2" value="-1.2"/>
+            <joint name="hip_roll_3" value="-0.0"/>
+            <joint name="hip_pitch_3" value="-0.6"/>
+            <joint name="knee_pitch_3" value="1.2"/>
+            <joint name="hip_roll_4" value="0.0"/>
+            <joint name="hip_pitch_4" value="0.6"/>
+            <joint name="knee_pitch_4" value="-1.2"/>
         </xacro:if>
         <!-- <xacro:if value="${ADD_WHEELS}">
             <joint name="ankle_yaw_1" value="0.0"/>
@@ -95,7 +95,7 @@
             <joint name="ankle_yaw_3" value="0.0"/>
             <joint name="ankle_yaw_4" value="0.0"/>
         </xacro:if> -->
-        <xacro:if value="${ADD_UPPER_BODY}"> 
+        <xacro:if value="${ADD_ARMS}"> 
             <joint name="shoulder_yaw_1" value="0.0"/>
             <joint name="shoulder_pitch_1" value="1.3"/>
             <joint name="elbow_pitch_1" value="2.75"/>
@@ -112,17 +112,17 @@
         <group_state name="home_isaac" group="chains">
         <xacro:if value="${ADD_LEGS}">
             <joint name="hip_roll_1" value="0.15"/>
-            <joint name="hip_pitch_1" value="-0.7"/>
-            <joint name="knee_pitch_1" value="1.4"/>
+            <joint name="hip_pitch_1" value="-0.6"/>
+            <joint name="knee_pitch_1" value="1.2"/>
             <joint name="hip_roll_2" value="-0.15"/>
-            <joint name="hip_pitch_2" value="0.7"/>
-            <joint name="knee_pitch_2" value="-1.4"/>
+            <joint name="hip_pitch_2" value="0.6"/>
+            <joint name="knee_pitch_2" value="-1.2"/>
             <joint name="hip_roll_3" value="-0.15"/>
-            <joint name="hip_pitch_3" value="-0.7"/>
-            <joint name="knee_pitch_3" value="1.4"/>
+            <joint name="hip_pitch_3" value="-0.6"/>
+            <joint name="knee_pitch_3" value="1.2"/>
             <joint name="hip_roll_4" value="0.15"/>
-            <joint name="hip_pitch_4" value="0.7"/>
-            <joint name="knee_pitch_4" value="-1.4"/>
+            <joint name="hip_pitch_4" value="0.6"/>
+            <joint name="knee_pitch_4" value="-1.2"/>
         </xacro:if>
         <xacro:if value="${ADD_WHEELS}">
             <joint name="ankle_yaw_1" value="0.0"/>
@@ -130,7 +130,7 @@
             <joint name="ankle_yaw_3" value="0.0"/>
             <joint name="ankle_yaw_4" value="0.0"/>
         </xacro:if>
-        <xacro:if value="${ADD_UPPER_BODY}"> 
+        <xacro:if value="${ADD_ARMS}"> 
             <joint name="shoulder_yaw_1" value="0.0"/>
             <joint name="shoulder_pitch_1" value="1.5"/>
             <joint name="elbow_pitch_1" value="2.5"/>
@@ -165,7 +165,7 @@
             <joint name="ankle_yaw_3" value="0.0"/>
             <joint name="ankle_yaw_4" value="0.0"/>
         </xacro:if>
-        <xacro:if value="${ADD_UPPER_BODY}"> 
+        <xacro:if value="${ADD_ARMS}"> 
             <joint name="shoulder_yaw_1" value="0.0"/>
             <joint name="shoulder_pitch_1" value="1.5"/>
             <joint name="elbow_pitch_1" value="2.5"/>

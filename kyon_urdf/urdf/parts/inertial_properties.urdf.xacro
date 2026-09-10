@@ -4,11 +4,8 @@
     <xacro:property name="mm2Tom2" value="${0.001*0.001}"/>
 
     <!-- Battery -->
-    <xacro:if value="${ADD_VARTA}">
+    <xacro:if value="${ADD_BATTERY}">
         <xacro:property name="Battery_mass" value="9.8"/> 
-    </xacro:if>
-    <xacro:if value="${ADD_D034_LI_ION}">
-        <xacro:property name="Battery_mass" value="5.8"/>
     </xacro:if>
 
     <xacro:property name="Battery_xx" value="${1/12 * Battery_mass * (Battery_zsize * Battery_zsize + Battery_ysize * Battery_ysize)}"/>

@@ -58,7 +58,7 @@
 	
 </xacro:if>
 
-<xacro:if value="${ADD_UPPER_BODY}">
+<xacro:if value="${ADD_ARMS}">
 
 	<xacro:kyon_arm_materials arm_num="1"/>
 	<xacro:kyon_arm_materials arm_num="2"/>

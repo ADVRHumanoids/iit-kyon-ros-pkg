@@ -141,7 +141,7 @@
 
     </xacro:if>
 
-    <xacro:if value="${ADD_UPPER_BODY}">
+    <xacro:if value="${ADD_ARMS}">
         <gazebo reference="shoulder_yaw_1">
             <implicitSpringDamper>1</implicitSpringDamper>
             <provideFeedback>true</provideFeedback>

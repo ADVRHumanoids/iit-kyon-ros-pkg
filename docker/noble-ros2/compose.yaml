@@ -2,13 +2,13 @@ services:
   dev:
     build:
       context: .
-      secrets:
-        - gh_token
     image: iit-kyon-ros-pkg-test:latest
     stdin_open: true
     tty: true 
     entrypoint: /bin/bash
     restart: no
+    network_mode: host
+    gpus: all
     volumes:
       - /home/$USER/.ssh:/home/user/.ssh
       - ./scripts:/home/user/scripts
@@ -16,7 +16,4 @@ services:
     environment:
       - TERM=xterm-256color
       - FOREST_JOBS
-
-secrets:
-  gh_token:
-    environment: GITHUB_TOKEN
+      - DISPLAY

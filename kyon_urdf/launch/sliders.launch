@@ -7,7 +7,6 @@
     <arg name="legs" default="true" />
     <arg name="feet" default="true" />
     <arg name="sensors" default="false" />
-    <arg name="payload" default="false" />
     <arg name="dagana" default="false" />
     <arg name="velodyne" default="false" />
     <arg name="wheels" default="false" />
@@ -15,13 +14,13 @@
 
     <!-- URDF and SRDF commands -->
     <let name="urdf_command"
-        value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) dagana:=$(var dagana) wheels:=$(var wheels) velodyne:=$(var velodyne)"/>
+        value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) dagana:=$(var dagana) wheels:=$(var wheels) velodyne:=$(var velodyne)"/>
 
     <let name="urdf_string"
         value="$(command '$(var urdf_command)' ignore)"/>
 
     <let name="srdf_command"
-        value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) dagana:=$(var dagana) wheels:=$(var wheels) velodyne:=$(var velodyne)"/>
+        value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) dagana:=$(var dagana) wheels:=$(var wheels) velodyne:=$(var velodyne)"/>
 
     <let name="srdf_string"
         value="$(command '$(var srdf_command)' ignore)"/>

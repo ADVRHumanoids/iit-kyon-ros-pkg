@@ -9,47 +9,5 @@
 
 <xacro:kyon_arm arm_num="2" rot="1"  parent="pelvis">
 </xacro:kyon_arm>
-	
-<xacro:if value="${PAYLOAD}">
-	<link name="payload_1">
-		<inertial>
-			<origin xyz="0.0 0.0 0.0"/>
-			<mass value="4"/>
-			<inertia ixx="0.0267" iyy="0.0267" izz="0.0267" ixy="0" ixz="0" iyz="0"/>
-		</inertial>
-		<visual>
-			<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
-			<geometry>
-				<box size="0.2 0.2 0.2"/>
-			</geometry>
-			<material name="dark_grey"/>
-		</visual>
-	</link>
-	<joint name="hand_to_payload_1" type="fixed">
-		<origin xyz="0 0.1 0.0" rpy="0 0 0"/>
-		<parent link="dagana_1_bottom_link"/>
-		<child link="payload_1"/>
-	</joint>
-	
-	<link name="payload_2">
-		<inertial>
-			<origin xyz="0.0 0.0 0.0"/>
-			<mass value="4"/>
-			<inertia ixx="0.0267" iyy="0.0267" izz="0.0267" ixy="0" ixz="0" iyz="0"/>
-		</inertial>
-		<visual>
-			<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
-			<geometry>
-				<box size="0.2 0.2 0.2"/>
-			</geometry>
-			<material name="dark_grey"/>
-		</visual>
-	</link>
-	<joint name="hand_to_payload_2" type="fixed">
-		<origin xyz="0 0.1 0.0" rpy="0 0 0"/>
-		<parent link="dagana_2_bottom_link"/>
-		<child link="payload_2"/>
-	</joint>
-</xacro:if>
 
 </robot>
