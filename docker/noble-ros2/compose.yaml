@@ -9,6 +9,10 @@ services:
     restart: no
     network_mode: host
     gpus: all
+    devices:
+      - /dev/input:/dev/input:r
+    group_add:
+      - "${INPUT_GID:-995}"
     volumes:
       - /home/$USER/.ssh:/home/user/.ssh
       - ./scripts:/home/user/scripts
@@ -17,3 +21,4 @@ services:
       - TERM=xterm-256color
       - FOREST_JOBS
       - DISPLAY
+      - ROS_AUTOMATIC_DISCOVERY_RANGE
