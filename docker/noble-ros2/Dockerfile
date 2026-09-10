@@ -19,7 +19,9 @@ RUN source ~/env/bin/activate && \
     mkdir -p ~/test_ws && cd ~/test_ws && \
     forest init && \
     source /opt/ros/jazzy/setup.bash && source setup.bash && \
-    forest add-recipes https://github.com/advrhumanoids/multidof_recipes.git -t ros2 && \
+    forest add-recipes https://github.com/advrhumanoids/multidof_recipes.git -t kyon_refactor && \
     forest grow xbot2_mujoco --clone-depth 1 -j4 && \
     forest grow iit-kyon-ros-pkg && \
-    forest grow policy_deploy_toolkit
+    forest grow policy_deploy_toolkit && \
+    cd ./src/iit-kyon-ros-pkg && git checkout refactor && cd ~/test_ws && forest grow iit-kyon-ros-pkg && \
+    echo "source ~/test_ws/setup.bash" >> ~/.bashrc && echo "source /opt/xbot/setup.sh" >> ~/.bashrc

@@ -1,0 +1,31 @@
+solver_options:
+    regularization: 1e-2
+    back_end: osqp
+    
+stack:
+    - [l_arm, r_arm]
+
+constraints: 
+    - jlim
+    - vlim
+
+jlim:
+    type: JointLimits
+
+vlim:
+    type: VelocityLimits
+
+l_arm:
+    type: Cartesian
+    distal_link: dagana_1_base
+    base_link: pelvis 
+    use_local_subtasks: true
+    lambda: 0.1
+    
+r_arm:
+    type: Cartesian
+    distal_link: dagana_2_base
+    base_link: pelvis 
+    use_local_subtasks: true
+    lambda: 0.1
+    
