@@ -1,3 +1,4 @@
+[![Install and Test (Noble-ROS2)](https://github.com/ADVRHumanoids/iit-kyon-ros-pkg/actions/workflows/install-and-test-ros2-noble.yaml/badge.svg)](https://github.com/ADVRHumanoids/iit-kyon-ros-pkg/actions/workflows/install-and-test-ros2-noble.yaml)
 # iit-kyon-ros-pkg
 ## Dependencies
 We suggest to use the `forest` tool to install the main dependencies of the controller in an easier way:

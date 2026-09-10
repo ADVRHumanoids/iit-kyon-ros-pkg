@@ -20,6 +20,11 @@
 <xacro:arg name="velodyne" default="false"/>
 <xacro:arg name="add_collision" default="true"/>
 <xacro:arg name="hesai_jt128" default="false"/>
+<xacro:arg name="add_fixed_base_joint" default="false"/>
+<xacro:arg name="fixed_base_x" default="0.0"/>
+<xacro:arg name="fixed_base_y" default="0.0"/>
+<xacro:arg name="fixed_base_z" default="0.0"/>
+<xacro:arg name="visual_mesh_subfolder" default="visual_lowres"/> <!-- pass an empty string to get the original high resolution meshes -->
 
 
 <!-- ************SELECT PARTS*************-->
@@ -29,6 +34,7 @@
 <xacro:property name="ADD_CAMERAS" value="$(arg cameras)"/>
 <xacro:property name="ADD_FU_CAMERA" value="$(arg camera_front_up)"/>
 <xacro:property name="ADD_FD_CAMERA" value="$(arg camera_front_down)"/>
+<xacro:property name="ADD_FD_ZED_MODEL" value="$(arg add_zed_model_front_down)"/>
 <xacro:property name="ADD_LEFT_CAMERA" value="$(arg camera_left)"/>
 <xacro:property name="ADD_RIGHT_CAMERA" value="$(arg camera_right)"/>
 <xacro:property name="ADD_WHEELS" value="$(arg wheels)"/>
@@ -40,5 +46,11 @@
 <xacro:property name="ADD_VIRTUAL_FRAME" value="false" />
 <xacro:property name="ADD_COLLISION" value="$(arg add_collision)"/>
 <xacro:property name="PAYLOAD" value="$(arg payload)"/>
+<xacro:property name="VISUAL_MESH_SUBFOLDER" value="$(arg visual_mesh_subfolder)"/>
+
+<xacro:property name="ADD_FIXED_BASE" value="$(arg add_fixed_base_joint)"/>
+<xacro:property name="FIXED_BASE_X" value="$(arg fixed_base_x)"/>
+<xacro:property name="FIXED_BASE_Y" value="$(arg fixed_base_y)"/>
+<xacro:property name="FIXED_BASE_Z" value="$(arg fixed_base_z)"/>
 
 </robot>

@@ -13,7 +13,7 @@
     <visual>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
-            <mesh filename="package://kyon_urdf/meshes/mesh_foot-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
+            <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_foot-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
         </geometry>
         <material name="dark_grey"/>
     </visual>
@@ -35,7 +35,26 @@
     <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
 </joint>
 
-<link name="contact_${leg_num}"/>
+<link name="contact_${leg_num}">
+    <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="6.4e-7" ixy="0.0" ixz="0.0" iyy="6.4e-7" iyz="0.0" izz="6.4e-7"/>
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <sphere radius="0.03"/>
+        </geometry>
+        <material name="white"/>
+    </visual>
+    <collision name="contact_${leg_num}">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <sphere radius="0.03"/>
+        </geometry>
+    </collision>
+</link>
 <joint name="contact_${leg_num}_joint" type="fixed">
     <parent link="knee_pitch_${leg_num}_link"/>
     <child link="contact_${leg_num}"/>

@@ -21,7 +21,7 @@
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
 	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-			<mesh filename="package://kyon_urdf/meshes/mesh_hip-roll.stl" scale="0.001 ${mirror*0.001} 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_hip-roll.stl" scale="0.001 ${mirror*0.001} 0.001"/>
 		</geometry> 
   		<material name="dark_grey"/>
 	</visual>
@@ -45,14 +45,14 @@
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<mesh filename="package://kyon_urdf/meshes/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+	 		<mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
 	  	</geometry>
   		<material name="kyon_orange"/>
 	</visual>
 	<visual>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
-	 		<mesh filename="package://kyon_urdf/meshes/mesh_hip-pitch_cover.stl" scale="0.001 0.001 0.001"/>
+	 		<mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_hip-pitch_cover.stl" scale="0.001 0.001 0.001"/>
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
@@ -89,13 +89,13 @@
 	<xacro:foot_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
 </xacro:unless>
 
-<xacro:if value="${ADD_WHEELS}">
+<xacro:if value="${ADD_WHEELS}"> 
 	<xacro:steering_wheel leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
 </xacro:if>
 
-<!-- <xacro:if value="${ADD_WHEELS}">
-    <xacro:wheel_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
-</xacro:if> -->
+<!-- <xacro:if value="${ADD_WHEELS}"> -->
+    <!-- <xacro:wheel_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/> -->
+<!-- </xacro:if> -->
 
 </xacro:macro>
 

@@ -14,7 +14,7 @@
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
 	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-			<mesh filename="package://kyon_urdf/meshes/mesh_knee-steering.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_knee-steering.stl" scale="0.001 0.001 0.001"/>
 		</geometry> 
   		<material name="dark_grey"/>
 	</visual>
@@ -37,7 +37,7 @@
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
 	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-			<mesh filename="package://kyon_urdf/meshes/mesh_ankle-yaw.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_ankle-yaw.stl" scale="0.001 0.001 0.001"/>
 		</geometry> 
   		<material name="dark_grey"/>
 	</visual>
@@ -60,7 +60,7 @@
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 	  	<geometry>
 	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-			<mesh filename="package://kyon_urdf/meshes/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_wheel.stl" scale="0.001 0.001 0.001"/>
 		</geometry> 
   		<material name="light_grey"/>
 	</visual>
