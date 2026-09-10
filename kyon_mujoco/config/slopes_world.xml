@@ -14,9 +14,13 @@
             <geom condim="3" solref="0.005 1.2" solimp="0.995 0.995 0.001 0.5 2" friction="0.7 0.005 0.001"/>
             <!-- <geom condim="3" solref="0.005 1.2" solimp="0.995 0.995 0.001 0.5 2" friction="0.8"/> -->
         </default>
+        <default class="wheels">
+            <joint armature="0.234" damping="1.7"/>
+            <geom condim="3" solref="0.005 1.2" solimp="0.995 0.995 0.001 0.5 2" friction="0.7 0.005 0.001"/>
+        </default>
         <default class="terrain">
-            <geom solref="0.004 1.2" solimp="0.995 0.995 0.001 0.5 2" friction="0.7 0.005 0.001" group="1"/>
-            <!-- <geom friction="0.8" contype="1" conaffinity="0" group="1"/> -->
+            <geom condim="3" solref="0.004 1.2" solimp="0.995 0.995 0.001 0.5 2" friction="0.7 0.005 0.001" group="1"/>
+            <!-- <geom friction="0.8"/> -->
         </default>
     </default>
 

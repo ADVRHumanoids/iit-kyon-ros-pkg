@@ -1,0 +1,856 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="mixed_world">
+
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-air-pressure-system" name="gz::sim::systems::AirPressure"/>
+    <plugin filename="gz-sim-altimeter-system" name="gz::sim::systems::Altimeter"/>
+    <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="gz-sim-magnetometer-system" name="gz::sim::systems::Magnetometer"/>
+    <plugin filename="gz-sim-forcetorque-system" name="gz::sim::systems::ForceTorque"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+
+    <gravity>0 0 -9.81</gravity>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <physics name="update_rate" type="ode">
+      <real_time_update_rate>1000</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+      <max_contacts>10</max_contacts>
+      <ode>
+        <solver>
+          <iters>50</iters>
+          <sor>1.20</sor>
+        </solver>
+        <constraints>
+          <contact_surface_layer>0.0002</contact_surface_layer>
+          <contact_max_correcting_vel>500</contact_max_correcting_vel>
+          <cfm>0.000001</cfm>
+          <erp>0.3</erp>
+        </constraints>
+      </ode>
+    </physics>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal><size>500 500</size></plane></geometry>
+          <surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>500 500</size></plane></geometry>
+          <material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ================================================================
+         LEVEL 0: step riser 0.04 m (half 0.02), slope 5 deg
+         Stairs at: (-6,6), (6,-6), (-6,-18), (6,18)
+         Slopes at: (-6,-6), (6,6), (6,-18), (-6,18)
+         ================================================================ -->
+
+    <model name="pyramid_lvl0_stairs_1"><static>true</static><pose>-6 6 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.02 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.04</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.06 0 0 0</pose>
+        <collision name="c"><geometry><box><size>7.6 7.6 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>7.6 7.6 0.04</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.04</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.14 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.8 2.8 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2.8 2.8 0.04</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl0_slope_2"><static>true</static><pose>-6 -6 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl0_stairs_3"><static>true</static><pose>6 -6 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.02 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.04</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.06 0 0 0</pose>
+        <collision name="c"><geometry><box><size>7.6 7.6 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>7.6 7.6 0.04</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.04</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.14 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.8 2.8 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2.8 2.8 0.04</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl0_slope_4"><static>true</static><pose>6 6 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl0_stairs_5"><static>true</static><pose>-6 -18 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.02 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.04</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.06 0 0 0</pose>
+        <collision name="c"><geometry><box><size>7.6 7.6 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>7.6 7.6 0.04</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.04</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.14 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.8 2.8 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2.8 2.8 0.04</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl0_slope_6"><static>true</static><pose>6 -18 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl0_stairs_7"><static>true</static><pose>6 18 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.02 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.04</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.06 0 0 0</pose>
+        <collision name="c"><geometry><box><size>7.6 7.6 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>7.6 7.6 0.04</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.04</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.14 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.8 2.8 0.04</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2.8 2.8 0.04</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl0_slope_8"><static>true</static><pose>-6 18 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- ================================================================
+         LEVEL 1: step riser 0.08 m (half 0.04), slope 10 deg
+         Stairs at: (18,6), (30,-6), (30,18), (18,-18)
+         Slopes at: (18,-6), (30,6), (18,18), (30,-18)
+         ================================================================ -->
+
+    <model name="pyramid_lvl1_stairs_1"><static>true</static><pose>18 6 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.04 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.08</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.12 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8 8 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8 8 0.08</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.20 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6 6 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6 6 0.08</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.28 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4 4 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>4 4 0.08</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.36 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2 2 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2 2 0.08</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl1_slope_2"><static>true</static><pose>18 -6 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl1_stairs_3"><static>true</static><pose>30 -6 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.04 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.08</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.12 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8 8 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8 8 0.08</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.20 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6 6 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6 6 0.08</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.28 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4 4 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>4 4 0.08</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.36 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2 2 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2 2 0.08</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl1_slope_4"><static>true</static><pose>30 6 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl1_slope_5"><static>true</static><pose>18 18 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl1_stairs_6"><static>true</static><pose>30 18 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.04 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.08</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.12 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8 8 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8 8 0.08</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.20 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6 6 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6 6 0.08</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.28 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4 4 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>4 4 0.08</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.36 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2 2 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2 2 0.08</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl1_stairs_7"><static>true</static><pose>18 -18 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.04 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.08</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.12 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8 8 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8 8 0.08</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.20 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6 6 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6 6 0.08</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.28 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4 4 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>4 4 0.08</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.36 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2 2 0.08</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2 2 0.08</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl1_slope_8"><static>true</static><pose>30 -18 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- ================================================================
+         LEVEL 2: step riser 0.12 m (half 0.06), slope 15 deg
+         Slopes at: (42,-6), (54,6), (42,18), (54,-18)
+         Stairs at: (42,6), (54,-6), (54,18), (42,-18)
+         ================================================================ -->
+
+    <model name="pyramid_lvl2_slope_1"><static>true</static><pose>42 -6 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl2_stairs_2"><static>true</static><pose>42 6 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.06 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.12</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.18 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8.4 8.4 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8.4 8.4 0.12</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6.8 6.8 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6.8 6.8 0.12</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.42 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.12</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.54 0 0 0</pose>
+        <collision name="c"><geometry><box><size>3.6 3.6 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>3.6 3.6 0.12</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s6"><pose>0 0 0.66 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2 2 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2 2 0.12</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl2_stairs_3"><static>true</static><pose>54 -6 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.06 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.12</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.18 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8.4 8.4 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8.4 8.4 0.12</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6.8 6.8 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6.8 6.8 0.12</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.42 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.12</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.54 0 0 0</pose>
+        <collision name="c"><geometry><box><size>3.6 3.6 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>3.6 3.6 0.12</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s6"><pose>0 0 0.66 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2 2 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2 2 0.12</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl2_slope_4"><static>true</static><pose>54 6 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl2_slope_5"><static>true</static><pose>42 18 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl2_stairs_6"><static>true</static><pose>54 18 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.06 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.12</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.18 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8.4 8.4 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8.4 8.4 0.12</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6.8 6.8 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6.8 6.8 0.12</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.42 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.12</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.54 0 0 0</pose>
+        <collision name="c"><geometry><box><size>3.6 3.6 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>3.6 3.6 0.12</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s6"><pose>0 0 0.66 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2 2 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2 2 0.12</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl2_stairs_7"><static>true</static><pose>42 -18 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.06 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.12</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.18 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8.4 8.4 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8.4 8.4 0.12</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6.8 6.8 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6.8 6.8 0.12</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.42 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.12</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.54 0 0 0</pose>
+        <collision name="c"><geometry><box><size>3.6 3.6 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>3.6 3.6 0.12</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s6"><pose>0 0 0.66 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2 2 0.12</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2 2 0.12</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl2_slope_8"><static>true</static><pose>54 -18 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- ================================================================
+         LEVEL 3: step riser 0.16 m (half 0.08), slope 20 deg
+         Stairs at: (66,6), (78,-6), (78,18), (66,-18)
+         Slopes at: (66,-6), (78,6), (66,18), (78,-18)
+         ================================================================ -->
+
+    <model name="pyramid_lvl3_stairs_1"><static>true</static><pose>66 6 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.08 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.24 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8.8 8.8 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8.8 8.8 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.40 0 0 0</pose>
+        <collision name="c"><geometry><box><size>7.6 7.6 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>7.6 7.6 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.56 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6.4 6.4 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6.4 6.4 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.72 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s6"><pose>0 0 0.88 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4 4 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>4 4 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s7"><pose>0 0 1.04 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.8 2.8 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2.8 2.8 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s8"><pose>0 0 1.20 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.6 1.6 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>1.6 1.6 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl3_slope_2"><static>true</static><pose>66 -6 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl3_slope_3"><static>true</static><pose>78 6 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl3_stairs_4"><static>true</static><pose>78 -6 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.08 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.24 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8.8 8.8 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8.8 8.8 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.40 0 0 0</pose>
+        <collision name="c"><geometry><box><size>7.6 7.6 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>7.6 7.6 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.56 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6.4 6.4 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6.4 6.4 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.72 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s6"><pose>0 0 0.88 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4 4 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>4 4 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s7"><pose>0 0 1.04 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.8 2.8 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2.8 2.8 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s8"><pose>0 0 1.20 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.6 1.6 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>1.6 1.6 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl3_slope_5"><static>true</static><pose>66 18 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl3_stairs_6"><static>true</static><pose>78 18 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.08 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.24 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8.8 8.8 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8.8 8.8 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.40 0 0 0</pose>
+        <collision name="c"><geometry><box><size>7.6 7.6 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>7.6 7.6 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.56 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6.4 6.4 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6.4 6.4 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.72 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s6"><pose>0 0 0.88 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4 4 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>4 4 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s7"><pose>0 0 1.04 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.8 2.8 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2.8 2.8 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s8"><pose>0 0 1.20 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.6 1.6 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>1.6 1.6 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl3_stairs_7"><static>true</static><pose>66 -18 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.08 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.24 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8.8 8.8 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8.8 8.8 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.40 0 0 0</pose>
+        <collision name="c"><geometry><box><size>7.6 7.6 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>7.6 7.6 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.56 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6.4 6.4 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6.4 6.4 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.72 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s6"><pose>0 0 0.88 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4 4 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>4 4 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s7"><pose>0 0 1.04 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.8 2.8 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2.8 2.8 0.16</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s8"><pose>0 0 1.20 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.6 1.6 0.16</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>1.6 1.6 0.16</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl3_slope_8"><static>true</static><pose>78 -18 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- ================================================================
+         LEVEL 4: step riser 0.20 m (half 0.10), slope 25 deg
+         Stairs at: (90,6), (102,-6), (102,18), (90,-18)
+         Slopes at: (90,-6), (102,6), (90,18), (102,-18)
+         ================================================================ -->
+
+    <model name="pyramid_lvl4_stairs_1"><static>true</static><pose>90 6 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>9.2 9.2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>9.2 9.2 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.50 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8.4 8.4 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8.4 8.4 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.70 0 0 0</pose>
+        <collision name="c"><geometry><box><size>7.6 7.6 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>7.6 7.6 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.90 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6.8 6.8 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6.8 6.8 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s6"><pose>0 0 1.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6 6 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6 6 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s7"><pose>0 0 1.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s8"><pose>0 0 1.50 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4.4 4.4 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>4.4 4.4 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s9"><pose>0 0 1.70 0 0 0</pose>
+        <collision name="c"><geometry><box><size>3.6 3.6 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>3.6 3.6 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s10"><pose>0 0 1.90 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.8 2.8 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2.8 2.8 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s11"><pose>0 0 2.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2 2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2 2 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s12"><pose>0 0 2.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.2 1.2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>1.2 1.2 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl4_slope_2"><static>true</static><pose>90 -6 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl4_slope_3"><static>true</static><pose>102 6 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl4_stairs_4"><static>true</static><pose>102 -6 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>9.2 9.2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>9.2 9.2 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.50 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8.4 8.4 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8.4 8.4 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.70 0 0 0</pose>
+        <collision name="c"><geometry><box><size>7.6 7.6 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>7.6 7.6 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.90 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6.8 6.8 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6.8 6.8 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s6"><pose>0 0 1.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6 6 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6 6 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s7"><pose>0 0 1.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s8"><pose>0 0 1.50 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4.4 4.4 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>4.4 4.4 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s9"><pose>0 0 1.70 0 0 0</pose>
+        <collision name="c"><geometry><box><size>3.6 3.6 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>3.6 3.6 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s10"><pose>0 0 1.90 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.8 2.8 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2.8 2.8 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s11"><pose>0 0 2.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2 2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2 2 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s12"><pose>0 0 2.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.2 1.2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>1.2 1.2 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl4_slope_5"><static>true</static><pose>90 18 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl4_stairs_6"><static>true</static><pose>102 18 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>9.2 9.2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>9.2 9.2 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.50 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8.4 8.4 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8.4 8.4 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.70 0 0 0</pose>
+        <collision name="c"><geometry><box><size>7.6 7.6 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>7.6 7.6 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.90 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6.8 6.8 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6.8 6.8 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s6"><pose>0 0 1.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6 6 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6 6 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s7"><pose>0 0 1.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s8"><pose>0 0 1.50 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4.4 4.4 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>4.4 4.4 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s9"><pose>0 0 1.70 0 0 0</pose>
+        <collision name="c"><geometry><box><size>3.6 3.6 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>3.6 3.6 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s10"><pose>0 0 1.90 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.8 2.8 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2.8 2.8 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s11"><pose>0 0 2.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2 2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2 2 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s12"><pose>0 0 2.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.2 1.2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>1.2 1.2 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl4_stairs_7"><static>true</static><pose>90 -18 0 0 0 0</pose>
+      <link name="s1"><pose>0 0 0.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>10 10 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>10 10 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s2"><pose>0 0 0.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>9.2 9.2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>9.2 9.2 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s3"><pose>0 0 0.50 0 0 0</pose>
+        <collision name="c"><geometry><box><size>8.4 8.4 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>8.4 8.4 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s4"><pose>0 0 0.70 0 0 0</pose>
+        <collision name="c"><geometry><box><size>7.6 7.6 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>7.6 7.6 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s5"><pose>0 0 0.90 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6.8 6.8 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6.8 6.8 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s6"><pose>0 0 1.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>6 6 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>6 6 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s7"><pose>0 0 1.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>5.2 5.2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>5.2 5.2 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s8"><pose>0 0 1.50 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4.4 4.4 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>4.4 4.4 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s9"><pose>0 0 1.70 0 0 0</pose>
+        <collision name="c"><geometry><box><size>3.6 3.6 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>3.6 3.6 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s10"><pose>0 0 1.90 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.8 2.8 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2.8 2.8 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+      <link name="s11"><pose>0 0 2.10 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2 2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>2 2 0.20</size></box></geometry><material><ambient>0.65 0.82 1 1</ambient><diffuse>0.65 0.82 1 1</diffuse></material></visual>
+      </link>
+      <link name="s12"><pose>0 0 2.30 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.2 1.2 0.20</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><box><size>1.2 1.2 0.20</size></box></geometry><material><ambient>0.35 0.5 0.75 1</ambient><diffuse>0.35 0.5 0.75 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pyramid_lvl4_slope_8"><static>true</static><pose>102 -18 0 0 0 0</pose>
+      <link name="slope">
+        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>

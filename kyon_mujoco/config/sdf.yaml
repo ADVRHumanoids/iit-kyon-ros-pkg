@@ -1,7 +1,7 @@
 # substitute collision meshes with specific sdf. Remember to define the <extension> and <asset> tags of the relative sdf in world.xml
 # dict("link_name": "sdf_name")
 
-wheel_1: torus
-wheel_2: torus
-wheel_3: torus
-wheel_4: torus
+# wheel_1: torus
+# wheel_2: torus
+# wheel_3: torus
+# wheel_4: torus
