@@ -7,14 +7,15 @@ Panels:
         - /Global Options1
         - /Status1
         - /TF1
+        - /PointCloud21
+        - /PointCloud21/Topic1
       Splitter Ratio: 0.5
-    Tree Height: 1309
+    Tree Height: 667
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
     Expanded:
       - /2D Pose Estimate1
-      - /2D Nav Goal1
       - /Publish Point1
     Name: Tool Properties
     Splitter Ratio: 0.5886790156364441
@@ -24,13 +25,10 @@ Panels:
     Name: Views
     Splitter Ratio: 0.5
   - Class: rviz_common/Time
+    Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
-Preferences:
-  PromptSaveOnExit: true
-Toolbars:
-  toolButtonStyle: 2
+    SyncSource: PointCloud2
 Visualization Manager:
   Class: ""
   Displays:
@@ -55,6 +53,14 @@ Visualization Manager:
     - Alpha: 1
       Class: rviz_default_plugins/RobotModel
       Collision Enabled: false
+      Description File: ""
+      Description Source: Topic
+      Description Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /robot_description
       Enabled: true
       Links:
         All Links Enabled: true
@@ -82,36 +88,20 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        dagana1_base:
+        hesai_jt128_back_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        dagana1_clamp:
+        hesai_jt128_front_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        dagana2_base:
+        hesai_lidar:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        dagana2_clamp:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        elbow_pitch_1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        elbow_pitch_2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         hip_pitch_1_link:
           Alpha: 1
           Show Axes: false
@@ -176,68 +166,43 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        left_camera_mount_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         pelvis:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        shoulder_pitch_1_link:
+        right_camera_mount_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        shoulder_pitch_2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        shoulder_yaw_1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        shoulder_yaw_2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         world:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        wrist_pitch_1_link:
+        zed_front_down_mount_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        wrist_pitch_2_link:
+        zed_front_up_mount_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        wrist_yaw_1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        wrist_yaw_2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
+      Mass Properties:
+        Inertia: false
+        Mass: false
       Name: RobotModel
-      Description Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /robot_description
       TF Prefix: ""
       Update Interval: 0
       Value: true
       Visual Enabled: true
     - Class: rviz_default_plugins/TF
       Enabled: true
+      Filter (blacklist): ""
+      Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
         All Enabled: true
@@ -251,17 +216,11 @@ Visualization Manager:
           Value: true
         contact_4:
           Value: true
-        dagana1_base:
+        hesai_jt128_back_link:
           Value: true
-        dagana1_clamp:
+        hesai_jt128_front_link:
           Value: true
-        dagana2_base:
-          Value: true
-        dagana2_clamp:
-          Value: true
-        elbow_pitch_1_link:
-          Value: true
-        elbow_pitch_2_link:
+        hesai_lidar:
           Value: true
         hip_pitch_1_link:
           Value: true
@@ -289,78 +248,114 @@ Visualization Manager:
           Value: true
         knee_pitch_4_link:
           Value: true
+        left_camera_mount_link:
+          Value: true
         pelvis:
           Value: true
-        shoulder_pitch_1_link:
+        right_camera_mount_link:
           Value: true
-        shoulder_pitch_2_link:
+        world:
           Value: true
-        shoulder_yaw_1_link:
+        zed_front_down_mount_link:
           Value: true
-        shoulder_yaw_2_link:
+        zed_front_up_mount_link:
           Value: true
-        wrist_pitch_1_link:
-          Value: true
-        wrist_pitch_2_link:
-          Value: true
-        wrist_yaw_1_link:
-          Value: true
-        wrist_yaw_2_link:
-          Value: true
-      Marker Alpha: 1
       Marker Scale: 0.30000001192092896
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        pelvis:
-          base_link:
-            {}
-          hip_roll_1_link:
-            hip_pitch_1_link:
-              knee_pitch_1_link:
-                contact_1:
-                  {}
-          hip_roll_2_link:
-            hip_pitch_2_link:
-              knee_pitch_2_link:
-                contact_2:
-                  {}
-          hip_roll_3_link:
-            hip_pitch_3_link:
-              knee_pitch_3_link:
-                contact_3:
-                  {}
-          hip_roll_4_link:
-            hip_pitch_4_link:
-              knee_pitch_4_link:
-                contact_4:
-                  {}
-          imu_link:
-            {}
-          shoulder_yaw_1_link:
-            shoulder_pitch_1_link:
-              elbow_pitch_1_link:
-                wrist_pitch_1_link:
-                  wrist_yaw_1_link:
-                    dagana1_base:
-                      dagana1_clamp:
-                        {}
-          shoulder_yaw_2_link:
-            shoulder_pitch_2_link:
-              elbow_pitch_2_link:
-                wrist_pitch_2_link:
-                  wrist_yaw_2_link:
-                    dagana2_base:
-                      dagana2_clamp:
-                        {}
+        world:
+          pelvis:
+            base_link:
+              {}
+            hesai_jt128_back_link:
+              {}
+            hesai_jt128_front_link:
+              {}
+            hesai_lidar:
+              {}
+            hip_roll_1_link:
+              hip_pitch_1_link:
+                knee_pitch_1_link:
+                  contact_1:
+                    {}
+            hip_roll_2_link:
+              hip_pitch_2_link:
+                knee_pitch_2_link:
+                  contact_2:
+                    {}
+            hip_roll_3_link:
+              hip_pitch_3_link:
+                knee_pitch_3_link:
+                  contact_3:
+                    {}
+            hip_roll_4_link:
+              hip_pitch_4_link:
+                knee_pitch_4_link:
+                  contact_4:
+                    {}
+            imu_link:
+              {}
+            left_camera_mount_link:
+              {}
+            right_camera_mount_link:
+              {}
+            zed_front_down_mount_link:
+              {}
+            zed_front_up_mount_link:
+              {}
       Update Interval: 0
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 0
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Best Effort
+        Value: /filtered
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: MarkerArray
+      Namespaces:
+        height_scan: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /height_scan_markers
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Default Light: true
     Fixed Frame: base_link
     Frame Rate: 30
   Name: root
@@ -371,16 +366,35 @@ Visualization Manager:
     - Class: rviz_default_plugins/Select
     - Class: rviz_default_plugins/FocusCamera
     - Class: rviz_default_plugins/Measure
+      Line color: 128; 128; 0
     - Class: rviz_default_plugins/SetInitialPose
-      Theta std deviation: 0.2617993950843811
-      Topic: /initialpose
-      X std deviation: 0.5
-      Y std deviation: 0.5
+      Covariance x: 0.25
+      Covariance y: 0.25
+      Covariance yaw: 0.06853891909122467
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /initialpose
     - Class: rviz_default_plugins/SetGoal
-      Topic: /move_base_simple/goal
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /move_base_simple/goal
     - Class: rviz_default_plugins/PublishPoint
       Single click: true
-      Topic: /clicked_point
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /clicked_point
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
   Value: true
   Views:
     Current:
@@ -391,7 +405,6 @@ Visualization Manager:
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
-      Field of View: 0.7853981852531433
       Focal Point:
         X: 0.20209059119224548
         Y: 0.15340088307857513
@@ -401,17 +414,18 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3303987979888916
+      Pitch: 0.3653987944126129
       Target Frame: <Fixed Frame>
-      Yaw: 4.721749305725098
+      Value: Orbit (rviz_default_plugins)
+      Yaw: 4.951749324798584
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1792
+  Height: 1043
   Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd0000000400000000000001da0000060bfc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b000000ab00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000abfb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c00610079007301000000690000060b0000017800fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000014d00000259fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000069000002590000012300fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e1000001970000000300000c0000000057fc0100000002fb0000000800540069006d0065010000000000000c00000005b200fffffffb0000000800540069006d0065010000000000000450000000000000000000000a1a0000060b00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000016100000360fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000abfb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b00000360000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000014d00000259fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000006900000259000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000003c000000057fc0100000002fb0000000800540069006d00650100000000000003c00000025300fffffffb0000000800540069006d00650100000000000004500000000000000000000002590000036000000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -420,6 +434,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: true
-  Width: 3072
+  Width: 960
   X: 0
-  Y: 54
+  Y: 0
