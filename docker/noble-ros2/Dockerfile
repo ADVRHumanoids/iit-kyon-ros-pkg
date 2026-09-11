@@ -15,7 +15,6 @@ WORKDIR /home/user
 RUN source ~/env/bin/activate && \
     source /opt/xbot/setup.sh && \
     export HHCM_FOREST_CLONE_DEFAULT_PROTO=https && \
-    git config --global url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf "https://github.com/" && \
     mkdir -p ~/test_ws && cd ~/test_ws && \
     forest init && \
     source /opt/ros/jazzy/setup.bash && source setup.bash && \

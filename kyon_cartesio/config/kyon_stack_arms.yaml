@@ -19,6 +19,7 @@ l_arm:
     type: Cartesian
     distal_link: dagana_1_base
     base_link: pelvis 
+    indices: [0, 1, 2]
     use_local_subtasks: true
     lambda: 0.1
     
@@ -26,6 +27,7 @@ r_arm:
     type: Cartesian
     distal_link: dagana_2_base
     base_link: pelvis 
+    indices: [0, 1, 2]
     use_local_subtasks: true
     lambda: 0.1
     
