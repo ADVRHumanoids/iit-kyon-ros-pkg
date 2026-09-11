@@ -52,7 +52,6 @@ class JoyToRef(Node):
                 pose.header.stamp = self.get_clock().now().to_msg()
                 pose.pose = self._dagana_2_curr_ref
                 pose.pose.position.x += msg.axes[1] * self.linear_ee_vel * self._dt
-                print(msg.axes[1] * self.linear_ee_vel * self._dt)
                 pose.pose.position.y += msg.axes[0] * self.linear_ee_vel * self._dt
                 pose.pose.position.z += msg.axes[4] * self.linear_ee_vel * self._dt
                 self._dagana_2_pub.publish(pose)
