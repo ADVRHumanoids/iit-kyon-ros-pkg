@@ -18,17 +18,17 @@
     <arg name="steering_wheels" default="false"/>
     <arg name="varta" default="true"/>
     <arg name="ft_sensors" default="true"/>
-    <arg name="velodyne" default="false"/>
+    <arg name="lidar" default="false"/>
 
   <!-- Load the URDF/SRDF into the ROS Parameter Server -->
   <let name="urdf_command"
-      value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) varta:=$(var varta) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)"/>
+      value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon_robot.urdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) varta:=$(var varta) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) lidar:=$(var lidar)"/>
 
   <let name="urdf_string"
       value="$(command '$(var urdf_command)' ignore)"/>
 
   <let name="srdf_command"
-      value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)"/>
+      value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) lidar:=$(var lidar)"/>
 
   <let name="srdf_string"
       value="$(command '$(var srdf_command)' ignore)"/>

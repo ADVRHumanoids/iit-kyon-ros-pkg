@@ -55,7 +55,6 @@ class JoyToRef(Node):
                 print(msg.axes[1] * self.linear_ee_vel * self._dt)
                 pose.pose.position.y += msg.axes[0] * self.linear_ee_vel * self._dt
                 pose.pose.position.z += msg.axes[4] * self.linear_ee_vel * self._dt
-                print(f"Publishing pose: {pose.pose.position.x}, {pose.pose.position.y}, {pose.pose.position.z} for dagana_2")
                 self._dagana_2_pub.publish(pose)
         if msg.buttons[4]:
             if self._dagana_1_curr_ref is not None:
@@ -65,7 +64,6 @@ class JoyToRef(Node):
                 pose.pose.position.x += msg.axes[1] * self.linear_ee_vel * self._dt
                 pose.pose.position.y += msg.axes[0] * self.linear_ee_vel * self._dt
                 pose.pose.position.z += msg.axes[4] * self.linear_ee_vel * self._dt
-                print(f"Publishing pose: {pose.pose.position.x}, {pose.pose.position.y}, {pose.pose.position.z} for dagana_1")
                 self._dagana_1_pub.publish(pose)
         if not msg.buttons[5] and not msg.buttons[4]:
             twist = Twist()
