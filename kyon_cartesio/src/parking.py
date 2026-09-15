@@ -20,12 +20,12 @@ from cartesian_interface.pyci_all import *
 parser = argparse.ArgumentParser()
 parser.add_argument('-a', '--action', choices=('park', 'unpark'))
 parser.add_argument('-d', '--dance', action='store_true')
+parser.add_argument('-t', '--time', type=float, default=5.0)
 args = parser.parse_args()
 
 # -d only valid for unpark
 if args.dance and args.action != 'unpark':
     raise ValueError('Dance only valid for unpark action')
-
 
 class Parking:
 
@@ -119,7 +119,7 @@ base:
         self.qidx = np.array([self.robot.getQIndexFromQName(j) for j in self.joints])
 
 
-    def move(self, action):
+    def move(self, action, duration):
 
         qname = {
             'park': 'parked',
@@ -143,7 +143,7 @@ base:
         postural = ci.getTask('Postural')
 
         t = 0.0
-        trj_time = 5.0
+        trj_time = duration
 
         q0 = model.getJointPosition().copy()
         qf = model.getRobotState(qname).copy()
@@ -225,6 +225,6 @@ parking = Parking(node)
 
 # move
 if args.action:
-    parking.move(args.action)
+    parking.move(args.action, args.time)
 
 print('Done')
