@@ -33,6 +33,7 @@
         --srdf-cmd $(var srdf_command)
         --xml-cmd $(var cfg_xml_command) 
         --xml $(var world)
+        --detect-spawn-locations
         " >
         <env name="PYTHONUNBUFFERED" value="1" />
     </executable>
