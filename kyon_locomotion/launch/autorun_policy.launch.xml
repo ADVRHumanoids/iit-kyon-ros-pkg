@@ -1,0 +1,51 @@
+<launch>
+
+      <arg name="tag" default="latest" />
+      <arg name="distilled" default="false" />
+      <arg name="heightscan" default="false" />
+
+      <let name="distilled_flag" value="--distilled" if="$(var distilled)"/>
+      <let name="distilled_flag" value="" unless="$(var distilled)"/>
+      <let name="heightscan_flag" value="--heightscan" if="$(var heightscan)"/>
+      <let name="heightscan_flag" value="" unless="$(var heightscan)"/>
+
+      <arg name="example"
+           default="$(command '$(exec-in-pkg load_policy.py kyon_locomotion) --tag $(var tag) $(var distilled_flag) $(var heightscan_flag)' warn)" />
+      <arg name="enable_joy" default="false" />
+      <arg name="use_sim_time" default="true" />
+      <arg name="scale_x" default="1.0" />
+      <arg name="scale_y" default="1.0" />
+      <arg name="scale_yaw" default="1.0" />
+
+      
+
+      <let name="example_dir"
+            value="$(find-pkg-share kyon_locomotion)/checkpoints/$(var example)" />
+
+      <node pkg="policy_deploy_toolkit"
+            exec="deploy_policy_node"
+            output="screen"
+            args="$(var example_dir)/policy.onnx $(var example_dir)/deploy_metadata.yaml">
+            <param name="use_sim_time" value="$(var use_sim_time)"/>
+            <param name="obs_group_override" value="$(eval &quot; 'student' if '$(var distilled)' == 'true' else '' &quot;)"/>
+      </node>
+
+      <node pkg="joy"
+            exec="joy_node"
+            output="screen"
+            if="$(var enable_joy)" />
+
+      <node pkg="teleop_twist_joy"
+            exec="teleop_node"
+            output="screen"
+            if="$(var enable_joy)">
+            <remap from="/cmd_vel" to="/policy_deploy_node/commands/base_velocity" />
+            <param name="axis_linear.x" value="1" />
+            <param name="axis_linear.y" value="0" />
+            <param name="axis_angular.yaw" value="3" />
+            <param name="scale_linear.x" value="$(var scale_x)" />
+            <param name="scale_linear.y" value="$(var scale_y)" />
+            <param name="scale_angular.yaw" value="$(var scale_yaw)" />
+      </node>
+
+</launch>
