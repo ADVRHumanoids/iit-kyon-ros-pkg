@@ -22,7 +22,7 @@
 	<visual>
 		<origin xyz="0.0 0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-	 		<mesh filename="package://kyon_urdf/meshes/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
+	 		<mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
         <material name="dark_grey"/>
 	</visual>
