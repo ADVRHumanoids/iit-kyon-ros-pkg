@@ -9,6 +9,7 @@
 <xacro:arg name="legs" default="true"/>
 <xacro:arg name="upper_body" default="true"/>
 <xacro:arg name="wheels" default="false"/>
+<xacro:arg name="feet" default="false"/>
 <xacro:arg name="floating_joint" default="true"/>
 <xacro:arg name="camera_front_up" default="false"/>
 <xacro:arg name="camera_front_down" default="false"/>
@@ -38,6 +39,8 @@
 <xacro:property name="ADD_LEFT_CAMERA" value="$(arg camera_left)"/>
 <xacro:property name="ADD_RIGHT_CAMERA" value="$(arg camera_right)"/>
 <xacro:property name="ADD_WHEELS" value="$(arg wheels)"/>
+<!-- Flat feet instead of the contact spheres: the wheeled leg with a foot plate in place of the wheel -->
+<xacro:property name="ADD_FEET" value="$(arg feet)"/>
 <xacro:property name="ADD_VARTA" value="$(arg varta)"/>
 <xacro:property name="ADD_D034_LI_ION" value="$(arg d034_li_ion)"/>
 <xacro:property name="ADD_FLOATING_BASE" value="$(arg floating_joint)"/>

@@ -3,6 +3,7 @@
 
 <!-- include end-effectors -->
 <xacro:include filename="$(find kyon_urdf)/urdf/parts/foot_leg.urdf.xacro"/>
+<xacro:include filename="$(find kyon_urdf)/urdf/parts/foot_plate_leg.urdf.xacro"/>
 <xacro:include filename="$(find kyon_urdf)/urdf/parts/steering_wheel.urdf.xacro"/>
 <xacro:include filename="$(find kyon_urdf)/urdf/parts/wheel_leg.urdf.xacro"/>
 
@@ -86,7 +87,12 @@
 </joint>
 
 <xacro:unless value="${ADD_WHEELS}">
-	<xacro:foot_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
+	<xacro:if value="${ADD_FEET}">
+		<xacro:foot_plate_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
+	</xacro:if>
+	<xacro:unless value="${ADD_FEET}">
+		<xacro:foot_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
+	</xacro:unless>
 </xacro:unless>
 
 <xacro:if value="${ADD_WHEELS}"> 

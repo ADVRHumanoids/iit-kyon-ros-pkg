@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- Leg ending in a flat foot.
+
+     It is the wheeled leg with the wheel replaced by a foot: same shin as wheel_leg, and where the
+     wheel used to be there are two contact spheres, set apart along the wheel disk plane (which is
+     the plane the leg swings in). Unlike the single contact sphere of foot_leg, this gives the foot
+     a support base along the walking direction. The wheel actuator becomes an ankle pitch joint.
+
+     The spheres are the whole foot: they are both its collision and its visual, there is no mesh.
+     Their centers sit FootPlate_drop below the ankle axle, so the sole ends up
+     FootPlate_drop+FootContact_radius = 0.110m below it, exactly where the wheel touched the ground:
+     the leg keeps the length it has in the wheeled configuration.
+
+     The foot is asymmetric, like a real one: the toe reaches further ahead of the ankle than the heel
+     reaches behind it. Standing, this puts more of the support base in front, which is the side that
+     has to take the load when the robot pitches forward. Note that the legs are mirrored in pairs, so
+     which way the toe points depends on the leg: +x of the foot frame is forward for legs 1 and 3
+     (mirror=-1) and backward for legs 2 and 4 (mirror=+1), hence the -mirror factors below.
+
+                     ankle axle
+                          +           FootPlate_drop
+                    o         o       FootContact_radius
+              heel  |<==>|<====>| toe
+                     back   front
+-->
+
+<!-- The toe reaches exactly as far ahead as the wheel it replaces did, so the foot stays inside the
+     envelope the wheel swept: FootContact_front = the 0.11m wheel radius = FootPlate_drop +
+     FootContact_radius, the depth of the sole. It is a small foot. -->
+<xacro:property name="FootContact_front" value="0.11"/>   <!-- ankle to the toe contact sphere -->
+<xacro:property name="FootContact_back" value="0.07"/>    <!-- ankle to the heel contact sphere -->
+<xacro:property name="FootPlate_drop" value="0.085"/>     <!-- ankle axle to the contact sphere centers -->
+<xacro:property name="FootContact_radius" value="0.025"/>
+<xacro:property name="FootPlate_mass" value="0.8"/>
+<!-- Center of the support base, i.e. the midpoint between the two contacts, as an offset from the ankle -->
+<xacro:property name="FootSole_center_x" value="${(FootContact_front-FootContact_back)/2}"/>
+<!-- Inertia of the structure carrying the two contacts, taken as a triangular plate with its apex at
+     the ankle and its base spanning them, about its own centroid. Skewing the triangle leaves ixx
+     alone but not iyy/izz, and it gives it a nonzero ixy, whose sign follows the leg mirroring. -->
+<xacro:property name="FootPlate_com_x" value="${(FootContact_front-FootContact_back)/3}"/>
+<xacro:property name="FootPlate_com_y" value="${-2*FootPlate_drop/3}"/>
+<xacro:property name="FootPlate_xx" value="3.8111111e-04"/>
+<xacro:property name="FootPlate_yy" value="1.1577778e-03"/>
+<xacro:property name="FootPlate_zz" value="1.4188889e-03"/>
+<xacro:property name="FootPlate_xy" value="7.5555556e-05"/>
+
+<!-- macro legs -->
+<xacro:macro name="foot_plate_leg" params="leg_num parent origin_x origin_y mirror">
+
+<link name="knee_pitch_${leg_num}_link">
+    <inertial>
+        <origin xyz="${KneePitchWheel_x} ${KneePitchWheel_y} ${KneePitchWheel_z}"/>
+        <mass value="${KneePitchWheel_mass}"/>
+        <inertia ixx="${KneePitchWheel_xx}" ixy="${mirror*KneePitchWheel_xy}" ixz="${mirror*KneePitchWheel_xz}" iyy="${KneePitchWheel_yy}" iyz="${KneePitchWheel_yz}" izz="${KneePitchWheel_zz}"/>
+    </inertial>
+    <visual>
+        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+        <geometry>
+            <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_fixed-wheel-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
+        </geometry>
+        <material name="dark_grey"/>
+    </visual>
+    <xacro:if value="${ADD_COLLISION}">
+    <collision>
+        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+        <geometry>
+            <mesh filename="package://kyon_urdf/meshes/collision/mesh_fixed-wheel-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </xacro:if>
+</link>
+
+<joint name="knee_pitch_${leg_num}" type="revolute">
+    <parent link="${parent}"/>
+    <child link="knee_pitch_${leg_num}_link"/>
+    <origin xyz="${KneePitch_Ox} ${KneePitch_Oy} ${KneePitch_Oz}" rpy="${KneePitch_roll} ${KneePitch_pitch} ${KneePitch_yaw}"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="${knee_pitch_lower[leg_num-1]}" upper="${knee_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/>
+</joint>
+
+<!-- The foot: just the two contact spheres, as both collision and visual, no mesh.
+     -mirror*FootContact_front is the toe and mirror*FootContact_back the heel, see the note above. -->
+<link name="foot_${leg_num}">
+    <inertial>
+        <origin xyz="${-mirror*FootPlate_com_x} ${FootPlate_com_y} 0"/>
+        <mass value="${FootPlate_mass}"/>
+        <inertia ixx="${FootPlate_xx}" ixy="${-mirror*FootPlate_xy}" ixz="0.0" iyy="${FootPlate_yy}" iyz="0.0" izz="${FootPlate_zz}"/>
+    </inertial>
+    <visual>
+        <origin xyz="${-mirror*FootContact_front} ${-FootPlate_drop} 0" rpy="0 0 0"/>
+        <geometry>
+            <sphere radius="${FootContact_radius}"/>
+        </geometry>
+        <material name="dark_grey"/>
+    </visual>
+    <visual>
+        <origin xyz="${mirror*FootContact_back} ${-FootPlate_drop} 0" rpy="0 0 0"/>
+        <geometry>
+            <sphere radius="${FootContact_radius}"/>
+        </geometry>
+        <material name="dark_grey"/>
+    </visual>
+    <collision name="foot_${leg_num}_front">
+        <origin xyz="${-mirror*FootContact_front} ${-FootPlate_drop} 0" rpy="0 0 0"/>
+        <geometry>
+            <sphere radius="${FootContact_radius}"/>
+        </geometry>
+    </collision>
+    <collision name="foot_${leg_num}_back">
+        <origin xyz="${mirror*FootContact_back} ${-FootPlate_drop} 0" rpy="0 0 0"/>
+        <geometry>
+            <sphere radius="${FootContact_radius}"/>
+        </geometry>
+    </collision>
+</link>
+
+<!-- Ankle pitch: the wheel joint of the wheeled leg, turned into a limited joint driven by the same motor -->
+<joint name="ankle_pitch_${leg_num}" type="revolute">
+    <parent link="knee_pitch_${leg_num}_link"/>
+    <child link="foot_${leg_num}"/>
+    <origin xyz="${Wheel_Ox} ${Wheel_Oy} ${Wheel_Oz}" rpy="${Wheel_roll} ${Wheel_pitch} ${Wheel_yaw}"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="${ankle_pitch_lower[leg_num-1]}" upper="${ankle_pitch_upper[leg_num-1]}" effort="${motorWheel_effort}" velocity="${motorWheel_velocity}"/>
+</joint>
+
+<!-- Frame at the center of the sole, on the ground plane of the foot. Same role as the contact link of
+     the other leg variants: it is where the foot touches, not a collision body. -->
+<link name="contact_${leg_num}">
+    <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="6.4e-7" ixy="0.0" ixz="0.0" iyy="6.4e-7" iyz="0.0" izz="6.4e-7"/>
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <sphere radius="0.01"/>
+        </geometry>
+        <material name="white"/>
+    </visual>
+</link>
+<joint name="contact_${leg_num}_joint" type="fixed">
+    <parent link="foot_${leg_num}"/>
+    <child link="contact_${leg_num}"/>
+    <origin xyz="${-mirror*FootSole_center_x} ${-(FootPlate_drop+FootContact_radius)} 0" rpy="0 0 0"/>
+</joint>
+
+</xacro:macro>
+</robot>
