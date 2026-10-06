@@ -20,12 +20,18 @@ from cartesian_interface.pyci_all import *
 parser = argparse.ArgumentParser()
 parser.add_argument('-a', '--action', choices=('park', 'unpark'))
 parser.add_argument('-d', '--dance', action='store_true')
+parser.add_argument('-t', '--time', type=float, default=5.0)
+parser.add_argument('--force-ferk', action='store_true', help='force ferk configuration (default: detect automatically)')
+parser.add_argument('--force-alle', action='store_true', help='force alle configuration (default: detect automatically)')
 args = parser.parse_args()
+
+# cannot force both configurations
+if args.force_ferk and args.force_alle:
+    raise ValueError('Cannot force both ferk and alle configurations')
 
 # -d only valid for unpark
 if args.dance and args.action != 'unpark':
     raise ValueError('Dance only valid for unpark action')
-
 
 class Parking:
 
@@ -70,7 +76,19 @@ contact_4:
 postural:
     type: Postural
     lambda: 0.1
-    weight: 0.01
+    weight:
+      hip_roll_1: 0.1
+      hip_roll_2: 0.1
+      hip_roll_3: 0.1
+      hip_roll_4: 0.1
+      hip_pitch_1: 0.1
+      hip_pitch_2: 0.1
+      hip_pitch_3: 0.1
+      hip_pitch_4: 0.1
+      knee_pitch_1: 1.0
+      knee_pitch_2: 1.0
+      knee_pitch_3: 1.0
+      knee_pitch_4: 1.0
 
 base:
     type: Cartesian
@@ -100,6 +118,27 @@ base:
         # create robot
         self.robot = xb.RobotInterface2(urdf.data, srdf.data)
 
+        # detect knee configuration (ferk or alle)
+        q = self.robot.qToMap(self.robot.getJointPosition())
+        q_hip_pitch_3 = q['hip_pitch_3']
+        q_hip_pitch_4 = q['hip_pitch_4']
+
+        is_ferk = q_hip_pitch_3 > 0 and q_hip_pitch_4 < 0
+        is_alle = q_hip_pitch_3 < 0 and q_hip_pitch_4 > 0
+
+        if not (is_ferk or is_alle):
+            raise RuntimeError('robot is not in a valid configuration for parking (not ferk or alle)')
+
+        if args.force_ferk:
+            is_ferk = True
+            is_alle = False
+        elif args.force_alle:
+            is_ferk = False
+            is_alle = True
+
+        self.is_ferk = is_ferk
+
+        #
         self.joints = sum([[f'hip_roll_{i+1}', f'hip_pitch_{i+1}', f'knee_pitch_{i+1}'] for i in range(4)], [])
         self.robot.setControlMode(xb.ControlMode.None_().type())
         self.robot.setControlMode({j: xb.ControlMode.Position().type() for j in self.joints})
@@ -107,7 +146,7 @@ base:
         self.qidx = np.array([self.robot.getQIndexFromQName(j) for j in self.joints])
 
 
-    def move(self, action):
+    def move(self, action, duration):
 
         qname = {
             'park': 'parked',
@@ -131,10 +170,20 @@ base:
         postural = ci.getTask('Postural')
 
         t = 0.0
-        trj_time = 5.0
+        trj_time = duration
 
         q0 = model.getJointPosition().copy()
         qf = model.getRobotState(qname).copy()
+        
+        # adjust q target for knee configuration
+        if self.is_ferk:
+            qf = model.qToMap(qf)
+            qf['hip_pitch_3'] *= -1
+            qf['hip_pitch_4'] *= -1
+            qf['knee_pitch_3'] *= -1
+            qf['knee_pitch_4'] *= -1
+            qf = model.mapToQ(qf)
+
         delta_q = model.difference(qf, q0)
         
         def solve_and_move():
@@ -213,6 +262,6 @@ parking = Parking(node)
 
 # move
 if args.action:
-    parking.move(args.action)
+    parking.move(args.action, args.time)
 
 print('Done')
