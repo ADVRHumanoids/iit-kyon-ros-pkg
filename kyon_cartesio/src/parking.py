@@ -112,6 +112,20 @@ base:
         # create robot
         self.robot = xb.RobotInterface2(urdf.data, srdf.data)
 
+        # detect knee configuration (ferk or alle)
+        q = self.robot.qToMap(self.robot.getJointPosition())
+        q_hip_pitch_3 = q['hip_pitch_3']
+        q_hip_pitch_4 = q['hip_pitch_4']
+
+        is_ferk = q_hip_pitch_3 > 0 and q_hip_pitch_4 < 0
+        is_alle = q_hip_pitch_3 < 0 and q_hip_pitch_4 > 0
+
+        if not (is_ferk or is_alle):
+            raise RuntimeError('robot is not in a valid configuration for parking (not ferk or alle)')
+
+        self.is_ferk = is_ferk
+
+        #
         self.joints = sum([[f'hip_roll_{i+1}', f'hip_pitch_{i+1}', f'knee_pitch_{i+1}'] for i in range(4)], [])
         self.robot.setControlMode(xb.ControlMode.None_().type())
         self.robot.setControlMode({j: xb.ControlMode.Position().type() for j in self.joints})
@@ -147,6 +161,16 @@ base:
 
         q0 = model.getJointPosition().copy()
         qf = model.getRobotState(qname).copy()
+        
+        # adjust q target for knee configuration
+        if self.is_ferk:
+            qf = model.qToMap(qf)
+            qf['hip_pitch_3'] *= -1
+            qf['hip_pitch_4'] *= -1
+            qf['knee_pitch_3'] *= -1
+            qf['knee_pitch_4'] *= -1
+            qf = model.mapToQ(qf)
+
         delta_q = model.difference(qf, q0)
         
         def solve_and_move():
