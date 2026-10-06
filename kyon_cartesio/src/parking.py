@@ -21,7 +21,13 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-a', '--action', choices=('park', 'unpark'))
 parser.add_argument('-d', '--dance', action='store_true')
 parser.add_argument('-t', '--time', type=float, default=5.0)
+parser.add_argument('--force-ferk', action='store_true', help='force ferk configuration (default: detect automatically)')
+parser.add_argument('--force-alle', action='store_true', help='force alle configuration (default: detect automatically)')
 args = parser.parse_args()
+
+# cannot force both configurations
+if args.force_ferk and args.force_alle:
+    raise ValueError('Cannot force both ferk and alle configurations')
 
 # -d only valid for unpark
 if args.dance and args.action != 'unpark':
@@ -122,6 +128,13 @@ base:
 
         if not (is_ferk or is_alle):
             raise RuntimeError('robot is not in a valid configuration for parking (not ferk or alle)')
+
+        if args.force_ferk:
+            is_ferk = True
+            is_alle = False
+        elif args.force_alle:
+            is_ferk = False
+            is_alle = True
 
         self.is_ferk = is_ferk
 
