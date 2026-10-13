@@ -20,6 +20,7 @@
     <!-- Simulator wrapper parameters -->
     <arg name="enable_mjctl" default="false"/>
     <arg name="enable_heightscan" default="false"/>
+    <arg name="headless" default="false"/>
 
     <!-- Load the URDF/SRDF into the ROS Parameter Server -->
     <let name="urdf_command"
@@ -36,6 +37,9 @@
    
     <let name="heightscan_body" value="pelvis" if="$(var enable_heightscan)"/>
     <let name="heightscan_body" value="" unless="$(var enable_heightscan)"/>
+
+    <let name="headless_flag" value="--headless" if="$(var headless)"/>
+    <let name="headless_flag" value="" unless="$(var headless)"/>
    
 
     <executable name="xbot2_mujoco" output="screen" cmd="python3 -m xbot2_py_mujoco.simulate
@@ -47,6 +51,7 @@
         --detect-spawn-locations
         --remote-control-endpoint=$(var mjctl_endpoint)
         --terrain-scan-body=$(var heightscan_body)
+        $(var headless_flag)
         " >
         <env name="PYTHONUNBUFFERED" value="1" />
     </executable>
