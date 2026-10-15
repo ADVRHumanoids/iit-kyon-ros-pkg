@@ -31,26 +31,25 @@
 
     <let name="cfg_xml_command"
         value="xacro $(find-pkg-share kyon_mujoco)/mjcf/kyon_mujoco.xml.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) varta:=$(var varta) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)" />
-   
-    <let name="mjctl_endpoint" value="tcp://127.0.0.1:5555" if="$(var enable_mjctl)"/>
-    <let name="mjctl_endpoint" value="" unless="$(var enable_mjctl)"/>
-   
-    <let name="heightscan_body" value="pelvis" if="$(var enable_heightscan)"/>
-    <let name="heightscan_body" value="" unless="$(var enable_heightscan)"/>
+
+    <let name="mjctl_flag" value="--remote-control-endpoint=tcp://127.0.0.1:5555" if="$(var enable_mjctl)"/>
+    <let name="mjctl_flag" value="" unless="$(var enable_mjctl)"/>
+
+    <let name="terrain_scan_body_flag" value="--terrain-scan-body=pelvis" if="$(var enable_heightscan)"/>
+    <let name="terrain_scan_body_flag" value="" unless="$(var enable_heightscan)"/>
 
     <let name="headless_flag" value="--headless" if="$(var headless)"/>
     <let name="headless_flag" value="" unless="$(var headless)"/>
-   
 
-    <executable name="xbot2_mujoco" output="screen" cmd="python3 -m xbot2_py_mujoco.simulate
+    <executable name="xbot2_mujoco" output="screen" cmd="$(find-pkg-prefix kyon_mujoco)/lib/kyon_mujoco/launch_simulator.bash
         --name kyon 
         --urdf-cmd $(var urdf_command) 
         --srdf-cmd $(var srdf_command)
         --xml-cmd $(var cfg_xml_command) 
         --xml $(var world)
         --detect-spawn-locations
-        --remote-control-endpoint=$(var mjctl_endpoint)
-        --terrain-scan-body=$(var heightscan_body)
+        $(var mjctl_flag)
+        $(var terrain_scan_body_flag)
         $(var headless_flag)
         " >
         <env name="PYTHONUNBUFFERED" value="1" />
