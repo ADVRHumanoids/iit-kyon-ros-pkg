@@ -48,6 +48,9 @@
             value="$(command 'xacro $(find-pkg-share kyon_gazebo)/urdf/kyon_gazebo.urdf.xacro floating_joint:=false upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) wheels:=$(var wheels) velodyne:=$(var velodyne) hesai_jt128:=$(var hesai_jt128) camera_front_up:=$(var camera_front_up) camera_front_down:=$(var camera_front_down)')"/>
  
        <!-- Start gazebo-->
+       <!-- gz resolves model:// against this; mixed.world needs it for the slope meshes -->
+       <set_env name="GZ_SIM_RESOURCE_PATH" value="$(find-pkg-prefix kyon_urdf)/share"/>
+
        <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
               <arg name="gz_args" value="$(var world_name) $(var arg_verbose) $(var arg_gui) $(var arg_paused)"/>
        </include>

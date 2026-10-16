@@ -65,7 +65,10 @@
 <link name="imu_link"/>
 
 <joint name="imu_joint" type="fixed">
-	<origin xyz="-0.256190 0 0.103" rpy="${PI} 0 0"/>
+	<!-- rpy zeroed: the gazebo IMU already publishes pelvis-aligned data, so the toolkit
+	     applying rpy=pi as base_T_imu inverted projected_gravity. Restore for real hw. -->
+	<origin xyz="-0.256190 0 0.103" rpy="0 0 0"/>
+	<!-- <origin xyz="-0.256190 0 0.103" rpy="${PI} 0 0"/> -->
     <parent link="pelvis"/>
     <child link="imu_link"/>
 </joint>

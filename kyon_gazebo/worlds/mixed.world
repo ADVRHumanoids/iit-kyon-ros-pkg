@@ -89,8 +89,8 @@
 
     <model name="pyramid_lvl0_slope_2"><static>true</static><pose>-6 -6 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -115,8 +115,8 @@
 
     <model name="pyramid_lvl0_slope_4"><static>true</static><pose>6 6 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -141,8 +141,8 @@
 
     <model name="pyramid_lvl0_slope_6"><static>true</static><pose>6 -18 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -167,8 +167,8 @@
 
     <model name="pyramid_lvl0_slope_8"><static>true</static><pose>-6 18 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_05deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -203,8 +203,8 @@
 
     <model name="pyramid_lvl1_slope_2"><static>true</static><pose>18 -6 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -233,15 +233,15 @@
 
     <model name="pyramid_lvl1_slope_4"><static>true</static><pose>30 6 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
     <model name="pyramid_lvl1_slope_5"><static>true</static><pose>18 18 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -293,8 +293,8 @@
 
     <model name="pyramid_lvl1_slope_8"><static>true</static><pose>30 -18 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_10deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -306,8 +306,8 @@
 
     <model name="pyramid_lvl2_slope_1"><static>true</static><pose>42 -6 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -367,15 +367,15 @@
 
     <model name="pyramid_lvl2_slope_4"><static>true</static><pose>54 6 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
     <model name="pyramid_lvl2_slope_5"><static>true</static><pose>42 18 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -435,8 +435,8 @@
 
     <model name="pyramid_lvl2_slope_8"><static>true</static><pose>54 -18 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_15deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -483,15 +483,15 @@
 
     <model name="pyramid_lvl3_slope_2"><static>true</static><pose>66 -6 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
     <model name="pyramid_lvl3_slope_3"><static>true</static><pose>78 6 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -532,8 +532,8 @@
 
     <model name="pyramid_lvl3_slope_5"><static>true</static><pose>66 18 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -609,8 +609,8 @@
 
     <model name="pyramid_lvl3_slope_8"><static>true</static><pose>78 -18 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_20deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -673,15 +673,15 @@
 
     <model name="pyramid_lvl4_slope_2"><static>true</static><pose>90 -6 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
     <model name="pyramid_lvl4_slope_3"><static>true</static><pose>102 6 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -738,8 +738,8 @@
 
     <model name="pyramid_lvl4_slope_5"><static>true</static><pose>90 18 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 
@@ -847,8 +847,8 @@
 
     <model name="pyramid_lvl4_slope_8"><static>true</static><pose>102 -18 0 0 0 0</pose>
       <link name="slope">
-        <collision name="c"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.005</mu2></ode></friction></surface></collision>
-        <visual name="v"><geometry><mesh><uri>package://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
+        <collision name="c"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><surface><friction><ode><mu>0.7</mu><mu2>0.7</mu2></ode></friction></surface></collision>
+        <visual name="v"><geometry><mesh><uri>model://kyon_urdf/meshes/pyramid_slope_25deg_10x10.stl</uri></mesh></geometry><material><ambient>0.35 0.5 0.9 1</ambient><diffuse>0.35 0.5 0.9 1</diffuse></material></visual>
       </link>
     </model>
 

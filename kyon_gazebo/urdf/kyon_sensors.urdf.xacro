@@ -155,11 +155,13 @@
         <gazebo reference="zed_front_down_mount_link">
             <sensor name="zed_front_down" type="rgbd_camera">
                 <gz_frame_id>zed_front_down_mount_link</gz_frame_id>
+                <!-- Left-lens offset, matching _LEFT_EYE_OFFSET in kyon_isaac rough_vision_env_cfg.py -->
+                <pose relative_to="zed_front_down_mount_link">0.015 0.025 0.015 0 0 0</pose>
                 <camera>
-                    <horizontal_fov>1.83</horizontal_fov>
+                    <horizontal_fov>1.8403</horizontal_fov>
                     <image>
-                        <width>320</width>
-                        <height>240</height>
+                        <width>96</width>
+                        <height>60</height>
                     </image>
                     <clip>
                         <near>0.1</near>
@@ -169,7 +171,7 @@
                 <depth_camera>
                     <clip>
                         <near>0.1</near>
-                        <far>5.0</far>
+                        <far>20.0</far>
                     </clip>
                 </depth_camera>
                 <always_on>1</always_on>
