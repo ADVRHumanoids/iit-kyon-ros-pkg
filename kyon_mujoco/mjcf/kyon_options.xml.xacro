@@ -39,6 +39,7 @@
         <default class="kyon_wheel">
             <joint damping="0.01" armature="0.1" frictionloss="0.01" />
             <position kp="0" kv="30" inheritrange="1.0" />
+            <intvelocity kp="6" kv="5" inheritrange="1.0" />
         </default>
         <default class="kyon_dagana">
             <joint armature="0.4" damping="3.0" frictionloss="5.0" />

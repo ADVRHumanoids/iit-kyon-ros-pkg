@@ -10,7 +10,7 @@
 
         <xacro:if value="${ADD_WHEELS}">
             <position class="kyon_ankle" name="ankle_yaw_1" joint="ankle_yaw_1" />
-            <position class="kyon_wheel" name="wheel_joint_1" joint="wheel_joint_1" />
+            <intvelocity class="kyon_wheel" name="wheel_joint_1" joint="wheel_joint_1" />
         </xacro:if>
 
         <position class="kyon_leg" name="hip_roll_2" joint="hip_roll_2" />
@@ -19,7 +19,7 @@
 
         <xacro:if value="${ADD_WHEELS}">
             <position class="kyon_ankle" name="ankle_yaw_2" joint="ankle_yaw_2" />
-            <position class="kyon_wheel" name="wheel_joint_2" joint="wheel_joint_2" />
+            <intvelocity class="kyon_wheel" name="wheel_joint_2" joint="wheel_joint_2" />
         </xacro:if>
 
         <position class="kyon_leg" name="hip_roll_3" joint="hip_roll_3" />
@@ -28,7 +28,7 @@
 
         <xacro:if value="${ADD_WHEELS}">
             <position class="kyon_ankle" name="ankle_yaw_3" joint="ankle_yaw_3" />
-            <position class="kyon_wheel" name="wheel_joint_3" joint="wheel_joint_3" />
+            <intvelocity class="kyon_wheel" name="wheel_joint_3" joint="wheel_joint_3" />
         </xacro:if>
 
         <position class="kyon_leg" name="hip_roll_4" joint="hip_roll_4" />
@@ -37,7 +37,7 @@
 
         <xacro:if value="${ADD_WHEELS}">
             <position class="kyon_ankle" name="ankle_yaw_4" joint="ankle_yaw_4" />
-            <position class="kyon_wheel" name="wheel_joint_4" joint="wheel_joint_4" />
+            <intvelocity class="kyon_wheel" name="wheel_joint_4" joint="wheel_joint_4" />
         </xacro:if>
         
         <!-- arms -->
