@@ -87,7 +87,7 @@
     <child link="ankle_yaw_${leg_num}_link"/>
     <origin xyz="${AnkleYaw_Ox} ${AnkleYaw_Oy} ${AnkleYaw_Oz}" rpy="${AnkleYaw_roll} ${AnkleYaw_pitch} ${AnkleYaw_yaw}"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${ankle_yaw_lower[leg_num-1]}" upper="${ankle_yaw_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
+    <limit lower="${ankle_yaw_lower[leg_num-1]}" upper="${ankle_yaw_upper[leg_num-1]}" effort="${motorC_effort}" velocity="${motorC_velocity}"/> 
 </joint>
 
 <joint name="wheel_joint_${leg_num}" type="revolute">
