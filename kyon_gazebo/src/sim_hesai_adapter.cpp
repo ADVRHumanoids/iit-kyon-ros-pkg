@@ -22,6 +22,7 @@
 #include <deque>
 #include <memory>
 #include <optional>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -54,7 +55,15 @@ class SimHesaiAdapter : public rclcpp::Node
     {
         frame_id_ = declare_parameter<std::string>("frame_id", "hesai_lidar");
         base_frame_ = declare_parameter<std::string>("base_frame", "base_link");
-        lidar_frame_ = declare_parameter<std::string>("lidar_frame", "hesai_qt128");
+        lidar_frame_ = declare_parameter<std::string>("lidar_parent_frame", "imu_link");
+        const auto pose = declare_parameter<std::vector<double>>(
+          "lidar_pose", std::vector<double>{0.0, 0.0, 0.0, 0.0, 0.0, 0.0});
+        if (pose.size() != 6)
+            throw std::invalid_argument("lidar_pose must be [x, y, z, roll, pitch, yaw]");
+        lidar_in_parent_ = Eigen::Translation3d(pose[0], pose[1], pose[2]) *
+                           Eigen::AngleAxisd(pose[5], Eigen::Vector3d::UnitZ()) *
+                           Eigen::AngleAxisd(pose[4], Eigen::Vector3d::UnitY()) *
+                           Eigen::AngleAxisd(pose[3], Eigen::Vector3d::UnitX());
         period_ = declare_parameter<double>("scan_period", 0.1);
         start_azimuth_ = declare_parameter<double>("start_azimuth_deg", 0.0) * M_PI / 180.0;
         rows_ = declare_parameter<int>("rows", 264);
@@ -129,8 +138,9 @@ class SimHesaiAdapter : public rclcpp::Node
     bool lookupLidar()
     {
         try {
-            lidar_in_base_ = tf2::transformToEigen(
-              tf_buffer_->lookupTransform(base_frame_, lidar_frame_, tf2::TimePointZero));
+            lidar_in_base_ = tf2::transformToEigen(tf_buffer_->lookupTransform(
+                               base_frame_, lidar_frame_, tf2::TimePointZero)) *
+                             lidar_in_parent_;
             return true;
         } catch (const tf2::TransformException& e) {
             RCLCPP_INFO_THROTTLE(get_logger(),
@@ -255,6 +265,7 @@ class SimHesaiAdapter : public rclcpp::Node
     int rows_ = 264;
     std::vector<int> ring_rows_;
     std::deque<BasePose> trajectory_;
+    Eigen::Isometry3d lidar_in_parent_;
     std::optional<Eigen::Isometry3d> lidar_in_base_;
 
     std::shared_ptr<tf2_ros::Buffer> tf_buffer_;

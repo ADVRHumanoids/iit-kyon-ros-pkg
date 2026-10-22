@@ -96,14 +96,10 @@
        <group if="$(var hesai_qt128)">
               <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ground_truth_bridge"
                      args="/sim/ground_truth@nav_msgs/msg/Odometry[gz.msgs.Odometry"/>
-              <!-- XBot2's model has no hesai_qt128 -->
-              <node pkg="tf2_ros" exec="static_transform_publisher" name="hesai_qt128_tf"
-                     args="--frame-id imu_link --child-frame-id hesai_qt128 --x $(var hesai_qt128_x) --y $(var hesai_qt128_y) --z $(var hesai_qt128_z) --roll $(var hesai_qt128_roll) --pitch $(var hesai_qt128_pitch) --yaw $(var hesai_qt128_yaw)">
-                     <param name="use_sim_time" value="true"/>
-              </node>
               <node pkg="kyon_gazebo" exec="sim_hesai_adapter" name="sim_hesai_adapter">
                      <param from="$(find-pkg-share kyon_gazebo)/config/sim_hesai_adapter.yaml"/>
                      <param name="use_sim_time" value="true"/>
+                     <param name="lidar_pose" value="[$(var hesai_qt128_x), $(var hesai_qt128_y), $(var hesai_qt128_z), $(var hesai_qt128_roll), $(var hesai_qt128_pitch), $(var hesai_qt128_yaw)]"/>
               </node>
        </group>
             
