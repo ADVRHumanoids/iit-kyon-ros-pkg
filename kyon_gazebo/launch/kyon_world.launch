@@ -19,6 +19,8 @@
     <arg name="wheels" default="false"/>
     <arg name="velodyne" default="false"/>
     <arg name="hesai_jt128" default="false"/>
+    <!-- imu_link's gz IMU on /vectornav/imu_uncompensated, as the real VectorNav driver -->
+    <arg name="imu" default="false"/>
     <!-- Hesai QT128 on imu_link (default: lio_mapping's calibrated extrinsic), as the real driver's
          cloud on /lidar_points (sim_hesai_adapter, motion distortion from /sim/ground_truth) -->
     <arg name="hesai_qt128" default="false"/>
@@ -85,6 +87,11 @@
              /zed_front_down/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo
              /zed_front_down/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
              "/> 
+
+       <node pkg="ros_gz_bridge" exec="parameter_bridge" name="imu_bridge" if="$(var imu)"
+              args="/imu@sensor_msgs/msg/Imu[gz.msgs.IMU">
+              <remap from="/imu" to="/vectornav/imu_uncompensated"/>
+       </node>
 
        <group if="$(var hesai_qt128)">
               <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ground_truth_bridge"

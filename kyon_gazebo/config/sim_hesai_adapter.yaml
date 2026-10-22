@@ -9,7 +9,7 @@
     base_frame: pelvis                    # frame of the ground truth (xacro arg ground_truth)
     lidar_frame: hesai_qt128
     scan_period: 0.1
-    start_azimuth_deg: 85.0               # the sweep is clockwise, as the real one
+    start_azimuth_deg: 96.0               # the sweep is clockwise, as the real one (01102026, 08102026 bags)
     # Must match urdf/kyon_sensors.urdf.xacro's hesai_qt128
     rows: 264
     min_elevation_deg: -52.8
