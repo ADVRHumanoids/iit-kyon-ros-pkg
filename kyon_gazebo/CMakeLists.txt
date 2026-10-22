@@ -7,9 +7,26 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2_eigen REQUIRED)
+find_package(Eigen3 REQUIRED)
 
-install(DIRECTORY launch worlds urdf
+# gz hesai_qt128 cloud -> Hesai QT128 driver cloud
+add_executable(sim_hesai_adapter src/sim_hesai_adapter.cpp)
+target_compile_features(sim_hesai_adapter PRIVATE cxx_std_17)
+target_link_libraries(sim_hesai_adapter Eigen3::Eigen)
+ament_target_dependencies(sim_hesai_adapter rclcpp sensor_msgs nav_msgs tf2 tf2_ros tf2_eigen)
+
+install(DIRECTORY launch worlds urdf config
   DESTINATION share/${PROJECT_NAME}
+)
+
+install(TARGETS sim_hesai_adapter
+  RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
 install(PROGRAMS

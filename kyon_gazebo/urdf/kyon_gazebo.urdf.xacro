@@ -1,6 +1,19 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon">
 
+<!-- Hesai QT128 on hesai_qt128_parent; default pose: lio_mapping's calibrated extrinsic (imu_link) -->
+<xacro:arg name="hesai_qt128" default="false"/>
+<xacro:arg name="hesai_qt128_parent" default="imu_link"/>
+<xacro:arg name="hesai_qt128_x" default="0.6862"/>
+<xacro:arg name="hesai_qt128_y" default="0.0"/>
+<xacro:arg name="hesai_qt128_z" default="-0.015"/>
+<xacro:arg name="hesai_qt128_roll" default="3.141592653589793"/>
+<xacro:arg name="hesai_qt128_pitch" default="0.0"/>
+<xacro:arg name="hesai_qt128_yaw" default="-2.0928021889929584"/>
+<!-- World pose of the root link (pelvis) as nav_msgs/Odometry -->
+<xacro:arg name="ground_truth" default="false"/>
+<xacro:arg name="ground_truth_topic" default="/sim/ground_truth"/>
+
 <xacro:include filename="$(find kyon_urdf)/urdf/kyon_robot.urdf.xacro" />
 <xacro:include filename="$(find kyon_gazebo)/urdf/kyon_sensors.urdf.xacro" />
 
