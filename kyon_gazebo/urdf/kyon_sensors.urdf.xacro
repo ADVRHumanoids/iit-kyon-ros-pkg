@@ -122,19 +122,12 @@
 
 
     <!-- Hesai QT128: 1800 x 264 rows of 0.4 deg, sim_hesai_adapter picks one per ring
-         (config/sim_hesai_adapter.yaml must match) -->
+         (config/sim_hesai_adapter.yaml must match). No TF frame of its own: the real robot has none. -->
     <xacro:if value="$(arg hesai_qt128)">
-        <link name="hesai_qt128"/>
-        <joint name="hesai_qt128_joint" type="fixed">
-            <parent link="$(arg hesai_qt128_parent)"/>
-            <child link="hesai_qt128"/>
-            <origin xyz="$(arg hesai_qt128_x) $(arg hesai_qt128_y) $(arg hesai_qt128_z)"
-                    rpy="$(arg hesai_qt128_roll) $(arg hesai_qt128_pitch) $(arg hesai_qt128_yaw)"/>
-        </joint>
-
-        <gazebo reference="hesai_qt128">
+        <gazebo reference="$(arg hesai_qt128_parent)">
             <sensor name="hesai_qt128" type="gpu_lidar">
-                <gz_frame_id>hesai_qt128</gz_frame_id>
+                <gz_frame_id>hesai_lidar</gz_frame_id>
+                <pose relative_to="$(arg hesai_qt128_parent)">$(arg hesai_qt128_x) $(arg hesai_qt128_y) $(arg hesai_qt128_z) $(arg hesai_qt128_roll) $(arg hesai_qt128_pitch) $(arg hesai_qt128_yaw)</pose>
                 <topic>/hesai_qt128</topic>
                 <update_rate>10</update_rate>
                 <always_on>true</always_on>

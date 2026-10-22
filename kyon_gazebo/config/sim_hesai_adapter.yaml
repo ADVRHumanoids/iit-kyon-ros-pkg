@@ -7,7 +7,9 @@
     frame_id: hesai_lidar                 # as the real driver
     ground_truth_topic: /sim/ground_truth
     base_frame: pelvis                    # frame of the ground truth (xacro arg ground_truth)
-    lidar_frame: hesai_qt128
+    # The sensor in lidar_parent_frame (x y z roll pitch yaw): kyon_gazebo.urdf.xacro's hesai_qt128_*
+    lidar_parent_frame: imu_link
+    lidar_pose: [0.6862, 0.0, -0.015, 3.141592653589793, 0.0, -2.0928021889929584]
     scan_period: 0.1
     start_azimuth_deg: 96.0               # the sweep is clockwise, as the real one (01102026, 08102026 bags)
     # Must match urdf/kyon_sensors.urdf.xacro's hesai_qt128
