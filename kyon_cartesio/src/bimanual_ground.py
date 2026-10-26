@@ -123,6 +123,7 @@ class BimanualGround:
                 # Quaternion order is xyzw: tool Z -> world X, tool Y -> world Z.
                 left_target.quaternion = [0.5, 0.5, 0.5, 0.5]
                 right_target.quaternion = [0.5, 0.5, 0.5, 0.5]
+            input(f'Press Enter to move to target {index + 1} at {tgt}...')
             self.reach(left_target, right_target, 8.0)
         self.node.get_logger().info('Bimanual motion completed')
 
