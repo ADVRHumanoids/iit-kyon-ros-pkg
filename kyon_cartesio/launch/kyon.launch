@@ -2,24 +2,88 @@
 
     <arg name="rate" default="100.0" />
     <arg name="prefix" default="" />
-    <arg name="ik" default="$(find-pkg-share kyon_cartesio)/config/kyon_stack.yaml" />
     <arg name="gui" default="false" />
-    <arg name="home" default="home"/>
-    <arg name="visual_mode" default="false"/>
+    <arg name="home" default="home" />
+    <arg name="visual_mode" default="false" />
+    <arg name="xbot" default="true" />
+    
+    <!-- args for arms, wheels, dagana -->
+    <arg name="arms" default="true" />
+    <arg name="wheels" default="false" />
+    <arg name="dagana" default="true" />
+    
+    <!-- IK problem description file -->
+    <let name="ik" if="$(var wheels)" value="$(find-pkg-share kyon_cartesio)/config/kyon_stack_wheel_legs.yaml" />
+    <let name="ik" unless="$(var wheels)" value="$(find-pkg-share kyon_cartesio)/config/kyon_stack_stick_legs.yaml" />
 
-    <!-- <remap from="/robot_description" to="/xbotcore/robot_description" /> -->
-    <!-- <remap from="/robot_description_semantic" to="/xbotcore/robot_description_semantic" /> -->
 
-    <include file="$(find-pkg-share cartesian_interface_ros)/launch/cartesio.launch.xml">
-        <arg name="rate" value="100.0"/>
-        <arg name="prefix" value="$(var prefix)"/>
-        <arg name="problem_description_filename" value="$(var ik)"/>
-        <arg name="markers" value="true"/>
-        <arg name="home" value="$(var home)"/>
-        <arg name="visual_mode" value="$(var visual_mode)"/>
-        <arg name="joint_ctrl_mode" value="{ankle_yaw_1: 0, ankle_yaw_2: 0, ankle_yaw_3: 0, ankle_yaw_4: 0, wheel_joint_1: 0, wheel_joint_2: 0, wheel_joint_3: 0, wheel_joint_4: 0}"/>
-    </include>
+    <group unless="$(var xbot)">
+        <let name="urdf_command"
+            value="xacro $(find-pkg-share kyon_urdf)/urdf/kyon.urdf.xacro arms:=$(var arms) dagana:=$(var dagana) wheels:=$(var wheels)" />
 
-    <node if="$(var gui)" pkg="rviz2" exec="rviz2" name="rviz" output="screen" args="-d $(find-pkg-share kyon_cartesio)/config/kyon.rviz" />
+        <let name="urdf_string"
+            value="$(command '$(var urdf_command)' ignore)" />
+
+        <let name="srdf_command"
+            value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro arms:=$(var arms) dagana:=$(var dagana) wheels:=$(var wheels)" />
+
+        <let name="srdf_string"
+            value="$(command '$(var srdf_command)' ignore)" />
+
+        <node pkg="xbot2_ros" exec="robot_description_publisher" name="robot_description_publisher"
+            output="screen">
+            <param name="robot_description" value="$(var urdf_string)" type="str" />
+            <param name="robot_description_semantic" value="$(var srdf_string)" type="str" />
+        </node>
+    </group>
+
+    <let name="urdf_capsule_command"
+        value="cat $(find-pkg-share kyon_urdf)/urdf/kyon_capsule.urdf" />
+
+    <let name="urdf_capsule_string"
+        value="$(command '$(var urdf_capsule_command)' ignore)" />
+
+    <let name="srdf_capsule_command"
+        value="cat $(find-pkg-share kyon_srdf)/srdf/kyon_capsule.srdf" />
+
+    <let name="srdf_capsule_string"
+        value="$(command '$(var srdf_capsule_command)' ignore)" />
+
+    <node pkg="xbot2_ros" exec="robot_description_publisher" name="robot_description_publisher"
+        output="screen">
+        <param name="robot_description" value="$(var urdf_capsule_string)" type="str" />
+        <param name="robot_description_semantic" value="$(var srdf_capsule_string)" type="str" />
+        <remap from="robot_description" to="robot_description_capsule" />
+        <remap from="robot_description_semantic" to="robot_description_semantic_capsule" />
+    </node>
+
+    <group>
+
+        <set_remap
+            if="$(var xbot)"
+            from="robot_description"
+            to="/xbotcore/robot_description" />
+
+        <set_remap
+            if="$(var xbot)"
+            from="robot_description_semantic"
+            to="/xbotcore/robot_description_semantic" />
+
+
+        <include file="$(find-pkg-share cartesian_interface_ros)/launch/cartesio.launch.xml">
+            <arg name="rate" value="100.0" />
+            <arg name="prefix" value="$(var prefix)" />
+            <arg name="problem_description_filename" value="$(var ik)" />
+            <arg name="markers" value="true" />
+            <arg name="home" value="$(var home)" />
+            <arg name="visual_mode" value="$(var visual_mode)" />
+            <arg name="joint_ctrl_mode"
+                value="{ankle_yaw_1: 0, ankle_yaw_2: 0, ankle_yaw_3: 0, ankle_yaw_4: 0, wheel_joint_1: 0, wheel_joint_2: 0, wheel_joint_3: 0, wheel_joint_4: 0}" />
+        </include>
+
+    </group>
+
+    <node if="$(var gui)" pkg="rviz2" exec="rviz2" name="rviz" output="screen"
+        args="-d $(find-pkg-share kyon_cartesio)/config/kyon.rviz" />
 
 </launch>

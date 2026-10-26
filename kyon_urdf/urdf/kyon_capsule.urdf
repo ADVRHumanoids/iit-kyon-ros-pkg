@@ -45,6 +45,7 @@
   </joint>
   <link name="imu_link"/>
   <joint name="imu_joint" type="fixed">
+    <origin xyz="-0.256190 0 0.103" rpy="3.14159265359 0 0"/>
     <parent link="pelvis"/>
     <child link="imu_link"/>
   </joint>
@@ -210,35 +211,35 @@
     <axis xyz="0.0 0.0 -1.0"/>
     <parent link="pelvis"/>
     <child link="shoulder_yaw_1_link"/>
-    <limit effort="132.0" lower="-3.312" upper="3.312" velocity="15.5"/>
+    <limit effort="122" lower="-3.0" upper="3.0" velocity="4.6"/>
   </joint>
   <joint name="shoulder_pitch_1" type="revolute">
     <origin xyz="0.0 0.0 0.0735" rpy="-1.57079632679 0.0 -3.14159265358"/>
     <axis xyz="0.0 0.0 1.0"/>
     <parent link="shoulder_yaw_1_link"/>
     <child link="shoulder_pitch_1_link"/>
-    <limit effort="132.0" lower="-3.0" upper="3.0" velocity="15.5"/>
+    <limit effort="146" lower="-2.2" upper="2.2" velocity="3.8"/>
   </joint>
   <joint name="elbow_pitch_1" type="revolute">
     <origin xyz="0.0 -0.32 0.0" rpy="0.0 0.0 0.0"/>
     <axis xyz="0.0 0.0 -1.0"/>
     <parent link="shoulder_pitch_1_link"/>
     <child link="elbow_pitch_1_link"/>
-    <limit effort="132.0" lower="-3.0" upper="3.0" velocity="15.5"/>
+    <limit effort="122" lower="-2.8" upper="2.8" velocity="4.6"/>
   </joint>
   <joint name="wrist_pitch_1" type="revolute">
     <origin xyz="0.0 -0.25 0.0" rpy="0.0 0.0 0.0"/>
     <axis xyz="0.0 0.0 -1.0"/>
     <parent link="elbow_pitch_1_link"/>
     <child link="wrist_pitch_1_link"/>
-    <limit effort="132.0" lower="-2.4056" upper="2.4056" velocity="15.5"/>
+    <limit effort="25" lower="-1.6" upper="1.6" velocity="14"/>
   </joint>
   <joint name="wrist_yaw_1" type="revolute">
-    <origin xyz="0.0 -0.134862 0.0" rpy="1.57079632679 0.0 0.0"/>
+    <origin xyz="0.0 -0.13861199999999999 0.0" rpy="1.57079632679 0.0 0.0"/>
     <axis xyz="0.0 0.0 1.0"/>
     <parent link="wrist_pitch_1_link"/>
     <child link="wrist_yaw_1_link"/>
-    <limit effort="132.0" lower="-2.4056" upper="2.4056" velocity="15.5"/>
+    <limit effort="25" lower="-2.7" upper="2.7" velocity="14"/>
   </joint>
   <link name="dagana_1_base">
     <inertial>
@@ -305,16 +306,16 @@
     </collision>
   </link>
   <joint name="dagana_1_base_joint" type="fixed">
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.57079632679"/>
     <parent link="wrist_yaw_1_link"/>
     <child link="dagana_1_base"/>
   </joint>
   <joint name="dagana_1_clamp_joint" type="revolute">
     <origin xyz="0.0361625 0.016 0.044" rpy="0.0 1.57079632679 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="dagana_1_base"/>
     <child link="dagana_1_claw"/>
-    <limit effort="132.0" lower="-3.4056" upper="3.4056" velocity="15.5"/>
+    <limit effort="25" lower="0" upper="1.2" velocity="14"/>
   </joint>
   <link name="shoulder_yaw_2_link">
     <inertial>
@@ -478,35 +479,35 @@
     <axis xyz="0.0 0.0 -1.0"/>
     <parent link="pelvis"/>
     <child link="shoulder_yaw_2_link"/>
-    <limit effort="132.0" lower="-3.3458" upper="3.3458" velocity="15.5"/>
+    <limit effort="122" lower="-3.0" upper="3.0" velocity="4.6"/>
   </joint>
   <joint name="shoulder_pitch_2" type="revolute">
     <origin xyz="0.0 0.0 0.0735" rpy="-1.57079632679 0.0 0.0"/>
     <axis xyz="0.0 0.0 1.0"/>
     <parent link="shoulder_yaw_2_link"/>
     <child link="shoulder_pitch_2_link"/>
-    <limit effort="132.0" lower="-3.0" upper="3.0" velocity="15.5"/>
+    <limit effort="146" lower="-2.2" upper="2.2" velocity="3.8"/>
   </joint>
   <joint name="elbow_pitch_2" type="revolute">
     <origin xyz="0.0 -0.32 0.0" rpy="0.0 0.0 0.0"/>
     <axis xyz="0.0 0.0 -1.0"/>
     <parent link="shoulder_pitch_2_link"/>
     <child link="elbow_pitch_2_link"/>
-    <limit effort="132.0" lower="-3.0" upper="3.0" velocity="15.5"/>
+    <limit effort="122" lower="-2.8" upper="2.8" velocity="4.6"/>
   </joint>
   <joint name="wrist_pitch_2" type="revolute">
     <origin xyz="0.0 -0.25 0.0" rpy="0.0 0.0 0.0"/>
     <axis xyz="0.0 0.0 -1.0"/>
     <parent link="elbow_pitch_2_link"/>
     <child link="wrist_pitch_2_link"/>
-    <limit effort="132.0" lower="-2.3266" upper="2.3266" velocity="15.5"/>
+    <limit effort="25" lower="-1.6" upper="1.6" velocity="14"/>
   </joint>
   <joint name="wrist_yaw_2" type="revolute">
-    <origin xyz="0.0 -0.134862 0.0" rpy="1.57079632679 0.0 0.0"/>
+    <origin xyz="0.0 -0.13861199999999999 0.0" rpy="1.57079632679 0.0 0.0"/>
     <axis xyz="0.0 0.0 1.0"/>
     <parent link="wrist_pitch_2_link"/>
     <child link="wrist_yaw_2_link"/>
-    <limit effort="132.0" lower="-2.3266" upper="2.3266" velocity="15.5"/>
+    <limit effort="25" lower="-2.7" upper="2.7" velocity="14"/>
   </joint>
   <link name="dagana_2_base">
     <inertial>
@@ -573,16 +574,16 @@
     </collision>
   </link>
   <joint name="dagana_2_base_joint" type="fixed">
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.57079632679"/>
     <parent link="wrist_yaw_2_link"/>
     <child link="dagana_2_base"/>
   </joint>
   <joint name="dagana_2_clamp_joint" type="revolute">
     <origin xyz="0.0361625 0.016 0.044" rpy="0.0 1.57079632679 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="dagana_2_base"/>
     <child link="dagana_2_claw"/>
-    <limit effort="132.0" lower="-3.3266" upper="3.3266" velocity="15.5"/>
+    <limit effort="25" lower="0" upper="1.2" velocity="14"/>
   </joint>
   <link name="hip_roll_1_link">
     <inertial>
@@ -649,18 +650,18 @@
     </collision>
   </link>
   <joint name="hip_roll_1" type="revolute">
-    <origin xyz="0.41100000000000003 0.0775 0.0" rpy="0.0 1.57079632679 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <origin xyz="0.391 0.0775 0.0" rpy="0.0 1.57079632679 0.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="pelvis"/>
     <child link="hip_roll_1_link"/>
-    <limit effort="132.0" lower="-2.03" upper="2.51" velocity="15.5"/>
+    <limit effort="185" lower="-0.65" upper="0.65" velocity="7.6"/>
   </joint>
   <joint name="hip_pitch_1" type="revolute">
     <origin xyz="0.0 -0.04746 0.0" rpy="0.0 1.57079632679 1.57079632679"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="hip_roll_1_link"/>
     <child link="hip_pitch_1_link"/>
-    <limit effort="132.0" lower="-2.4056" upper="2.4056" velocity="15.5"/>
+    <limit effort="185" lower="-2.4056" upper="2.4056" velocity="7.6"/>
   </joint>
   <link name="knee_pitch_1_link">
     <inertial>
@@ -696,14 +697,14 @@
   </link>
   <joint name="knee_pitch_1" type="revolute">
     <origin xyz="0.0 -0.34600000000000003 0.24606" rpy="0.0 0.0 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="hip_pitch_1_link"/>
     <child link="knee_pitch_1_link"/>
-    <limit effort="132.0" lower="-3.4056" upper="3.4056" velocity="15.5"/>
+    <limit effort="185" lower="-3.2" upper="3.2" velocity="7.6"/>
   </joint>
   <link name="contact_1"/>
   <joint name="contact_1_joint" type="fixed">
-    <origin xyz="0.03 -0.35 0.03" rpy="-1.57 0.0 0.785"/>
+    <origin xyz="0.0 -0.312 0.024" rpy="-1.57 0 0.785"/>
     <parent link="knee_pitch_1_link"/>
     <child link="contact_1"/>
   </joint>
@@ -772,18 +773,18 @@
     </collision>
   </link>
   <joint name="hip_roll_2" type="revolute">
-    <origin xyz="0.41100000000000003 -0.0775 0.0" rpy="0.0 1.57079632679 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <origin xyz="0.391 -0.0775 0.0" rpy="0.0 1.57079632679 0.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="pelvis"/>
     <child link="hip_roll_2_link"/>
-    <limit effort="132.0" lower="-2.51" upper="2.03" velocity="15.5"/>
+    <limit effort="185" lower="-0.65" upper="0.65" velocity="7.6"/>
   </joint>
   <joint name="hip_pitch_2" type="revolute">
     <origin xyz="0.0 0.04746 0.0" rpy="0.0 -1.57079632679 1.57079632679"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="hip_roll_2_link"/>
     <child link="hip_pitch_2_link"/>
-    <limit effort="132.0" lower="-2.3266" upper="2.3266" velocity="15.5"/>
+    <limit effort="185" lower="-2.3266" upper="2.3266" velocity="7.6"/>
   </joint>
   <link name="knee_pitch_2_link">
     <inertial>
@@ -819,14 +820,14 @@
   </link>
   <joint name="knee_pitch_2" type="revolute">
     <origin xyz="0.0 -0.34600000000000003 0.24606" rpy="0.0 0.0 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="hip_pitch_2_link"/>
     <child link="knee_pitch_2_link"/>
-    <limit effort="132.0" lower="-3.3266" upper="3.3266" velocity="15.5"/>
+    <limit effort="185" lower="-3.2" upper="3.2" velocity="7.6"/>
   </joint>
   <link name="contact_2"/>
   <joint name="contact_2_joint" type="fixed">
-    <origin xyz="-0.03 -0.35 0.03" rpy="1.57 0.0 2.356"/>
+    <origin xyz="-0.0 -0.312 0.024" rpy="1.57 0 2.356"/>
     <parent link="knee_pitch_2_link"/>
     <child link="contact_2"/>
   </joint>
@@ -895,18 +896,18 @@
     </collision>
   </link>
   <joint name="hip_roll_3" type="revolute">
-    <origin xyz="-0.41100000000000003 0.0775 0.0" rpy="0.0 -1.57079632679 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <origin xyz="-0.391 0.0775 0.0" rpy="0.0 -1.57079632679 0.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="pelvis"/>
     <child link="hip_roll_3_link"/>
-    <limit effort="132.0" lower="-2.51" upper="2.03" velocity="15.5"/>
+    <limit effort="185" lower="-0.65" upper="0.65" velocity="7.6"/>
   </joint>
   <joint name="hip_pitch_3" type="revolute">
     <origin xyz="0.0 -0.04746 0.0" rpy="0.0 -1.57079632679 -1.57079632679"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="hip_roll_3_link"/>
     <child link="hip_pitch_3_link"/>
-    <limit effort="132.0" lower="-2.4696" upper="2.4696" velocity="15.5"/>
+    <limit effort="185" lower="-2.4696" upper="2.4696" velocity="7.6"/>
   </joint>
   <link name="knee_pitch_3_link">
     <inertial>
@@ -942,14 +943,14 @@
   </link>
   <joint name="knee_pitch_3" type="revolute">
     <origin xyz="0.0 -0.34600000000000003 0.24606" rpy="0.0 0.0 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="hip_pitch_3_link"/>
     <child link="knee_pitch_3_link"/>
-    <limit effort="132.0" lower="-3.4696" upper="3.4696" velocity="15.5"/>
+    <limit effort="185" lower="-3.2" upper="3.2" velocity="7.6"/>
   </joint>
   <link name="contact_3"/>
   <joint name="contact_3_joint" type="fixed">
-    <origin xyz="0.03 -0.35 0.03" rpy="-1.57 0.0 0.785"/>
+    <origin xyz="0.0 -0.312 0.024" rpy="-1.57 0 0.785"/>
     <parent link="knee_pitch_3_link"/>
     <child link="contact_3"/>
   </joint>
@@ -1018,18 +1019,18 @@
     </collision>
   </link>
   <joint name="hip_roll_4" type="revolute">
-    <origin xyz="-0.41100000000000003 -0.0775 0.0" rpy="0.0 -1.57079632679 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <origin xyz="-0.391 -0.0775 0.0" rpy="0.0 -1.57079632679 0.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="pelvis"/>
     <child link="hip_roll_4_link"/>
-    <limit effort="132.0" lower="-2.03" upper="2.51" velocity="15.5"/>
+    <limit effort="185" lower="-0.65" upper="0.65" velocity="7.6"/>
   </joint>
   <joint name="hip_pitch_4" type="revolute">
     <origin xyz="0.0 0.04746 0.0" rpy="0.0 1.57079632679 -1.57079632679"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="hip_roll_4_link"/>
     <child link="hip_pitch_4_link"/>
-    <limit effort="132.0" lower="-2.3426" upper="2.3426" velocity="15.5"/>
+    <limit effort="185" lower="-2.3426" upper="2.3426" velocity="7.6"/>
   </joint>
   <link name="knee_pitch_4_link">
     <inertial>
@@ -1065,14 +1066,14 @@
   </link>
   <joint name="knee_pitch_4" type="revolute">
     <origin xyz="0.0 -0.34600000000000003 0.24606" rpy="0.0 0.0 0.0"/>
-    <axis xyz="0.0 0.0 1.0"/>
+    <axis xyz="0 0 -1"/>
     <parent link="hip_pitch_4_link"/>
     <child link="knee_pitch_4_link"/>
-    <limit effort="132.0" lower="-3.3426" upper="3.3426" velocity="15.5"/>
+    <limit effort="185" lower="-3.2" upper="3.2" velocity="7.6"/>
   </joint>
   <link name="contact_4"/>
   <joint name="contact_4_joint" type="fixed">
-    <origin xyz="-0.03 -0.35 0.03" rpy="1.57 0.0 2.356"/>
+    <origin xyz="-0.0 -0.312 0.024" rpy="1.57 0 2.356"/>
     <parent link="knee_pitch_4_link"/>
     <child link="contact_4"/>
   </joint>
