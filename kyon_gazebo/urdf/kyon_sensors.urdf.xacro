@@ -121,8 +121,8 @@
     </xacro:if>
 
 
-    <!-- Hesai QT128: 1800 x 264 rows of 0.4 deg, sim_hesai_adapter picks one per ring
-         (config/sim_hesai_adapter.yaml must match). No TF frame of its own: the real robot has none. -->
+    <!-- Hesai QT128: 900 columns x 264 rows of 0.4 deg, sim_hesai_adapter picks one row per ring
+         and writes each column twice (dual return) (config/sim_hesai_adapter.yaml must match). No TF frame of its own: the real robot has none. -->
     <xacro:if value="$(arg hesai_qt128)">
         <gazebo reference="$(arg hesai_qt128_parent)">
             <sensor name="hesai_qt128" type="gpu_lidar">
@@ -134,12 +134,12 @@
                 <visualize>false</visualize>
                 <lidar>
                     <scan>
-                        <!-- One column per 0.2 deg over [-pi, pi) -->
+                        <!-- One column per 0.4 deg over [-pi, pi), as the robot's firings -->
                         <horizontal>
-                            <samples>1800</samples>
+                            <samples>900</samples>
                             <resolution>1</resolution>
                             <min_angle>${-PI}</min_angle>
-                            <max_angle>${PI - 2*PI/1800}</max_angle>
+                            <max_angle>${PI - 2*PI/900}</max_angle>
                         </horizontal>
                         <vertical>
                             <samples>264</samples>

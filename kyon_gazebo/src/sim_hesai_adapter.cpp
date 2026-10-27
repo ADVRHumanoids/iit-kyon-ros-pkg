@@ -2,6 +2,8 @@
 //  - Rings: each of the 128 rings takes the rendered row nearest to its elevation.
 //  - Layout: one row of columns x 128 rings, ring fastest; x y z intensity (float32), ring
 //    (uint16), timestamp (float64, s); no-returns as (0, 0, 0).
+//  - Returns: each rendered column written `returns` times with the same time, as the real QT128
+//    in dual return mode (its two returns mostly coincide).
 //  - Timing: clockwise sweep stamped at its start. gz renders the scan at once, taken as its end:
 //    each column moves to the lidar pose at its own time (ground truth), i.e. motion distortion.
 
@@ -65,6 +67,7 @@ class SimHesaiAdapter : public rclcpp::Node
                            Eigen::AngleAxisd(pose[4], Eigen::Vector3d::UnitY()) *
                            Eigen::AngleAxisd(pose[3], Eigen::Vector3d::UnitX());
         period_ = declare_parameter<double>("scan_period", 0.1);
+        returns_ = declare_parameter<int>("returns", 1);
         start_azimuth_ = declare_parameter<double>("start_azimuth_deg", 0.0) * M_PI / 180.0;
         rows_ = declare_parameter<int>("rows", 264);
         const double lo = declare_parameter<double>("min_elevation_deg", -52.8);
@@ -207,7 +210,7 @@ class SimHesaiAdapter : public rclcpp::Node
         const double t_start = t_end - period_ + dt;
         out.header.stamp = rclcpp::Time(static_cast<int64_t>(std::llround(t_start * 1e9)));
         out.height = 1;
-        out.width = cols * rings;
+        out.width = cols * returns_ * rings;
         out.fields = { field("x", 0, sensor_msgs::msg::PointField::FLOAT32),
                        field("y", 4, sensor_msgs::msg::PointField::FLOAT32),
                        field("z", 8, sensor_msgs::msg::PointField::FLOAT32),
@@ -234,6 +237,7 @@ class SimHesaiAdapter : public rclcpp::Node
                 if (const auto base = basePose(t))
                     rel = (*base * *lidar_in_base_).inverse() * lidar_end;
             }
+            uint8_t* const column = dst;
             for (std::size_t k = 0; k < rings; ++k, dst += kPointStep) {
                 const uint8_t* src =
                   msg.data.data() + ring_rows_[k] * msg.row_step + c * msg.point_step;
@@ -256,13 +260,15 @@ class SimHesaiAdapter : public rclcpp::Node
                 std::memcpy(dst + 8, &p.z(), 4);
                 std::memcpy(dst + 12, &intensity, 4);
             }
+            for (int r = 1; r < returns_; ++r, dst += rings * kPointStep)
+                std::memcpy(dst, column, rings * kPointStep);
         }
         pub_->publish(out);
     }
 
     std::string frame_id_, base_frame_, lidar_frame_;
     double period_ = 0.1, start_azimuth_ = 0.0;
-    int rows_ = 264;
+    int rows_ = 264, returns_ = 1;
     std::vector<int> ring_rows_;
     std::deque<BasePose> trajectory_;
     Eigen::Isometry3d lidar_in_parent_;
