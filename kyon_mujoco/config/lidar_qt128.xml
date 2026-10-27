@@ -2,12 +2,14 @@
     <!-- Hesai QT128 (kyon_world.launch lidar:=true). Pose: kyon_gazebo.urdf.xacro's hesai_qt128_*
          defaults (lio_mapping's calibrated extrinsic in imu_link), rpy (pi, 0, -2.0928021889929584)
          as a quaternion. Rings, start azimuth, rate and 1800 columns (0.2 deg, 230400 points as
-         the driver): kyon_gazebo's sim_hesai_adapter.yaml and kyon_sensors.urdf.xacro. -->
+         the driver): kyon_gazebo's sim_hesai_adapter.yaml and kyon_sensors.urdf.xacro.
+         The cloud is in hesai_lidar, as with the real driver and sim_hesai_adapter: the URDF's
+         hesai_lidar is not the sensor's pose. -->
     <reference element="body" name="imu_link">
         <site name="hesai_qt128" pos="0.6862 0 -0.015" quat="0 0.500689593 -0.865626901 0"/>
     </reference>
 
-    <lidar site="hesai_qt128" topic="/lidar_points" rate="10" backend="warp"
+    <lidar site="hesai_qt128" topic="/lidar_points" frame_id="hesai_lidar" rate="10" backend="warp"
            horizontal_samples="1800" start_azimuth_deg="96" cutoff="50" min_range="0.05" exclude_body="pelvis"
            elevations_deg="-52.72 -51.15 -49.59 -48.16 -46.78 -45.46 -44.13 -42.9 -41.65
              -40.51 -39.35 -38.24 -37.13 -36.07 -35.0 -33.99 -32.97 -31.99 -30.99 -30.04 -29.07
