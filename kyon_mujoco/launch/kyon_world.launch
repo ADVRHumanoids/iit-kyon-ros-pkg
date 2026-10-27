@@ -21,6 +21,7 @@
     <arg name="enable_mjctl" default="false"/>
     <arg name="enable_heightscan" default="false"/>
     <arg name="headless" default="false"/>
+    <arg name="lidar" default="false"/>
 
     <!-- Load the URDF/SRDF into the ROS Parameter Server -->
     <let name="urdf_command"
@@ -41,12 +42,16 @@
     <let name="headless_flag" value="--headless" if="$(var headless)"/>
     <let name="headless_flag" value="" unless="$(var headless)"/>
 
+    <let name="lidar_flag" value="--xml=$(find-pkg-share kyon_mujoco)/config/lidar_qt128.xml" if="$(var lidar)"/>
+    <let name="lidar_flag" value="" unless="$(var lidar)"/>
+
     <executable name="xbot2_mujoco" output="screen" cmd="$(find-pkg-prefix kyon_mujoco)/lib/kyon_mujoco/launch_simulator.bash
         --name kyon 
         --urdf-cmd $(var urdf_command) 
         --srdf-cmd $(var srdf_command)
         --xml-cmd $(var cfg_xml_command) 
         --xml $(var world)
+        $(var lidar_flag)
         --detect-spawn-locations
         $(var mjctl_flag)
         $(var terrain_scan_body_flag)
