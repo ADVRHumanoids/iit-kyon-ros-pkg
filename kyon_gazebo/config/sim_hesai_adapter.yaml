@@ -11,6 +11,7 @@
     lidar_parent_frame: imu_link
     lidar_pose: [0.6862, 0.0, -0.015, 3.141592653589793, 0.0, -2.0928021889929584]
     scan_period: 0.1
+    returns: 2                            # dual return, as the robot's: 900 columns written twice
     start_azimuth_deg: 96.0               # the sweep is clockwise, as the real one (01102026, 08102026 bags)
     # Must match urdf/kyon_sensors.urdf.xacro's hesai_qt128
     rows: 264
