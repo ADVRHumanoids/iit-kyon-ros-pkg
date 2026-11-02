@@ -283,6 +283,7 @@
     <disable_collisions link1="wrist_pitch_1_link" link2="wrist_yaw_1_link" reason="Adjacent"/>
     <disable_collisions link1="wrist_pitch_2_link" link2="wrist_yaw_2_link" reason="Adjacent"/>
 
+    <xacro:if value="${ADD_WHEELS}">
     <disable_collisions link1="ankle_yaw_1_link" link2="knee_pitch_1_link" reason="Adjacent"/>
     <disable_collisions link1="ankle_yaw_2_link" link2="knee_pitch_2_link" reason="Adjacent"/>
     <disable_collisions link1="ankle_yaw_3_link" link2="knee_pitch_3_link" reason="Adjacent"/>
@@ -292,4 +293,5 @@
     <disable_collisions link1="ankle_yaw_2_link" link2="wheel_2" reason="Adjacent"/>
     <disable_collisions link1="ankle_yaw_3_link" link2="wheel_3" reason="Adjacent"/>
     <disable_collisions link1="ankle_yaw_4_link" link2="wheel_4" reason="Adjacent"/>
+    </xacro:if>
 </robot>	

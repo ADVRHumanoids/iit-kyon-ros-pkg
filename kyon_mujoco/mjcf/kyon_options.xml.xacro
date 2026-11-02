@@ -128,10 +128,13 @@
         <joint name="hip_roll_4" value="0.15" />
         <joint name="hip_pitch_4" value="0.7" />
         <joint name="knee_pitch_4" value="-1.4" />
-        <joint name="ankle_yaw_1" value="0.0" />
-        <joint name="ankle_yaw_2" value="0.0" />
-        <joint name="ankle_yaw_3" value="0.0" />
-        <joint name="ankle_yaw_4" value="0.0" />
+        <xacro:if value="${ADD_WHEELS}">
+            <joint name="ankle_yaw_1" value="0.0" />
+            <joint name="ankle_yaw_2" value="0.0" />
+            <joint name="ankle_yaw_3" value="0.0" />
+            <joint name="ankle_yaw_4" value="0.0" />
+        </xacro:if>
+        <xacro:if value="${ADD_UPPER_BODY}">
         <joint name="shoulder_yaw_1" value="0.0" />
         <joint name="shoulder_pitch_1" value="1.5" />
         <joint name="elbow_pitch_1" value="2.5" />
@@ -142,6 +145,7 @@
         <joint name="elbow_pitch_2" value="-2.5" />
         <joint name="wrist_pitch_2" value="-0.7" />
         <joint name="wrist_yaw_2" value="0.0" />
+        </xacro:if>
     </q_init>
 
-</mujoco>    
+</mujoco>
