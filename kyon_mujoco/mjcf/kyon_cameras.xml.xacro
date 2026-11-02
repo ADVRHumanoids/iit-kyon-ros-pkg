@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<mujoco xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:if value="${ADD_FU_CAMERA}">
+
+    <reference element="body" name="zed_front_up_mount_link">
+        <!-- Camera +X is mount -Y, +Y is mount +Z; looking -Z is mount +X. -->
+        <!-- ZED X Mini 2.2 mm wide lens: nominal 110 deg H x 80 deg V.
+             Square-pixel aspect = tan(55 deg)/tan(40 deg) ~= 1.702.
+             At height 240, width rounds to 408: actual H FOV ~= 109.94 deg.
+             https://support.stereolabs.com/articles/9573039616-where-can-i-find-a-comparison-table-for-the-zed-stereo-cameras -->
+        <camera name="zed_front_up" resolution="408 240" fovy="80"
+                pos="0 0 0" xyaxes="0 -1 0 0 0 1"/>
+    </reference>
+    <rgbd camera="zed_front_up" rate="30" topic="/zed_front_up"
+          frame_id="zed_front_up_optical_frame"/>
+
+</xacro:if>
+
+<xacro:if value="${ADD_FD_CAMERA}">
+
+    <reference element="body" name="zed_front_down_mount_link">
+        <!-- Camera +X is mount -Y, +Y is mount +Z; looking -Z is mount +X. -->
+        <!-- ZED X Mini 2.2 mm wide lens: nominal 110 deg H x 80 deg V.
+             Square-pixel aspect = tan(55 deg)/tan(40 deg) ~= 1.702.
+             At height 240, width rounds to 408: actual H FOV ~= 109.94 deg.
+             https://support.stereolabs.com/articles/9573039616-where-can-i-find-a-comparison-table-for-the-zed-stereo-cameras -->
+        <camera name="zed_front_down" resolution="408 240" fovy="80"
+                pos="0 0 0" xyaxes="0 -1 0 0 0 1"/>
+    </reference>
+    <rgbd camera="zed_front_down" rate="30" topic="/zed_front_down"
+          frame_id="zed_front_down_optical_frame"/>
+
+</xacro:if>
+
+</mujoco>

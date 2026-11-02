@@ -40,5 +40,6 @@
     <!-- include other files -->
     <xacro:include filename="$(find kyon_mujoco)/mjcf/kyon_actuators.xml.xacro" />
     <xacro:include filename="$(find kyon_mujoco)/mjcf/kyon_options.xml.xacro" />
+    <xacro:include filename="$(find kyon_mujoco)/mjcf/kyon_cameras.xml.xacro" />
 
 </mujoco>
