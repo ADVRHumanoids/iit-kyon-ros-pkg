@@ -23,11 +23,12 @@
         <material name="step_material" texture="step_material"/> -->
     </asset>
     <worldbody>
+        <!-- Group 2 keeps terrain visible to the height scanner; robot groups 0/1/3 are excluded. -->
     	<!-- <geom name="floor" type="hfield" hfield="terrain" pos="0 0 -1.0" material="grid" friction="0.6" condim="3" group="1"/> --> 
-        <geom name="floor_0" size="0 0 .05" pos="0 0 -1.0" type="plane" material="grid" condim="3" group="0" friction="0.6"/>
+        <geom name="floor_0" size="0 0 .05" pos="0 0 -1.0" type="plane" material="grid" condim="3" group="2" friction="0.6"/>
         <!-- <geom name="step0" type="box" size="0.5 0.5 0.1" pos="5 0.7 0.1" material="step_material" condim="3" group="0" friction="0.6"/>
         <geom name="step1" type="box" size="0.5 0.5 0.1" pos="5 0.7 0.1" material="step_material" condim="3" group="1" friction="0.6"/> -->
-        <geom name="floor_1" size="0 0 .05" pos="0 0 -1.0" type="plane" material="grid" condim="3" group="1" friction="0.6"/>
+        <geom name="floor_1" size="0 0 .05" pos="0 0 -1.0" type="plane" material="grid" condim="3" group="2" friction="0.6"/>
         <!-- <light name="spotlight" mode="targetbodycom" target="pelvis" diffuse=".8 .8 .8" specular="0.3 0.3 0.3" pos="0 -20 4" cutoff="10"/> -->
     </worldbody>
     <visual>
