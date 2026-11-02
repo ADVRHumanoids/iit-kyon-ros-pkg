@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+source ~/env/bin/activate
 source /opt/xbot/setup.sh
 source /opt/ros/jazzy/setup.bash
 source ~/test_ws/setup.bash
