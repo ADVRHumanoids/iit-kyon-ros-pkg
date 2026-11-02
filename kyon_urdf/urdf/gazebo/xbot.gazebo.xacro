@@ -16,7 +16,7 @@
     
     <plugin name="gz::sim::systems::GzImuServer" filename="libxbot2_gz_imu_server.so">
         <imu_offset name="imu_link" rpy="3.14159 0 0"/>
-    </plugin> 
+    </plugin>
     
     <plugin name="gz::sim::systems::GzJointServer" filename="libxbot2_gz_joint_server.so">
         

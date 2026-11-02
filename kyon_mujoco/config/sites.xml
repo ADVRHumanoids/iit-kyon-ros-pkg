@@ -1,8 +1,0 @@
-<sites>
-    <body name="imu_link">
-        <site name="imu_link"/>
-    </body>
-    <body name="pelvis">
-        <site name="pelvis"/>
-    </body>
-</sites>

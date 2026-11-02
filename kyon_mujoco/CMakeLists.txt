@@ -9,11 +9,11 @@ project(kyon_mujoco)
 ## is used, also find other catkin packages
 find_package(ament_cmake REQUIRED)
 
-install(DIRECTORY launch config
+install(DIRECTORY launch config mjcf world
   DESTINATION share/${PROJECT_NAME}
 )
 
-install(PROGRAMS src/simulator_wrapper.bash
+install(PROGRAMS src/simulator_wrapper.bash src/launch_simulator.bash
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
