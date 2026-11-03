@@ -29,7 +29,7 @@ pkill -f robot_description_publisher 2>/dev/null || true
 xvfb-run -a ros2 launch kyon_mujoco kyon_world.launch arms:=true wheels:=true&
 LAUNCH_MUJOCO=$!
 sleep 5
-xbot2-core -C ~/test_ws/src/iit-kyon-ros-pkg/kyon_config/kyon_basic.yaml &
+xbot2-core -C ~/test_ws/src/iit-kyon-ros-pkg/kyon_config/kyon_basic.yaml --hw mj &
 LAUNCH_XBOT=$!
 sleep 5
 python3 ~/test_ws/src/iit-kyon-ros-pkg/tests/test_comm_joints.py --arms true --wheels true
