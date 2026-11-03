@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# update apt 
+sudo apt update
+
 # chown to user (needed after mounting volumes)
 sudo chown user:user ~/test_ws ~/test_ws/src
 
