@@ -44,8 +44,8 @@ jobs:
         tags: iit-kyon-ros-pkg-test:latest
         secrets: |
           gh_token=${{ secrets.TOKEN }}
-        cache-from: type=registry,ref=ghcr.io/${{ env.REPO_LC }}/ci-noble:cache
-        cache-to: type=registry,ref=ghcr.io/${{ env.REPO_LC }}/ci-noble:cache,mode=max
+        cache-from: type=registry,ref=ghcr.io/${{ env.REPO_LC }}/ci-noble:cache,scope=build-v2
+        cache-to: type=registry,ref=ghcr.io/${{ env.REPO_LC }}/ci-noble:cache,mode=max,scope=build-v2
 
     - name: Start the container
       run: docker compose up --no-build -d
