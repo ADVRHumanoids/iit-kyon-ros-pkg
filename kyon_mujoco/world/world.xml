@@ -8,12 +8,6 @@
         </plugin>
     </extension>
 
-    <default>
-        <default class="kyon_all">
-            <joint armature="0.234" frictionloss="4.68" damping="1.7"/> 
-        </default>
-    </default>
-
     <asset>
         <mesh name="torus">
             <plugin instance="torus"/>
