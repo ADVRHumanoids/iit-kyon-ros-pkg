@@ -1,0 +1,72 @@
+<!-- Maze for Kyon: lio_mapping mapping and a navigation testbench. Floor at z 0; the robot starts
+     in cell (0, 0) at the origin facing +x (kyon_navigation world "maze"). 6 x 6 cells of 4 m
+     (3.8 m corridors), walls 1.5-2.5 m high with clutter along them (FAST-LIO needs features along
+     corridors), 6 loops and 2 dead ends. The north-east hall has 0.4 m blocks and a tall box
+     (obstacles), a 0.2 m ramp to a platform and 2 x 0.1 m steps down (traversable); a 5 cm curb
+     crosses the corridor between cells (1, 1) and (1, 2). Layout (north up, cell (i, j) at (4 i, 4 j)):
+       #############
+       #     #     #
+       # # # #     #
+       # #   #     #
+       # ##### #   #
+       #       #   #
+       ### ### ### #
+       #   #     # #
+       # # # ### # #
+       # #   #   # #
+       # ##### # # #
+       #     #   # #
+       #############
+-->
+<mujoco>
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1=".7 .8 .9" rgb2=".3 .4 .5" width="512" height="512"/>
+    <texture name="ground" type="2d" builtin="checker" width="512" height="512" rgb1=".55 .55 .55" rgb2=".65 .65 .65"/>
+    <material name="ground" texture="ground" texrepeat="1 1" texuniform="true"/>
+  </asset>
+  <visual><headlight ambient="0.5 0.5 0.5"/></visual>
+  <worldbody>
+    <light name="sun" directional="true" pos="0 0 10" dir="-0.4 0.2 -1" diffuse="0.6 0.6 0.6"/>
+    <geom name="ground" type="plane" size="20.0 20.0 0.1" material="ground" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ew_0_0" type="box" pos="10.0 22.0 1.25" quat="1 0 0 0" size="12.1 0.1 1.25" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ew_4_2" type="box" pos="6.0 14.0 0.75" quat="1 0 0 0" size="4.1 0.1 0.75" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ew_6_0" type="box" pos="0.0 10.0 1.25" quat="1 0 0 0" size="2.1 0.1 1.25" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ew_6_4" type="box" pos="8.0 10.0 0.9" quat="1 0 0 0" size="2.1 0.1 0.9" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ew_6_8" type="box" pos="16.0 10.0 1.1" quat="1 0 0 0" size="2.1 0.1 1.1" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ew_8_6" type="box" pos="12.0 6.0 1.0" quat="1 0 0 0" size="2.1 0.1 1.0" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ew_10_2" type="box" pos="6.0 2.0 0.75" quat="1 0 0 0" size="4.1 0.1 0.75" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ew_12_0" type="box" pos="10.0 -2.0 1.25" quat="1 0 0 0" size="12.1 0.1 1.25" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ns_0_0" type="box" pos="-2.0 10.0 1.25" quat="1 0 0 0" size="0.1 12.1 1.25" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ns_2_2" type="box" pos="2.0 16.0 1.1" quat="1 0 0 0" size="0.1 2.1 1.1" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ns_2_8" type="box" pos="2.0 4.0 1.0" quat="1 0 0 0" size="0.1 2.1 1.0" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ns_4_6" type="box" pos="6.0 8.0 0.75" quat="1 0 0 0" size="0.1 2.1 0.75" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ns_6_0" type="box" pos="10.0 18.0 1.25" quat="1 0 0 0" size="0.1 4.1 1.25" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ns_6_8" type="box" pos="10.0 2.0 0.9" quat="1 0 0 0" size="0.1 4.1 0.9" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ns_8_4" type="box" pos="14.0 12.0 1.1" quat="1 0 0 0" size="0.1 2.1 1.1" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ns_10_6" type="box" pos="18.0 4.0 1.0" quat="1 0 0 0" size="0.1 6.1 1.0" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="wall_ns_12_0" type="box" pos="22.0 10.0 1.25" quat="1 0 0 0" size="0.1 12.1 1.25" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_0" type="box" pos="-1.6 2.5 0.5" quat="1 0 0 0" size="0.3 0.4 0.5" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_1" type="box" pos="3.6 -1.6 0.3" quat="1 0 0 0" size="0.3 0.3 0.3" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_2" type="box" pos="6.0 -1.6 0.6" quat="1 0 0 0" size="0.6 0.25 0.6" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_3" type="box" pos="1.6 6.5 0.4" quat="1 0 0 0" size="0.3 0.5 0.4" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_4" type="box" pos="-1.5 10.0 0.7" quat="0.988771078 0 0 0.149438132" size="0.35 0.35 0.7" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_5" type="box" pos="5.5 9.6 0.25" quat="1 0 0 0" size="0.5 0.25 0.25" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_6" type="box" pos="9.65 5.0 0.5" quat="1 0 0 0" size="0.25 0.7 0.5" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_7" type="box" pos="17.0 -1.6 0.45" quat="1 0 0 0" size="1.0 0.25 0.45" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_8" type="box" pos="21.6 6.0 0.8" quat="1 0 0 0" size="0.3 0.5 0.8" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_9" type="box" pos="10.0 13.6 0.35" quat="1 0 0 0" size="0.7 0.3 0.35" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_10" type="box" pos="2.0 13.6 0.55" quat="1 0 0 0" size="0.4 0.3 0.55" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_11" type="box" pos="-1.6 18.0 0.45" quat="1 0 0 0" size="0.3 0.6 0.45" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="clutter_12" type="box" pos="5.0 21.6 0.65" quat="1 0 0 0" size="0.5 0.3 0.65" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="post_1" type="box" pos="13.6 2.0 1.0" quat="1 0 0 0" size="0.3 0.3 1.0" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="post_2" type="box" pos="6.4 17.0 0.9" quat="0.980066578 0 0 0.198669331" size="0.3 0.3 0.9" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="blocks" type="box" pos="16.0 18.5 0.2" quat="1 0 0 0" size="0.3 1.75 0.2" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="tall_box" type="box" pos="12.5 20.0 0.5" quat="0.980066578 0 0 0.198669331" size="0.6 0.6 0.5" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="pillar_1" type="box" pos="19.5 20.5 1.0" quat="1 0 0 0" size="0.2 0.2 1.0" rgba="0.8 0.5 0.3 1" group="0" condim="3" friction="0.6"/>
+    <geom name="ramp" type="box" pos="15.865949044456578 12.0 -0.099363055707225" quat="0.999203502 0 -0.0399043949 0" size="1.2539936203984452 0.8 0.2" rgba="0.4 0.8 0.4 1" group="0" condim="3" friction="0.6"/>
+    <geom name="platform" type="box" pos="18.1 12.0 0.1" quat="1 0 0 0" size="1.0 0.8 0.1" rgba="0.4 0.6 0.8 1" group="0" condim="3" friction="0.6"/>
+    <geom name="steps_down_0" type="box" pos="19.7 12.0 0.05" quat="1.79489651e-09 0 0 1" size="0.2 0.8 0.05" rgba="0.4 0.6 0.8 1" group="0" condim="3" friction="0.6"/>
+    <geom name="steps_down_1" type="box" pos="19.3 12.000000001435918 0.1" quat="1.79489651e-09 0 0 1" size="0.2 0.8 0.1" rgba="0.4 0.6 0.8 1" group="0" condim="3" friction="0.6"/>
+    <geom name="curb" type="box" pos="4.0 6.0 0.025" quat="1 0 0 0" size="1.9 0.15 0.025" rgba="0.4 0.6 0.8 1" group="0" condim="3" friction="0.6"/>
+  </worldbody>
+</mujoco>
