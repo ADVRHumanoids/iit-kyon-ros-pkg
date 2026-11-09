@@ -9,7 +9,7 @@ project(kyon_mujoco)
 ## is used, also find other catkin packages
 find_package(ament_cmake REQUIRED)
 
-install(DIRECTORY launch mjcf world
+install(DIRECTORY config launch mjcf world
   DESTINATION share/${PROJECT_NAME}
 )
 

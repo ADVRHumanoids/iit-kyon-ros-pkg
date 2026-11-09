@@ -1,0 +1,5 @@
+<mujoco>
+    <!-- imu_link's IMU (kyon_world.launch imu:=true) on /vectornav/imu_uncompensated at 200 Hz, as
+         the real VectorNav driver and kyon_gazebo's imu:=true. -->
+    <imu site="imu_link" topic="/vectornav/imu_uncompensated" frame_id="imu_link" rate="200"/>
+</mujoco>
