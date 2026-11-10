@@ -16,6 +16,7 @@
     <xacro:arg name="velodyne" default="false" />
     <xacro:arg name="add_collision" default="true" />
     <xacro:arg name="hesai_jt128" default="false" />
+    <xacro:arg name="timestep" default="0.001" />
 
 
     <!-- select parts -->
