@@ -25,6 +25,8 @@
     <arg name="headless" default="false"/>
     <!-- Target real-time factor of the simulation -->
     <arg name="rtf" default="1.0"/>
+    <!-- Physics timestep of the simulation in seconds -->
+    <arg name="timestep" default="0.001"/>
     <arg name="lidar" default="false"/>
     <!-- imu_link's IMU on /vectornav/imu_uncompensated, as the real VectorNav driver -->
     <arg name="imu" default="false"/>
@@ -37,7 +39,7 @@
         value="xacro $(find-pkg-share kyon_srdf)/srdf/kyon.srdf.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne)" />
 
     <let name="cfg_xml_command"
-        value="xacro $(find-pkg-share kyon_mujoco)/mjcf/kyon_mujoco.xml.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) varta:=$(var varta) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne) camera_front_up:=$(var camera_front_up) camera_front_down:=$(var camera_front_down)" />
+        value="xacro $(find-pkg-share kyon_mujoco)/mjcf/kyon_mujoco.xml.xacro floating_joint:=true upper_body:=$(var arms) legs:=$(var legs) sensors:=$(var sensors) payload:=$(var payload) varta:=$(var varta) dagana:=$(var dagana) feet:=$(var feet) wheels:=$(var wheels) steering_wheels:=$(var steering_wheels) ft_sensors:=$(var ft_sensors) velodyne:=$(var velodyne) camera_front_up:=$(var camera_front_up) camera_front_down:=$(var camera_front_down) timestep:=$(var timestep)" />
 
     <let name="mjctl_flag" value="--remote-control-endpoint=tcp://127.0.0.1:5555" if="$(var enable_mjctl)"/>
     <let name="mjctl_flag" value="" unless="$(var enable_mjctl)"/>
