@@ -5,7 +5,7 @@
 
     <!--  integrators: [Euler, RK4, implicit, implicitfast] -->
     <option integrator="Euler"
-        timestep="0.001"
+        timestep="$(arg timestep)"
         iterations="100"
     />
     <size njmax="1000" nconmax="200" />
