@@ -23,6 +23,8 @@
     <arg name="enable_mjctl" default="false"/>
     <arg name="enable_heightscan" default="false"/>
     <arg name="headless" default="false"/>
+    <!-- Target real-time factor of the simulation -->
+    <arg name="rtf" default="1.0"/>
     <arg name="lidar" default="false"/>
     <!-- imu_link's IMU on /vectornav/imu_uncompensated, as the real VectorNav driver -->
     <arg name="imu" default="false"/>
@@ -64,6 +66,7 @@
         $(var mjctl_flag)
         $(var terrain_scan_body_flag)
         $(var headless_flag)
+        --target-rtf $(var rtf)
         " >
         <env name="PYTHONUNBUFFERED" value="1" />
     </executable>
