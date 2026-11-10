@@ -100,10 +100,10 @@
 </joint>
 
 
-<!-- Velodyne -->
+<!-- Hesai lidar: the sensor's pose, lio_mapping's hand-eye calibrated extrinsic in imu_link -->
 <link name="hesai_lidar"/>
 <joint name="hesai_lidar_joints" type="fixed">
-    <origin xyz="0.43 0 0.118" rpy="0 0 0.5220063" />
+    <origin xyz="0.43 0 0.118" rpy="0 0 2.0928021889929584" />
     <parent link="pelvis"/>
 	<child link="hesai_lidar"/>
 </joint>
