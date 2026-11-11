@@ -4,8 +4,8 @@
          as a quaternion. Rings, start azimuth, rate, and 900 columns (0.4 deg) written twice
          (dual return, 230400 points as the driver): kyon_gazebo's sim_hesai_adapter.yaml and
          kyon_sensors.urdf.xacro.
-         The cloud is in hesai_lidar, as with the real driver and sim_hesai_adapter: the URDF's
-         hesai_lidar is not the sensor's pose.
+         The cloud is in hesai_lidar, as with the real driver and sim_hesai_adapter (the URDF's
+         hesai_lidar is this pose).
          The sensor is inside the pelvis meshes, so the lidar excludes the pelvis. The occluder
          blocks what the pelvis blocks on the robot (logs/08102026_iit_floor): the pelvis visual
          mesh in imu_link, without its faces within 0.15 m of the sensor (the lidar bay) and
