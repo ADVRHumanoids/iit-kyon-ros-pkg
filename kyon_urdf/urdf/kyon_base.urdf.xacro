@@ -100,10 +100,10 @@
 </joint>
 
 
-<!-- Hesai lidar: the sensor's pose, lio_mapping's hand-eye calibrated extrinsic in imu_link -->
+<!-- Hesai QT128. Yaw hand-eye calibrated (lio_mapping's fast_lio_hesai.yaml extrinsic_R) -->
 <link name="hesai_lidar"/>
 <joint name="hesai_lidar_joints" type="fixed">
-    <origin xyz="0.43 0 0.118" rpy="0 0 2.0928021889929584" />
+    <origin xyz="0.43 0 0.118" rpy="0 0 2.0928020" />
     <parent link="pelvis"/>
 	<child link="hesai_lidar"/>
 </joint>
