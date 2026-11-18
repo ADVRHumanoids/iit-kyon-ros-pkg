@@ -4,63 +4,85 @@
 <!-- macro legs -->
 <xacro:macro name="kyon_dagana" params="arm_num parent">
 
+<xacro:property name="parallel_jaws" value="${PARALLEL_DAGANA}"/>
+
 <link name="dagana_${arm_num}_base">
     <inertial>
         <origin xyz="${Dagana_x} ${Dagana_y} ${Dagana_z}"/>
         <mass value="${Dagana_mass}"/>
         <inertia ixx="${Dagana_xx}" ixy="${Dagana_xy}" ixz="${Dagana_xz}" iyy="${Dagana_yy}" iyz="${Dagana_yz}" izz="${Dagana_zz}"/>
     </inertial>
-    <visual>
-        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
-        <geometry>
-            <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_dagana-base-boxy.stl" scale="0.001 0.001 0.001"/>
-        </geometry>
-        <material name="dark_grey"/>
-    </visual>
-    <visual>
-        <origin xyz="0 -0.0145 0.181" rpy="0 1.5707 0" />
-        <geometry>
-            <cylinder radius="0.01" length="0.0279"/>
-        </geometry>
-    </visual>
-    <visual>
-        <origin xyz="0.0 0.0007432 0.0405" rpy="0 0 0" />
-        <geometry>
-            <box size="0.0879  0.0844864 0.081"/>
-        </geometry>
-    </visual>
 
-    <collision>
-        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
-        <geometry>
-            <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_dagana-base-boxy.stl" scale="0.001 0.001 0.001"/>
-        </geometry>
-        <material name="dark_grey"/>
-    </collision>
-    <collision>
-        <origin xyz="0 -0.0145 0.181" rpy="0 1.5707 0" />
-        <geometry>
-            <cylinder radius="0.01" length="0.0279"/>
-        </geometry>
-    </collision>
-    <collision>
-        <origin xyz="0.0 0.0007432 0.0405" rpy="0 0 0" />
-        <geometry>
-            <box size="0.0879  0.0844864 0.081"/>
-        </geometry>
-    </collision>
-    <!-- <collision>
-        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
-        <geometry>
-            <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-base-simplified.stl" scale="0.001 0.001 0.001"/>
-        </geometry>
-    </collision>
-    <collision>
-        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
-        <geometry>
-            <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-base-base-simplified.stl" scale="0.001 0.001 0.001"/>
-        </geometry>
-    </collision> -->
+    <xacro:if value="${BOXY_DAGANA}">
+        <visual>
+            <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_dagana-base-boxy.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </visual>
+
+        <xacro:unless value="${parallel_jaws}">
+            <visual>
+                <origin xyz="0 -0.0145 0.181" rpy="0 1.5707 0" />
+                <geometry>
+                    <cylinder radius="0.01" length="0.0279"/>
+                </geometry>
+            </visual>
+        </xacro:unless>
+        
+        <visual>
+            <origin xyz="0.0 0.0007432 0.0405" rpy="0 0 0" />
+            <geometry>
+                <box size="0.0879  0.0844864 0.081"/>
+            </geometry>
+        </visual>
+
+
+        <collision name="dagana_${arm_num}_base_jaw_collision">
+            <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_dagana-base-boxy.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </collision>
+        <xacro:unless value="${parallel_jaws}">
+            <collision name="dagana_${arm_num}_base_tip_collision">
+                <origin xyz="0 -0.0145 0.181" rpy="0 1.5707 0" />
+                <geometry>
+                    <cylinder radius="0.01" length="0.0279"/>
+                </geometry>
+            </collision>
+        </xacro:unless>
+        <collision name="dagana_${arm_num}_base_palm_collision">
+            <origin xyz="0.0 0.0007432 0.0405" rpy="0 0 0" />
+            <geometry>
+                <box size="0.0879  0.0844864 0.081"/>
+            </geometry>
+        </collision>
+    </xacro:if>
+
+    <xacro:unless value="${BOXY_DAGANA}">
+        <visual>
+            <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_dagana-base.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-base-simplified.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://kyon_urdf/meshes/collision/mesh_dagana-base-base-simplified.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </xacro:unless>
 </link>
 
 <link name="dagana_${arm_num}_claw">
@@ -69,33 +91,58 @@
         <mass value="${DaganaClaw_mass}"/>
         <inertia ixx="${DaganaClaw_xx}" ixy="${DaganaClaw_xy}" ixz="${DaganaClaw_xz}" iyy="${DaganaClaw_yy}" iyz="${DaganaClaw_yz}" izz="${DaganaClaw_zz}"/>
     </inertial>
-    <visual>
-        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
-        <geometry>
-            <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_dagana-clamp-boxy.stl" scale="0.001 0.001 0.001"/>
-        </geometry>
-        <material name="dark_grey"/>
-    </visual>
-    <visual>
-        <origin xyz="-0.137 0.0 -0.0362125" rpy="0 0 0" />
-        <geometry>
-            <cylinder radius="0.01" length="0.0279"/>
-        </geometry>
-    </visual>
+    <xacro:if value="${BOXY_DAGANA}">
+        <visual>
+            <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_dagana-clamp-boxy.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </visual>
+        <xacro:unless value="${parallel_jaws}">
+            <visual>
+                <origin xyz="-0.137 0.0 -0.0362125" rpy="0 0 0" />
+                <geometry>
+                    <cylinder radius="0.01" length="0.0279"/>
+                </geometry>
+            </visual>
+        </xacro:unless>
 
-    <collision>
-        <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
-        <geometry>
-            <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_dagana-clamp-boxy.stl" scale="0.001 0.001 0.001"/>
-        </geometry>
-        <material name="dark_grey"/>
-    </collision>
-    <collision>
-        <origin xyz="-0.137 0.0 -0.0362125" rpy="0 0 0" />
-        <geometry>
-            <cylinder radius="0.01" length="0.0279"/>
-        </geometry>
-    </collision>
+        <collision name="dagana_${arm_num}_claw_jaw_collision">
+            <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_dagana-clamp-boxy.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </collision>
+        <xacro:unless value="${parallel_jaws}">
+            <collision name="dagana_${arm_num}_claw_tip_collision">
+                <origin xyz="-0.137 0.0 -0.0362125" rpy="0 0 0" />
+                <geometry>
+                    <cylinder radius="0.01" length="0.0279"/>
+                </geometry>
+            </collision>
+        </xacro:unless>
+    </xacro:if>
+
+    <xacro:unless value="${BOXY_DAGANA}">
+        <visual>
+            <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_dagana-clamp.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </visual>
+        <collision name="dagana_${arm_num}_claw_jaw_collision">
+            <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_dagana-clamp.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </collision>
+    </xacro:unless>
+
+
     <!-- <collision>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
@@ -116,13 +163,28 @@
     <origin xyz="${DaganaBase_Ox} ${DaganaBase_Oy} ${DaganaBase_Oz}" rpy="${DaganaBase_roll} ${DaganaBase_pitch} ${DaganaBase_yaw * (1.0 if arm_num == 1 else -1)}"/>
 </joint>
 
+<xacro:unless value="${parallel_jaws}">
 <joint name="dagana_${arm_num}_clamp_joint" type="revolute">
     <parent link="dagana_${arm_num}_base"/>
     <child link="dagana_${arm_num}_claw"/>
     <origin xyz="${DaganaClamp_Ox} ${DaganaClamp_Oy} ${DaganaClamp_Oz}" rpy="${DaganaClamp_roll} ${DaganaClamp_pitch} ${DaganaClamp_yaw}"/>
     <axis xyz="0 0 -1"/>
-    <limit lower="${dagana_lower[arm_num-1]}" upper="${dagana_upper[arm_num-1]}" effort="${motorD_effort}" velocity="${motorD_velocity}"/> 
+    <limit lower="${dagana_lower[arm_num-1]}" upper="${dagana_upper[arm_num-1]}" effort="${motorD_effort}" velocity="${motorD_velocity}"/>
 </joint>
+</xacro:unless>
+
+<xacro:if value="${parallel_jaws}">
+<!-- The fixed jaw's face is the plane y=-0.0145 of the base link, the claw's face is the plane y=0 of
+     the claw link: at position 0 the two faces touch, and the position is the gap between them. -->
+<joint name="dagana_${arm_num}_clamp_joint" type="prismatic">
+    <parent link="dagana_${arm_num}_base"/>
+    <child link="dagana_${arm_num}_claw"/>
+    <origin xyz="${DaganaClamp_Ox} -0.0145 ${DaganaClamp_Oz}" rpy="${DaganaClamp_roll} ${DaganaClamp_pitch} ${DaganaClamp_yaw}"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="${dagana_parallel_lower}" upper="${dagana_parallel_upper}" effort="${dagana_parallel_effort}" velocity="${dagana_parallel_velocity}"/>
+    <dynamics damping="10.0" friction="5.0"/>
+</joint>
+</xacro:if>
 
 </xacro:macro>
 </robot>
