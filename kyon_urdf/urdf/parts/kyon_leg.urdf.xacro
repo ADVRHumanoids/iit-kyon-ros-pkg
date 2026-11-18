@@ -86,7 +86,7 @@
 </joint>
 
 <!-- knee: collision sphere on the end of the thigh past the knee axis, the part that touches the ground when kneeling -->
-<link name="knee_${leg_num}">
+<!-- <link name="knee_${leg_num}">
 	<inertial>
 		<origin xyz="0 0 0"/>
 		<mass value="0.001"/>
@@ -104,7 +104,7 @@
 	<parent link="hip_pitch_${leg_num}_link"/>
 	<child link="knee_${leg_num}"/>
 	<origin xyz="0.0 -0.373 0.213" rpy="0 0 0"/>
-</joint>
+</joint> -->
 
 <xacro:unless value="${ADD_WHEELS}">
 	<xacro:foot_leg leg_num="${leg_num}" parent="hip_pitch_${leg_num}_link" origin_x="${origin_x}" origin_y="${origin_y}" mirror="${mirror}"/>
