@@ -3,7 +3,7 @@
 
 <xacro:if value="${ADD_FU_CAMERA}">
 
-    <reference element="body" name="zed_front_down_left_camera_frame">
+    <reference element="body" name="zed_front_up_left_camera_frame">
         <!-- Camera +X is mount -Y, +Y is mount +Z; looking -Z is mount +X. -->
         <!-- ZED X Mini 2.2 mm wide lens: nominal 110 deg H x 80 deg V.
              Square-pixel aspect = tan(55 deg)/tan(40 deg) ~= 1.702.
