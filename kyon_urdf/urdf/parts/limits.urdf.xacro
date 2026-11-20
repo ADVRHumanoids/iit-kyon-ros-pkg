@@ -34,7 +34,7 @@
 <!-- Dagana -->
 <xacro:property name="dagana_lower" value="${[0, 0]}"/>
 <xacro:property name="dagana_upper" value="${[1.2, 1.2]}"/>
-<!-- Parallel jaws variant (dagana_type:=parallel): a prismatic joint, in meters, N and m/s -->
+<!-- Parallel jaws variant (parallel_dagana:=true): a prismatic joint, in meters, N and m/s -->
 <xacro:property name="dagana_parallel_lower" value="0.0"/>
 <xacro:property name="dagana_parallel_upper" value="0.1"/>
 <xacro:property name="dagana_parallel_effort" value="250"/>

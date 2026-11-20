@@ -25,7 +25,7 @@
 <xacro:arg name="fixed_base_y" default="0.0"/>
 <xacro:arg name="fixed_base_z" default="0.0"/>
 <xacro:arg name="visual_mesh_subfolder" default="visual_lowres"/> <!-- pass an empty string to get the original high resolution meshes -->
-<xacro:arg name="boxy_dagana" default="false"/> <!-- "true": the dagana uses a simplifed boxy shape -->
+<xacro:arg name="dagana_model" default="default"/> <!-- "true": the dagana uses a simplifed boxy shape -->
 <xacro:arg name="parallel_dagana" default="false"/> <!-- the dagana becomes a fake parallel gripper (just for testing purposes)-->
 
 
@@ -48,7 +48,7 @@
 <xacro:property name="ADD_COLLISION" value="$(arg add_collision)"/>
 <xacro:property name="PAYLOAD" value="$(arg payload)"/>
 <xacro:property name="VISUAL_MESH_SUBFOLDER" value="$(arg visual_mesh_subfolder)"/>
-<xacro:property name="BOXY_DAGANA" value="$(arg boxy_dagana)"/>
+<xacro:property name="DAGANA_MODEL" value="$(arg dagana_model)"/>
 <xacro:property name="PARALLEL_DAGANA" value="$(arg parallel_dagana)"/>
 
 <xacro:property name="ADD_FIXED_BASE" value="$(arg add_fixed_base_joint)"/>
