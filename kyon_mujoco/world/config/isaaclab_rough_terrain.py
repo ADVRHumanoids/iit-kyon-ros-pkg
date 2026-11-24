@@ -15,31 +15,32 @@ ROUGH_TERRAINS_CFG = TerrainGeneratorCfg(
     size=(12.0, 12.0),  # Width and depth of each terrain tile in meters.
     border_width=20.0,  # Width of the outer collision border in meters.
     border_height=1.0,  # Height of the outer collision border in meters.
-    num_rows=4,  # Number of terrain rows.
-    num_cols=8,  # Number of terrain columns.
+    num_rows=6,  # Number of terrain rows.
+    num_cols=6,  # Number of terrain columns.
     horizontal_scale=0.1,  # Heightfield sample spacing in meters.
     vertical_scale=0.005,  # Heightfield quantization step in meters.
     slope_threshold=0.75,  # Retained for compatibility; ignored by MuJoCo heightfields.
     use_cache=False,  # Whether to cache generated terrain patches.
     cache_dir="/tmp/xbot2_mujoco/terrains",  # Directory used for terrain caches.
-    curriculum=True,  # Arrange terrain types by columns and difficulty by rows.
-    difficulty_range=(0.0, 1.0),  # Difficulty interval used for terrain sampling.
+    deterministic=True,  # Ignore proportions; assign every terrain type once along the type axis.
+    terrain_type_axis="columns",  # One type per column; use "rows" to transpose the layout.
+    difficulty_range=(0.0, 1.0),  # Other axis interpolates from minimum to maximum, inclusive.
     spawn_height=1.0,  # Height added above each terrain origin for robot spawning.
     sub_terrains={
-        "open_stairs": MeshOpenPyramidStairsTerrainCfg(**stairs),
-        "open_stairs_inv": MeshOpenInvertedPyramidStairsTerrainCfg(**stairs),
+        # "open_stairs": MeshOpenPyramidStairsTerrainCfg(**stairs),
+        # "open_stairs_inv": MeshOpenInvertedPyramidStairsTerrainCfg(**stairs),
         "pyramid_stairs": MeshPyramidStairsTerrainCfg(
             proportion=0.2,  # Share of randomly selected terrain types.
             step_height_range=(0.15, 0.30),  # Minimum and maximum step height.
-            step_width=2,  # Width of each stair step in meters.
-            platform_width=3.0,  # Flat center platform width in meters.
+            step_width=0.45,  # Width of each stair step in meters.
+            platform_width=2.0,  # Flat center platform width in meters.
             border_width=1.0,  # Inset from the tile edge in meters.
         ),
         "pyramid_stairs_inv": MeshInvertedPyramidStairsTerrainCfg(
             proportion=0.2,  # Share of randomly selected terrain types.
             step_height_range=(0.15, 0.30),  # Minimum and maximum step height.
-            step_width=2,  # Width of each stair step in meters.
-            platform_width=3.0,  # Flat center platform width in meters.
+            step_width=0.45,  # Width of each stair step in meters.
+            platform_width=2.0,  # Flat center platform width in meters.
             border_width=1.0,  # Inset from the tile edge in meters.
         ),
 
