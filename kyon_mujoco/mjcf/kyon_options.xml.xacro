@@ -45,6 +45,82 @@
             <joint armature="0.4" damping="3.0" frictionloss="5.0" />
             <position kp="50" kv="5" inheritrange="1.0" />
         </default>
+
+        <!-- From the Isaac configuration below: damping is its viscous_friction, frictionloss its dynamic_friction
+             (equal to its static friction, which MuJoCo does not model separately) 
+        From Isaac Config:
+            motor_a: 
+                transmission_amplitude_randomization=0.10,
+                transmission_scale_randomization=0.10,
+                # saturation_effort=185,
+                effort_limit=185,
+                velocity_limit=7.6,
+                armature=0.234,
+                friction=4.68,
+                dynamic_friction=4.68,
+                viscous_friction=1.7
+            motor_b:
+                # saturation_effort=185,
+                effort_limit=146,
+                velocity_limit=3.8,
+                armature=0.472,
+                friction=2.75,
+                dynamic_friction=2.75,
+                viscous_friction=5.1,
+            motor_c:
+                # saturation_effort=185,
+                effort_limit=122,
+                velocity_limit=4.6,
+                armature=0.382,
+                friction=3.2,
+                dynamic_friction=3.2,
+                viscous_friction=6.75
+            motor_d:
+                # saturation_effort=185,
+                effort_limit=25,
+                velocity_limit=14,
+                armature=0.078,
+                friction=1.,
+                dynamic_friction=1.,
+                viscous_friction=0.7
+            motor_wheel:
+                effort_limit=25,
+                velocity_limit=24,
+                velocity_error_integral_gain=float(os.getenv("KYON_MOTOR_WHEEL_STIFFNESS", "6")),
+                armature=0.013 - 0.0079,    # identified total inertia (analysis/wheel_sysid_calibration.json),
+                                            # minus the link inertia from urdf
+                friction=0.3,  # identified total friction (analysis/wheel_sysid_calibration.json)
+                dynamic_friction=0.3,  # identified total friction (analysis/wheel_sysid_calibration.json)
+                viscous_friction=0.014,  # identified total viscous friction (analysis/wheel_sysid_calibration.json)
+            motor_dagana:
+                # saturation_effort=185,
+                effort_limit=25,        # JUST A GUESS!
+                velocity_limit=14,      # JUST A GUESS!
+                armature=0.078,         # JUST A GUESS!
+                friction=1.,            # JUST A GUESS!
+                dynamic_friction=1.,    # JUST A GUESS!
+                viscous_friction=0.7    # JUST A GUESS!
+        -->
+        <default class="motor_a">
+            <joint armature="0.234" damping="1.7" frictionloss="4.68" />
+            <position kp="200" kv="10" inheritrange="1.0" />
+        </default>
+        <default class="motor_b">
+            <joint armature="0.472" damping="5.1" frictionloss="2.75" />
+            <position kp="200" kv="10" inheritrange="1.0" />
+        </default>
+        <default class="motor_c">
+            <joint armature="0.382" damping="6.75" frictionloss="3.2" />
+            <position kp="200" kv="10" inheritrange="1.0" />
+        </default>
+        <default class="motor_d">
+            <joint armature="0.078" damping="0.7" frictionloss="1.0" />
+            <position kp="200" kv="10" inheritrange="1.0" />
+        </default>
+        <default class="motor_dagana">
+            <joint armature="0.078" damping="0.7" frictionloss="1.0" />
+            <position kp="200" kv="10" inheritrange="1.0" />
+        </default>
     </default>
 
     <!-- sensors -->
@@ -64,12 +140,52 @@
 
     <!-- childclass assignments (for default friction, actuator gains, ...) -->
     <xacro:if value="${ADD_UPPER_BODY}">
+        <!--
+        shoulder_yaw:   motor_c
+        shoulder_pitch: motor_b
+        elbow_pitch:    motor_c
+        wrist_pitch:    motor_d
+        wrist_yaw:      motor_d
+        -->
+
         <setattribute element="body" name="shoulder_yaw_1_link">
-            <attribute name="childclass" value="kyon_arm" />
+            <attribute name="childclass" value="motor_c" />
         </setattribute>
+        <setattribute element="body" name="shoulder_pitch_1_link">
+            <attribute name="childclass" value="motor_b" />
+        </setattribute>
+        <setattribute element="body" name="elbow_pitch_1_link">
+            <attribute name="childclass" value="motor_c" />
+        </setattribute>
+        <setattribute element="body" name="wrist_pitch_1_link">
+            <attribute name="childclass" value="motor_d" />
+        </setattribute>
+        <setattribute element="body" name="wrist_yaw_1_link">
+            <attribute name="childclass" value="motor_d" />
+        </setattribute>
+        <setattribute element="body" name="dagana_1_claw">
+            <attribute name="childclass" value="motor_dagana" />
+        </setattribute>
+
         <setattribute element="body" name="shoulder_yaw_2_link">
-            <attribute name="childclass" value="kyon_arm" />
+            <attribute name="childclass" value="motor_c" />
         </setattribute>
+        <setattribute element="body" name="shoulder_pitch_2_link">
+            <attribute name="childclass" value="motor_b" />
+        </setattribute>
+        <setattribute element="body" name="elbow_pitch_2_link">
+            <attribute name="childclass" value="motor_c" />
+        </setattribute>
+        <setattribute element="body" name="wrist_pitch_2_link">
+            <attribute name="childclass" value="motor_d" />
+        </setattribute>
+        <setattribute element="body" name="wrist_yaw_2_link">
+            <attribute name="childclass" value="motor_d" />
+        </setattribute>
+        <setattribute element="body" name="dagana_2_claw">
+            <attribute name="childclass" value="motor_dagana" />
+        </setattribute>
+
     </xacro:if>
 
     <setattribute element="body" name="hip_roll_1_link">
