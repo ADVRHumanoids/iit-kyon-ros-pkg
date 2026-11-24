@@ -93,10 +93,11 @@
                 dynamic_friction=0.3,  # identified total friction (analysis/wheel_sysid_calibration.json)
                 viscous_friction=0.014,  # identified total viscous friction (analysis/wheel_sysid_calibration.json)
             motor_dagana:
+                # Kollmorgen RBE00511A frameless motor (RBE(H) 00510 series brochure) through a 1:100 harmonic drive
                 # saturation_effort=185,
-                effort_limit=25,        # JUST A GUESS!
-                velocity_limit=14,      # JUST A GUESS!
-                armature=0.078,         # JUST A GUESS!
+                effort_limit=11,        # continuous stall torque 0.0494 N m, peak 0.111 N m: about 4.9 N m continuous and 11.1 N m peak at the joint before gear losses
+                velocity_limit=14,      # rated speed 15700 rpm: about 16 rad/s at the joint
+                armature=0.00353,       # motor inertia 3.53e-7 kg*m^2, scaled by 100^2 for the harmonic drive
                 friction=1.,            # JUST A GUESS!
                 dynamic_friction=1.,    # JUST A GUESS!
                 viscous_friction=0.7    # JUST A GUESS!
@@ -118,7 +119,7 @@
             <position kp="200" kv="10" inheritrange="1.0" />
         </default>
         <default class="motor_dagana">
-            <joint armature="0.078" damping="0.7" frictionloss="1.0" />
+            <joint armature="0.00353" damping="0.7" frictionloss="1.0" />
             <position kp="200" kv="10" inheritrange="1.0" />
         </default>
     </default>
