@@ -11,7 +11,7 @@ install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME}
 )
 
-install(PROGRAMS src/parking.py 
+install(PROGRAMS src/parking.py src/bimanual_ground.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

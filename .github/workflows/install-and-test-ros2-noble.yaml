@@ -44,8 +44,7 @@ jobs:
         tags: iit-kyon-ros-pkg-test:latest
         secrets: |
           gh_token=${{ secrets.TOKEN }}
-        cache-from: type=registry,ref=ghcr.io/${{ env.REPO_LC }}/ci-noble:cache
-        cache-to: type=registry,ref=ghcr.io/${{ env.REPO_LC }}/ci-noble:cache,mode=max
+        no-cache: true
 
     - name: Start the container
       run: docker compose up --no-build -d
@@ -96,8 +95,7 @@ jobs:
         tags: iit-kyon-ros-pkg-test:latest
         secrets: |
           gh_token=${{ secrets.TOKEN }}
-        cache-from: type=registry,ref=ghcr.io/${{ env.REPO_LC }}/ci-noble:cache
-        cache-to: type=registry,ref=ghcr.io/${{ env.REPO_LC }}/ci-noble:cache,mode=max
+        no-cache: true
 
     - name: Start the container
       run: docker compose up --no-build -d

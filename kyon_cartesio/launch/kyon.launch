@@ -13,8 +13,8 @@
     <arg name="dagana" default="true" />
     
     <!-- IK problem description file -->
-    <let name="ik" if="$(var wheels)" value="$(find-pkg-share kyon_cartesio)/config/kyon_stack_wheel_legs.yaml" />
-    <let name="ik" unless="$(var wheels)" value="$(find-pkg-share kyon_cartesio)/config/kyon_stack_stick_legs.yaml" />
+    <arg name="ik" if="$(var wheels)" default="$(find-pkg-share kyon_cartesio)/config/kyon_stack_wheel_legs.yaml" />
+    <arg name="ik" unless="$(var wheels)" default="$(find-pkg-share kyon_cartesio)/config/kyon_stack_stick_legs.yaml" />
 
 
     <group unless="$(var xbot)">

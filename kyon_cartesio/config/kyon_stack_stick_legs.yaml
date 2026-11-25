@@ -36,7 +36,8 @@ collision:
        type: halfspace
        normal: [0, 0, 1]
        position: [0, 0, 0.0]
-       disabled_collisions: [knee_pitch_1_link, knee_pitch_2_link, knee_pitch_3_link, knee_pitch_4_link]
+       disabled_collisions: [knee_pitch_1_link, knee_pitch_2_link, knee_pitch_3_link, knee_pitch_4_link,
+        contact_1, contact_2, contact_3, contact_4]
 
 contact_1:
     type: Cartesian
@@ -84,7 +85,7 @@ r_arm:
 Com:
     type: Com
     indices: [0, 1, 2]
-    weight: [0, 0, 0]
+    weight: [0.1, 0.1, 0.0]
     
 Postural:
     type: Postural

@@ -31,7 +31,7 @@
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
 	 		<!-- <cylinder radius="${cylinder_radius}" length="${cylinder_length}"/> -->
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_hip-roll.stl" scale="0.001 ${mirror*0.001} 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/${COLLISION_MESH_SUBFOLDER}/mesh_hip-roll.stl" scale="0.001 ${mirror*0.001} 0.001"/>
 		</geometry> 
 	</collision>
 	</xacro:if>
@@ -61,7 +61,7 @@
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/${COLLISION_MESH_SUBFOLDER}/mesh_hip-pitch.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 		<material name="kyon_orange"/>
 	</collision>
@@ -83,7 +83,28 @@
 	<child link="hip_pitch_${leg_num}_link"/>
 	<origin xyz="${HipPitch_Ox} ${origin_y * HipPitch_Oy} ${HipPitch_Oz}" rpy="${HipPitch_roll} ${origin_x * origin_y * HipPitch_pitch} ${origin_x * HipPitch_yaw}"/>
 	<axis xyz="0 0 -1"/>
-	<limit lower="${hip_pitch_lower[leg_num-1]}" upper="${hip_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/> 
+	<limit lower="${hip_pitch_lower[leg_num-1]}" upper="${hip_pitch_upper[leg_num-1]}" effort="${motorA_effort}" velocity="${motorA_velocity}"/>
+</joint>
+
+<!-- knee: collision sphere on the end of the thigh past the knee axis, the part that touches the ground when kneeling -->
+<link name="knee_${leg_num}">
+	<inertial>
+		<origin xyz="0 0 0"/>
+		<mass value="0.001"/>
+		<inertia ixx="4.9e-7" ixy="0.0" ixz="0.0" iyy="4.9e-7" iyz="0.0" izz="4.9e-7"/>
+	</inertial>
+	<collision name="knee_${leg_num}">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+			<sphere radius="0.035"/>
+		</geometry>
+	</collision>
+</link>
+
+<joint name="knee_${leg_num}_joint" type="fixed">
+	<parent link="hip_pitch_${leg_num}_link"/>
+	<child link="knee_${leg_num}"/>
+	<origin xyz="0.0 -0.373 0.213" rpy="0 0 0"/>
 </joint>
 
 <xacro:unless value="${ADD_WHEELS}">

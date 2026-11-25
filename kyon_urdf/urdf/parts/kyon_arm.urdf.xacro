@@ -5,13 +5,13 @@
 
 <!-- macro arms -->
 <xacro:macro name="kyon_arm" params="arm_num rot parent">
-	
+
 <!-- LINKS -->
 <!-- shoulder yaw -->
 <link name="shoulder_yaw_${arm_num}_link">
 	<inertial>
 		<origin xyz="${ShoulderYaw_x} ${ShoulderYaw_y} ${ShoulderYaw_z}"/>
-		<mass value="${ShoulderYaw_mass}"/>   
+		<mass value="${ShoulderYaw_mass}"/>
 		<inertia ixx="${ShoulderYaw_xx}" ixy="${ShoulderYaw_xy}" ixz="${ShoulderYaw_xz}" iyy="${ShoulderYaw_yy}" iyz="${ShoulderYaw_yz}" izz="${ShoulderYaw_zz}"/>
 	</inertial>
 	<visual>
@@ -21,12 +21,14 @@
 		</geometry>
 		<material name="dark_grey"/>
 	</visual>
+	<xacro:if value="${ADD_COLLISION}">
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_sh-yaw.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/${COLLISION_MESH_SUBFOLDER}/mesh_sh-yaw.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>
+	</xacro:if>
 </link>
 
 <link name="shoulder_pitch_${arm_num}_link">
@@ -47,17 +49,19 @@
 	  	</geometry>
   		<material name="kyon_orange"/>
 	</visual>
+	<xacro:if value="${ADD_COLLISION}">
 	<collision>
 	  	<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/${COLLISION_MESH_SUBFOLDER}/mesh_sh-pitch.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 		<material name="kyon_orange"/>
 	</collision>
+	</xacro:if>
 </link>
 
 <link name="elbow_pitch_${arm_num}_link">
 	<inertial>
-		<origin xyz="${ElbowPitch_x} ${ElbowPitch_y} ${ElbowPitch_z}"/>	
+		<origin xyz="${ElbowPitch_x} ${ElbowPitch_y} ${ElbowPitch_z}"/>
 		<mass value="${ElbowPitch_mass}"/>
 		<inertia ixx="${ElbowPitch_xx}" ixy="${ElbowPitch_xy}" ixz="${ElbowPitch_xz}" iyy="${ElbowPitch_yy}" iyz="${ElbowPitch_yz}" izz="${ElbowPitch_zz}"/>
 	</inertial>
@@ -67,11 +71,13 @@
 		</geometry>
 		<material name="dark_grey"/>
 	</visual>
+	<xacro:if value="${ADD_COLLISION}">
 	<collision>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/${VISUAL_MESH_SUBFOLDER}/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/${COLLISION_MESH_SUBFOLDER}/mesh_elbow.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>
+	</xacro:if>
 </link>
 
 <link name="wrist_pitch_${arm_num}_link">
@@ -87,12 +93,14 @@
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
+	<xacro:if value="${ADD_COLLISION}">
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/${COLLISION_MESH_SUBFOLDER}/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>
+	</xacro:if>
 </link>
 
 <link name="wrist_yaw_${arm_num}_link">
@@ -108,12 +116,14 @@
 	  	</geometry>
   		<material name="dark_grey"/>
 	</visual>
+	<xacro:if value="${ADD_COLLISION}">
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<mesh filename="package://kyon_urdf/meshes/collision/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001"/>
+			<mesh filename="package://kyon_urdf/meshes/${COLLISION_MESH_SUBFOLDER}/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>
+	</xacro:if>
 </link>
 
 <!-- /LINKS -->
@@ -152,7 +162,7 @@
 	<axis xyz="0 0 -1"/>
 	<limit lower="${j_wrist_pitch_lower[arm_num-1]}" upper="${j_wrist_pitch_upper[arm_num-1]}" effort="${motorD_effort}" velocity="${motorD_velocity}"/>
 </joint>
-	
+
 <joint name="wrist_yaw_${arm_num}" type="revolute">
 	<parent link="wrist_pitch_${arm_num}_link"/>
 	<child link="wrist_yaw_${arm_num}_link"/>

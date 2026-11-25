@@ -122,9 +122,9 @@
 
 
     <xacro:if value="${ADD_FU_CAMERA}">
-        <gazebo reference="zed_front_up_mount_link">
+        <gazebo reference="zed_front_up_left_camera_frame">
             <sensor name="zed_front_up" type="rgbd_camera">
-                <gz_frame_id>zed_front_up_mount_link</gz_frame_id>
+                <gz_frame_id>zed_front_up_left_camera_frame_optical</gz_frame_id>
                 <camera>
                     <horizontal_fov>1.83</horizontal_fov>
                     <image>
@@ -152,9 +152,9 @@
     </xacro:if>
 
     <xacro:if value="${ADD_FD_CAMERA}">
-        <gazebo reference="zed_front_down_mount_link">
+        <gazebo reference="zed_front_down_left_camera_frame">
             <sensor name="zed_front_down" type="rgbd_camera">
-                <gz_frame_id>zed_front_down_mount_link</gz_frame_id>
+                <gz_frame_id>zed_front_down_left_camera_frame_optical</gz_frame_id>
                 <camera>
                     <horizontal_fov>1.83</horizontal_fov>
                     <image>

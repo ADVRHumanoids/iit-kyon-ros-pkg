@@ -4,7 +4,7 @@ SHELL ["/bin/bash", "-c"]
 
 # Install headless display support
 USER root
-RUN apt-get update && apt-get install -y xvfb nlohmann-json3-dev libglfw3-dev && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y xvfb nlohmann-json3-dev libglfw3-dev ros-jazzy-ros-gz && rm -rf /var/lib/apt/lists/*
 
 USER user
 WORKDIR /home/user

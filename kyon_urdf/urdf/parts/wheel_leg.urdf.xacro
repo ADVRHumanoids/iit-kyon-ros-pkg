@@ -20,7 +20,7 @@
     <collision>
         <origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
         <geometry>
-            <mesh filename="package://kyon_urdf/meshes/collision/mesh_fixed-wheel-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
+            <mesh filename="package://kyon_urdf/meshes/${COLLISION_MESH_SUBFOLDER}/mesh_fixed-wheel-leg.stl" scale="${mirror*0.001} 0.001 0.001"/>
         </geometry>
     </collision>
 </link>
@@ -41,7 +41,7 @@
 	<collision>
 		<origin xyz="0.0 0.0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-			<!-- <mesh filename="package://kyon_urdf/meshes/collision/mesh_wheel.stl" scale="0.001 0.001 0.001"/> -->
+			<!-- <mesh filename="package://kyon_urdf/meshes/${COLLISION_MESH_SUBFOLDER}/mesh_wheel.stl" scale="0.001 0.001 0.001"/> -->
             <cylinder radius="0.11" length="0.045"/>
 		</geometry> 
 	</collision>

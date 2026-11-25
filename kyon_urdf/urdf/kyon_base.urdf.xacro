@@ -30,7 +30,7 @@
 	<collision>
 		<origin xyz="0.0 0 0.0"  rpy="0.0 0.0 0.0"/>
 		<geometry>
-	  		<mesh filename="package://kyon_urdf/meshes/collision/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
+	  		<mesh filename="package://kyon_urdf/meshes/${COLLISION_MESH_SUBFOLDER}/mesh_pelvis.stl" scale="0.001 0.001 0.001"/>
 		</geometry>
 	</collision>
     </xacro:if>
@@ -103,7 +103,7 @@
 <!-- Velodyne -->
 <link name="hesai_lidar"/>
 <joint name="hesai_lidar_joints" type="fixed">
-    <origin xyz="0.43 0 0.118" rpy="0 0 0.5220063" />
+    <origin xyz="0.43 0 0.118" rpy="0 0 2.0928020" />
     <parent link="pelvis"/>
 	<child link="hesai_lidar"/>
 </joint>
