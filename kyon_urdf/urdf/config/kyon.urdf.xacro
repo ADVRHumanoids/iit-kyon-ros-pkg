@@ -26,9 +26,9 @@
 <xacro:arg name="fixed_base_z" default="0.0"/>
 <xacro:arg name="visual_mesh_subfolder" default="visual_lowres"/> <!-- pass an empty string to get the original high resolution meshes -->
 <xacro:arg name="collision_mesh_subfolder" default="collision"/> <!-- pass "collision_simplified" to get the simplified (100 faces) collision meshes -->
-<xacro:arg name="dagana_model" default="default"/> <!-- "true": the dagana uses a simplifed boxy shape -->
-<xacro:arg name="parallel_dagana" default="false"/> <!-- the dagana becomes a fake parallel gripper (just for testing purposes)-->
-<xacro:arg name="dagana_teeth" default="true"/> <!-- "false": no cylinders across the tips of the boxy/boxy_slim revolute dagana's jaws -->
+<xacro:arg name="dagana_model" default="default"/> <!-- choose between "default", "boxy", "boxy_slim" -->
+<xacro:arg name="parallel_dagana" default="false"/> <!-- the dagana becomes a fake parallel gripper (for testing purposes)-->
+<xacro:arg name="dagana_teeth" default="true"/> <!-- Control if having the "teeth" in the baxy and boxy_slim models -->
 
 
 <!-- ************SELECT PARTS*************-->
