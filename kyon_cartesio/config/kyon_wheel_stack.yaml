@@ -1,96 +1,126 @@
 solver_options:
-    regularization: 1e-2
-    back_end: osqp
-    
+    regularization: 1e-9
+    back_end: qpoases
+
 stack:
-    - [wheel_1, wheel_2, wheel_3, wheel_4] #, l_arm, r_arm]
-    - [Rolling_FL, Rolling_FR, Rolling_HL, Rolling_HR, Postural, Com, PelvisRot]
+    - [
+        Steering_FL, Steering_FR, Steering_HL,Steering_HR, 
+        Rolling_FL, Rolling_FR, Rolling_HL,Rolling_HR, 
+        Postural
+      ]
+
+constraints: [JointLimits, VelocityLimits, Base]
 
 defaults:
-    - &wheel_radius 0.124 
-    
-wheel_1:
-    type: Cartesian
-    distal_link: wheel_1
-    base_link: world
-    indices: [0, 1, 2]
-    
-wheel_2:
-    type: Cartesian
-    distal_link: wheel_2
-    base_link: world
-    indices: [0, 1, 2]
-    
-wheel_3:
-    type: Cartesian
-    distal_link: wheel_3
-    base_link: world
-    indices: [0, 1, 2]
-    
-wheel_4:
-    type: Cartesian
-    distal_link: wheel_4
-    base_link: world
-    indices: [0, 1, 2]
+ - &local_frame base_link
+ - &wheel_radius 0.107
 
+Base:
+    type: Cartesian
+    distal_link: base_link
+
+Steering_FL:
+    type: CentauroSteering
+    wheel_name: wheel_1
+    lib_name: libcentauro_cartesio_addon.so
+    lambda: 0.1
+    
+Steering_FR:
+    type: CentauroSteering
+    wheel_name: wheel_2
+    lib_name: libcentauro_cartesio_addon.so
+    lambda: 0.1
+    
+Steering_HL:
+    type: CentauroSteering
+    wheel_name: wheel_3
+    lib_name: libcentauro_cartesio_addon.so
+    lambda: 0.1
+    
+Steering_HR:
+    type: CentauroSteering
+    wheel_name: wheel_4
+    lib_name: libcentauro_cartesio_addon.so
+    lambda: 0.1
+    
 Rolling_FL:
     type: WheelRolling
     wheel_name: wheel_1
     lib_name: libcentauro_cartesio_addon.so
     wheel_radius: *wheel_radius
-    weight: 1000.0
-
+    weight: 10.0
+    
 Rolling_FR:
     type: WheelRolling
     wheel_name: wheel_2
     lib_name: libcentauro_cartesio_addon.so
     wheel_radius: *wheel_radius
-    weight: 1000.0
-
+    weight: 10.0
+    
 Rolling_HL:
     type: WheelRolling
     wheel_name: wheel_3
     lib_name: libcentauro_cartesio_addon.so
     wheel_radius: *wheel_radius
-    weight: 1000.0
-
+    weight: 10.0
+    
 Rolling_HR:
     type: WheelRolling
     wheel_name: wheel_4
     lib_name: libcentauro_cartesio_addon.so
     wheel_radius: *wheel_radius
-    weight: 1000.0    
-
-l_arm:
+    weight: 10.0
+    
+Wheel_FL:
     type: Cartesian
-    distal_link: dagana_1_base
-    base_link: world 
-    indices: [0, 1, 2, 3, 4, 5]
-    
+    distal_link: wheel_1
+    base_link: *local_frame
+    indices: [0, 1, 2]
+    lambda: 0.1
+    disabled_joints: [ankle_yaw_1, wheel_joint_1]
 
-r_arm:
+Wheel_FR:
     type: Cartesian
-    distal_link: dagana_2_base
-    base_link: world 
-    indices: [0, 1, 2, 3, 4, 5]
-    
-    
-Com:
-    type: Com
-    indices: [0, 1]
-    weight: 10
-    
+    distal_link: wheel_2
+    base_link: *local_frame
+    indices: [0, 1, 2]
+    lambda: 0.1
+    disabled_joints: [ankle_yaw_2, wheel_joint_2]
+
+Wheel_HL:
+    type: Cartesian
+    distal_link: wheel_3
+    base_link: *local_frame
+    indices: [0, 1, 2]
+    lambda: 0.1
+    disabled_joints: [ankle_yaw_3, wheel_joint_3]
+
+Wheel_HR:
+    type: Cartesian
+    distal_link: wheel_4
+    base_link: *local_frame
+    indices: [0, 1, 2]
+    lambda: 0.1
+    disabled_joints: [ankle_yaw_4, wheel_joint_4]
+
 Postural:
     type: Postural
     lambda: 0.1
+    weight: 0.01
     disabled_joints:
-        - wheel_joint_1
-        - wheel_joint_2
-        - wheel_joint_3
-        - wheel_joint_4
-    
-PelvisRot:
-    type: Cartesian
-    distal_link: pelvis
-    weight: 10
-    indices: [4, 5]
+      - ankle_yaw_1
+      - ankle_yaw_2
+      - ankle_yaw_3
+      - ankle_yaw_4
+      - wheel_joint_1
+      - wheel_joint_2
+      - wheel_joint_3
+      - wheel_joint_4
+
+
+JointLimits:
+    type: JointLimits
+
+VelocityLimits:
+    type: VelocityLimits
+
