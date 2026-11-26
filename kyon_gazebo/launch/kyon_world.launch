@@ -19,6 +19,17 @@
     <arg name="wheels" default="false"/>
     <arg name="velodyne" default="false"/>
     <arg name="hesai_jt128" default="false"/>
+    <!-- imu_link's gz IMU on /vectornav/imu_uncompensated, as the real VectorNav driver -->
+    <arg name="imu" default="false"/>
+    <!-- Hesai QT128 on imu_link (default: lio_mapping's calibrated extrinsic), as the real driver's
+         cloud on /lidar_points (sim_hesai_adapter, motion distortion from /sim/ground_truth) -->
+    <arg name="hesai_qt128" default="false"/>
+    <arg name="hesai_qt128_x" default="0.6862"/>
+    <arg name="hesai_qt128_y" default="0.0"/>
+    <arg name="hesai_qt128_z" default="-0.015"/>
+    <arg name="hesai_qt128_roll" default="3.141592653589793"/>
+    <arg name="hesai_qt128_pitch" default="0.0"/>
+    <arg name="hesai_qt128_yaw" default="-2.0928021889929584"/>
     <arg name="camera_front_up" default="false"/>
     <arg name="camera_front_down" default="false"/>
 
@@ -45,7 +56,7 @@
        
        <!-- Load the URDF/SRDF into the ROS Parameter Server -->
        <let name="robot_description_gz"
-            value="$(command 'xacro $(find-pkg-share kyon_gazebo)/urdf/kyon_gazebo.urdf.xacro floating_joint:=false upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) wheels:=$(var wheels) velodyne:=$(var velodyne) hesai_jt128:=$(var hesai_jt128) camera_front_up:=$(var camera_front_up) camera_front_down:=$(var camera_front_down)')"/>
+            value="$(command 'xacro $(find-pkg-share kyon_gazebo)/urdf/kyon_gazebo.urdf.xacro floating_joint:=false upper_body:=$(var arms) legs:=$(var legs) payload:=$(var payload) wheels:=$(var wheels) velodyne:=$(var velodyne) hesai_jt128:=$(var hesai_jt128) hesai_qt128:=$(var hesai_qt128) hesai_qt128_x:=$(var hesai_qt128_x) hesai_qt128_y:=$(var hesai_qt128_y) hesai_qt128_z:=$(var hesai_qt128_z) hesai_qt128_roll:=$(var hesai_qt128_roll) hesai_qt128_pitch:=$(var hesai_qt128_pitch) hesai_qt128_yaw:=$(var hesai_qt128_yaw) ground_truth:=$(var hesai_qt128) camera_front_up:=$(var camera_front_up) camera_front_down:=$(var camera_front_down)')"/>
  
        <!-- Start gazebo-->
        <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
@@ -65,6 +76,7 @@
              /hesai_lidar@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan
              /hesai_jt128_front/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
              /hesai_jt128_back/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
+             /hesai_qt128/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
              /clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock 
              /zed_front_up/image@sensor_msgs/msg/Image[gz.msgs.Image
              /zed_front_up/depth_image@sensor_msgs/msg/Image[gz.msgs.Image
@@ -75,6 +87,21 @@
              /zed_front_down/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo
              /zed_front_down/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
              "/> 
+
+       <node pkg="ros_gz_bridge" exec="parameter_bridge" name="imu_bridge" if="$(var imu)"
+              args="/imu@sensor_msgs/msg/Imu[gz.msgs.IMU">
+              <remap from="/imu" to="/vectornav/imu_uncompensated"/>
+       </node>
+
+       <group if="$(var hesai_qt128)">
+              <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ground_truth_bridge"
+                     args="/sim/ground_truth@nav_msgs/msg/Odometry[gz.msgs.Odometry"/>
+              <node pkg="kyon_gazebo" exec="sim_hesai_adapter" name="sim_hesai_adapter">
+                     <param from="$(find-pkg-share kyon_gazebo)/config/sim_hesai_adapter.yaml"/>
+                     <param name="use_sim_time" value="true"/>
+                     <param name="lidar_pose" value="[$(var hesai_qt128_x), $(var hesai_qt128_y), $(var hesai_qt128_z), $(var hesai_qt128_roll), $(var hesai_qt128_pitch), $(var hesai_qt128_yaw)]"/>
+              </node>
+       </group>
             
     </group>
 
